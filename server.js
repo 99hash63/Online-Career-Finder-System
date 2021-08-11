@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
+const colors = require('colors');
 const connectDB = require('./config/db');
 
 //load env vars
@@ -20,12 +21,20 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Mount routers
-app.use('/api/v1/companies', companies)
-
+app.use('/api/v1/companies', companies);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(
+const server = app.listen(
 	PORT,
-	console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
+	console.log(
+		`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
+	)
 );
+
+//Handle unhandled promise rejections
+process.on('unhandledRejection', (err, Promise) => {
+	console.log(`Error: ${err.message}`.red.bold);
+	//Close server and exit process
+	server.close(() => process.exit(1));
+});
