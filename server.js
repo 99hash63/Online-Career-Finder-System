@@ -1,13 +1,23 @@
 const express = require('express');
 const dotenv = require('dotenv');
-
-// Route files
-const companies = require('./routes/companies');
+const morgan = require('morgan');
+const connectDB = require('./config/db');
 
 //load env vars
 dotenv.config({ path: './config/config.env' });
 
+//Connect to database
+connectDB();
+
+// Route files
+const companies = require('./routes/companies');
+
 const app = express();
+
+//Dev loggin middleware
+if (process.env.NODE_ENV === 'development') {
+	app.use(morgan('dev'));
+}
 
 // Mount routers
 app.use('/api/v1/companies', companies)

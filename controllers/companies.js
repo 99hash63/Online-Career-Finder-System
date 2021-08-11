@@ -2,7 +2,9 @@
 //@route GET /api/v1/companies
 //@access public
 exports.getCompanies = (req, res, next) => {
-	res.status(200).json({ success: true, data: 'Show all companies' });
+	res
+		.status(200)
+		.json({ success: true, data: 'Show all companies', Message: req.hello });
 };
 
 //@desc Get a single company
