@@ -1,0 +1,97 @@
+const mongoose = require('mongoose');
+
+const CompanySchema = new mongoose.Schema({
+	industry: {
+		type: String,
+		required: [true, 'Please add an industry'],
+		trim: true,
+	},
+
+	emp_count: {
+		type: String,
+		required: [true, 'Please add an emp_count'],
+		trim: true,
+	},
+
+	founded: {
+		type: Date,
+		required: [true, 'Please add a founded date'],
+	},
+
+	website: {
+		type: String,
+		required: [true, 'Please add a website'],
+		trim: true,
+		match: [
+			/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
+			'Please use a valid URL with HTTP or HTTPS',
+		],
+	},
+
+	revenue: {
+		type: Number,
+		required: [true, 'Please add a revenue'],
+	},
+
+	address: {
+		type: String,
+		required: [true, 'Please add an address'],
+	},
+
+	location: {
+		//GeoJSON Point
+		type: {
+			type: String, // Don't do `{ location: { type: String } }`
+			enum: ['Point'], // 'location.type' must be 'Point'
+		},
+		coordinates: {
+			type: [Number],
+			index: '2dsphere',
+		},
+		formattedAddress: String,
+		street: String,
+		city: String,
+		state: String,
+		zipcode: String,
+		country: String,
+	},
+
+	title: {
+		type: String,
+		required: [true, 'Please add a title'],
+		minLength: [1, 'Title should be more than 1 character'],
+		maxLength: [50, 'Title should be below 50 characters'],
+		unique: true,
+	},
+
+	description: {
+		type: String,
+		required: [true, 'Please add a description'],
+		minLength: [50, 'Description should be more than 50 characters'],
+		maxLength: [500, 'Description should be below 500 characters'],
+	},
+
+	//Images
+	logo: {
+		type: String,
+		default: 'no-photo.jpg',
+	},
+
+	coverPhoto: {
+		type: String,
+		default: 'no-photo.jpg',
+	},
+
+	otherPhotos: {
+		type: [String],
+		default: 'no-photo.jpg',
+	},
+
+	isPublic: {
+		type: Boolean,
+		default: false,
+		required: true,
+	},
+});
+
+module.exports = mongoose.model('Company', CompanySchema);
