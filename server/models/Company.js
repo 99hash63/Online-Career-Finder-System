@@ -5,12 +5,21 @@ const CompanySchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'Please add an industry'],
 		trim: true,
+		enum: [
+			'IT/Software',
+			'Technology',
+			'Real Estate',
+			'Consumer Goods',
+			'Automobile',
+			'Other',
+		],
 	},
 
 	emp_count: {
 		type: String,
 		required: [true, 'Please add an emp_count'],
 		trim: true,
+		enum: ['0-10', '10-50', '50-200', '200-1000', 'Above 1000'],
 	},
 
 	founded: {
@@ -91,6 +100,11 @@ const CompanySchema = new mongoose.Schema({
 		type: Boolean,
 		default: false,
 		required: true,
+	},
+
+	createdAt: {
+		type: String,
+		default: new Date().toDateString(),
 	},
 });
 

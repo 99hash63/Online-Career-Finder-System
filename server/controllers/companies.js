@@ -1,4 +1,5 @@
 const Company = require('../models/Company');
+const ErrorResponse = require('../utils/errorResponse');
 
 //@desc Get all companies
 //@route GET /api/v1/companies
@@ -13,10 +14,7 @@ exports.getCompanies = async (req, res, next) => {
 			data: companies,
 		});
 	} catch (err) {
-		res.status(400).json({
-			success: false,
-			error: err,
-		});
+		next(err);
 	}
 };
 
@@ -28,9 +26,10 @@ exports.getCompany = async (req, res, next) => {
 		const company = await Company.findById(req.params.id);
 
 		if (!company) {
-			return res.status(400).json({
-				success: false,
-			});
+			// Error if user id specified is properly formatted but still could not be found in the database
+			return next(
+				new ErrorResponse(`Company not found with id of ${req.params.id}`, 404)
+			);
 		}
 
 		res.status(200).json({
@@ -38,9 +37,8 @@ exports.getCompany = async (req, res, next) => {
 			data: company,
 		});
 	} catch (err) {
-		res.status(400).json({
-			success: false,
-		});
+		// Error catches if user id specified is not properly formatted
+		next(err);
 	}
 };
 
@@ -56,9 +54,7 @@ exports.addCompany = async (req, res, next) => {
 			data: company,
 		});
 	} catch (err) {
-		res.status(400).json({
-			success: false,
-		});
+		next(err);
 	}
 };
 
@@ -73,9 +69,9 @@ exports.updateCompany = async (req, res, next) => {
 		});
 
 		if (!company) {
-			return res.status(400).json({
-				success: false,
-			});
+			return next(
+				new ErrorResponse(`Company not found with id of ${req.params.id}`, 404)
+			);
 		}
 
 		res.status(200).json({
@@ -83,9 +79,7 @@ exports.updateCompany = async (req, res, next) => {
 			data: company,
 		});
 	} catch (err) {
-		res.status(400).json({
-			success: false,
-		});
+		next(err);
 	}
 };
 
@@ -97,17 +91,15 @@ exports.deleteCompany = async (req, res, next) => {
 		const company = await Company.findByIdAndDelete(req.params.id);
 
 		if (!company) {
-			return res.status(400).json({
-				success: false,
-			});
+			return next(
+				new ErrorResponse(`Company not found with id of ${req.params.id}`, 404)
+			);
 		}
 		res.status(200).json({
 			success: true,
 			data: company,
 		});
 	} catch (err) {
-		res.status(400).json({
-			success: false,
-		});
+		next(err);
 	}
 };
