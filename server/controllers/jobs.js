@@ -1,7 +1,7 @@
 const Jobs = require("../models/Jobs");
 var ObjectId = require("mongoose").Types.ObjectId;
 
-export const getJobPosts = async (req, res) => {
+exports.getJobPosts = async (req, res) => {
   await Jobs.find((err, docs) => {
     if (!err) {
       res.send(docs);
@@ -12,7 +12,7 @@ export const getJobPosts = async (req, res) => {
     }
   });
 };
-export const getJobPost = async (req, res) => {
+exports.getJobPost = async (req, res) => {
   if (!ObjectId.isValid(req.params.id))
     return res.status(400).send(`No record with given id : ${req.params.id}`);
 
@@ -27,7 +27,7 @@ export const getJobPost = async (req, res) => {
   });
 };
 
-export const createJobPost = async (req, res) => {
+exports.createJobPost = async (req, res) => {
   const {
     title,
     company,
@@ -70,7 +70,7 @@ export const createJobPost = async (req, res) => {
   });
 };
 
-export const updateJobPost = async (req, res) => {
+exports.updateJobPost = async (req, res) => {
   if (!ObjectId.isValid(req.params.id))
     return res.status(400).send(`No record with given id : ${req.params.id}`);
 
@@ -123,7 +123,7 @@ export const updateJobPost = async (req, res) => {
   );
 };
 
-export const deleteJobPost = async (req, res) => {
+exports.deleteJobPost = async (req, res) => {
   if (!ObjectId.isValid(req.params.id))
     return res.status(400).send(`No record with given id : ${req.params.id}`);
 
