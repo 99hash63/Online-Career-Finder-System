@@ -15,6 +15,7 @@ connectDB();
 
 // Route files
 const companies = require('./routes/companies');
+const auth = require('./routes/auth');
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Mount routers
 app.use('/api/v1/companies', companies);
+app.use('/api/v1/auth', auth);
 
 // Use error handler middleware
 app.use(errorHandler);
