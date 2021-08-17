@@ -12,7 +12,10 @@ const {
 	companyCoverUpload,
 } = require('../controllers/companies');
 
-router.route('/').get(getCompanies).post(addCompany);
+const Company = require('../models/Company');
+const advancedResults = require('../middleware/advancedResults');
+
+router.route('/').get(advancedResults(Company), getCompanies).post(addCompany);
 router.route('/:id').get(getCompany).put(updateCompany).delete(deleteCompany);
 router.route('/radius/:zipcode/:distance').get(getCompaniesInRadius);
 router.route('/:id/photo').put(companyPhotoUpload);
