@@ -54,3 +54,7 @@ process.on('unhandledRejection', (err, Promise) => {
 	//Close server and exit process
 	server.close(() => process.exit(1));
 });
+
+//import interview.js interview route handle
+const InterviewRouter = require("./routes/Interviews.js")
+app.use("/Interviews",InterviewRouter)
