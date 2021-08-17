@@ -3,10 +3,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const JobPost = new Schema({
-  jobID: {
-    type: String,
-    require: true,
-  },
   title: {
     type: String,
     require: true,
@@ -28,14 +24,28 @@ const JobPost = new Schema({
   },
   salary: {
     type: Number,
-    require: true,
   },
   expectedApplicants: {
     type: Number,
     require: true,
   },
   website: {
-    type: Number,
+    type: String,
+  },
+  description: {
+    type: String,
+    require: true,
+  },
+  image: {
+    type: String,
+  },
+  publish: {
+    type: Boolean,
+    require: true,
+  },
+  appliedApplicants: {
+    type: String,
+    require: true,
   },
   createdDate: {
     type: Date,
