@@ -56,5 +56,5 @@ process.on('unhandledRejection', (err, Promise) => {
 });
 
 //import interview.js interview route handle
-const InterviewRouter = require("./routes/Interviews.js")
-app.use("/Interviews",InterviewRouter)
+const InterviewRouter = require('./routes/Interviews.js');
+app.use('/Interviews', InterviewRouter);
