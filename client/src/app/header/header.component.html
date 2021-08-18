@@ -1,5 +1,5 @@
 <div>
-    <div class="header-dark">
+    <div class="header-dark" >
         <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
             <div class="container"><a class="navbar-brand" href="/">CareerFinder</a><button class="navbar-toggler"
                     data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Menu</span><span
@@ -13,7 +13,7 @@
                             <div class="dropdown-menu" role="menu">
                                 <a class="dropdown-item" role="presentation" href="#">Jobs</a>
                                 <a class="dropdown-item" role="presentation" href="#">My Jobs</a>
-                                <a class="dropdown-item" role="presentation" href="#">Create Job</a>
+                                <a class="dropdown-item" role="presentation" routerLink="/createJob">Create Job</a>
                             </div>
                         </li>
                         <!-- companies -->
@@ -44,7 +44,7 @@
                 </div>
             </div>
         </nav>
-        <div class="container hero">
+        <div class="container hero" *ngIf="hasRoute('/')">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <h1 class="text-center">Find Your Dream Job.</h1>

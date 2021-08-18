@@ -34,7 +34,7 @@
 }
 
 .header-dark .navbar .navbar-brand:hover {
-  color: #f0f0f0;
+  color: #ffffff;
 }
 
 .header-dark .navbar .navbar-collapse span {
@@ -42,7 +42,7 @@
 }
 
 .header-dark .navbar .navbar-collapse span .login {
-  color: #d9d9d9;
+  color: #ffffff;
   margin-right: 0.5rem;
   text-decoration: none;
 }
@@ -77,7 +77,7 @@
 }
 
 .header-dark .navbar.navbar-dark .navbar-nav .nav-link {
-  color: #d9d9d9;
+  color: #e4e4e4;
 }
 
 .header-dark .navbar.navbar-dark .navbar-nav .nav-link:focus,
