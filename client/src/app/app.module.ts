@@ -14,10 +14,7 @@ import { CreateJobComponent } from './JOBS/create-job/create-job.component';
     FooterComponent,
     CreateJobComponent,
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(ROUTES),
-  ],
+  imports: [BrowserModule, RouterModule.forRoot(ROUTES)],
   providers: [],
   bootstrap: [AppComponent],
 })
