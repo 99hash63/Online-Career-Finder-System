@@ -1,0 +1,61 @@
+.In-wrapper{
+    display : block;
+	margin: auto;
+	width: 700px;
+	height: auto;
+	padding-left: 60px;
+	padding-right: 60px;
+	padding-bottom: 10px;
+	text-align: left;
+	border: 3px solid rgb(16, 129, 221);
+}
+.In-Formheaders{
+    font-size: 18px;
+    text-align : center;
+    font-weight: bold;
+}
+.In-add{
+    background-image: url(../../images/Conducting_interview.png);
+    background-position: 105% 105%;
+    background-size: 350px 200px;
+    background-repeat: no-repeat;
+}
+.In-submit{
+    background-color: #0981d6;
+ 	border: none;
+ 	color: white;
+ 	padding: 15px 32px;
+ 	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+    font-weight: bold;
+  	margin: 4px 2px;
+  	cursor: pointer;
+}
+.In-submit:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.In-reset{
+    background-color: rgb(250, 9, 170);
+ 	border: none;
+ 	color: white;
+ 	padding: 15px 32px;
+ 	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+    font-weight: bold;
+  	margin: 4px 2px;
+  	cursor: pointer;
+}
+.In-reset:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.twobtn{
+	padding-left :157px;
+}
+.toast-center {
+    top: 150%;
+    left: 40%;
+}

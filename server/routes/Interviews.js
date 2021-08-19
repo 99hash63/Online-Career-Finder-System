@@ -11,7 +11,7 @@ router.route('/add').post((req, res) => {
 	const Offer = req.body.Offer;
 	const Question = req.body.Question;
 	const Answer = req.body.Answer;
-	const User = req.body.User;
+	const User = 'Anuradha';
 	const SaveOp = 'no';
 
 	const newQuestion = new Interviews({
