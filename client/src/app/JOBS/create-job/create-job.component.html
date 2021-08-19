@@ -2,26 +2,32 @@
     <div class="row m-3">
         <div class="col-8 mt-3">
             <h2>Create Job Post</h2>
-            <form class="mt-5">
+            <form #joppostForm="ngForm" class="mt-5" (ngSubmit)="onSubmit(joppostForm)">
+
+                <input type="hidden" name='_id' #_id="ngModel" [(ngModel)]="jobpostservice.selectedJob._id">
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" aria-describedby="titlehelp">
+                    <input type="text" class="form-control" id="title" aria-describedby="titlehelp" #title="ngModel"
+                        [(ngModel)]="jobpostservice.selectedJob.title">
                     <!-- <div id="titlehelp" class="form-text"></div> -->
                 </div>
                 <div class="mb-3">
                     <label for="company" class="form-label">Company</label>
-                    <input type="text" class="form-control" id="company" aria-describedby="companyhelp">
+                    <input type="text" class="form-control" id="company" aria-describedby="companyhelp"
+                        #company="ngModel" [(ngModel)]="jobpostservice.selectedJob.company">
                     <!-- <div id="companyhelp" class="form-text"></div> -->
                 </div>
                 <div class="mb-3">
                     <label for="location" class="form-label">Location</label>
-                    <input type="text" class="form-control" id="location" aria-describedby="locationhelp">
+                    <input type="text" class="form-control" id="location" aria-describedby="locationhelp"
+                        #location="ngModel" [(ngModel)]="jobpostservice.selectedJob.location">
                     <!-- <div id="locationhelp" class="form-text"></div> -->
                 </div>
                 <div class="mb-3">
                     <label for="industry" class="form-label">Industry</label>
-                    <select class="form-select " aria-label="industry">
+                    <select class="form-select " aria-label="industry" #industry="ngModel"
+                        [(ngModel)]="jobpostservice.selectedJob.industry">
                         <option selected>Select</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -32,17 +38,17 @@
                     <label for="type" class="form-label me-5">Job Type</label>
                     <div class="form-check form-check-inline me-4">
                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="fulltime"
-                            value="option1">
+                            value="option1" #type="ngModel" [(ngModel)]="jobpostservice.selectedJob.type">
                         <label class="form-check-label" for="fulltime">Full Time</label>
                     </div>
                     <div class="form-check form-check-inline me-4">
                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="parttime"
-                            value="option2">
+                            value="option2" #type="ngModel" [(ngModel)]="jobpostservice.selectedJob.type">
                         <label class="form-check-label" for="parttime">Part Time</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="internship"
-                            value="option3">
+                            value="option3" #type="ngModel" [(ngModel)]="jobpostservice.selectedJob.type">
                         <label class="form-check-label" for="internship">Internship</label>
                     </div>
 
@@ -51,12 +57,13 @@
                     <label for="type" class="form-label me-5">Actively Hiring</label>
                     <div class="form-check form-check-inline me-4">
                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="acyes"
-                            value="option1">
+                            value="option1" #activelyHiring="ngModel"
+                            [(ngModel)]="jobpostservice.selectedJob.activelyHiring">
                         <label class="form-check-label" for="acyes">Yes</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="acno"
-                            value="option2">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="acno" value="option2"
+                            #activelyHiring="ngModel" [(ngModel)]="jobpostservice.selectedJob.activelyHiring">
                         <label class="form-check-label" for="acno">No</label>
                     </div>
 
@@ -66,31 +73,36 @@
                     <label for="salary" class="form-label">Salary</label>
                     <div class="input-group mb-3">
                         <span class="input-group-text">$</span>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                            #salary="ngModel" [(ngModel)]="jobpostservice.selectedJob.salary">
                         <span class="input-group-text">.00</span>
                     </div>
                 </div>
 
                 <div class="mb-3 mt-3 w-25">
                     <label for="expapplicants" class="form-label">Expected Applicants</label>
-                    <input type="number" class="form-control" id="expapplicants" aria-describedby="expapplicantshelp">
+                    <input type="number" class="form-control" id="expapplicants" aria-describedby="expapplicantshelp"
+                        min="5" #expectedApplicants="ngModel"
+                        [(ngModel)]="jobpostservice.selectedJob.expectedApplicants">
                     <!-- <div id="expapplicantshelp" class="form-text"></div> -->
                 </div>
                 <div class="mb-3">
-                    <label for="basic-url" class="form-label">Company</label>
+                    <label for="basic-url" class="form-label">Company Website</label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon3">https://</span>
-                        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3"
+                            #website="ngModel" [(ngModel)]="jobpostservice.selectedJob.website">
                     </div>
                     <!-- <div id="websitehelp" class="form-text"></div> -->
                 </div>
                 <div class="mb-3 mt-5">
                     <label for="description" class="form-label">Job Description</label>
-                    <textarea class="form-control " id="description" rows="3"></textarea>
+                    <textarea class="form-control " id="description" rows="3" #description="ngModel"
+                        [(ngModel)]="jobpostservice.selectedJob.description"></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary mt-4 pull-right">Publish</button>
-                <button class="btn btn-light mt-4 pull-right">Save as draft</button>
+                <button type="button" class="btn btn-secondary mt-4 pull-right mx-3">Save as draft</button>
             </form>
         </div>
         <div class="col mt-5">

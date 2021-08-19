@@ -44,7 +44,7 @@ const JobPost = new Schema({
     require: true,
   },
   appliedApplicants: {
-    type: String,
+    type: Number,
     require: true,
   },
   createdDate: {
