@@ -1,0 +1,32 @@
+.In-wrapper{
+    display : block;
+	margin: auto;
+	width: 700px;
+	height: auto;
+	padding-left: 60px;
+	padding-right: 60px;
+	padding-bottom: 10px;
+	text-align: left;
+	border: 3px solid rgb(16, 129, 221);
+}
+.In-Formheaders{
+    font-size: 18px;
+    text-align : center;
+    font-weight: bold;
+}
+.In-submit{
+    background-color: #0981d6;
+ 	border: none;
+ 	color: white;
+ 	padding: 15px 32px;
+ 	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+    font-weight: bold;
+  	margin: 4px 2px;
+  	cursor: pointer;
+}
+.In-submit:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
