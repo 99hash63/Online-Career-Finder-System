@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CreateJobComponent } from './JOBS/create-job/create-job.component';
 import { AllJobsComponent } from './JOBS/all-jobs/all-jobs.component';
+import { MyJobsComponent } from './JOBS/my-jobs/my-jobs.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AllJobsComponent } from './JOBS/all-jobs/all-jobs.component';
     FooterComponent,
     CreateJobComponent,
     AllJobsComponent,
+    MyJobsComponent,
   ],
   imports: [
     BrowserModule,

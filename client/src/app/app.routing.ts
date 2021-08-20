@@ -1,6 +1,7 @@
 import { Router, RouterModule, Routes } from '@angular/router';
 import { AllJobsComponent } from './JOBS/all-jobs/all-jobs.component';
 import { CreateJobComponent } from './JOBS/create-job/create-job.component';
+import { MyJobsComponent } from './JOBS/my-jobs/my-jobs.component';
 
 export const ROUTES: Routes = [
   {
@@ -10,5 +11,9 @@ export const ROUTES: Routes = [
   {
     path: 'jobs',
     component: AllJobsComponent,
+  },
+  {
+    path: 'myjobs',
+    component: MyJobsComponent,
   },
 ];
