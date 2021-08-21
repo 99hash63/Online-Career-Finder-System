@@ -36,16 +36,6 @@ router.route('/add').post((req, res) => {
 		});
 });
 
-//retirve
-
-/*router.route("/display").get((req,res)=>{
-    //body
-    Interviews.find().then((questions)=>{
-        res.json(questions)
-    }).catch((err)=>{
-        console.log(err);
-    })
-})*/
 //retrive common interview question
 router.route('/displayci').get((req, res) => {
 	//body
