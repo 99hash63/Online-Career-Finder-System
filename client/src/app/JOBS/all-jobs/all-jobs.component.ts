@@ -15,6 +15,10 @@ export class AllJobsComponent implements OnInit {
   ngOnInit(): void {}
 
   openScrollableContent(longContent: any) {
-    this.modalService.open(longContent, { scrollable: true });
+    this.modalService.open(longContent, {
+      size: 'lg',
+      backdrop: 'static',
+      scrollable: true,
+    });
   }
 }

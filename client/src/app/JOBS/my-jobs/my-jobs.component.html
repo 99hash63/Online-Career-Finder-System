@@ -1,4 +1,5 @@
 <div class="container-fluid" style="width: 1500px; margin-bottom: 200px;">
+
     <div class="mt-4">
         <div class="hstack d-flex justify-content-between gap-3">
             <div class="hstack">
@@ -84,7 +85,7 @@
                     </div>
                     <div class="col-4 mt-4 d-flex h-25 ">
                         <button type="button" class="btn w-100 mx-2 btn-primary ">Edit</button>
-                        <button type="button" class="btn w-100 btn-danger">Delete</button>
+                        <button type="button" class="btn w-100 btn-danger" (click)="open(content)">Delete</button>
                     </div>
                 </div>
                 <div class="mt-5 overflow-auto jobdescription" style="max-height: 800px;">
@@ -166,3 +167,21 @@
 
     </div>
 </div>
+
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header ">
+        <h4 class="modal-title" id="modal-basic-title">Confirm Delete</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you want to delete this job post?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark w-25" (click)="c('close')">No</button>
+        <button type="button" class="btn btn-danger w-25" (click)="c('Save click')">Yes</button>
+    </div>
+</ng-template>
