@@ -1,5 +1,5 @@
 <br>
-<h3 class="In-Formheaders">Questions Pool</h3><br>
+<h3 class="In-Formheaders">My Questions Pool</h3><br>
     <div class="panel panel-primary" *ngFor="let interview of questionpool.InterviewQuestion">
         <div class="question">
             {{interview.Question}}
@@ -8,8 +8,10 @@
         <div class="answer">
             {{interview.Answer}}
             <br>
-            <button type="submit" class="btn btn-primary" value="Edit" class="In-update" >Update</button>
-            <button type="submit" class="btn btn-primary" value="Delete" class="In-delete">Delete</button>
+            <div class="right" >
+                <button type="submit" class="btn btn-primary" value="Edit" class="In-update">Update</button>
+                <button type="submit" class="btn btn-primary" value="Delete" class="In-delete">Delete</button>
+            </div>
         </div>      
         <br>
     </div>

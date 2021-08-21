@@ -1,50 +1,76 @@
 <br>
-<div class="In-add">
-    <div class="In-wrapper">
-        <h3 class="In-Formheaders"> Tell us about your recent job interviews</h3><br>
-        <br>
-        <form #InterviewForm="ngForm" (ngSubmit)="OnSubmit(InterviewForm)">
 
-            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="interviewService.selectedQuestion._id">
-
-            <div class="form-group">
-                <label>JobTitle *</label>
-                <input type="text" name="JobTitle" #JobTitle="ngModel" [(ngModel)]="interviewService.selectedQuestion.JobTitle" required class="form-control"><!--[(ngModel)]="JobTitle"-->
-            </div>
-                    
-            <div class="form-group">
-                <label >Question Type *</label>
-                <!--<input type="text" name="QuestionType" #QuestionType="ngModel" [(ngModel)]="interviewService.selectedQuestion.QuestionType" placeholder="Interview Guidlines" required>--><!--[(ngModel)]="QuestionType" -->
-                <select name="QuestionType" #QuestionType="ngModel" [(ngModel)]="interviewService.selectedQuestion.QuestionType" required class="form-control">
-                    <option value="CommonInterviewQuestion">Common Interview Question</option>
-                    <option value="InterviewGuidelines">Interview Guidelines</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Did you get an offer *</label>
-                <!--<input type="text" name="Offer" #Offer="ngModel" [(ngModel)]="interviewService.selectedQuestion.Offer" placeholder="Select your option" required>--><!--[(ngModel)]="Offer" -->
-                <select name="Offer" #Offer="ngModel" [(ngModel)]="interviewService.selectedQuestion.Offer" required class="form-control">
-                    <option value="No">No</option>
-                    <option value="Yes,but declined">Yes,but declined</option>
-                    <option value="Yes,and accepted">Yes,and accepted</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label >Interview Question *</label>
-                <textarea name="Question" #Question="ngModel" [(ngModel)]="interviewService.selectedQuestion.Question" required class="form-control"></textarea><!--[(ngModel)]="Question" -->
-            </div>
-            <div class="form-group">
-                <label>How to answer this *</label>
-                <textarea name="Answer" #Answer="ngModel" [(ngModel)]="interviewService.selectedQuestion.Answer" required class="form-control"></textarea><!--[(ngModel)]="Answer" -->
-            </div>
+    <div class="In-add">
+        <div class="In-wrapper">
+            <h3 class="In-Formheaders"> Tell us about your recent job interviews</h3><br>
             <br>
-            <div class="twobtn">
-                <button type="submit" class="btn btn-primary" value="Submit" class="In-submit">Submit</button>
-                <button type="reset" value="Clear" class="In-reset">Clear</button><!--(click)="resetForm(InterviewForm)"-->
-                <!--<input type="submit" class="btn btn-primary" value="Submit" class="In-submit">-->
-            </div>
-        </form>
-    </div>
-</div>  
+            <form #InterviewForm="ngForm" (ngSubmit)="OnSubmit(InterviewForm)">
+
+                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="interviewService.selectedQuestion._id">
+
+                <div class="form-group">
+
+                    <label>JobTitle *</label>
+                    <input type="text" name="JobTitle" #JobTitle="ngModel"  required maxlength="20" [(ngModel)]="interviewService.selectedQuestion.JobTitle" class="form-control">
+
+                    <div *ngIf="JobTitle.errors && (JobTitle.dirty || JobTitle.touched)" class="alert alert-danger">
+
+                        <div [hidden]="!JobTitle.errors.required"> JobTitle is required </div>
+                        <div [hidden]="!JobTitle.errors.maxlength" >JobTitle cannot be more than 20 long </div>
+
+                    </div>
+
+                </div>
+                        
+                <div class="form-group">
+                    <label >Question Type *</label>
+                    <!--<input type="text" name="QuestionType" #QuestionType="ngModel" [(ngModel)]="interviewService.selectedQuestion.QuestionType" placeholder="Interview Guidlines" required>--><!--[(ngModel)]="QuestionType" -->
+                    <select name="QuestionType" #QuestionType="ngModel" [(ngModel)]="interviewService.selectedQuestion.QuestionType" required class="form-control">
+                        <option value="CommonInterviewQuestion">Common Interview Question</option>
+                        <option value="InterviewGuidelines">Interview Guidelines</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Did you get an offer *</label>
+                    <!--<input type="text" name="Offer" #Offer="ngModel" [(ngModel)]="interviewService.selectedQuestion.Offer" placeholder="Select your option" required>--><!--[(ngModel)]="Offer" -->
+                    <select name="Offer" #Offer="ngModel" [(ngModel)]="interviewService.selectedQuestion.Offer" required class="form-control">
+                        <option value="No">No</option>
+                        <option value="Yes,but declined">Yes,but declined</option>
+                        <option value="Yes,and accepted">Yes,and accepted</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label >Interview Question *</label>
+                    <textarea name="Question" #Question="ngModel" required minlength="15" maxlength="100" [(ngModel)]="interviewService.selectedQuestion.Question" class="form-control"></textarea>
+
+                    <div *ngIf="Question.errors && (Question.dirty || Question.touched)" class="alert alert-danger">
+
+                        <div [hidden]="!Question.errors.required"> Question is required </div>
+                        <div [hidden]="!Question.errors.minlength"> Question must be at least 15 characters </div>
+                        <div [hidden]="!Question.errors.maxlength" >Question cannot be more than 100 long </div>
+
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label>How to answer this *</label>
+                    <textarea name="Answer" #Answer="ngModel" required minlength="150" [(ngModel)]="interviewService.selectedQuestion.Answer" class="form-control"></textarea>
+
+                    <div *ngIf="Answer.errors && (Answer.dirty || Answer.touched)" class="alert alert-danger">
+
+                        <div [hidden]="!Answer.errors.required"> Answer is required </div>
+                        <div [hidden]="!Answer.errors.minlength"> Answer must be at least 150 characters </div>
+
+                    </div>
+                </div>
+                <br>
+                <div class="twobtn">
+                    <button type="submit" [disabled]="!InterviewForm.form.valid" class="btn btn-primary" value="Submit" class="In-submit">Submit</button>
+                    <button type="reset" value="Clear" class="In-reset">Clear</button><!--(click)="resetForm(InterviewForm)"-->
+                    <!--<input type="submit" class="btn btn-primary" value="Submit" class="In-submit">-->
+                </div>
+            </form>
+        </div>
+    </div>  

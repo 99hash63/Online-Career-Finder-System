@@ -1,9 +1,14 @@
 <br>
 <h3 class="In-Formheaders"> Common Interview Questions</h3><br>
-    <div class="panel panel-primary" *ngFor="let interview of is.InterviewQuestion">
+    <div class="search-right">
+        <input type="text" name="searchtext" [(ngModel)]="searchtext" placeholder="Search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </div>
+    <br>
+    <div class="panel panel-primary" *ngFor="let interview of is.InterviewQuestion | filter:searchtext">
         <div class="question">
             {{interview.Question}}
-            <div row></div>
+            <button style="font-size:14px" class="star"><i class="fa fa-star-o" style="font-size:22px"></i></button>
         </div>
         <div class="answer">
             {{interview.Answer}}
