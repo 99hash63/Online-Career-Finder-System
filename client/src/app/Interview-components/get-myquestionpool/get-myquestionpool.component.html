@@ -1,6 +1,13 @@
 <div class="container mt-5">
     <h3 class="In-Formheaders">My Questions Pool</h3><br>
-    <div class="panel panel-primary mb-5" *ngFor="let interview of questionpool.InterviewQuestion">
+
+    <div class="search-right">
+        <input type="text" name="searchtext" [(ngModel)]="searchtext" placeholder="Search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </div>
+    <br>
+
+    <div class="panel panel-primary mb-5" *ngFor="let interview of questionpool.InterviewQuestion | filter:searchtext">
         <div class="question">
             {{interview.Question}}
             <div row></div>
