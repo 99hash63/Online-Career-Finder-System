@@ -18,4 +18,12 @@ export class DiscoverhomeComponent implements OnInit {
     this.route.navigateByUrl('getcommoninterviews');
 };
 
+InterviewGuidelinebtnClick(){
+  this.route.navigateByUrl('getinterviewguidlines');
+}
+
+SavedQuestionbtnClick(){
+  this.route.navigateByUrl('getsavedquestions');
+}
+
 }
