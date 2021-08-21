@@ -1,12 +1,19 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const morgan = require("morgan");
-const colors = require("colors");
-const connectDB = require("./config/db");
-const errorHandler = require("./middleware/error");
-const fileupload = require("express-fileupload");
-const path = require("path");
+const express = require('express');
+const dotenv = require('dotenv');
+const morgan = require('morgan');
+const colors = require('colors');
+const connectDB = require('./config/db');
+const errorHandler = require('./middleware/error');
+const fileupload = require('express-fileupload');
+const path = require('path');
 const cookieParser = require('cookie-parser');
+
+const cors = require('cors');
+const app = express();
+const bodyParser = require('body-parser');
+
+//reuqests allow any domain
+app.use(cors({ origin: 'http://localhost:4200' }));
 
 //load env vars
 dotenv.config({ path: './config/config.env' });
@@ -19,8 +26,6 @@ const companies = require('./routes/companies');
 const jobs = require('./routes/jobs');
 const auth = require('./routes/auth');
 const InterviewRouter = require('./routes/Interviews.js');
-
-const app = express();
 
 //Body parser
 app.use(express.json());
