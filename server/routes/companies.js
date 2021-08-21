@@ -14,12 +14,20 @@ const {
 
 const Company = require('../models/Company');
 const advancedResults = require('../middleware/advancedResults');
+const { protect } = require('../middleware/auth');
 
-router.route('/').get(advancedResults(Company), getCompanies).post(addCompany);
-router.route('/:id').get(getCompany).put(updateCompany).delete(deleteCompany);
+router
+	.route('/')
+	.get(advancedResults(Company), getCompanies)
+	.post(protect, addCompany);
+router
+	.route('/:id')
+	.get(getCompany)
+	.put(protect, updateCompany)
+	.delete(protect, deleteCompany);
 router.route('/radius/:zipcode/:distance').get(getCompaniesInRadius);
-router.route('/:id/photo').put(companyPhotoUpload);
-router.route('/:id/logo').put(companyLogoUpload);
-router.route('/:id/cover').put(companyCoverUpload);
+router.route('/:id/photo').put(protect, companyPhotoUpload);
+router.route('/:id/logo').put(protect, companyLogoUpload);
+router.route('/:id/cover').put(protect, companyCoverUpload);
 
 module.exports = router;
