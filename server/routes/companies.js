@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {
 	getCompanies,
+	getMyCompanies,
 	getCompany,
 	addCompany,
 	updateCompany,
@@ -20,6 +21,7 @@ router
 	.route('/')
 	.get(advancedResults(Company), getCompanies)
 	.post(protect, addCompany);
+router.route('/my').get(protect, getMyCompanies);
 router
 	.route('/:id')
 	.get(getCompany)
