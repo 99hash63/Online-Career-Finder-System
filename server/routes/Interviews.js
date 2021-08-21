@@ -49,7 +49,7 @@ router.route('/add').post((req, res) => {
 //retrive common interview question
 router.route('/displayci').get((req, res) => {
 	//body
-	Interviews.find({ QuestionType: 'Common Interview Question' })
+	Interviews.find({ QuestionType: 'CommonInterviewQuestion' })
 		.then((questions) => {
 			res.json(questions);
 		})
@@ -61,7 +61,7 @@ router.route('/displayci').get((req, res) => {
 //retrive interview guildlines
 router.route('/displayig').get((req, res) => {
 	//body
-	Interviews.find({ QuestionType: 'Interview Guidelines' })
+	Interviews.find({ QuestionType: 'InterviewGuidelines' })
 		.then((questions) => {
 			res.json(questions);
 		})

@@ -19,3 +19,13 @@
     text-align : center;
     font-weight: bold;
 }
+/* filter controls */
+.search-right {
+    text-align: right;
+    height: 14;
+    width: 72.25vw;
+    /*background-color: #cfcece;*/
+    padding: 5px 10px;
+    border-radius: 15px;
+    
+}

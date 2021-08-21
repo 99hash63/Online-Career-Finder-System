@@ -14,6 +14,8 @@ export class GetCommonInterviewsComponent implements OnInit {
   
   constructor(public is : InterviewsService) { }
 
+  searchtext: string =""
+
   ngOnInit(): void {
     this.refreshCommonInterviews();
   }
@@ -23,4 +25,7 @@ export class GetCommonInterviewsComponent implements OnInit {
     });
   }
 
+  searchFunction(){
+
+  }
 }

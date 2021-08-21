@@ -9,9 +9,11 @@ import { Interviews } from 'src/app/shared/interviews.model';
   styleUrls: ['./get-interview-guidlines.component.css'],
   providers: [InterviewsService]
 })
+
 export class GetInterviewGuidlinesComponent implements OnInit {
 
   constructor(public interviewS : InterviewsService) { }
+  searchtext: string =""
 
   ngOnInit(): void {
     this.refreshCommonInterviews();
