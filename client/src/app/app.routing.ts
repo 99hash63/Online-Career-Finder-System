@@ -1,5 +1,6 @@
 import { Router, RouterModule, Routes } from '@angular/router';
 import { AllJobsComponent } from './JOBS/all-jobs/all-jobs.component';
+import { ApplyJobsComponent } from './JOBS/apply-jobs/apply-jobs.component';
 import { CreateJobComponent } from './JOBS/create-job/create-job.component';
 import { MyJobsComponent } from './JOBS/my-jobs/my-jobs.component';
 

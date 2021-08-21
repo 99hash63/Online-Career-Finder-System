@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ROUTES } from './app.routing';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { CreateJobComponent } from './JOBS/create-job/create-job.component';
 import { AllJobsComponent } from './JOBS/all-jobs/all-jobs.component';
 import { MyJobsComponent } from './JOBS/my-jobs/my-jobs.component';
+import { ApplyJobsComponent } from './JOBS/apply-jobs/apply-jobs.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { MyJobsComponent } from './JOBS/my-jobs/my-jobs.component';
     CreateJobComponent,
     AllJobsComponent,
     MyJobsComponent,
+    ApplyJobsComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { MyJobsComponent } from './JOBS/my-jobs/my-jobs.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
