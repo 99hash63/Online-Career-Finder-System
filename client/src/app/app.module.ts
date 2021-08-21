@@ -13,6 +13,7 @@ import { CreateJobComponent } from './JOBS/create-job/create-job.component';
 import { AllJobsComponent } from './JOBS/all-jobs/all-jobs.component';
 import { MyJobsComponent } from './JOBS/my-jobs/my-jobs.component';
 import { ApplyJobsComponent } from './JOBS/apply-jobs/apply-jobs.component';
+import { EditJobComponent } from './JOBS/edit-job/edit-job.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ApplyJobsComponent } from './JOBS/apply-jobs/apply-jobs.component';
     AllJobsComponent,
     MyJobsComponent,
     ApplyJobsComponent,
+    EditJobComponent,
   ],
   imports: [
     BrowserModule,
