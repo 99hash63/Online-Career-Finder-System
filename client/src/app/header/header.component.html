@@ -1,7 +1,7 @@
 <div>
     <div class="header-dark">
         <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
-            <div class="container"><a class="navbar-brand" href="/">CareerFinder</a><button class="navbar-toggler"
+            <div class="container"><a class="navbar-brand" routerLink="/">CareerFinder</a><button class="navbar-toggler"
                     data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Menu</span><span
                         class="navbar-toggler-icon"></span></button>
 
@@ -9,19 +9,20 @@
                     <ul class="nav navbar-nav">
                         <!-- Jobs -->
                         <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown"
-                                aria-expanded="false" href="#">Jobs</a>
+                                aria-expanded="false" routerLink="#">Jobs</a>
                             <div class="dropdown-menu" role="menu">
-                                <a class="dropdown-item" role="presentation" href="#">Jobs</a>
-                                <a class="dropdown-item" role="presentation" href="#">My Jobs</a>
+                                <a class="dropdown-item" role="presentation" routerLink="/jobs">Jobs</a>
+                                <a class="dropdown-item" role="presentation" routerLink="/myjobs">My Jobs</a>
                                 <a class="dropdown-item" role="presentation" routerLink="/createJob">Create Job</a>
                             </div>
                         </li>
                         <!-- companies -->
                         <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown"
-                                aria-expanded="false" href="#">Companies</a>
+                                aria-expanded="false" routerLink="#">Companies</a>
                             <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation"
-                                    href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second
-                                    Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a>
+                                    routerLink="#">First Item</a><a class="dropdown-item" role="presentation"
+                                    routerLink="#">Second
+                                    Item</a><a class="dropdown-item" role="presentation" routerLink="#">Third Item</a>
                             </div>
                         </li>
                         <!-- Interview -->
@@ -40,8 +41,13 @@
                         <!-- <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input
                                 class="form-control search-field" type="search" name="search" id="search-field">
                         </div> -->
+<<<<<<< HEAD
                     </form><span class="navbar-text"><a routerLink="login" class="login">Log In</a></span><a class="btn btn-dark "
                       role="button" routerLink="register">Sign Up</a>
+=======
+                    </form><span class="navbar-text"><a routerLink="#" class="login">Log In</a></span><a
+                        class="btn btn-dark " role="button" routerLink="#">Sign Up</a>
+>>>>>>> b92bdefa31dedb68ae3e88696cdf9639379bbb4e
                 </div>
             </div>
         </nav>

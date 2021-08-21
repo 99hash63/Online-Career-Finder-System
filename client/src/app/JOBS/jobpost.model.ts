@@ -1,19 +1,19 @@
 export class Jobpost {
-  _id!: string;
-  title!: string;
-  company!: string;
-  location!: string;
-  industry!: string;
-  type!: string;
-  activelyHiring!: string;
-  salary: number | undefined;
-  expectedApplicants: number | undefined;
-  website!: string;
-  description!: string;
-  image!: string;
-  publish: boolean | undefined;
-  appliedApplicants!: string;
-  createdDate: Date | undefined;
+  _id: any;
+  title: any;
+  company: any;
+  location: any;
+  industry: any;
+  type: any;
+  activelyHiring: any;
+  salary: any;
+  expectedApplicants: any;
+  website: any;
+  description: any;
+  image: any;
+  publish: any;
+  appliedApplicants: any;
+  createdDate: any;
 
   constructor() {}
 }
