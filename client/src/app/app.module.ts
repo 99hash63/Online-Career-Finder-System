@@ -27,6 +27,8 @@ import { GetMyquestionpoolComponent } from './Interview-components/get-myquestio
 import { GetSavedQuestionsComponent } from './Interview-components/get-saved-questions/get-saved-questions.component';
 import { UpdateInterviewsComponent } from './Interview-components/update-interviews/update-interviews.component';
 import { pipe } from 'rxjs';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 //create object from routes module
 const appRoutes: Routes =[
@@ -36,7 +38,9 @@ const appRoutes: Routes =[
   {path:'getinterviewguidlines' ,component: GetInterviewGuidlinesComponent},
   {path:'getmyquestionpool' ,component: GetMyquestionpoolComponent},
   {path:'getsavedquestions' ,component: GetSavedQuestionsComponent},
-  {path:'modify' ,component: UpdateInterviewsComponent}
+  {path:'modify' ,component: UpdateInterviewsComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent}
 ]
 
 @NgModule({
@@ -56,7 +60,9 @@ const appRoutes: Routes =[
     GetInterviewGuidlinesComponent,
     GetMyquestionpoolComponent,
     GetSavedQuestionsComponent,
-    UpdateInterviewsComponent
+    UpdateInterviewsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
