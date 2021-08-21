@@ -11,6 +11,25 @@ exports.getCompanies = asyncHandler(async (req, res, next) => {
 	res.status(200).json(res.advancedResults);
 });
 
+//@desc Get specific user's companies
+//@route GET /api/v1/companies/my
+//@access private
+exports.getMyCompanies = asyncHandler(async (req, res, next) => {
+	userId = req.user.id
+
+	const companies = await Company.find({createdBy: userId})
+
+	if(companies.length===0){
+		return next(
+			new ErrorResponse('This user does not have created any comapnies', 400)
+		)
+	}
+	res.status(200).json({
+		success: true,
+		data: companies
+	})
+});
+
 //@desc Get a single company
 //@route GET /api/v1/companies/:id
 //@access public
@@ -32,8 +51,9 @@ exports.getCompany = asyncHandler(async (req, res, next) => {
 
 //@desc Add new company
 //@route POST /api/v1/companies
-//@access public
+//@access private
 exports.addCompany = asyncHandler(async (req, res, next) => {
+	req.body.createdBy = req.user;
 	const company = await Company.create(req.body);
 
 	res.status(201).json({
@@ -44,8 +64,9 @@ exports.addCompany = asyncHandler(async (req, res, next) => {
 
 //@desc Update a company
 //@route PUT /api/v1/companies/:id
-//@access public
+//@access private
 exports.updateCompany = asyncHandler(async (req, res, next) => {
+	req.body.createdBy = req.user;
 	const company = await Company.findByIdAndUpdate(req.params.id, req.body, {
 		new: true,
 		runValidators: true,
@@ -65,7 +86,7 @@ exports.updateCompany = asyncHandler(async (req, res, next) => {
 
 //@desc Delete a company
 //@route DELETE /api/v1/companies/:id
-//@access public
+//@access private
 exports.deleteCompany = asyncHandler(async (req, res, next) => {
 	const company = await Company.findByIdAndDelete(req.params.id);
 
@@ -109,7 +130,7 @@ exports.getCompaniesInRadius = asyncHandler(async (req, res, next) => {
 
 //@desc Upload other photos for companies
 //@route PUT /api/v1/companies/:id/photo
-//@access public
+//@access private
 exports.companyPhotoUpload = asyncHandler(async (req, res, next) => {
 	const company = await Company.findById(req.params.id);
 
@@ -169,7 +190,7 @@ exports.companyPhotoUpload = asyncHandler(async (req, res, next) => {
 
 //@desc Upload company logo
 //@route PUT /api/v1/companies/:id/logo
-//@access public
+//@access private
 exports.companyLogoUpload = asyncHandler(async (req, res, next) => {
 	const company = await Company.findById(req.params.id);
 
@@ -223,7 +244,7 @@ exports.companyLogoUpload = asyncHandler(async (req, res, next) => {
 
 //@desc Upload company cover photo
 //@route PUT /api/v1/companies/:id/cover
-//@access public
+//@access private
 exports.companyCoverUpload = asyncHandler(async (req, res, next) => {
 	const company = await Company.findById(req.params.id);
 

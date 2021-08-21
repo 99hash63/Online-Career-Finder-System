@@ -1,0 +1,49 @@
+<br>
+<div class="In-wrapper">
+    <h3 class="In-Formheaders"> Update Job Interviews</h3>
+    <br>
+    <form (Submit)="OnUpdateInterviews()">
+        <div class="form-group">
+            <label for="JobTitle" >JobTitle *</label>
+            <input name="JobTitle" [(ngModel)]="JobTitle" type="text" class="form-control"><!--[(ngModel)]="JobTitle"-->
+        </div>
+                
+        <div class="form-group">
+            <label for="QuestionType" >Question Type *</label>
+            <!--<input name="QuestionType" type="text" class="form-control">--><!--[(ngModel)]="QuestionType" -->
+            <select id="QuestionType" [(ngModel)]="QuestionType" name="QuestionType" class="form-control">
+                <option value="CommonInterviewQuestion">Common Interview Question</option>
+                <option value="InterviewGuidlines">Interview Guidlines</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Offer" >Did you get an offer *</label>
+            <!--<input name="Offer" type="text" class="form-control">--><!--[(ngModel)]="Offer" -->
+            <select id="Offer" [(ngModel)]="Offer" name="Offer" class="form-control">
+                <option value="No">No</option>
+                <option value="Yes,but declined">Yes,but declined</option>
+                <option value="Yes,and accepted">Yes,and accepted</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Question" >Interview Question *</label>
+            <textarea name="Question" [(ngModel)]="Question" type="text" class="form-control"></textarea><!--[(ngModel)]="Question" -->
+        </div>
+        <div class="form-group">
+            <label for="Answer" >How to answer this *</label>
+            <textarea name="Answer" [(ngModel)]="Answer" type="Answer" class="form-control"></textarea><!--[(ngModel)]="Answer" -->
+        </div>
+        <br>
+        
+            <!--<button type="submit" class="btn btn-primary" value="Submit" class="In-submit">Submit</button>--><!--class="btn btn-primary"-->
+            
+            <!--<input type="submit" class="btn btn-primary" value="Update" class="In-submit">-->
+            <div class="center">
+            <button type="submit" class="btn btn-primary" value="Update" class="In-submit">Update</button>
+            </div>
+            
+
+    </form>
+</div>

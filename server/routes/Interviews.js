@@ -11,7 +11,7 @@ router.route('/add').post((req, res) => {
 	const Offer = req.body.Offer;
 	const Question = req.body.Question;
 	const Answer = req.body.Answer;
-	const User = req.body.User;
+	const User = 'Anuradha';
 	const SaveOp = 'no';
 
 	const newQuestion = new Interviews({
@@ -36,20 +36,10 @@ router.route('/add').post((req, res) => {
 		});
 });
 
-//retirve
-
-/*router.route("/display").get((req,res)=>{
-    //body
-    Interviews.find().then((questions)=>{
-        res.json(questions)
-    }).catch((err)=>{
-        console.log(err);
-    })
-})*/
 //retrive common interview question
 router.route('/displayci').get((req, res) => {
 	//body
-	Interviews.find({ QuestionType: 'Common Interview Question' })
+	Interviews.find({ QuestionType: 'CommonInterviewQuestion' })
 		.then((questions) => {
 			res.json(questions);
 		})
@@ -61,7 +51,7 @@ router.route('/displayci').get((req, res) => {
 //retrive interview guildlines
 router.route('/displayig').get((req, res) => {
 	//body
-	Interviews.find({ QuestionType: 'Interview Guidelines' })
+	Interviews.find({ QuestionType: 'InterviewGuidelines' })
 		.then((questions) => {
 			res.json(questions);
 		})

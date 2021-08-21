@@ -110,6 +110,11 @@ const CompanySchema = new mongoose.Schema({
 		type: String,
 		default: new Date().toDateString(),
 	},
+
+	createdBy: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'user',
+	},
 });
 
 //Create company slug from the title
