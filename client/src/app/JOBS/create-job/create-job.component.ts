@@ -29,7 +29,7 @@ export class CreateJobComponent implements OnInit {
   //   form.classList.add('was-validated');
   // }
 
-  constructor(public jobpostservice: JobpostService) {}
+  constructor(private jobpostservice: JobpostService) {}
 
   ngOnInit(): void {
     this.resetForm();
@@ -55,7 +55,7 @@ export class CreateJobComponent implements OnInit {
   resetForm(form?: any) {
     if (form) form.reset();
     this.jobpostservice.selectedJob = {
-      _id: 'null',
+      _id: null,
       title: null,
       company: null,
       location: null,

@@ -2,10 +2,10 @@
     <div class="row m-3">
         <div class="col-8 mt-3">
             <h2>Create Job Post</h2>
-            <form class="mt-5 " ngNativeValidate (submit)="onSubmit(joppostForm)" #joppostForm="ngForm"
-                [formGroup]="exform">
+            <form [formGroup]="exform" class="mt-5 " ngNativeValidate (submit)="onSubmit(joppostForm)"
+                #joppostForm="ngForm">
 
-                <input type="hidden" name='_id' #_id="ngModel" [(ngModel)]="jobpostservice.selectedJob._id">
+                <input type="hidden" name='_id'>
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>

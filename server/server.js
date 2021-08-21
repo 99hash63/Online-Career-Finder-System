@@ -7,6 +7,13 @@ const connectDB = require("./config/db");
 const errorHandler = require("./middleware/error");
 const fileupload = require("express-fileupload");
 const path = require("path");
+const cookieParser = require("cookie-parser");
+
+const app = express();
+const bodyParser = require("body-parser");
+
+//reuqests allow any domain
+app.use(cors({ origin: "http://localhost:4200" }));
 
 //load env vars
 dotenv.config({ path: "./config/config.env" });
@@ -20,11 +27,12 @@ const jobs = require("./routes/jobs");
 const auth = require("./routes/auth");
 const InterviewRouter = require("./routes/Interviews.js");
 
-const app = express();
-
 //Body parser
 app.use(express.json());
 app.use(cors({ origin: "http://localhost:4200" }));
+
+// Cookie parser
+app.use(cookieParser());
 
 //Dev logging middleware
 if (process.env.NODE_ENV === "development") {
@@ -41,7 +49,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/v1/companies", companies);
 app.use("/findjobs", jobs);
 app.use("/Interviews", InterviewRouter);
-
 app.use("/api/v1/auth", auth);
 
 // Use error handler middleware
@@ -60,7 +67,7 @@ const server = app.listen(
 //Handle unhandled promise rejections
 
 process.on("unhandledRejection", (err, Promise) => {
-  console.log(`Error: ${err.message}`.red.bold);
+  console.log(`Error: ${err}`.red.bold);
   //Close server and exit process
   server.close(() => process.exit(1));
 });
