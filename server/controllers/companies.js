@@ -34,6 +34,7 @@ exports.getCompany = asyncHandler(async (req, res, next) => {
 //@route POST /api/v1/companies
 //@access public
 exports.addCompany = asyncHandler(async (req, res, next) => {
+	req.body.createdBy = req.user;
 	const company = await Company.create(req.body);
 
 	res.status(201).json({
@@ -46,6 +47,7 @@ exports.addCompany = asyncHandler(async (req, res, next) => {
 //@route PUT /api/v1/companies/:id
 //@access public
 exports.updateCompany = asyncHandler(async (req, res, next) => {
+	req.body.createdBy = req.user;
 	const company = await Company.findByIdAndUpdate(req.params.id, req.body, {
 		new: true,
 		runValidators: true,
