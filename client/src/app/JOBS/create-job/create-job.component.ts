@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { JobpostService } from '../jobpost.service';
 import { Jobpost } from '../jobpost.model';
-import { FormGroup, FormGroupDirective, NgForm } from '@angular/forms';
+import {
+  FormGroup,
+  FormGroupDirective,
+  NgForm,
+  FormControl,
+  Validators,
+  PatternValidator,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-create-job',
@@ -11,19 +18,44 @@ import { FormGroup, FormGroupDirective, NgForm } from '@angular/forms';
 })
 export class CreateJobComponent implements OnInit {
   exform!: FormGroup;
+  // validate() {
+  //   var form = document.getElementsByClassName(
+  //     'needs-validation'
+  //   )[0] as HTMLFormElement;
+  //   if (form.checkValidity() === false) {
+  //     event!.preventDefault();
+  //     event!.stopPropagation();
+  //   }
+  //   form.classList.add('was-validated');
+  // }
 
-  constructor(public jobpostservice: JobpostService) {
-    publishnow: true;
-  }
+  constructor(public jobpostservice: JobpostService) {}
 
   ngOnInit(): void {
     this.resetForm();
+
+    this.exform = new FormGroup({
+      title: new FormControl(null, Validators.required),
+      company: new FormControl(null, Validators.required),
+      location: new FormControl(null, Validators.required),
+      industry: new FormControl(null, Validators.required),
+      type: new FormControl(null, Validators.required),
+      activelyHiring: new FormControl(null, Validators.required),
+      salary: new FormControl(null, Validators.required),
+      expectedApplicants: new FormControl(null, Validators.required),
+      website: new FormControl(null, Validators.required),
+      description: new FormControl(null, Validators.required),
+      image: new FormControl(null, Validators.required),
+      publish: new FormControl(null, Validators.required),
+      appliedApplicants: new FormControl(null, Validators.required),
+      createdDate: new FormControl(null, Validators.required),
+    });
   }
 
-  resetForm(form?: NgForm) {
+  resetForm(form?: any) {
     if (form) form.reset();
     this.jobpostservice.selectedJob = {
-      _id: null,
+      _id: 'null',
       title: null,
       company: null,
       location: null,
@@ -40,7 +72,7 @@ export class CreateJobComponent implements OnInit {
       createdDate: null,
     };
   }
-  onSubmit(form: NgForm) {
+  onSubmit(form: any) {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!

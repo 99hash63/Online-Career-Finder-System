@@ -13,7 +13,7 @@ export class Jobpost {
   image: any;
   publish: any;
   appliedApplicants: any;
-  createdDate: any ;
+  createdDate: any;
 
   constructor() {}
 }

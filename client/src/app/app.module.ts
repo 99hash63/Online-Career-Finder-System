@@ -4,7 +4,7 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { MatInputModule } from '@angular/material/input';
 import { ROUTES } from './app.routing';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,6 +14,7 @@ import { AllJobsComponent } from './JOBS/all-jobs/all-jobs.component';
 import { MyJobsComponent } from './JOBS/my-jobs/my-jobs.component';
 import { ApplyJobsComponent } from './JOBS/apply-jobs/apply-jobs.component';
 import { EditJobComponent } from './JOBS/edit-job/edit-job.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,8 @@ import { EditJobComponent } from './JOBS/edit-job/edit-job.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    MatInputModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
