@@ -24,7 +24,6 @@
                         
                 <div class="form-group">
                     <label >Question Type *</label>
-                    <!--<input type="text" name="QuestionType" #QuestionType="ngModel" [(ngModel)]="interviewService.selectedQuestion.QuestionType" placeholder="Interview Guidlines" required>--><!--[(ngModel)]="QuestionType" -->
                     <select name="QuestionType" #QuestionType="ngModel" [(ngModel)]="interviewService.selectedQuestion.QuestionType" required class="form-control">
                         <option value="CommonInterviewQuestion">Common Interview Question</option>
                         <option value="InterviewGuidelines">Interview Guidelines</option>
@@ -33,7 +32,6 @@
 
                 <div class="form-group">
                     <label>Did you get an offer *</label>
-                    <!--<input type="text" name="Offer" #Offer="ngModel" [(ngModel)]="interviewService.selectedQuestion.Offer" placeholder="Select your option" required>--><!--[(ngModel)]="Offer" -->
                     <select name="Offer" #Offer="ngModel" [(ngModel)]="interviewService.selectedQuestion.Offer" required class="form-control">
                         <option value="No">No</option>
                         <option value="Yes,but declined">Yes,but declined</option>
@@ -67,10 +65,10 @@
                 </div>
                 <br>
                 <div class="twobtn">
-                    <button type="submit" [disabled]="!InterviewForm.form.valid" class="btn btn-primary" value="Submit" class="In-submit">Submit</button>
-                    <button type="reset" value="Clear" class="In-reset">Clear</button><!--(click)="resetForm(InterviewForm)"-->
-                    <!--<input type="submit" class="btn btn-primary" value="Submit" class="In-submit">-->
+                    <button type="submit" [disabled]="!InterviewForm.form.valid" class="btn w-35 mx-3 btn-primary" value="Submit">Submit</button>
+                    <button type="reset" value="Clear" class="btn w-35 btn-danger"> Clear</button><!--(click)="resetForm(InterviewForm)"-->
                 </div>
+                <simple-notifications></simple-notifications>
             </form>
         </div>
     </div>  

@@ -38,7 +38,7 @@
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 .In-delete{
-    background-color: rgb(250, 9, 170);
+    background-color: rgb(196, 23, 52);
  	border: none;
  	color: white;
  	padding: 12px 30px;
@@ -53,9 +53,18 @@
 .In-delete:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
-.right {
+.right{
     text-align: right;
     border: none;
     height: 10;
     width: 70vw;
+}
+.search-right {
+    text-align: right;
+    height: 14;
+    width: 72.25vw;
+    /*background-color: #cfcece;*/
+    padding: 5px 10px;
+    border-radius: 15px;
+    
 }

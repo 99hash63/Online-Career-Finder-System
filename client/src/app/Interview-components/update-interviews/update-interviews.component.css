@@ -9,6 +9,12 @@
 	text-align: left;
 	border: 3px solid rgb(16, 129, 221);
 }
+.In-add{
+    background-image: url("../../../assets/images/update.jpg");
+    background-position: 95% 90%;
+    background-size: 275px 450px;
+    background-repeat: no-repeat;
+}
 .In-Formheaders{
     font-size: 18px;
     text-align : center;

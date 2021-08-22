@@ -12,6 +12,7 @@ import { Interviews } from 'src/app/shared/interviews.model';
 export class GetMyquestionpoolComponent implements OnInit {
 
   constructor(public questionpool : InterviewsService) { }
+  searchtext: string =""
 
   ngOnInit(): void {
     this.refreshQuestionpool();
