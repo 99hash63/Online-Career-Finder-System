@@ -12,7 +12,21 @@ import { Interviews } from 'src/app/shared/interviews.model';
 export class GetMyquestionpoolComponent implements OnInit {
 
   constructor(public questionpool : InterviewsService) { }
-  searchtext: string =""
+  searchtext: string ="";
+
+  /*updateInterview ={
+  JobTitle : "",
+  QuestionType : "",
+  Offer :  "",
+  Question :"",
+  Answer : ""
+}*/
+
+JobTitle : String = "";
+QuestionType : String = "";
+Offer : String = "";
+Question : String = "";
+Answer : String = "";
 
   ngOnInit(): void {
     this.refreshQuestionpool();
@@ -22,5 +36,15 @@ export class GetMyquestionpoolComponent implements OnInit {
       this.questionpool.InterviewQuestion = res as Interviews[];
     });
   }
+
+  
+  //update question and answer
+  onUpdate(In : Interviews){
+    this.questionpool.selectedQuestion = In;
+  }
+
+  /*onEdit(interview){
+    this.updateInterview = interview;
+  }*/
 
 }

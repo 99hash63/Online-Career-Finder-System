@@ -27,6 +27,8 @@ export class InterviewsService {
 
   readonly URL_getsavedQuestions = "http://localhost:5000/Interviews/displaysq";
 
+  readonly URL_update = "http://localhost:5000/Interviews/update";
+
   //constructor
   constructor(private http: HttpClient) { }
 
@@ -53,5 +55,9 @@ export class InterviewsService {
   //getsavedQuestions method used to retrieve all bookmarked questions
   getsavedQuestions(){
     return this.http.get(this.URL_getsavedQuestions);
+  }
+
+  putInterviews(In : Interviews){
+    return this.http.put(this.URL_update + `/${In._id}`, In);
   }
 }
