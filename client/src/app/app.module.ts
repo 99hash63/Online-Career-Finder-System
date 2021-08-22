@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatInputModule } from '@angular/material/input';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 import { ROUTES } from './app.routing';
 import { AppComponent } from './app.component';
@@ -68,6 +69,7 @@ const appRoutes: Routes =[
     NgbModule,
     MatInputModule,
     BrowserAnimationsModule,
+    SimpleNotificationsModule.forRoot(),
     Ng2SearchPipeModule
   ],
   providers: [],
