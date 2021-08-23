@@ -165,4 +165,16 @@ export class CreateJobComponent implements OnInit {
     this.imageError = '';
     this.isImageSaved = false;
   }
+  public myreg =
+    /^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/i;
+
+  url = new FormControl('', [
+    Validators.required,
+    Validators.pattern(this.myreg),
+  ]);
+
+  markTouched() {
+    this.url.markAsTouched();
+    this.url.updateValueAndValidity();
+  }
 }

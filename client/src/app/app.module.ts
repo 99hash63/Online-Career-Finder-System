@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { ROUTES } from './app.routing';
@@ -17,6 +18,7 @@ import { MyJobsComponent } from './JOBS/my-jobs/my-jobs.component';
 import { ApplyJobsComponent } from './JOBS/apply-jobs/apply-jobs.component';
 import { EditJobComponent } from './JOBS/edit-job/edit-job.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { DiscoverhomeComponent } from './Interview-components/discoverhome/discoverhome.component';
 import { AddInterviewsComponent } from './Interview-components/add-interviews/add-interviews.component';
@@ -30,15 +32,15 @@ import { pipe } from 'rxjs';
 import { JobViewComponent } from './JOBS/all-jobs/job-view/job-view.component';
 
 //create object from routes module
-const appRoutes: Routes =[
-  {path:'discoverinterviews' ,component: DiscoverhomeComponent},
-  {path:'insert' ,component: AddInterviewsComponent},
-  {path:'getcommoninterviews' ,component: GetCommonInterviewsComponent},
-  {path:'getinterviewguidlines' ,component: GetInterviewGuidlinesComponent},
-  {path:'getmyquestionpool' ,component: GetMyquestionpoolComponent},
-  {path:'getsavedquestions' ,component: GetSavedQuestionsComponent},
-  {path:'modify' ,component: UpdateInterviewsComponent}
-]
+const appRoutes: Routes = [
+  { path: 'discoverinterviews', component: DiscoverhomeComponent },
+  { path: 'insert', component: AddInterviewsComponent },
+  { path: 'getcommoninterviews', component: GetCommonInterviewsComponent },
+  { path: 'getinterviewguidlines', component: GetInterviewGuidlinesComponent },
+  { path: 'getmyquestionpool', component: GetMyquestionpoolComponent },
+  { path: 'getsavedquestions', component: GetSavedQuestionsComponent },
+  { path: 'modify', component: UpdateInterviewsComponent },
+];
 
 @NgModule({
   declarations: [
@@ -58,7 +60,7 @@ const appRoutes: Routes =[
     GetMyquestionpoolComponent,
     GetSavedQuestionsComponent,
     UpdateInterviewsComponent,
-    JobViewComponent
+    JobViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,9 +70,11 @@ const appRoutes: Routes =[
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    MatRadioModule,
+    MatSelectModule,
     MatInputModule,
     BrowserAnimationsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
