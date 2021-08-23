@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JobpostService } from '../jobpost.service';
 import { Jobpost } from '../jobpost.model';
 import { RouterModule, Routes, Router } from '@angular/router';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import * as _ from 'lodash';
 import {
   FormGroup,
@@ -17,75 +18,76 @@ import {
   selector: 'app-create-job',
   templateUrl: './create-job.component.html',
   styleUrls: ['./create-job.component.css'],
-  providers: [JobpostService],
+  providers: [
+    JobpostService,
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { showError: true, displayDefaultIndicatorType: false },
+    },
+  ],
 })
 export class CreateJobComponent implements OnInit {
   publish?: boolean;
   imageError?: string;
   isImageSaved?: boolean;
   cardImageBase64?: string;
-  jobForm!: FormGroup;
   isLinear = false;
+
+  jobForm!: FormGroup;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
-
-  // validate() {
-  //   var form = document.getElementsByClassName(
-  //     'needs-validation'
-  //   )[0] as HTMLFormElement;
-  //   if (form.checkValidity() === false) {
-  //     event!.preventDefault();
-  //     event!.stopPropagation();
-  //   }
-  //   form.classList.add('was-validated');
-  // }
+  thirdFormGroup!: FormGroup;
 
   constructor(
     public jobpostservice: JobpostService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private first: FormBuilder,
+    private second: FormBuilder,
+    private third: FormBuilder
   ) {}
+
+  public myreg =
+    /^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/i;
 
   ngOnInit(): void {
     this.resetForm();
     this.removeImage();
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
+
+    (this.firstFormGroup = this.first.group({
+      title: new FormControl('', [Validators.required]),
+      company: new FormControl('', [Validators.required]),
+      location: new FormControl('', [Validators.required]),
+      industry: new FormControl('', [Validators.required]),
+      type: new FormControl('', [Validators.required]),
+      activelyHiring: new FormControl('', [Validators.required]),
+      salary: new FormControl('', [Validators.required]),
+      expectedApplicants: new FormControl('', [Validators.required]),
+      website: new FormControl('', [
+        Validators.required,
+        Validators.pattern(this.myreg),
+      ]),
+    })),
+      (this.secondFormGroup = this.second.group({
+        description: new FormControl('', [Validators.required]),
+      }));
+    this.thirdFormGroup = this.third.group({
+      image: new FormControl('', [Validators.required]),
     });
 
-    // this.exform = new FormGroup({
-    //   title: new FormControl('', Validators.required),
-    //   company: new FormControl(null, Validators.required),
-    //   location: new FormControl(null, Validators.required),
-    //   industry: new FormControl(null, Validators.required),
-    //   type: new FormControl(null, Validators.required),
-    //   activelyHiring: new FormControl(null, Validators.required),
-    //   salary: new FormControl(null, Validators.required),
-    //   expectedApplicants: new FormControl(null, Validators.required),
-    //   website: new FormControl(null, Validators.required),
-    //   description: new FormControl(null, Validators.required),
-    //   image: new FormControl(null, Validators.required),
-    //   publish: new FormControl(null, Validators.required),
-    //   appliedApplicants: new FormControl(null, Validators.required),
-    //   createdDate: new FormControl(null, Validators.required),
-    // });
+    // this.firstFormGroup.valueChanges.subscribe(console.log);
   }
-  public myreg =
-    /^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/i;
+
   url = new FormControl('', [
     Validators.required,
     Validators.pattern(this.myreg),
   ]);
-
   markTouched() {
     this.url.markAsTouched();
     this.url.updateValueAndValidity();
   }
 
-  resetForm(form?: NgForm) {
-    if (form) form.reset;
+  resetForm() {
+    if (this.firstFormGroup) this.firstFormGroup.reset;
     this.jobpostservice.selectedJob = {
       _id: '',
       title: '',
@@ -107,7 +109,19 @@ export class CreateJobComponent implements OnInit {
   setPublish(value: boolean) {
     this.publish = value;
   }
-  onSubmit(form: NgForm) {
+  onSubmit() {
+    this.jobForm = this._formBuilder.group({
+      title: this.firstFormGroup.value.title,
+      company: this.firstFormGroup.value.company,
+      location: this.firstFormGroup.value.location,
+      industry: this.firstFormGroup.value.industry,
+      type: this.firstFormGroup.value.type,
+      activelyHiring: this.firstFormGroup.value.activelyHiring,
+      salary: this.firstFormGroup.value.salary,
+      expectedApplicants: this.firstFormGroup.value.expectedApplicants,
+      description: this.secondFormGroup.value.description,
+    });
+
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -115,17 +129,22 @@ export class CreateJobComponent implements OnInit {
 
     var CurrentDate = mm + '/' + dd + '/' + yyyy;
 
-    form.value.publish = this.publish;
-    form.value.appliedApplicants = 0;
-    form.value.createdDate = CurrentDate;
-    form.value.image = this.cardImageBase64;
-    form.value.website = this.url.value;
+    this.jobForm.value.publish = this.publish;
+    this.jobForm.value.appliedApplicants = 0;
+    this.jobForm.value.createdDate = CurrentDate;
+    this.jobForm.value.image = this.cardImageBase64;
+    this.jobForm.value.website = this.url.value;
 
-    if (this.cardImageBase64 && !this.imageError) {
-      this.jobpostservice.postJob(form.value).subscribe((res) => {
-        this.resetForm(form);
+    if (
+      this.cardImageBase64 &&
+      !this.imageError &&
+      this.firstFormGroup.valid &&
+      this.secondFormGroup.valid
+    ) {
+      this.jobpostservice.postJob(this.jobForm.value).subscribe((res) => {
+        this.resetForm();
         this.removeImage();
-        // window.location.href = '/myjobs';
+        window.location.href = '/myjobs';
       });
     }
   }
