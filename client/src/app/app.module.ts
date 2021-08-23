@@ -27,6 +27,7 @@ import { GetMyquestionpoolComponent } from './Interview-components/get-myquestio
 import { GetSavedQuestionsComponent } from './Interview-components/get-saved-questions/get-saved-questions.component';
 import { UpdateInterviewsComponent } from './Interview-components/update-interviews/update-interviews.component';
 import { pipe } from 'rxjs';
+import { JobViewComponent } from './JOBS/all-jobs/job-view/job-view.component';
 
 //create object from routes module
 const appRoutes: Routes =[
@@ -56,7 +57,8 @@ const appRoutes: Routes =[
     GetInterviewGuidlinesComponent,
     GetMyquestionpoolComponent,
     GetSavedQuestionsComponent,
-    UpdateInterviewsComponent
+    UpdateInterviewsComponent,
+    JobViewComponent
   ],
   imports: [
     BrowserModule,

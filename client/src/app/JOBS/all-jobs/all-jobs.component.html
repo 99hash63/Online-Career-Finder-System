@@ -29,173 +29,44 @@
     <div class="row m-4 " style="max-height: 1000px">
         <div class="col-5 bg-light border rounded-3 p-3 ">
             <div class="m-1 mt-4 overflow-auto" style="max-height: 1000px">
-                <div class="card mb-3" style="max-width: 510px; height: 150px; border-radius: 10px;">
+                <div class="card mb-3" style="max-width: 510px; height: 150px; border-radius: 10px;"
+                    *ngFor="let job of jobpostservice.jobs" (click)="setJob(job)">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_Ar5PUj-ufqDRkeFvvKi6U5KQJyHB_gvHFKljbNXbyISmfaMpaW4B_697_r_rx2hajU&usqp=CAU"
-                                class="img-fluid  rounded-start" alt="...">
+                            <img [src]="job.image" class="img-fluid  rounded-start" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <span class="card-text text-black-50">eBay Inc.</span>
-                                <h5 class="card-title m-0">Software Engineer, Backend</h5>
-                                <span class="card-text  text-black-50">San Jose, CA</span>
+                                <span class="card-text text-black-50">{{job.company}}</span>
+                                <h5 class="card-title m-0">{{job.title}}</h5>
+                                <span class="card-text  text-black-50">{{job.location}}</span>
                                 <p class="card-text"><small class="text-muted pull-right">10d</small>
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card mb-3" style="max-width: 510px; height: 150px; border-radius: 10px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_Ar5PUj-ufqDRkeFvvKi6U5KQJyHB_gvHFKljbNXbyISmfaMpaW4B_697_r_rx2hajU&usqp=CAU"
-                                class="img-fluid  rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <span class="card-text text-black-50">eBay Inc.</span>
-                                <h5 class="card-title m-0">Software Engineer, Backend</h5>
-                                <span class="card-text  text-black-50">San Jose, CA</span>
-                                <p class="card-text"><small class="text-muted pull-right">10d</small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3" style="max-width: 510px; height: 150px; border-radius: 10px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_Ar5PUj-ufqDRkeFvvKi6U5KQJyHB_gvHFKljbNXbyISmfaMpaW4B_697_r_rx2hajU&usqp=CAU"
-                                class="img-fluid  rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <span class="card-text text-black-50">eBay Inc.</span>
-                                <h5 class="card-title m-0">Software Engineer, Backend</h5>
-                                <span class="card-text  text-black-50">San Jose, CA</span>
-                                <p class="card-text"><small class="text-muted pull-right">10d</small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3" style="max-width: 510px; height: 150px; border-radius: 10px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_Ar5PUj-ufqDRkeFvvKi6U5KQJyHB_gvHFKljbNXbyISmfaMpaW4B_697_r_rx2hajU&usqp=CAU"
-                                class="img-fluid  rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <span class="card-text text-black-50">eBay Inc.</span>
-                                <h5 class="card-title m-0">Software Engineer, Backend</h5>
-                                <span class="card-text  text-black-50">San Jose, CA</span>
-                                <p class="card-text"><small class="text-muted pull-right">10d</small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3" style="max-width: 510px; height: 150px; border-radius: 10px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_Ar5PUj-ufqDRkeFvvKi6U5KQJyHB_gvHFKljbNXbyISmfaMpaW4B_697_r_rx2hajU&usqp=CAU"
-                                class="img-fluid  rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <span class="card-text text-black-50">eBay Inc.</span>
-                                <h5 class="card-title m-0">Software Engineer, Backend</h5>
-                                <span class="card-text  text-black-50">San Jose, CA</span>
-                                <p class="card-text"><small class="text-muted pull-right">10d</small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3" style="max-width: 510px; height: 150px; border-radius: 10px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_Ar5PUj-ufqDRkeFvvKi6U5KQJyHB_gvHFKljbNXbyISmfaMpaW4B_697_r_rx2hajU&usqp=CAU"
-                                class="img-fluid  rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <span class="card-text text-black-50">eBay Inc.</span>
-                                <h5 class="card-title m-0">Software Engineer, Backend</h5>
-                                <span class="card-text  text-black-50">San Jose, CA</span>
-                                <p class="card-text"><small class="text-muted pull-right">10d</small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3" style="max-width: 510px; height: 150px; border-radius: 10px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_Ar5PUj-ufqDRkeFvvKi6U5KQJyHB_gvHFKljbNXbyISmfaMpaW4B_697_r_rx2hajU&usqp=CAU"
-                                class="img-fluid  rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <span class="card-text text-black-50">eBay Inc.</span>
-                                <h5 class="card-title m-0">Software Engineer, Backend</h5>
-                                <span class="card-text  text-black-50">San Jose, CA</span>
-                                <p class="card-text"><small class="text-muted pull-right">10d</small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3" style="max-width: 510px; height: 150px; border-radius: 10px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_Ar5PUj-ufqDRkeFvvKi6U5KQJyHB_gvHFKljbNXbyISmfaMpaW4B_697_r_rx2hajU&usqp=CAU"
-                                class="img-fluid  rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <span class="card-text text-black-50">eBay Inc.</span>
-                                <h5 class="card-title m-0">Software Engineer, Backend</h5>
-                                <span class="card-text  text-black-50">San Jose, CA</span>
-                                <p class="card-text"><small class="text-muted pull-right">10d</small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3" style="max-width: 510px; height: 150px; border-radius: 10px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR_Ar5PUj-ufqDRkeFvvKi6U5KQJyHB_gvHFKljbNXbyISmfaMpaW4B_697_r_rx2hajU&usqp=CAU"
-                                class="img-fluid  rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <span class="card-text text-black-50">eBay Inc.</span>
-                                <h5 class="card-title m-0">Software Engineer, Backend</h5>
-                                <span class="card-text  text-black-50">San Jose, CA</span>
-                                <p class="card-text"><small class="text-muted pull-right">10d</small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
             </div>
         </div>
         <div class="col-7 bg-white rounded-3 border border-secondary">
-            <div class=" m-4 p-4">
+
+            <div class=" m-4 p-4" *ngIf="!jobpostservice.selectedJob">
+                <h2 class="text-center mt-5"> Please select a job</h2>
+            </div>
+            <div class=" m-4 p-4" *ngIf="jobpostservice.selectedJob">
                 <div class="row">
                     <div class="col-10">
                         <div class="d-inline-flex">
-                            <h6 class="text-muted ">eBay Inc.</h6>
-                            <span class="text-muted mx-3 small">San Jose, CA</span>
+                            <h6 class="text-muted ">{{jobpostservice.selectedJob.company}}</h6>
+                            <span class="text-muted mx-3 small">{{jobpostservice.selectedJob.location}}</span>
                         </div>
 
-                        <h3 class="">Software Engineer, Backend</h3>
-                        <h6 class="text-muted">Full Time</h6>
-                        <p class="mt-4 text-success" style="font-weight: 500;">24 Applicants</p>
+                        <h3 class="">{{jobpostservice.selectedJob.title}}</h3>
+                        <h6 class="text-muted">{{jobpostservice.selectedJob.type}}</h6>
+                        <p class="mt-4 text-success" style="font-weight: 500;">
+                            {{jobpostservice.selectedJob.appliedApplicants}}</p>
 
                     </div>
                     <div class="col-2 mt-4">
@@ -204,166 +75,70 @@
                     </div>
 
                     <div class="mt-5 overflow-auto jobdescription" style="max-height: 800px;">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem doloremque quasi obcaecati
-                        architecto quos, aliquam rerum officia numquam laboriosam voluptatem? Nisi quas veniam nemo
-                        minus
-                        consequuntur fuga molestias sint deleniti? In, sapiente sint. Ipsa non iure laborum porro ipsam
-                        impedit alias. Cupiditate dignissimos distinctio minus vero. Quasi quidem illo consectetur ipsam
-                        ipsum soluta aspernatur earum sit nesciunt, similique officia voluptates, aliquid corporis
-                        adipisci!
-                        Commodi deleniti non dolores sapiente cum laudantium esse voluptatem aliquid culpa. Mollitia
-                        pariatur odit voluptas officia deserunt libero ipsam dolor tempore omnis quia numquam, veniam
-                        esse
-                        rem doloribus saepe quasi eveniet nesciunt optio qui eligendi cumque architecto expedita et?
-                        Asperiores magni nisi culpa, pariatur, fuga excepturi, deserunt doloremque eaque dolor possimus
-                        reiciendis praesentium nesciunt obcaecati voluptate voluptatum ipsam voluptas ipsum. Eum esse
-                        odit
-                        deleniti enim, amet porro provident commodi. Voluptas laudantium quaerat magni placeat, illo
-                        consequuntur, sit dolor numquam error nam distinctio ipsam vero est! Corporis consequuntur
-                        dolore
-                        dolor amet inventore doloribus magnam! Sit laborum optio fuga laudantium inventore modi
-                        recusandae
-                        molestiae doloribus quos error sapiente vel harum quod tempora repellat accusamus vitae, rem
-                        officia? Eligendi excepturi vero ipsam reprehenderit. Asperiores illum enim nulla soluta at
-                        accusantium magni delectus voluptatum, obcaecati minus hic. Iure eos consequuntur dolor
-                        veritatis
-                        soluta obcaecati ullam, similique deserunt eius magni accusantium suscipit libero. Eligendi
-                        minus,
-                        aut laboriosam soluta, voluptates porro ut molestiae illo debitis voluptas voluptatum nulla
-                        corrupti! Deserunt quod quo in accusamus. Similique quod omnis alias itaque odit nobis error
-                        necessitatibus aperiam maxime, cupiditate, doloremque, ex amet libero? Eum, natus reprehenderit
-                        minima ad sed consectetur minus cum incidunt quasi, et dignissimos magnam corporis eaque commodi
-                        quia adipisci blanditiis rerum qui. Cum fugiat delectus consequuntur repellat nisi soluta labore
-                        in
-                        illum!
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem doloremque quasi obcaecati
-                        architecto quos, aliquam rerum officia numquam laboriosam voluptatem? Nisi quas veniam nemo
-                        minus
-                        consequuntur fuga molestias sint deleniti? In, sapiente sint. Ipsa non iure laborum porro ipsam
-                        impedit alias. Cupiditate dignissimos distinctio minus vero. Quasi quidem illo consectetur ipsam
-                        ipsum soluta aspernatur earum sit nesciunt, similique officia voluptates, aliquid corporis
-                        adipisci!
-                        Commodi deleniti non dolores sapiente cum laudantium esse voluptatem aliquid culpa. Mollitia
-                        pariatur odit voluptas officia deserunt libero ipsam dolor tempore omnis quia numquam, veniam
-                        esse
-                        rem doloribus saepe quasi eveniet nesciunt optio qui eligendi cumque architecto expedita et?
-                        Asperiores magni nisi culpa, pariatur, fuga excepturi, deserunt doloremque eaque dolor possimus
-                        reiciendis praesentium nesciunt obcaecati voluptate voluptatum ipsam voluptas ipsum. Eum esse
-                        odit
-                        deleniti enim, amet porro provident commodi. Voluptas laudantium quaerat magni placeat, illo
-                        consequuntur, sit dolor numquam error nam distinctio ipsam vero est! Corporis consequuntur
-                        dolore
-                        dolor amet inventore doloribus magnam! Sit laborum optio fuga laudantium inventore modi
-                        recusandae
-                        molestiae doloribus quos error sapiente vel harum quod tempora repellat accusamus vitae, rem
-                        officia? Eligendi excepturi vero ipsam reprehenderit. Asperiores illum enim nulla soluta at
-                        accusantium magni delectus voluptatum, obcaecati minus hic. Iure eos consequuntur dolor
-                        veritatis
-                        soluta obcaecati ullam, similique deserunt eius magni accusantium suscipit libero. Eligendi
-                        minus,
-                        aut laboriosam soluta, voluptates porro ut molestiae illo debitis voluptas voluptatum nulla
-                        corrupti! Deserunt quod quo in accusamus. Similique quod omnis alias itaque odit nobis error
-                        necessitatibus aperiam maxime, cupiditate, doloremque, ex amet libero? Eum, natus reprehenderit
-                        minima ad sed consectetur minus cum incidunt quasi, et dignissimos magnam corporis eaque commodi
-                        quia adipisci blanditiis rerum qui. Cum fugiat delectus consequuntur repellat nisi soluta labore
-                        in
-                        illum!
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem doloremque quasi obcaecati
-                        architecto quos, aliquam rerum officia numquam laboriosam voluptatem? Nisi quas veniam nemo
-                        minus
-                        consequuntur fuga molestias sint deleniti? In, sapiente sint. Ipsa non iure laborum porro ipsam
-                        impedit alias. Cupiditate dignissimos distinctio minus vero. Quasi quidem illo consectetur ipsam
-                        ipsum soluta aspernatur earum sit nesciunt, similique officia voluptates, aliquid corporis
-                        adipisci!
-                        Commodi deleniti non dolores sapiente cum laudantium esse voluptatem aliquid culpa. Mollitia
-                        pariatur odit voluptas officia deserunt libero ipsam dolor tempore omnis quia numquam, veniam
-                        esse
-                        rem doloribus saepe quasi eveniet nesciunt optio qui eligendi cumque architecto expedita et?
-                        Asperiores magni nisi culpa, pariatur, fuga excepturi, deserunt doloremque eaque dolor possimus
-                        reiciendis praesentium nesciunt obcaecati voluptate voluptatum ipsam voluptas ipsum. Eum esse
-                        odit
-                        deleniti enim, amet porro provident commodi. Voluptas laudantium quaerat magni placeat, illo
-                        consequuntur, sit dolor numquam error nam distinctio ipsam vero est! Corporis consequuntur
-                        dolore
-                        dolor amet inventore doloribus magnam! Sit laborum optio fuga laudantium inventore modi
-                        recusandae
-                        molestiae doloribus quos error sapiente vel harum quod tempora repellat accusamus vitae, rem
-                        officia? Eligendi excepturi vero ipsam reprehenderit. Asperiores illum enim nulla soluta at
-                        accusantium magni delectus voluptatum, obcaecati minus hic. Iure eos consequuntur dolor
-                        veritatis
-                        soluta obcaecati ullam, similique deserunt eius magni accusantium suscipit libero. Eligendi
-                        minus,
-                        aut laboriosam soluta, voluptates porro ut molestiae illo debitis voluptas voluptatum nulla
-                        corrupti! Deserunt quod quo in accusamus. Similique quod omnis alias itaque odit nobis error
-                        necessitatibus aperiam maxime, cupiditate, doloremque, ex amet libero? Eum, natus reprehenderit
-                        minima ad sed consectetur minus cum incidunt quasi, et dignissimos magnam corporis eaque commodi
-                        quia adipisci blanditiis rerum qui. Cum fugiat delectus consequuntur repellat nisi soluta labore
-                        in
-                        illum!
+
+                        {{jobpostservice.selectedJob.description}}
                     </div>
                 </div>
 
 
-
-            </div>
-
-        </div>
-    </div>
-
-
-
-    <ng-template #longContent let-modal style="width: 1000px;">
-        <div class="modal-header  p-4 ">
-            <div class="d-block">
-                <h1 class="modal-title">Apply Now</h1>
-                <span class="text-black-50"><small>eBay Inc.</small></span> <span> &nbsp;&nbsp; </span>
-                <span class="text-black-50"><small>Software Engineer, Backend</small></span>
             </div>
 
 
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-            </button>
+            <ng-template #longContent let-modal style="width: 1000px;">
+                <div class="modal-header  p-4 ">
+                    <div class="d-block">
+                        <h1 class="modal-title">Apply Now</h1>
+                        <span class="text-black-50"><small>{{jobpostservice.selectedJob.company}}</small></span> <span>
+                            &nbsp;&nbsp; </span>
+                        <span class="text-black-50"><small>{{jobpostservice.selectedJob.title}}</small></span>
+                    </div>
 
+
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+
+                <div class="modal-body p-4  ">
+
+                    <form>
+                        <div class="mb-3">
+                            <label for="apply-name" class="form-label">Full Name</label>
+                            <input type="email" class="form-control" id="apply-name" aria-describedby="emailHelp">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="apply-address" class="form-label">Address</label>
+                            <input type="email" class="form-control" id="apply-address" aria-describedby="emailHelp">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="apply-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="apply-email" aria-describedby="emailHelp">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="apply-phone" class="form-label">Phone</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="apply-cl" class="form-label">Cover Letter</label>
+                            <textarea class="form-control" id="apply-cl" rows="6"></textarea>
+                        </div>
+                        <div class="mb-3 ">
+                            <label for="formFileSm" class="form-label">Upload your resume here</label>
+                            <input class="form-control form-control-sm" id="formFileSm" type="file">
+                        </div>
+                        <div class="modal-footer ">
+                            <button type="button" class="btn btn-outline-primary pull-right">Download PDF</button>
+                            <button type="submit" class="btn btn-primary pull-right mx-3"
+                                (click)="modal.close('Close click')">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+            </ng-template>
         </div>
-
-        <div class="modal-body p-4  ">
-
-            <form>
-                <div class="mb-3">
-                    <label for="apply-name" class="form-label">Full Name</label>
-                    <input type="email" class="form-control" id="apply-name" aria-describedby="emailHelp">
-
-                </div>
-                <div class="mb-3">
-                    <label for="apply-address" class="form-label">Address</label>
-                    <input type="email" class="form-control" id="apply-address" aria-describedby="emailHelp">
-
-                </div>
-                <div class="mb-3">
-                    <label for="apply-email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="apply-email" aria-describedby="emailHelp">
-
-                </div>
-                <div class="mb-3">
-                    <label for="apply-phone" class="form-label">Phone</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-
-                </div>
-                <div class="mb-3">
-                    <label for="apply-cl" class="form-label">Cover Letter</label>
-                    <textarea class="form-control" id="apply-cl" rows="6"></textarea>
-                </div>
-                <div class="mb-3 ">
-                    <label for="formFileSm" class="form-label">Upload your resume here</label>
-                    <input class="form-control form-control-sm" id="formFileSm" type="file">
-                </div>
-                <div class="modal-footer ">
-                    <button type="button" class="btn btn-outline-primary pull-right">Download PDF</button>
-                    <button type="submit" class="btn btn-primary pull-right mx-3"
-                        (click)="modal.close('Close click')">Submit</button>
-                </div>
-            </form>
-
-        </div>
-    </ng-template>
