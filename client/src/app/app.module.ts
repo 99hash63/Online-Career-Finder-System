@@ -16,9 +16,11 @@ import { CreateJobComponent } from './JOBS/create-job/create-job.component';
 import { AllJobsComponent } from './JOBS/all-jobs/all-jobs.component';
 import { MyJobsComponent } from './JOBS/my-jobs/my-jobs.component';
 import { ApplyJobsComponent } from './JOBS/apply-jobs/apply-jobs.component';
+import { MatButtonModule } from '@angular/material/button';
 import { EditJobComponent } from './JOBS/edit-job/edit-job.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatStepperModule } from '@angular/material/stepper';
 
 import { DiscoverhomeComponent } from './Interview-components/discoverhome/discoverhome.component';
 import { AddInterviewsComponent } from './Interview-components/add-interviews/add-interviews.component';
@@ -70,7 +72,9 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    MatButtonModule,
     MatRadioModule,
+    MatStepperModule,
     MatSelectModule,
     MatInputModule,
     BrowserAnimationsModule,

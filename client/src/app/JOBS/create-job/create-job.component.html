@@ -1,170 +1,38 @@
-<!-- <div class="container mt-5 mb-5 ">
-    <div class="row m-3">
-        <form ng-init=joppostForm #joppostForm="ngForm" class=" d-flex" ngNativeValidate
-            (ngSubmit)="onSubmit(joppostForm)">
-
-            <div class="col-8 mt-3">
-                <h2 class="mb-5">Create Job Post</h2>
-
-
-                <input type="hidden" name='_id' #_id="ngModel" [(ngModel)]="jobpostservice.selectedJob._id">
-
-                <div class="mb-3 ">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name='title' #title="ngModel"
-                        [(ngModel)]="jobpostservice.selectedJob.title" required>
-
-                    <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
-                        <div [hidden]="!title.errors"> Title is required </div>
-                    </div>
-
-
-                </div>
-                <div class="mb-3">
-                    <label for="company" class="form-label">Company</label>
-                    <input type="text" class="form-control" id="company" name='company' aria-describedby="companyhelp"
-                        #company="ngModel" [(ngModel)]="jobpostservice.selectedJob.company" required>
-
-                    <div *ngIf="company.invalid && (company.dirty || company.touched)" class="alert alert-danger">
-                        <div [hidden]="!company.errors"> Company is required </div>
-                    </div>
-
-
-                </div>
-                <div class="mb-3">
-                    <label for="location" class="form-label">Location</label>
-                    <input type="text" class="form-control" id="location" name='location'
-                        aria-describedby="locationhelp" #location="ngModel"
-                        [(ngModel)]="jobpostservice.selectedJob.location" required>
-
-                    <div *ngIf="location.invalid && (location.dirty || location.touched)" class="alert alert-danger">
-                        <div [hidden]="!location.errors"> Location is required </div>
-                    </div>
-
-                </div>
-                <div class="mb-3">
-                    <label for="industry" class="form-label">Industry</label>
-                    <select class="form-select " name='industry' aria-label="industry" #industry="ngModel"
-                        [(ngModel)]="jobpostservice.selectedJob.industry" required>
-                        <option selected>Select</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    <div *ngIf="industry.invalid && (industry.dirty || industry.touched)" class="alert alert-danger">
-                        <div [hidden]="!industry.errors"> Industry is required </div>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="type" class="form-label me-5">Job Type</label>
-                    <div class="form-check form-check-inline me-4">
-                        <input class="form-check-input" type="radio" name="type" id="fulltime" value="Full Time"
-                            #type="ngModel" [(ngModel)]="jobpostservice.selectedJob.type">
-                        <label class="form-check-label" for="fulltime">Full Time</label>
-                    </div>
-                    <div class="form-check form-check-inline me-4">
-                        <input class="form-check-input" type="radio" name="type" id="parttime" value="Part Time"
-                            #type="ngModel" [(ngModel)]="jobpostservice.selectedJob.type">
-                        <label class="form-check-label" for="parttime">Part Time</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="type" id="internship" value="Internship"
-                            #type="ngModel" [(ngModel)]="jobpostservice.selectedJob.type">
-                        <label class="form-check-label" for="internship">Internship</label>
-                    </div>
-
-                    <div *ngIf="type.invalid && (type.dirty || type.touched)" class="alert alert-danger">
-                        <div [hidden]="!type.errors"> type is required </div>
-                    </div>
-
-                </div>
-                <div class="mb-3">
-                    <label for="ahstatus" class="form-label me-5">Actively Hiring</label>
-                    <div class="form-check form-check-inline me-4">
-                        <input class="form-check-input" type="radio" name="activelyHiring" id="acyes" value="Yes"
-                            #activelyHiring="ngModel" [(ngModel)]="jobpostservice.selectedJob.activelyHiring">
-                        <label class="form-check-label" for="acyes">Yes</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="activelyHiring" id="acno" value="No"
-                            #activelyHiring="ngModel" [(ngModel)]="jobpostservice.selectedJob.activelyHiring">
-                        <label class="form-check-label" for="acno">No</label>
-                    </div>
-
-
-                </div>
-                <div class="md-3 w-25">
-                    <label for="salary" class="form-label">Salary</label>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">$</span>
-                        <input type="number" class="form-control" name="salary"
-                            aria-label="Amount (to the nearest dollar)" #salary="ngModel" min="10"
-                            [(ngModel)]="jobpostservice.selectedJob.salary" required>
-                        <span class="input-group-text">.00</span>
-                    </div>
-
-                </div>
-
-                <div class="mb-3 mt-3 w-25">
-                    <label for="expapplicants" class="form-label">Expected Applicants</label>
-                    <input type="number" class="form-control" id="expapplicants" name="expectedApplicants" min="10"
-                        aria-describedby="expapplicantshelp" #expectedApplicants="ngModel"
-                        [(ngModel)]="jobpostservice.selectedJob.expectedApplicants" required>
-
-                </div>
-                <div class="mb-3">
-                    <label for="website" class="form-label">Company Website</label>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon3">https://</span>
-                        <input type="text" class="form-control" id="website" aria-describedby="basic-addon3"
-                            name="website" #website="ngModel" [(ngModel)]="jobpostservice.selectedJob.website" required>
-                    </div>
-
-                </div>
-                <div class="mb-3 mt-5">
-                    <label for="description" class="form-label">Job Description</label>
-                    <textarea class="form-control " id="description" name="description" rows="3" #description="ngModel"
-                        minlength="10" [(ngModel)]="jobpostservice.selectedJob.description" required></textarea>
-                </div>
-
-                <button type="submit" (click)="setPublish(true)"
-                    class="btn btn-primary mt-4 pull-right">Publish</button>
-                <button type="submit" (click)="setPublish(false)" class="btn btn-secondary mt-4 pull-right mx-3">Save as
-                    draft</button>
-
-            </div>
-            <div class="col mt-5 ">
-                <div class="card mt-5" style="width: 18rem;">
-                    <ng-container *ngIf="isImageSaved">
-                        <img [src]="cardImageBase64" />
-                    </ng-container>
-                    <img *ngIf="!isImageSaved" src="../../../assets/images/logo.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Upload your company logo here</label>
-                            <input class="form-control" type="file" id="formFile" (change)="fileChangeEvent($event)"
-                                (click)="removeImage()" name="image" #image='ngModel'
-                                [(ngModel)]="jobpostservice.selectedJob.image" required>
-                            <div *ngIf="image.invalid && (image.dirty || image.touched)"
-                                class="alert alert-danger mt-2">
-                                <div [hidden]="!image.errors?.required"> Image is required </div>
-
-
-                            </div>
-                            <div *ngIf="imageError" class="alert alert-danger mt-2"> {{imageError}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-
-
-    </div>
-
-</div> -->
-
-
 <div class="container mt-5 mb-5 ">
+    <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+        {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+    </button>
+    <mat-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+
+                <div>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+            <form [formGroup]="secondFormGroup">
+
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+        </mat-step>
+    </mat-stepper>
+
+
+
+
     <div class="row m-3">
         <form #joppostForm="ngForm" class=" d-flex" ngNativeValidate (ngSubmit)="onSubmit(joppostForm)">
 
@@ -261,17 +129,11 @@
 
                 </div>
                 <div class="mb-3">
-                    <!-- <mat-form-field class="mat-form-field-job" appearance="outline">
-                        <mat-label>Company Website</mat-label>
-                        <input matInput type="url" id="website" aria-describedby="basic-addon3" name="website"
-                            #website="ngModel" [(ngModel)]="jobpostservice.selectedJob.website" required>
-                    </mat-form-field> -->
 
                     <mat-form-field class="mat-form-field-job" appearance="outline">
                         <mat-label>Company Website</mat-label>
                         <input (focus)="markTouched()" matInput placeholder="Enter your url" [formControl]="url"
-                            name="website" ngModel [(ngModel)]="jobpostservice.selectedJob.website" type="text"
-                            required>
+                            name="website" [(ngModel)]="jobpostservice.selectedJob.website" type="text" required>
                         <mat-error *ngIf="url.hasError('required')">
                             Url required
                         </mat-error>
@@ -287,9 +149,11 @@
                     <mat-form-field class="mat-form-field-job" appearance="outline">
                         <mat-label>Job Description</mat-label>
                         <textarea matInput placeholder="Let's make a great job description" id="description"
-                            name="description" rows="3" #description="ngModel" minlength="10"
+                            name="description" rows="3" #description="ngModel" minlength="10" maxlength="1000"
                             [(ngModel)]="jobpostservice.selectedJob.description" required></textarea>
+                        <mat-hint align="end">{{description.value?.length || 0}}/1000</mat-hint>
                     </mat-form-field>
+
                 </div>
 
                 <button type="submit" (click)="setPublish(true)"
@@ -310,12 +174,12 @@
                             <input class="form-control" type="file" id="formFile" (change)="fileChangeEvent($event)"
                                 (click)="removeImage()" name="image" #image='ngModel'
                                 [(ngModel)]="jobpostservice.selectedJob.image" required>
-                            <div *ngIf="image.invalid && (image.dirty || image.touched)"
-                                class="alert alert-danger mt-2">
-                                <div [hidden]="!image.errors?.required"> Image is required </div>
 
-
+                            <div [hidden]="image.errors?.required" class="alert alert-danger mt-2"> Image is
+                                required
                             </div>
+
+
                             <div *ngIf="imageError" class="alert alert-danger mt-2"> {{imageError}}</div>
                         </div>
                     </div>

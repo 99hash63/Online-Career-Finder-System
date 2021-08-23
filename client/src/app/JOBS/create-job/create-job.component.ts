@@ -5,6 +5,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import * as _ from 'lodash';
 import {
   FormGroup,
+  FormBuilder,
   FormGroupDirective,
   NgForm,
   FormControl,
@@ -23,7 +24,11 @@ export class CreateJobComponent implements OnInit {
   imageError?: string;
   isImageSaved?: boolean;
   cardImageBase64?: string;
-  // exform!: FormGroup;
+  jobForm!: FormGroup;
+  isLinear = false;
+  firstFormGroup!: FormGroup;
+  secondFormGroup!: FormGroup;
+
   // validate() {
   //   var form = document.getElementsByClassName(
   //     'needs-validation'
@@ -35,11 +40,20 @@ export class CreateJobComponent implements OnInit {
   //   form.classList.add('was-validated');
   // }
 
-  constructor(public jobpostservice: JobpostService) {}
+  constructor(
+    public jobpostservice: JobpostService,
+    private _formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.resetForm();
     this.removeImage();
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required],
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required],
+    });
 
     // this.exform = new FormGroup({
     //   title: new FormControl('', Validators.required),
@@ -57,6 +71,17 @@ export class CreateJobComponent implements OnInit {
     //   appliedApplicants: new FormControl(null, Validators.required),
     //   createdDate: new FormControl(null, Validators.required),
     // });
+  }
+  public myreg =
+    /^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/i;
+  url = new FormControl('', [
+    Validators.required,
+    Validators.pattern(this.myreg),
+  ]);
+
+  markTouched() {
+    this.url.markAsTouched();
+    this.url.updateValueAndValidity();
   }
 
   resetForm(form?: NgForm) {
@@ -94,12 +119,13 @@ export class CreateJobComponent implements OnInit {
     form.value.appliedApplicants = 0;
     form.value.createdDate = CurrentDate;
     form.value.image = this.cardImageBase64;
+    form.value.website = this.url.value;
 
     if (this.cardImageBase64 && !this.imageError) {
       this.jobpostservice.postJob(form.value).subscribe((res) => {
         this.resetForm(form);
         this.removeImage();
-        window.location.href = '/myjobs';
+        // window.location.href = '/myjobs';
       });
     }
   }
@@ -164,17 +190,5 @@ export class CreateJobComponent implements OnInit {
     this.cardImageBase64 = '';
     this.imageError = '';
     this.isImageSaved = false;
-  }
-  public myreg =
-    /^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/i;
-
-  url = new FormControl('', [
-    Validators.required,
-    Validators.pattern(this.myreg),
-  ]);
-
-  markTouched() {
-    this.url.markAsTouched();
-    this.url.updateValueAndValidity();
   }
 }
