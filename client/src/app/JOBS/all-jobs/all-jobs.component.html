@@ -40,7 +40,8 @@
                                 <span class="card-text text-black-50">{{job.company}}</span>
                                 <h5 class="card-title m-0">{{job.title}}</h5>
                                 <span class="card-text  text-black-50">{{job.location}}</span>
-                                <p class="card-text"><small class="text-muted pull-right">10d</small>
+                                <p class="card-text"><small
+                                        class="text-muted pull-right">{{calcDateDiff(job.createdDate)}}</small>
                                 </p>
                             </div>
                         </div>

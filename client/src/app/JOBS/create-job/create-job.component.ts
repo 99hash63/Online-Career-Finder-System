@@ -95,7 +95,7 @@ export class CreateJobComponent implements OnInit {
     form.value.createdDate = CurrentDate;
     form.value.image = this.cardImageBase64;
 
-    if (this.cardImageBase64) {
+    if (this.cardImageBase64 && !this.imageError) {
       this.jobpostservice.postJob(form.value).subscribe((res) => {
         this.resetForm(form);
         this.removeImage();
@@ -105,7 +105,6 @@ export class CreateJobComponent implements OnInit {
   }
 
   fileChangeEvent(fileInput: any) {
-    this.imageError = '';
     if (fileInput.target.files && fileInput.target.files[0]) {
       // Size Filter Bytes
       const max_size = 20971520;
@@ -163,6 +162,7 @@ export class CreateJobComponent implements OnInit {
 
   removeImage() {
     this.cardImageBase64 = '';
+    this.imageError = '';
     this.isImageSaved = false;
   }
 }

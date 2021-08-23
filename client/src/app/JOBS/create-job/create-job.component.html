@@ -153,22 +153,23 @@
 </div> -->
 <div class="container mt-5 mb-5 ">
     <div class="row m-3">
-        <div class="col-8 mt-3">
-            <h2>Create Job Post</h2>
-            <form #joppostForm="ngForm" class="mt-5 " ngNativeValidate (ngSubmit)="onSubmit(joppostForm)">
+        <form ng-init=joppostForm #joppostForm="ngForm" class=" d-flex" ngNativeValidate
+            (ngSubmit)="onSubmit(joppostForm)">
+
+            <div class="col-8 mt-3">
+                <h2 class="mb-5">Create Job Post</h2>
+
 
                 <input type="hidden" name='_id' #_id="ngModel" [(ngModel)]="jobpostservice.selectedJob._id">
-                <input type="hidden" name='image' #image='ngModel' [(ngModel)]="jobpostservice.selectedJob.image"
-                    required>
 
                 <div class="mb-3 ">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" class="form-control" id="title" name='title' #title="ngModel"
                         [(ngModel)]="jobpostservice.selectedJob.title" required>
 
-                    <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+                    <!-- <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
                         <div [hidden]="!title.errors"> Title is required </div>
-                    </div>
+                    </div> -->
 
 
                 </div>
@@ -283,24 +284,34 @@
                     class="btn btn-primary mt-4 pull-right">Publish</button>
                 <button type="submit" (click)="setPublish(false)" class="btn btn-secondary mt-4 pull-right mx-3">Save as
                     draft</button>
-            </form>
-        </div>
-        <div class="col mt-5">
-            <div class="card mt-5" style="width: 18rem;">
-                <ng-container *ngIf="isImageSaved">
-                    <img [src]="cardImageBase64" />
-                </ng-container>
-                <img *ngIf="!isImageSaved" src="../../../assets/images/logo.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label for="formFile" class="form-label">Upload your company logo here</label>
-                        <input class="form-control" type="file" id="formFile" (change)="fileChangeEvent($event)">
-                        <div *ngIf="image.invalid && (image.dirty || image.touched)" class="alert alert-danger mt-2">
-                            <div [hidden]="!image.errors"> Image is required </div>
+
+            </div>
+            <div class="col mt-5 ">
+                <div class="card mt-5" style="width: 18rem;">
+                    <ng-container *ngIf="isImageSaved">
+                        <img [src]="cardImageBase64" />
+                    </ng-container>
+                    <img *ngIf="!isImageSaved" src="../../../assets/images/logo.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Upload your company logo here</label>
+                            <input class="form-control" type="file" id="formFile" (change)="fileChangeEvent($event)"
+                                (click)="removeImage()" name="image" #image='ngModel'
+                                [(ngModel)]="jobpostservice.selectedJob.image" required>
+                            <div *ngIf="image.invalid && (image.dirty || image.touched)"
+                                class="alert alert-danger mt-2">
+                                <div [hidden]="!image.errors?.required"> Image is required </div>
+
+
+                            </div>
+                            <div *ngIf="imageError" class="alert alert-danger mt-2"> {{imageError}}</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
+
+
     </div>
+
 </div>
