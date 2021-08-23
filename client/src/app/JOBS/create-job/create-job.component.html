@@ -207,14 +207,15 @@
                 <h2 class="mb-5 mt-5">Job Details</h2>
 
 
-                <input type="hidden" name='_id' [(ngModel)]="jobpostservice.selectedJob._id">
+                <input type="hidden" name='_id' [(ngModel)]="jobpostservice.selectedJob._id"
+                    [ngModelOptions]="{standalone: true}">
 
                 <div class="">
 
                     <mat-form-field class="mat-form-field-job" appearance="outline">
                         <mat-label>Title</mat-label>
                         <input matInput type="text" id="title" name='title' formControlName="title"
-                            [(ngModel)]="jobpostservice.selectedJob.title"  ngModel  required>
+                            [(ngModel)]="jobpostservice.selectedJob.title" required>
                     </mat-form-field>
 
                 </div>
@@ -454,8 +455,10 @@
 
 
                 <button type="submit" (click)="setPublish(true)" (click)="onSubmit()"
+                    [disabled]="!firstFormGroup.valid || !secondFormGroup.valid || !thirdFormGroup.valid"
                     class="btn btn-primary mt-4 w-25 pull-right">Publish</button>
                 <button type="submit" (click)="setPublish(false)" (click)="onSubmit()"
+                    [disabled]="!firstFormGroup.valid || !secondFormGroup.valid || !thirdFormGroup.valid"
                     class="btn btn-dark mt-4 pull-right mx-3">Save as
                     draft</button>
                 <button matStepperPrevious class="btn btn-outline-primary mt-4  pull-left">Back</button>

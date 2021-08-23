@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { JobpostService } from '../jobpost.service';
 import { Jobpost } from '../jobpost.model';
 import { RouterModule, Routes, Router } from '@angular/router';
+import { ValidationErrors, AbstractControl, ValidatorFn } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import * as _ from 'lodash';
 import {
@@ -28,7 +29,7 @@ import {
 })
 export class CreateJobComponent implements OnInit {
   publish?: boolean;
-  imageError?: string;
+  public imageError?: string;
   isImageSaved?: boolean;
   cardImageBase64?: string;
   isLinear = false;
@@ -75,6 +76,11 @@ export class CreateJobComponent implements OnInit {
     });
 
     // this.firstFormGroup.valueChanges.subscribe(console.log);
+  }
+
+  validateImage(): ValidatorFn {
+    return (control: AbstractControl): {} | null =>
+      this.imageError!.length > 0 ? null : {};
   }
 
   url = new FormControl('', [
@@ -210,4 +216,7 @@ export class CreateJobComponent implements OnInit {
     this.imageError = '';
     this.isImageSaved = false;
   }
+}
+function requiredIfValidator(): ValidatorFn {
+  throw new Error('Function not implemented.');
 }
