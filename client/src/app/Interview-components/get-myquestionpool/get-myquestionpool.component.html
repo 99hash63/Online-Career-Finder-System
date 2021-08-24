@@ -12,15 +12,14 @@
     <div class="panel panel-primary mb-5" *ngFor="let In of questionpool.InterviewQuestion | filter:searchtext">
         <div class="question">
             {{In.Question}}
-            <div row></div>
         </div>
         <div class="answer">
             {{In.Answer}}
 
             <!--edit and delete buttons-->
             <div class="right">
-                <button type="submit" class="btn w-35 mx-3 btn-primary" value="Edit" data-toggle="modal" data-target="#updateModal" (click)="onUpdate(In)">Update</button>
-                <button type="submit" class="btn w-35 btn-danger">Delete</button>
+                <button type="submit" (click)="onEdit(In._id)" class="btn w-35 mx-3 btn-primary">Update</button><!--value="Edit" data-toggle="modal" data-target="#updateModal"-->
+                <button type="submit" (click)="open(content)" class="btn w-35 btn-danger" value="Delete" data-toggle="modal" data-target="DeleteModal">Delete</button>
             </div>
         </div>
 
@@ -28,7 +27,7 @@
 </div>
 
 <!-- Update Modal -->
-<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+<!--<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -40,10 +39,10 @@
         <div class="modal-body">
 
 
-            <form>
+            <form #UpdateForm="ngForm" (ngSubmit)="onUpdate(UpdateForm)">
                 <div class="form-group">
                     <label for="JobTitle" >JobTitle *</label>
-                    <input name="JobTitle" [(ngModel)]="JobTitle" type="text" class="form-control"><!--[(ngModel)]="JobTitle"-->
+                    <input name="JobTitle" [(ngModel)]="JobTitle" type="text" class="form-control">
                 </div>
                         
                 <div class="form-group">
@@ -71,11 +70,45 @@
                     <label for="Answer" >How to answer this *</label>
                     <textarea name="Answer" [(ngModel)]="Answer" type="Answer" class="form-control"></textarea>
                 </div>
-                <button type="button" class="btn btn-primary" >Save changes</button>
+                <button type="button" class="btn btn-primary" value="submit" >Save changes</button>
             </form>
         </div>
+    </div>
+  </div>-->
 
-        
+  <!--delete modal-->
+  <!--<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="DeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="DeleteModalLabel">Confirm Delete</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-danger">Yes</button>
+        </div>
       </div>
     </div>
-  </div>
+  </div>-->
+
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header ">
+        <h4 class="modal-title" id="modal-basic-title">Confirm Delete</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you want to delete this job post?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark w-25" (click)="c('close')">No</button>
+        <button type="button" class="btn btn-danger w-25" (click)="c('Save click')">Yes</button>
+    </div>
+</ng-template>

@@ -24,5 +24,8 @@ export class GetCommonInterviewsComponent implements OnInit {
       this.is.InterviewQuestion = res as Interviews[];
     });
   }
+  save(){
+    this.is.selectedQuestion.SaveOp = 'yes';
+  }
 
 }

@@ -33,12 +33,24 @@
     border-radius: 15px;
     
 }
-.star{
-    background-color: rgb(108, 188, 235);
+.heart{
+    background-color: #6cbceb;
     text-align:right ;
     border: none;
     height: 10;
     width: 70vw;
 }
+/*.fa-heart-o:hover{
+    animation: animate .8s steps(28) 1;
+    background-position: right;
+ }
+ @keyframes animate {
+     0%{
+         background-position: left;
+     }
+     100%{
+         background-position: right;
+     }
+ }*/
 
 

@@ -37,7 +37,7 @@ const appRoutes: Routes =[
   {path:'getinterviewguidlines' ,component: GetInterviewGuidlinesComponent},
   {path:'getmyquestionpool' ,component: GetMyquestionpoolComponent},
   {path:'getsavedquestions' ,component: GetSavedQuestionsComponent},
-  {path:'modify' ,component: UpdateInterviewsComponent}
+  {path:'modify/:_id' ,component: UpdateInterviewsComponent}
 ]
 
 @NgModule({

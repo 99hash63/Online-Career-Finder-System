@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-update-interviews',
@@ -12,7 +14,7 @@ export class UpdateInterviewsComponent implements OnInit {
   Offer : String = "";
   Question : String = "";
   Answer : String = "";
-  constructor() { }
+  constructor(private r : ActivatedRoute) { }
 
   ngOnInit(): void {
   }
