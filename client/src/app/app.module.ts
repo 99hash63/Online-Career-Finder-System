@@ -22,6 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
 
+import { MatProgressButtonsModule } from 'mat-progress-buttons';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DiscoverhomeComponent } from './Interview-components/discoverhome/discoverhome.component';
 import { AddInterviewsComponent } from './Interview-components/add-interviews/add-interviews.component';
 import { NavbarComponent } from './Interview-components/navbar/navbar.component';
@@ -32,6 +35,7 @@ import { GetSavedQuestionsComponent } from './Interview-components/get-saved-que
 import { UpdateInterviewsComponent } from './Interview-components/update-interviews/update-interviews.component';
 import { pipe } from 'rxjs';
 import { JobViewComponent } from './JOBS/all-jobs/job-view/job-view.component';
+import { SuccessPageComponent } from './JOBS/success-page/success-page.component';
 
 //create object from routes module
 const appRoutes: Routes = [
@@ -63,9 +67,12 @@ const appRoutes: Routes = [
     GetSavedQuestionsComponent,
     UpdateInterviewsComponent,
     JobViewComponent,
+    SuccessPageComponent,
   ],
   imports: [
     BrowserModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
     RouterModule.forRoot(ROUTES),
     RouterModule.forRoot(appRoutes),
     FormsModule,

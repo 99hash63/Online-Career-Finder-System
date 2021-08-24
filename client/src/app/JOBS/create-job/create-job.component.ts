@@ -33,6 +33,7 @@ export class CreateJobComponent implements OnInit {
   isImageSaved?: boolean;
   cardImageBase64?: string;
   isLinear = false;
+  progressBar = false;
 
   jobForm!: FormGroup;
   firstFormGroup!: FormGroup;
@@ -67,7 +68,6 @@ export class CreateJobComponent implements OnInit {
         Validators.required,
         Validators.pattern(this.myreg),
       ]),
-     
     })),
       (this.secondFormGroup = this.second.group({
         description: new FormControl('', [Validators.required]),
@@ -105,6 +105,7 @@ export class CreateJobComponent implements OnInit {
   }
 
   resetForm() {
+    this.progressBar = false;
     if (this.firstFormGroup) this.firstFormGroup.reset;
     this.jobpostservice.selectedJob = {
       _id: '',
@@ -127,7 +128,9 @@ export class CreateJobComponent implements OnInit {
   setPublish(value: boolean) {
     this.publish = value;
   }
+
   onSubmit() {
+    this.progressBar = true;
     this.jobForm = this._formBuilder.group({
       title: this.firstFormGroup.value.title,
       company: this.firstFormGroup.value.company,
@@ -141,9 +144,9 @@ export class CreateJobComponent implements OnInit {
     });
 
     var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
+    var dd = String(today.getUTCDate()).padStart(2, '0');
+    var mm = String(today.getUTCMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getUTCFullYear();
 
     var CurrentDate = mm + '/' + dd + '/' + yyyy;
 

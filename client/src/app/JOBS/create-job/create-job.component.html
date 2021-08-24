@@ -1,5 +1,7 @@
 <div class="container mt-5 ">
 
+    <mat-progress-bar [hidden]="!progressBar" mode="indeterminate"></mat-progress-bar>
+
     <mat-stepper [linear]="isLinear" #stepper>
         <mat-step label="Job Details" [stepControl]="firstFormGroup" errorMessage="Fill out all required">
             <form [formGroup]="firstFormGroup">
@@ -141,9 +143,9 @@
                     <mat-form-field class="mat-form-field-job " appearance="outline" [hideRequiredMarker]="true">
                         <mat-label>Job Description</mat-label>
                         <textarea matInput placeholder="Let's make a great job description" id="description"
-                            name="description" rows="3" formControlName="description" minlength="10" maxlength="1000"
+                            name="description" rows="3" formControlName="description" minlength="10" maxlength="5000"
                             #description [(ngModel)]="jobpostservice.selectedJob.description" required></textarea>
-                        <mat-hint align="end">{{description.value?.length || 0}}/1000</mat-hint>
+                        <mat-hint align="end">{{description.value?.length || 0}}/5000</mat-hint>
                     </mat-form-field>
 
                 </div>
@@ -260,12 +262,15 @@
 
                 <button type="submit" (click)="setPublish(true)" (click)="onSubmit()"
                     [disabled]="!firstFormGroup.valid || !secondFormGroup.valid || !thirdFormGroup.valid"
-                    class="btn btn-primary mt-4 w-25 pull-right">Publish</button>
+                    class="btn btn-primary mt-4 w-25 pull-right">
+                    Publish
+                </button>
                 <button type="submit" (click)="setPublish(false)" (click)="onSubmit()"
                     [disabled]="!firstFormGroup.valid || !secondFormGroup.valid || !thirdFormGroup.valid"
                     class="btn btn-dark mt-4 pull-right mx-3">Save as
                     draft</button>
                 <button matStepperPrevious class="btn btn-outline-primary mt-4  pull-left">Back</button>
+
             </div>
 
 

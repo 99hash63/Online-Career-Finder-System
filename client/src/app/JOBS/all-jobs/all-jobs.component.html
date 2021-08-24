@@ -32,13 +32,14 @@
                 <div class="card mb-3" style="max-width: 510px; height: 120px; border-radius: 10px;"
                     *ngFor="let job of jobpostservice.jobs" (click)="setJob(job)">
                     <div class="row g-0">
-                        <div class="col-md-4 display:block text-center">
-                            <img [src]="job.image" class="img-fluid mx-auto card-img-overlay rounded-start" alt="...">
+                        <div class="col-md-3 display:block text-center">
+                            <img [src]="job.image" style="max-height: 100px;"
+                                class="img-fluid mx-auto card-img-overlay rounded-start" alt="...">
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-9">
                             <div class="card-body">
                                 <span class="card-text text-black-50">{{job.company}}</span>
-                                <h5 class="card-title m-0">{{job.title}}</h5>
+                                <h6 class="card-title m-0">{{job.title}}</h6>
                                 <span class="card-text  text-black-50">{{job.location}}</span>
                                 <p class="card-text"><small
                                         class="text-muted pull-right">{{calcDateDiff(job.createdDate)}}</small>
@@ -64,11 +65,11 @@
                             <span class="text-muted mx-3 small">{{jobpostservice.selectedJob.location}}</span>
                         </div>
 
-                        <h3 class="">{{jobpostservice.selectedJob.title}}</h3>
+                        <h4 class="">{{jobpostservice.selectedJob.title}}</h4>
                         <h6 class="text-muted">{{jobpostservice.selectedJob.type}}</h6>
                         <div class="d-block">
                             <p class="mt-4 text-success" style="font-weight: 500;">
-                                {{jobpostservice.selectedJob.appliedApplicants}}</p>
+                                {{jobpostservice.selectedJob.appliedApplicants}} applicants</p>
                             <p class="badge bg-warning" *ngIf="achiring()">
                                 Actively
                                 Hiring</p>
@@ -81,19 +82,20 @@
                             (click)="openScrollableContent(longContent)">Apply</button>
                     </div>
 
-                    <div class="mt-5 overflow-auto jobdescription" style="max-height: 800px;">
+                    <div class="mt-5 overflow-auto jobdescription" style="max-height: 700px;">
 
                         {{jobpostservice.selectedJob.description}}
                     </div>
                     <hr class="mt-5">
                     <div class="d-flex justify-content-around">
-                        <div class="d-block">
-                            <h3>Salary</h3>
-                            <h4 class="text-muted">$&nbsp;{{jobpostservice.selectedJob.salary}}.00</h4>
+                        <div class="d-block ">
+                            <h5 class="text-center">Salary</h5>
+                            <h4 class="text-muted ">$&nbsp;{{jobpostservice.selectedJob.salary}}.00
+                            </h4>
 
                         </div>
                         <div class="d-block">
-                            <h3>Website</h3>
+                            <h5 class="text-center">Website</h5>
                             <a href="https://{{jobpostservice.selectedJob.website}}">
                                 <h4 class="text-muted">{{jobpostservice.selectedJob.website}}</h4>
                             </a>
