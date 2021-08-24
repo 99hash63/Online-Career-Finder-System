@@ -45,8 +45,7 @@
                         <mat-label>Industry</mat-label>
                         <mat-select name='industry' aria-label="industry" formControlName="industry"
                             [(ngModel)]="jobpostservice.selectedJob.industry" required>
-                            <mat-option value="one">First option</mat-option>
-                            <mat-option value="two">Second option</mat-option>
+                            <mat-option *ngFor="let state of IndustryOptions" [value]="state">{{state}}</mat-option>
                         </mat-select>
                     </mat-form-field>
 
@@ -77,14 +76,14 @@
                 <div class="salary-container mt-4">
                     <mat-form-field class="mat-form-field-job" appearance="outline" [hideRequiredMarker]="true"
                         [style.width.px]=250>
-                        <mat-label>Salary</mat-label>
-                        <input matInput type="number" class="salary-right-align" name="salary"
+                        <mat-label class="mx-3">Salary</mat-label>
+                        <input matInput type="number" class="salary-right-align " name="salary"
                             aria-label="Amount (to the nearest dollar)" formControlName="salary" min="10"
                             (focus)="markTouchedSalary()" [formControl]="salaryfn" placeholder="0.00"
                             [(ngModel)]="jobpostservice.selectedJob.salary" required>
-                        <span matPrefix>$&nbsp; </span>
-                        <span matSuffix></span>
-                        <mat-error *ngIf="salaryfn.hasError('min')">
+                        <span class=" position-absolute" style="margin-top: -21px" matPrefix>$&nbsp; </span>
+
+                        <mat-error *ngIf=" salaryfn.hasError('min')">
                             Enter value more than $10
                         </mat-error>
                     </mat-form-field>

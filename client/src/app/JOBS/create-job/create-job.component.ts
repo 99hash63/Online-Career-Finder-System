@@ -4,6 +4,7 @@ import { Jobpost } from '../jobpost.model';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { ValidationErrors, AbstractControl, ValidatorFn } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { IndustryOptions } from '../../../assets/industries';
 import * as _ from 'lodash';
 import {
   FormGroup,
@@ -34,6 +35,8 @@ export class CreateJobComponent implements OnInit {
   cardImageBase64?: string;
   isLinear = false;
   progressBar = false;
+
+  IndustryOptions = IndustryOptions;
 
   jobForm!: FormGroup;
   firstFormGroup!: FormGroup;
