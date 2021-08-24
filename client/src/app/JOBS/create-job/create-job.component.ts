@@ -165,7 +165,7 @@ export class CreateJobComponent implements OnInit {
       this.jobpostservice.postJob(this.jobForm.value).subscribe((res) => {
         this.resetForm();
         this.removeImage();
-        window.location.href = '/myjobs';
+        window.location.href = '/createJob/success';
       });
     }
   }

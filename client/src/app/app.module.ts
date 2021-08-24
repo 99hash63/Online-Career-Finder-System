@@ -22,7 +22,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
 
-import { MatProgressButtonsModule } from 'mat-progress-buttons';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DiscoverhomeComponent } from './Interview-components/discoverhome/discoverhome.component';

@@ -17,10 +17,11 @@
 
             </div>
             <div>
-                <form class="d-flex mx-4">
-                    <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-dark" type="submit">Search</button>
-                </form>
+                <div class="d-flex mx-4">
+                    <input class="form-control " style="width: 400px;" type="text" placeholder="Search"
+                        aria-label="Search" [(ngModel)]="searchTerm">
+
+                </div>
             </div>
         </div>
 
@@ -30,7 +31,7 @@
         <div class="col-5 bg-light border rounded-3 p-3 ">
             <div class="m-1 mt-4 overflow-auto" style="max-height: 1000px">
                 <div class="card mb-3" style="max-width: 510px; height: 120px; border-radius: 10px;"
-                    *ngFor="let job of jobpostservice.jobs" (click)="setJob(job)">
+                    *ngFor="let job of jobpostservice.jobs | filter:searchTerm" (click)="setJob(job)">
                     <div class="row g-0">
                         <div class="col-md-3 display:block text-center">
                             <img [src]="job.image" style="max-height: 100px;"
@@ -57,7 +58,7 @@
             <div class=" m-4 p-4" *ngIf="!jobpostservice.selectedJob">
                 <h2 class="text-center mt-5"> Please select a job</h2>
             </div>
-            <div class=" m-4 p-4" *ngIf="jobpostservice.selectedJob">
+            <div class=" m-4 p-4" *ngIf="jobpostservice.selectedJob ">
                 <div class="row">
                     <div class="col-10">
                         <div class="d-inline-flex">

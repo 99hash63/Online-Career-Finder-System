@@ -16,6 +16,7 @@ export class AllJobsComponent implements OnInit {
   isImageSaved?: boolean;
   cardImageBase64?: string;
   datediff?: number;
+  searchTerm!: string;
   _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
   constructor(
