@@ -46,23 +46,15 @@ export class AllJobsComponent implements OnInit {
   calcDateDiff(date: any) {
     var today = new Date();
     var s = new Date(date);
-    // Discard the time and time-zone information.
-    // const utc1 = Date.UTC(
-    //   today.getFullYear(),
-    //   today.getMonth(),
-    //   today.getDate()
-    // );
-    // const utc2 = Date.UTC(
-    //   date?.getFullYear() as number,
-    //   date?.getMonth() as number,
-    //   date?.getDate() as number
-    // );
-    // this.datediff = Math.floor((utc2 - utc1) / this._MS_PER_DAY);
-    // console.log(Math.floor((utc2 - utc1) / this._MS_PER_DAY));
 
-    // return Math.floor((utc2 - utc1) / this._MS_PER_DAY);
     var diff = Math.abs(today.getTime() - s.getTime());
     var diffDays = Math.ceil(diff / (1000 * 3600 * 24));
     return diffDays + 'd';
+  }
+  achiring() {
+    if (this.jobpostservice.selectedJob.activelyHiring == 'Yes') {
+      return true;
+    }
+    return false;
   }
 }

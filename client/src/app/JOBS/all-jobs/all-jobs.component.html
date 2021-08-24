@@ -29,11 +29,11 @@
     <div class="row m-4 " style="max-height: 1000px">
         <div class="col-5 bg-light border rounded-3 p-3 ">
             <div class="m-1 mt-4 overflow-auto" style="max-height: 1000px">
-                <div class="card mb-3" style="max-width: 510px; height: 150px; border-radius: 10px;"
+                <div class="card mb-3" style="max-width: 510px; height: 120px; border-radius: 10px;"
                     *ngFor="let job of jobpostservice.jobs" (click)="setJob(job)">
                     <div class="row g-0">
-                        <div class="col-md-4">
-                            <img [src]="job.image" class="img-fluid  rounded-start" alt="...">
+                        <div class="col-md-4 display:block text-center">
+                            <img [src]="job.image" class="img-fluid mx-auto card-img-overlay rounded-start" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
@@ -66,8 +66,14 @@
 
                         <h3 class="">{{jobpostservice.selectedJob.title}}</h3>
                         <h6 class="text-muted">{{jobpostservice.selectedJob.type}}</h6>
-                        <p class="mt-4 text-success" style="font-weight: 500;">
-                            {{jobpostservice.selectedJob.appliedApplicants}}</p>
+                        <div class="d-block">
+                            <p class="mt-4 text-success" style="font-weight: 500;">
+                                {{jobpostservice.selectedJob.appliedApplicants}}</p>
+                            <p class="badge bg-warning" *ngIf="achiring()">
+                                Actively
+                                Hiring</p>
+
+                        </div>
 
                     </div>
                     <div class="col-2 mt-4">
@@ -79,6 +85,22 @@
 
                         {{jobpostservice.selectedJob.description}}
                     </div>
+                    <hr class="mt-5">
+                    <div class="d-flex justify-content-around">
+                        <div class="d-block">
+                            <h3>Salary</h3>
+                            <h4 class="text-muted">$&nbsp;{{jobpostservice.selectedJob.salary}}.00</h4>
+
+                        </div>
+                        <div class="d-block">
+                            <h3>Website</h3>
+                            <a href="https://{{jobpostservice.selectedJob.website}}">
+                                <h4 class="text-muted">{{jobpostservice.selectedJob.website}}</h4>
+                            </a>
+                        </div>
+                    </div>
+
+
                 </div>
 
 
