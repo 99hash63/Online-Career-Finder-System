@@ -33,6 +33,7 @@ import { GetMyquestionpoolComponent } from './Interview-components/get-myquestio
 import { GetSavedQuestionsComponent } from './Interview-components/get-saved-questions/get-saved-questions.component';
 import { UpdateInterviewsComponent } from './Interview-components/update-interviews/update-interviews.component';
 import { pipe } from 'rxjs';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { JobViewComponent } from './JOBS/all-jobs/job-view/job-view.component';
 import { SuccessPageComponent } from './JOBS/success-page/success-page.component';
 
@@ -79,6 +80,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     NgbModule,
     MatButtonModule,
+    MatAutocompleteModule,
     MatRadioModule,
     MatStepperModule,
     MatSelectModule,

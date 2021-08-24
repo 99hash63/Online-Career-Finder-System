@@ -1,19 +1,26 @@
 <div class="container-fluid" style="width: 1500px; margin-bottom: 200px;">
     <div class="mt-4">
         <div class="hstack d-flex justify-content-between gap-3">
-            <div class="hstack">
-                <select class="form-select w-50 mx-3" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-                <select class="form-select w-50 " aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+            <div class="hstack mx-4">
+
+                <div class="me-3">
+                    <mat-form-field appearance="outline" [style.width.px]=340>
+                        <mat-label>Industry</mat-label>
+                        <mat-select>
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let state of IndustryOptions" [value]="state">{{state}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="me-3">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Type</mat-label>
+                        <mat-select [formControl]="JobType" [(ngModel)]="selectedTypes">
+                            <mat-option *ngFor="let st of typeList" [value]="st">{{st}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
 
             </div>
             <div>
@@ -31,7 +38,8 @@
         <div class="col-5 bg-light border rounded-3 p-3 ">
             <div class="m-1 mt-4 overflow-auto" style="max-height: 1000px">
                 <div class="card mb-3" style="max-width: 510px; height: 120px; border-radius: 10px;"
-                    *ngFor="let job of jobpostservice.jobs | filter:searchTerm" (click)="setJob(job)">
+                    *ngFor="let job of jobpostservice.jobs | filter:searchTerm | filter:selectedTypes"
+                    (click)="setJob(job)">
                     <div class="row g-0">
                         <div class="col-md-3 display:block text-center">
                             <img [src]="job.image" style="max-height: 100px;"

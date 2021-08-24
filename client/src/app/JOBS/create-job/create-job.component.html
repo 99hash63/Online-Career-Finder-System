@@ -75,7 +75,8 @@
 
                 </div>
                 <div class="salary-container mt-4">
-                    <mat-form-field class="mat-form-field-job" appearance="outline" [hideRequiredMarker]="true">
+                    <mat-form-field class="mat-form-field-job" appearance="outline" [hideRequiredMarker]="true"
+                        [style.width.px]=250>
                         <mat-label>Salary</mat-label>
                         <input matInput type="number" class="salary-right-align" name="salary"
                             aria-label="Amount (to the nearest dollar)" formControlName="salary" min="10"
@@ -93,7 +94,8 @@
 
                 <div class="">
 
-                    <mat-form-field class="mat-form-field-job" appearance="outline" [hideRequiredMarker]="true">
+                    <mat-form-field class="mat-form-field-job" appearance="outline" [hideRequiredMarker]="true"
+                        [style.width.px]=250>
                         <mat-label>Expected Applicants</mat-label>
                         <input matInput type="number" id="expapplicants" class="salary-right-align"
                             name="expectedApplicants" min="5" aria-describedby="expapplicantshelp" placeholder="0"
