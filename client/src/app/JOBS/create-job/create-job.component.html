@@ -1,203 +1,3 @@
-<!-- <div class="container mt-5 ">
-
-    <mat-stepper [linear]="isLinear" #stepper>
-        <mat-step label="Fill job details">
-            <form #joppostForm="ngForm" class="" ngNativeValidate (ngSubmit)="onSubmit(joppostForm)">
-
-                <h2 class="mb-5 mt-5">Job Details</h2>
-
-
-                <input type="hidden" name='_id' #_id="ngModel" [(ngModel)]="jobpostservice.selectedJob._id">
-
-                <div class="">
-
-                    <mat-form-field class="mat-form-field-job" appearance="outline">
-                        <mat-label>Title</mat-label>
-                        <input matInput type="text" id="title" name='title' #title="ngModel"
-                            [(ngModel)]="jobpostservice.selectedJob.title" required>
-                    </mat-form-field>
-
-                </div>
-                <div class="">
-
-                    <mat-form-field class="mat-form-field-job" appearance="outline">
-                        <mat-label>Company</mat-label>
-                        <input matInput type="text" id="company" name='company' aria-describedby="companyhelp"
-                            #company="ngModel" [(ngModel)]="jobpostservice.selectedJob.company" required>
-                    </mat-form-field>
-
-
-                </div>
-                <div class="">
-                    <mat-form-field class="mat-form-field-job" appearance="outline">
-                        <mat-label>Location</mat-label>
-                        <input matInput type="text" id="location" name='location' aria-describedby="locationhelp"
-                            #location="ngModel" [(ngModel)]="jobpostservice.selectedJob.location" required>
-                    </mat-form-field>
-
-                </div>
-                <div class="">
-
-                    <mat-form-field class="mat-form-field-job" appearance="outline">
-                        <mat-label>Industry</mat-label>
-                        <mat-select name='industry' aria-label="industry" #industry="ngModel"
-                            [(ngModel)]="jobpostservice.selectedJob.industry" required>
-                            <mat-option value="one">First option</mat-option>
-                            <mat-option value="two">Second option</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-
-                </div>
-                <div class="mt-2">
-                    <label class="fs-6">Job Type: &nbsp;&nbsp;&nbsp; </label>
-                    <mat-radio-group aria-label="Select an option" type="radio" name="type" #type="ngModel"
-                        [(ngModel)]="jobpostservice.selectedJob.type" required>
-                        <mat-radio-button value="Full Time">Full Time</mat-radio-button>
-                        <mat-radio-button value="Part Time">Part Time</mat-radio-button>
-                        <mat-radio-button value="Internship">Internship</mat-radio-button>
-                    </mat-radio-group>
-
-
-                </div>
-                <div class="mt-3">
-
-                    <label class="fs-6">Actively Hiring: &nbsp;&nbsp; &nbsp; </label>
-                    <mat-radio-group aria-label="Select an option" type="radio" name="activelyHiring"
-                        #activelyHiring="ngModel" [(ngModel)]="jobpostservice.selectedJob.activelyHiring" required>
-                        <mat-radio-button value="Yes">Yes</mat-radio-button>
-                        <mat-radio-button value="No">No</mat-radio-button>
-                    </mat-radio-group>
-
-
-                </div>
-                <div class="salary-container mt-4">
-                    <mat-form-field class="mat-form-field-job" appearance="outline">
-                        <mat-label>Salary</mat-label>
-                        <input matInput type="number" class="salary-right-align" name="salary"
-                            aria-label="Amount (to the nearest dollar)" #salary="ngModel" min="10" placeholder="0.00"
-                            [(ngModel)]="jobpostservice.selectedJob.salary" required>
-                        <span matPrefix>$&nbsp; </span>
-                        <span matSuffix></span>
-                    </mat-form-field>
-
-
-                </div>
-
-                <div class="">
-
-                    <mat-form-field class="mat-form-field-job" appearance="outline">
-                        <mat-label>Expected Applicants</mat-label>
-                        <input matInput type="number" id="expapplicants" class="salary-right-align"
-                            name="expectedApplicants" min="10" aria-describedby="expapplicantshelp" placeholder="0"
-                            #expectedApplicants="ngModel" [(ngModel)]="jobpostservice.selectedJob.expectedApplicants"
-                            required>
-
-                    </mat-form-field>
-
-                </div>
-                <div class="mb-3">
-
-                    <mat-form-field class="mat-form-field-job" appearance="outline">
-                        <mat-label>Company Website</mat-label>
-                        <input (focus)="markTouched()" matInput placeholder="Enter your url" [formControl]="url"
-                            name="website" [(ngModel)]="jobpostservice.selectedJob.website" type="text" required>
-                        <mat-error *ngIf="url.hasError('required')">
-                            Url required
-                        </mat-error>
-                        <mat-error *ngIf="url.hasError('pattern')">
-                            Url Pattern Invalid
-                        </mat-error>
-                    </mat-form-field>
-
-
-                </div>
-
-
-
-                <button matStepperNext class="btn btn-primary pull-right mt-3 mx-5">Continue to job
-                    description</button>
-
-
-            </form>
-        </mat-step>
-        <mat-step label="Fill out job description">
-
-            <div class="mt-5">
-
-                <h2 class="mb-5 mt-5">Job Description</h2>
-
-                <mat-form-field class="mat-form-field-job " appearance="outline">
-                    <mat-label>Job Description</mat-label>
-                    <textarea matInput placeholder="Let's make a great job description" id="description"
-                        name="description" rows="3" #description="ngModel" minlength="10" maxlength="1000"
-                        [(ngModel)]="jobpostservice.selectedJob.description" required></textarea>
-                    <mat-hint align="end">{{description.value?.length || 0}}/1000</mat-hint>
-                </mat-form-field>
-
-            </div>
-
-
-            <div class="mt-5 mx-5">
-                <button matStepperNext class="btn btn-primary pull-right mx-2">Next</button>
-                <button matStepperPrevious class="btn btn-outline-primary pull-right ">Back</button>
-            </div>
-
-        </mat-step>
-        <mat-step label="Company Image">
-            <div class="mt-5">
-                <h2 class="mb-5 mt-5">Company Image</h2>
-                <div class="card mt-5 job-description" style="width: 18rem;">
-                    <ng-container *ngIf="isImageSaved">
-                        <img [src]="cardImageBase64" />
-                    </ng-container>
-                    <img *ngIf="!isImageSaved" src="../../../assets/images/logo.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Upload your company logo here</label>
-                            <input class="form-control" type="file" id="formFile" (change)="fileChangeEvent($event)"
-                                (click)="removeImage()" name="image" #image='ngModel'
-                                [(ngModel)]="jobpostservice.selectedJob.image" required>
-
-                            <div [hidden]="image.errors?.required" class="alert alert-danger mt-2"> Image is
-                                required
-                            </div>
-
-
-                            <div *ngIf="imageError" class="alert alert-danger mt-2"> {{imageError}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="mt-5 mx-5">
-                    <button matStepperNext class="btn btn-primary pull-right mx-2">Next</button>
-                    <button matStepperPrevious class="btn btn-outline-primary pull-right ">Back</button>
-                </div>
-            </div>
-
-        </mat-step>
-        <mat-step>
-            <ng-template matStepLabel>Done</ng-template>
-
-            <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button (click)="stepper.reset()">Reset</button>
-
-                <button type="submit" (click)="setPublish(true)" (ngSubmit)="onSubmit(joppostForm)"
-                    class="btn btn-primary mt-4 pull-right">Publish</button>
-                <button type="submit" (click)="setPublish(false)" class="btn btn-secondary mt-4 pull-right mx-3">Save as
-                    draft</button>
-            </div>
-        </mat-step>
-
-    </mat-stepper>
-
-
-</div>
-
-
- -->
-
 <div class="container mt-5 ">
 
     <mat-stepper [linear]="isLinear" #stepper>
@@ -212,7 +12,7 @@
 
                 <div class="">
 
-                    <mat-form-field class="mat-form-field-job" appearance="outline">
+                    <mat-form-field class="mat-form-field-job" appearance="outline" [hideRequiredMarker]="true">
                         <mat-label>Title</mat-label>
                         <input matInput type="text" id="title" name='title' formControlName="title"
                             [(ngModel)]="jobpostservice.selectedJob.title" required>
@@ -221,7 +21,7 @@
                 </div>
                 <div class="">
 
-                    <mat-form-field class="mat-form-field-job" appearance="outline">
+                    <mat-form-field class="mat-form-field-job" appearance="outline" [hideRequiredMarker]="true">
                         <mat-label>Company</mat-label>
                         <input matInput type="text" id="company" name='company' aria-describedby="companyhelp"
                             formControlName="company" [(ngModel)]="jobpostservice.selectedJob.company" required>
@@ -230,7 +30,7 @@
 
                 </div>
                 <div class="">
-                    <mat-form-field class="mat-form-field-job" appearance="outline">
+                    <mat-form-field class="mat-form-field-job" appearance="outline" [hideRequiredMarker]="true">
                         <mat-label>Location</mat-label>
                         <input matInput type="text" id="location" name='location' aria-describedby="locationhelp"
                             formControlName="location" [(ngModel)]="jobpostservice.selectedJob.location" required>
@@ -239,7 +39,7 @@
                 </div>
                 <div class="">
 
-                    <mat-form-field class="mat-form-field-job" appearance="outline">
+                    <mat-form-field class="mat-form-field-job" appearance="outline" [hideRequiredMarker]="true">
                         <mat-label>Industry</mat-label>
                         <mat-select name='industry' aria-label="industry" formControlName="industry"
                             [(ngModel)]="jobpostservice.selectedJob.industry" required>
@@ -273,13 +73,17 @@
 
                 </div>
                 <div class="salary-container mt-4">
-                    <mat-form-field class="mat-form-field-job" appearance="outline">
+                    <mat-form-field class="mat-form-field-job" appearance="outline" [hideRequiredMarker]="true">
                         <mat-label>Salary</mat-label>
                         <input matInput type="number" class="salary-right-align" name="salary"
                             aria-label="Amount (to the nearest dollar)" formControlName="salary" min="10"
-                            placeholder="0.00" [(ngModel)]="jobpostservice.selectedJob.salary" required>
+                            (focus)="markTouchedSalary()" [formControl]="salaryfn" placeholder="0.00"
+                            [(ngModel)]="jobpostservice.selectedJob.salary" required>
                         <span matPrefix>$&nbsp; </span>
                         <span matSuffix></span>
+                        <mat-error *ngIf="salaryfn.hasError('min')">
+                            Enter value more than $10
+                        </mat-error>
                     </mat-form-field>
 
 
@@ -287,21 +91,25 @@
 
                 <div class="">
 
-                    <mat-form-field class="mat-form-field-job" appearance="outline">
+                    <mat-form-field class="mat-form-field-job" appearance="outline" [hideRequiredMarker]="true">
                         <mat-label>Expected Applicants</mat-label>
                         <input matInput type="number" id="expapplicants" class="salary-right-align"
-                            name="expectedApplicants" min="10" aria-describedby="expapplicantshelp" placeholder="0"
-                            formControlName="expectedApplicants"
+                            name="expectedApplicants" min="5" aria-describedby="expapplicantshelp" placeholder="0"
+                            formControlName="expectedApplicants" [formControl]="exApplicants"
+                            (focus)="markTouchedExApplicants()"
                             [(ngModel)]="jobpostservice.selectedJob.expectedApplicants" required>
+                        <mat-error *ngIf="exApplicants.hasError('min')">
+                            Enter value more than 4
+                        </mat-error>
 
                     </mat-form-field>
 
                 </div>
                 <div class="mb-3">
 
-                    <mat-form-field class="mat-form-field-job" appearance="outline">
+                    <mat-form-field class="mat-form-field-job" appearance="outline" [hideRequiredMarker]="true">
                         <mat-label>Company Website</mat-label>
-                        <input (focus)="markTouched()" matInput placeholder="Enter your url" [formControl]="url"
+                        <input (focus)="markTouchedWebsite()" matInput placeholder="Enter your url" [formControl]="url"
                             formControlName="website" name="website" [(ngModel)]="jobpostservice.selectedJob.website"
                             type="text" required>
                         <mat-error *ngIf="url.hasError('required')">
@@ -330,7 +138,7 @@
 
                     <h2 class="mb-5 mt-5">Job Description</h2>
 
-                    <mat-form-field class="mat-form-field-job " appearance="outline">
+                    <mat-form-field class="mat-form-field-job " appearance="outline" [hideRequiredMarker]="true">
                         <mat-label>Job Description</mat-label>
                         <textarea matInput placeholder="Let's make a great job description" id="description"
                             name="description" rows="3" formControlName="description" minlength="10" maxlength="1000"
@@ -410,7 +218,7 @@
                             </div>
                             <div class="d-flex  mt-2">
                                 <h6>Salary: &nbsp;&nbsp;</h6>
-                                <h6 class="text-muted ">{{jobpostservice.selectedJob.salary}}</h6>
+                                <h6 class="text-muted ">$&nbsp;{{jobpostservice.selectedJob.salary}}.00</h6>
                             </div>
                             <div class="d-flex  mt-2">
                                 <h6>Expected Applicants: &nbsp;&nbsp;</h6>
@@ -419,10 +227,6 @@
                             <div class="d-flex  mt-2">
                                 <h6>Website: &nbsp;&nbsp;</h6>
                                 <h6 class="text-muted ">{{jobpostservice.selectedJob.website}}</h6>
-                            </div>
-                            <div class="d-flex  mt-2">
-                                <h6>Title: &nbsp;&nbsp;</h6>
-                                <h6 class="text-muted ">{{jobpostservice.selectedJob.title}}</h6>
                             </div>
                             <div class="d-flex  mt-2">
                                 <h6>Description: &nbsp;&nbsp;</h6>

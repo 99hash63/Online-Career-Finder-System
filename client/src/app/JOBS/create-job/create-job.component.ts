@@ -67,6 +67,7 @@ export class CreateJobComponent implements OnInit {
         Validators.required,
         Validators.pattern(this.myreg),
       ]),
+     
     })),
       (this.secondFormGroup = this.second.group({
         description: new FormControl('', [Validators.required]),
@@ -87,7 +88,18 @@ export class CreateJobComponent implements OnInit {
     Validators.required,
     Validators.pattern(this.myreg),
   ]);
-  markTouched() {
+
+  exApplicants = new FormControl('', [Validators.minLength(5)]);
+  markTouchedExApplicants() {
+    this.exApplicants.markAsTouched();
+    this.exApplicants.updateValueAndValidity();
+  }
+  salaryfn = new FormControl('', [Validators.minLength(10)]);
+  markTouchedSalary() {
+    this.salaryfn.markAsTouched();
+    this.salaryfn.updateValueAndValidity();
+  }
+  markTouchedWebsite() {
     this.url.markAsTouched();
     this.url.updateValueAndValidity();
   }
