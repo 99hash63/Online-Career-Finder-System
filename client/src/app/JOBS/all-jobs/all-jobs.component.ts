@@ -27,7 +27,7 @@ export class AllJobsComponent implements OnInit {
   cardImageBase64?: string;
   datediff?: number;
   searchTerm!: string;
-  industry: string = 'Industry';
+  industry!: string;
   type: string = 'Type';
   _MS_PER_DAY = 1000 * 60 * 60 * 24;
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { JobpostService } from '../jobpost.service';
 import { Jobpost } from '../jobpost.model';
-import { RouterModule, Routes, Router } from '@angular/router';
+import { RouterModule, Routes, Router, RouterLink } from '@angular/router';
 import { ValidationErrors, AbstractControl, ValidatorFn } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { IndustryOptions } from '../../../assets/industries';
@@ -36,6 +36,8 @@ export class CreateJobComponent implements OnInit {
   isLinear = false;
   progressBar = false;
 
+  router?: Router;
+
   IndustryOptions = IndustryOptions;
 
   jobForm!: FormGroup;
@@ -48,8 +50,11 @@ export class CreateJobComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private first: FormBuilder,
     private second: FormBuilder,
-    private third: FormBuilder
-  ) {}
+    private third: FormBuilder,
+    router: Router
+  ) {
+    this.router = router;
+  }
 
   public myreg =
     /^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/i;
@@ -168,7 +173,8 @@ export class CreateJobComponent implements OnInit {
       this.jobpostservice.postJob(this.jobForm.value).subscribe((res) => {
         this.resetForm();
         this.removeImage();
-        window.location.href = '/createJob/success';
+        // window.location.href = '/createJob/success';
+        this.router?.navigate(['/createJob/success']);
       });
     }
   }

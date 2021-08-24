@@ -6,7 +6,7 @@
                 <div class="me-3">
                     <mat-form-field appearance="outline" [style.width.px]=340>
                         <mat-label>Industry</mat-label>
-                        <mat-select>
+                        <mat-select [(ngModel)]="industry">
                             <mat-option>None</mat-option>
                             <mat-option *ngFor="let state of IndustryOptions" [value]="state">{{state}}</mat-option>
                         </mat-select>
@@ -37,9 +37,9 @@
     <div class="row m-4 " style="max-height: 1000px">
         <div class="col-5 bg-light border rounded-3 p-3 ">
             <div class="m-1 mt-4 overflow-auto" style="max-height: 1000px">
-                <div class="card mb-3" style="max-width: 510px; height: 120px; border-radius: 10px;"
-                    *ngFor="let job of jobpostservice.jobs | filter:searchTerm | filter:selectedTypes"
-                    (click)="setJob(job)">
+                <div class="card mb-3" style="max-width: 510px; height: 120px; border-radius: 10px; cursor: pointer;"
+                    *ngFor="let job of jobpostservice.jobs | filter:searchTerm | filter:selectedTypes | filter:industry"
+                    (click)="setJob(job) ">
                     <div class="row g-0">
                         <div class="col-md-3 display:block text-center">
                             <img [src]="job.image" style="max-height: 100px;"

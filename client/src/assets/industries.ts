@@ -1,5 +1,4 @@
 export const IndustryOptions = [
-  'Industry ',
   'Accounting ',
   'Airlines/Aviation',
   'Alternative Dispute Resolution',
