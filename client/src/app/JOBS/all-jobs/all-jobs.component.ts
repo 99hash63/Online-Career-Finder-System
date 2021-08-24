@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JobpostService } from '../jobpost.service';
 import { Jobpost } from '../jobpost.model';
+import { PageEvent } from '@angular/material/paginator';
 import { IndustryOptions } from '../../../assets/industries';
 import {
   FormGroup,
@@ -31,6 +32,14 @@ export class AllJobsComponent implements OnInit {
   type: string = 'Type';
   _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
+  showJobPost: any = [];
+  totalLength!: number;
+  page!: number;
+  // MatPaginator Output
+  pageEvent!: PageEvent;
+
+  pageSize: number = 10;
+
   JobType = new FormControl();
   typeList: string[] = ['All', 'Full Time', 'Part Time', 'Internship'];
 
@@ -38,14 +47,19 @@ export class AllJobsComponent implements OnInit {
 
   IndustryOptions = IndustryOptions;
 
+  handlePageEvent(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.page = event.pageIndex;
+    this.totalLength = event.length;
+    console.log(this.page);
+  }
+
   constructor(
     private modalService: NgbModal,
     public jobpostservice: JobpostService
   ) {}
-
   ngOnInit(): void {
     this.refreshJobList();
-    this.setJob(this.jobpostservice.jobs[0]);
   }
   setJob(job: Jobpost) {
     this.jobpostservice.selectedJob = job;
@@ -61,6 +75,9 @@ export class AllJobsComponent implements OnInit {
   refreshJobList() {
     this.jobpostservice.getalljobs().subscribe((res) => {
       this.jobpostservice.jobs = res as Jobpost[];
+
+      this.showJobPost = res;
+      this.totalLength = this.showJobPost.length;
     });
   }
   calcDateDiff(date: any) {

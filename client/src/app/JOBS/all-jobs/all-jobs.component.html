@@ -34,12 +34,12 @@
 
 
     </div>
-    <div class="row m-4 " style="max-height: 1000px">
+    <div class="row m-4 ">
         <div class="col-5 bg-light border rounded-3 p-3 ">
-            <div class="m-1 mt-4 overflow-auto" style="max-height: 1000px">
+            <div class="m-1 mt-4 overflow-auto" style="height: 1000px">
                 <div class="card mb-3" style="max-width: 510px; height: 120px; border-radius: 10px; cursor: pointer;"
-                    *ngFor="let job of jobpostservice.jobs | filter:searchTerm | filter:selectedTypes | filter:industry"
-                    (click)="setJob(job) ">
+                    *ngFor="let job of jobpostservice.jobs | paginate: { itemsPerPage: pageSize, currentPage: page+1 ,totalItems:totalLength }
+                    | filter:searchTerm | filter:selectedTypes | filter:industry" (click)="setJob(job) ">
                     <div class="row g-0">
                         <div class="col-md-3 display:block text-center">
                             <img [src]="job.image" style="max-height: 100px;"
@@ -57,11 +57,15 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
+
+            <mat-paginator class="" [length]="totalLength" [pageSize]="pageSize" [pageSizeOptions]="[10, 25, 50, 100]"
+                aria-label="Select page" (page)="handlePageEvent($event)">
+            </mat-paginator>
+
+
         </div>
-        <div class="col-7 bg-white rounded-3 border border-secondary">
+        <div class="col-7 bg-white rounded-3 border border-secondary" style="height: 1150px">
 
             <div class=" m-4 p-4" *ngIf="!jobpostservice.selectedJob">
                 <h2 class="text-center mt-5"> Please select a job</h2>
@@ -91,7 +95,7 @@
                             (click)="openScrollableContent(longContent)">Apply</button>
                     </div>
 
-                    <div class="mt-5 overflow-auto jobdescription" style="max-height: 700px;">
+                    <div class="mt-5 overflow-auto jobdescription" style="height: 700px;">
 
                         {{jobpostservice.selectedJob.description}}
                     </div>
