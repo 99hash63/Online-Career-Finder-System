@@ -28,6 +28,7 @@ export class RegisterComponent implements OnInit {
       }
   }
   onSubmit(form: NgForm) {
+    console.log("onSubmit clicked")
     this.userService.postUser(form.value).subscribe((res)=>{
       this.resetForm(form)
     })

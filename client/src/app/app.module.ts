@@ -29,19 +29,23 @@ import { UpdateInterviewsComponent } from './Interview-components/update-intervi
 import { pipe } from 'rxjs';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-
+import { CompanyCreateComponent } from './companies/company-create/company-create.component';
+import { AllCompaniesComponent } from './companies/all-companies/all-companies.component';
 //create object from routes module
-const appRoutes: Routes =[
-  {path:'discoverinterviews' ,component: DiscoverhomeComponent},
-  {path:'insert' ,component: AddInterviewsComponent},
-  {path:'getcommoninterviews' ,component: GetCommonInterviewsComponent},
-  {path:'getinterviewguidlines' ,component: GetInterviewGuidlinesComponent},
-  {path:'getmyquestionpool' ,component: GetMyquestionpoolComponent},
-  {path:'getsavedquestions' ,component: GetSavedQuestionsComponent},
-  {path:'modify' ,component: UpdateInterviewsComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent}
-]
+const appRoutes: Routes = [
+  { path: 'discoverinterviews', component: DiscoverhomeComponent },
+  { path: 'insert', component: AddInterviewsComponent },
+  { path: 'getcommoninterviews', component: GetCommonInterviewsComponent },
+  { path: 'getinterviewguidlines', component: GetInterviewGuidlinesComponent },
+  { path: 'getmyquestionpool', component: GetMyquestionpoolComponent },
+  { path: 'getsavedquestions', component: GetSavedQuestionsComponent },
+  { path: 'modify', component: UpdateInterviewsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'companyCreate', component: CompanyCreateComponent },
+  { path: 'allCompanies', component: AllCompaniesComponent },
+];
 
 @NgModule({
   declarations: [
@@ -62,7 +66,9 @@ const appRoutes: Routes =[
     GetSavedQuestionsComponent,
     UpdateInterviewsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CompanyCreateComponent,
+    AllCompaniesComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +80,7 @@ const appRoutes: Routes =[
     NgbModule,
     MatInputModule,
     BrowserAnimationsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

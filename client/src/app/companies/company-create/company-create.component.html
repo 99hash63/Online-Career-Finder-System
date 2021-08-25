@@ -1,0 +1,10 @@
+<br>
+<form (submit)="onAddCompany(companyForm)" #companyForm="ngForm">
+  <input type="text" name="title" value="Mark" ngModel required>
+  <br> <br>
+  <textarea rows="5" name="description" ngModel required></textarea>
+  <hr>
+  <input type="submit" value="Save Company" />
+
+</form>
+<app-all-companies></app-all-companies>

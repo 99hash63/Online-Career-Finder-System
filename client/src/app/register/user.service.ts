@@ -7,17 +7,17 @@ import { Observable } from 'rxjs';
 import { User } from './user.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   selectedUser!: User;
   user!: User[];
   readonly baseURL = 'http://localhost:5000/api/v1/auth/register';
 
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  postUser(user : User){
-  return this.http.post(this.baseURL, user);
+  postUser(user: User) {
+    console.log('post user4 clicked');
+    return this.http.post(this.baseURL, user);
   }
 }
