@@ -7,10 +7,14 @@ import { Jobpost } from './jobpost.model';
 export class JobpostService {
   selectedJob!: Jobpost;
   jobs!: Jobpost[];
-  readonly baseURL = 'http://localhost:5000/findjobs/createjob';
+  readonly baseURLCJ = 'http://localhost:5000/findjobs/createjob';
+  readonly baseURLGA = 'http://localhost:5000/findjobs/jobs';
 
   constructor(private http: HttpClient) {}
   postJob(job: Jobpost) {
-    return this.http.post(this.baseURL, job);
+    return this.http.post(this.baseURLCJ, job);
+  }
+  getalljobs() {
+    return this.http.get(this.baseURLGA);
   }
 }
