@@ -12,12 +12,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class RegisterComponent implements OnInit {
   registerImg: string = '../../assets/images/signup-image.jpg';
-  cookieValue: any;
 
-  constructor(
-    public userService: UserService,
-    private cookieService: CookieService
-  ) {}
+  constructor(public userService: UserService, private cookie: CookieService) {}
 
   ngOnInit(): void {}
 
@@ -34,9 +30,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log('onSubmit clicked');
     this.userService.postUser(form.value).subscribe((res) => {
-      console.log();
-      // this.cookieService.set(res.cookie); // To Set Cookie
-      // this.cookieValue = this.cookieService.get('name'); // To Get Co
+      console.log(res);
     });
   }
 }
