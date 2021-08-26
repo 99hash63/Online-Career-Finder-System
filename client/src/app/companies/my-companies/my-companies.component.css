@@ -1,0 +1,14 @@
+.cards {
+  padding: 70px;
+}
+
+.crop {
+  width: 348px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.crop img {
+  width: 400px;
+  height: 300px;
+}

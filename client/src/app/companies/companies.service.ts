@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { CompanyResponse } from './company-response.model';
 
 @Injectable({ providedIn: 'root' })
 export class CompaniesService {
@@ -31,6 +32,9 @@ export class CompaniesService {
   }
 
   getMyCompaniesDB() {
-    return this.http.get(this.getURL);
+    console.log('inside getMyCompaniesDB');
+    const output = this.http.get<CompanyResponse>(this.baseURL);
+    console.log(output);
+    return output;
   }
 }

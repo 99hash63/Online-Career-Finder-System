@@ -4,6 +4,7 @@ import { UserService } from './user.service';
 import { NgForm } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 
+declare var M: any;
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -30,6 +31,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.userService.postUser(form.value).subscribe((res) => {
       console.log(res);
+      M.toast({ html: 'saved successfully', classes: 'rounded' });
     });
   }
 }

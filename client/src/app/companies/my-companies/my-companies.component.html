@@ -1,4 +1,4 @@
-<div class="card mb-3" style="max-width: 800px; height: 500px; border-radius: 10px;" *ngIf="companies.length > 0">
+<!-- <div *ngIf="companies.length > 0">
   <div class="card mb-3" style="max-width: 300px; height: 150px; border-radius: 10px;"
     *ngFor="let company of companies">
     <div class="row g-0">
@@ -6,17 +6,51 @@
         <h5 class="card-title m-0">{{company.title}}</h5>
         <span class="card-text  text-black-50">{{company.description}}</span>
         <span class="card-text  text-black-50">{{company._id}}</span>
-
         <span class="card-text  text-black-50">{{company.logo}}</span>
-
         <span class="card-text  text-black-50">{{company.coverPhoto}}</span>
-
         <span class="card-text  text-black-50">{{company.industry}}</span>
-
         <span class="card-text  text-black-50">{{company.emp_count}}</span>
-
       </div>
     </div>
   </div>
 </div>
-<p *ngIf="companies.length <= 0">No companies</p>
+<p *ngIf="companies.length <= 0">No companies</p> -->
+
+
+
+<section id="gallery" class="cards">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-4 mb-4" *ngFor="let company of companies">
+        <div class="card">
+          <div class="crop">
+            <img src="https://source.unsplash.com/user/c_v_r">
+          </div>
+
+          <div class="card-body">
+
+            <!-- <span class="card-text  text-black-50">{{company._id}}</span>
+            <span class="card-text  text-black-50">{{company.industry}}</span>
+            <span class="card-text  text-black-50">{{company.emp_count}}</span> -->
+
+            <h5 class="card-title">{{company.title}}</h5>
+            <p class="card-text">{{company.description}}</p>
+            <a href="" class="btn btn-outline-success btn-sm">Read More</a>
+            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</section>
