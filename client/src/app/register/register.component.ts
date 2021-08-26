@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { UserService } from './user.service';
 import { NgForm } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -10,8 +12,12 @@ import { NgForm } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   registerImg: string = '../../assets/images/signup-image.jpg';
+  cookieValue: any;
 
-  constructor(public userService: UserService) {}
+  constructor(
+    public userService: UserService,
+    private cookieService: CookieService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -28,7 +34,9 @@ export class RegisterComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log('onSubmit clicked');
     this.userService.postUser(form.value).subscribe((res) => {
-      this.resetForm(form);
+      console.log();
+      // this.cookieService.set(res.cookie); // To Set Cookie
+      // this.cookieValue = this.cookieService.get('name'); // To Get Co
     });
   }
 }

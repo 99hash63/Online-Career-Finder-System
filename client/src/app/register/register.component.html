@@ -5,32 +5,26 @@
 
         <div class="signup-form">
           <h2 class="form-title">Sign up</h2>
-          <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+          <form #userForm="ngForm" (submit)="onSubmit(userForm)">
 
             <div class="form-group">
-              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="userService.selectedUser._id" />
-              <input type="hidden" name="createdAt" #_id="ngModel" [(ngModel)]="userService.selectedUser.createdAt" />
-
               <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-              <input type="text" name="name" #name="ngModel" [(ngModel)]="userService.selectedUser.name"
-                placeholder="Your Name" required />
+              <input type="text" name="name" ngModel placeholder="Your Name" required />
             </div>
 
             <div class="form-group">
               <label for="email"><i class="zmdi zmdi-email"></i></label>
-              <input type="email" name="email" #name="ngModel" [(ngModel)]="userService.selectedUser.email"
-                placeholder="Your Email" required />
+              <input type="email" name="email" ngModel placeholder="Your Email" required />
             </div>
 
             <div class="form-group">
               <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-              <input type="password" name="password" #name="ngModel" [(ngModel)]="userService.selectedUser.password"
-                placeholder="Password" required />
+              <input type="password" name="password" ngModel placeholder="Password" required />
             </div>
 
             <div class="form-group">
               <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-              <!-- <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" required /> -->
+              <input type="password" name="re_pass" ngModel placeholder="Repeat your password" required />
             </div>
 
             <div class="form-group">

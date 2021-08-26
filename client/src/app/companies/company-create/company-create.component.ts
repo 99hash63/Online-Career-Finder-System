@@ -13,16 +13,14 @@ export class CompanyCreateComponent {
   enteredDesc = '';
 
   constructor(public companiesService: CompaniesService) {}
-  showResponse(res: any) {
-    alert(res);
-  }
+
   onAddCompany(form: NgForm) {
     const company: Company = {
       title: form.value.title,
       description: form.value.description,
     };
     this.companiesService.addCompany(company).subscribe((res) => {
-      this.showResponse(res);
+      console.log(res);
     });
   }
 }

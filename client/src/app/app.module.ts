@@ -31,6 +31,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CompanyCreateComponent } from './companies/company-create/company-create.component';
 import { AllCompaniesComponent } from './companies/all-companies/all-companies.component';
+import { CookieService } from 'ngx-cookie-service';
 //create object from routes module
 const appRoutes: Routes = [
   { path: 'discoverinterviews', component: DiscoverhomeComponent },
@@ -82,7 +83,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     Ng2SearchPipeModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
