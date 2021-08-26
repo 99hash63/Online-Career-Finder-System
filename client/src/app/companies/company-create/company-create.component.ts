@@ -15,11 +15,7 @@ export class CompanyCreateComponent {
   constructor(public companiesService: CompaniesService) {}
 
   onAddCompany(form: NgForm) {
-    const company: Company = {
-      title: form.value.title,
-      description: form.value.description,
-    };
-    this.companiesService.addCompany(company).subscribe((res) => {
+    this.companiesService.addCompany(form.value).subscribe((res) => {
       console.log(res);
     });
   }

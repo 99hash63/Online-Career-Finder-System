@@ -17,7 +17,8 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   postUser(user: User) {
-    console.log('post user4 clicked');
+    console.log('post user clicked');
+    console.log(user);
     return this.http.post(this.baseURL, user);
   }
 }

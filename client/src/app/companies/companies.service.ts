@@ -12,6 +12,7 @@ export class CompaniesService {
   private companies: Company[] = [];
   private companiesUpdated = new Subject<Company[]>();
   readonly baseURL = 'http://localhost:5000/api/v1/companies';
+  readonly getURL = 'http://localhost:5000/api/v1/companies';
 
   getCompanies() {
     return [...this.companies];
@@ -22,10 +23,14 @@ export class CompaniesService {
   }
 
   addCompany(company: Company) {
-    // this.companies.push(company);
-    // this.companiesUpdated.next([...this.companies]);
+    this.companies.push(company);
+    this.companiesUpdated.next([...this.companies]);
     console.log('post addCompany clicked');
 
     return this.http.post(this.baseURL, company);
+  }
+
+  getMyCompaniesDB() {
+    return this.http.get(this.getURL);
   }
 }

@@ -32,6 +32,7 @@ import { RegisterComponent } from './register/register.component';
 import { CompanyCreateComponent } from './companies/company-create/company-create.component';
 import { AllCompaniesComponent } from './companies/all-companies/all-companies.component';
 import { CookieService } from 'ngx-cookie-service';
+import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
 //create object from routes module
 const appRoutes: Routes = [
   { path: 'discoverinterviews', component: DiscoverhomeComponent },
@@ -46,6 +47,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'companyCreate', component: CompanyCreateComponent },
   { path: 'allCompanies', component: AllCompaniesComponent },
+  { path: 'myCompanies', component: MyCompaniesComponent },
 ];
 
 @NgModule({
@@ -70,6 +72,7 @@ const appRoutes: Routes = [
     RegisterComponent,
     CompanyCreateComponent,
     AllCompaniesComponent,
+    MyCompaniesComponent,
   ],
   imports: [
     BrowserModule,
