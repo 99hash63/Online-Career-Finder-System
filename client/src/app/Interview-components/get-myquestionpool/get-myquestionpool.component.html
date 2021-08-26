@@ -1,17 +1,41 @@
-<br>
-<h3 class="In-Formheaders">My Questions Pool</h3><br>
-    <div class="panel panel-primary" *ngFor="let interview of questionpool.InterviewQuestion">
+<div class="container mt-5">
+    <h3 class="In-Formheaders">My Questions Pool</h3><br>
+
+    <div class="search-right">
+        <input type="text" name="searchtext" [(ngModel)]="searchtext" placeholder="Search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </div>
+    <br>
+
+    <div class="panel panel-primary mb-5" *ngFor="let interview of questionpool.InterviewQuestion | filter:searchtext">
         <div class="question">
             {{interview.Question}}
             <div row></div>
         </div>
         <div class="answer">
             {{interview.Answer}}
-            <br>
-            <div class="right" >
-                <button type="submit" class="btn btn-primary" value="Edit" class="In-update">Update</button>
-                <button type="submit" class="btn btn-primary" value="Delete" class="In-delete">Delete</button>
+
+            <div class="right">
+                <button type="submit" class="btn w-35 mx-3 btn-primary" value="Edit">Update</button>
+                <button type="submit" class="btn w-35 btn-danger">Delete</button>
             </div>
-        </div>      
-        <br>
+        </div>
+
     </div>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header ">
+        <h4 class="modal-title" id="modal-basic-title">Confirm Delete</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you want to delete?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark w-25" (click)="c('close')">No</button>
+        <button type="button" class="btn btn-danger w-25" (click)="c('Save click')">Yes</button>
+    </div>
+</ng-template>

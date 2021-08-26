@@ -1,0 +1,182 @@
+<div class="container-fluid" style="width: 1500px; margin-bottom: 200px;">
+    <div class="mt-4">
+        <div class="hstack d-flex justify-content-between gap-3">
+            <div class="hstack mx-4">
+
+                <div class="me-3">
+                    <mat-form-field appearance="outline" [style.width.px]=340>
+                        <mat-label>Industry</mat-label>
+                        <mat-select [(ngModel)]="industry">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let state of IndustryOptions" [value]="state">{{state}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="me-3">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Type</mat-label>
+                        <mat-select [formControl]="JobType" [(ngModel)]="selectedTypes">
+                            <mat-option *ngFor="let st of typeList" [value]="st">{{st}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+            </div>
+            <div>
+                <div class="d-flex mx-4">
+                    <input class="form-control " style="width: 400px;" type="text" placeholder="Search"
+                        aria-label="Search" [(ngModel)]="searchTerm">
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="row m-4 ">
+        <div class="col-5 bg-light border rounded-3 p-3 ">
+            <div class="m-1 mt-4 overflow-auto" style="height: 1000px">
+                <div class="card mb-3" style="max-width: 510px; height: 120px; border-radius: 10px; cursor: pointer;"
+                    *ngFor="let job of jobpostservice.jobs | paginate: { itemsPerPage: pageSize, currentPage: page+1 ,totalItems:totalLength }
+                    | filter:searchTerm | filter:selectedTypes | filter:industry" (click)="setJob(job) ">
+                    <div class="row g-0">
+                        <div class="col-md-3 display:block text-center">
+                            <img [src]="job.image" style="max-height: 100px;"
+                                class="img-fluid mx-auto card-img-overlay rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <span class="card-text text-black-50">{{job.company}}</span>
+                                <h6 class="card-title m-0">{{job.title}}</h6>
+                                <span class="card-text  text-black-50">{{job.location}}</span>
+                                <p class="card-text"><small
+                                        class="text-muted pull-right">{{calcDateDiff(job.createdDate)}}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <mat-paginator class="" [length]="totalLength" [pageSize]="pageSize" [pageSizeOptions]="[10, 25, 50, 100]"
+                aria-label="Select page" (page)="handlePageEvent($event)">
+            </mat-paginator>
+
+
+        </div>
+        <div class="col-7 bg-white rounded-3 border border-secondary" style="height: 1150px">
+
+            <div class=" m-4 p-4" *ngIf="!jobpostservice.selectedJob">
+                <h2 class="text-center mt-5"> Please select a job</h2>
+            </div>
+            <div class=" m-4 p-4" *ngIf="jobpostservice.selectedJob ">
+                <div class="row">
+                    <div class="col-10">
+                        <div class="d-inline-flex">
+                            <h6 class="text-muted ">{{jobpostservice.selectedJob.company}}</h6>
+                            <span class="text-muted mx-3 small">{{jobpostservice.selectedJob.location}}</span>
+                        </div>
+
+                        <h4 class="">{{jobpostservice.selectedJob.title}}</h4>
+                        <h6 class="text-muted">{{jobpostservice.selectedJob.type}}</h6>
+                        <div class="d-block">
+                            <p class="mt-4 text-success" style="font-weight: 500;">
+                                {{jobpostservice.selectedJob.appliedApplicants}} applicants</p>
+                            <p class="badge bg-warning" *ngIf="achiring()">
+                                Actively
+                                Hiring</p>
+
+                        </div>
+
+                    </div>
+                    <div class="col-2 mt-4">
+                        <button type="button" class="btn w-100 btn-primary"
+                            (click)="openScrollableContent(longContent)">Apply</button>
+                    </div>
+
+                    <div class="mt-5 overflow-auto jobdescription" style="height: 700px;">
+
+                        {{jobpostservice.selectedJob.description}}
+                    </div>
+                    <hr class="mt-5">
+                    <div class="d-flex justify-content-around">
+                        <div class="d-block ">
+                            <h5 class="text-center">Salary</h5>
+                            <h4 class="text-muted ">$&nbsp;{{jobpostservice.selectedJob.salary}}.00
+                            </h4>
+
+                        </div>
+                        <div class="d-block">
+                            <h5 class="text-center">Website</h5>
+                            <a href="https://{{jobpostservice.selectedJob.website}}">
+                                <h4 class="text-muted">{{jobpostservice.selectedJob.website}}</h4>
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <ng-template #longContent let-modal style="width: 1000px;">
+                <div class="modal-header  p-4 ">
+                    <div class="d-block">
+                        <h1 class="modal-title">Apply Now</h1>
+                        <span class="text-black-50"><small>{{jobpostservice.selectedJob.company}}</small></span> <span>
+                            &nbsp;&nbsp; </span>
+                        <span class="text-black-50"><small>{{jobpostservice.selectedJob.title}}</small></span>
+                    </div>
+
+
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+
+                <div class="modal-body p-4  ">
+
+                    <form>
+                        <div class="mb-3">
+                            <label for="apply-name" class="form-label">Full Name</label>
+                            <input type="email" class="form-control" id="apply-name" aria-describedby="emailHelp">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="apply-address" class="form-label">Address</label>
+                            <input type="email" class="form-control" id="apply-address" aria-describedby="emailHelp">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="apply-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="apply-email" aria-describedby="emailHelp">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="apply-phone" class="form-label">Phone</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="apply-cl" class="form-label">Cover Letter</label>
+                            <textarea class="form-control" id="apply-cl" rows="6"></textarea>
+                        </div>
+                        <div class="mb-3 ">
+                            <label for="formFileSm" class="form-label">Upload your resume here</label>
+                            <input class="form-control form-control-sm" id="formFileSm" type="file">
+                        </div>
+                        <div class="modal-footer ">
+                            <button type="button" class="btn btn-outline-primary pull-right">Download PDF</button>
+                            <button type="submit" class="btn btn-primary pull-right mx-3"
+                                (click)="modal.close('Close click')">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+            </ng-template>
+        </div>

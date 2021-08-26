@@ -1,0 +1,5 @@
+.jobdescription::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE and Edge */

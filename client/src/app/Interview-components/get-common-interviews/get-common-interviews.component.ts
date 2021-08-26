@@ -25,7 +25,4 @@ export class GetCommonInterviewsComponent implements OnInit {
     });
   }
 
-  searchFunction(){
-
-  }
 }
