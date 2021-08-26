@@ -23,6 +23,7 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictNullChecks": false,
-    "strictTemplates": true
-  }
+    "strictTemplates": true,
+    "strictPropertyInitialization": false,
+  },
 }

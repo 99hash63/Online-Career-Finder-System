@@ -1,0 +1,12 @@
+<div class="card mb-3" style="max-width: 800px; height: 500px; border-radius: 10px;" *ngIf="companies.length > 0">
+  <div class="card mb-3" style="max-width: 300px; height: 150px; border-radius: 10px;"
+    *ngFor="let company of companies">
+    <div class="row g-0">
+      <div class="card-body">
+        <h5 class="card-title m-0">{{company.title}}</h5>
+        <span class="card-text  text-black-50">{{company.description}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<p *ngIf="companies.length <= 0">No companies</p>

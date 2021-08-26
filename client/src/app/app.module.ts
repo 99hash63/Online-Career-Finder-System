@@ -43,6 +43,11 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { JobViewComponent } from './JOBS/all-jobs/job-view/job-view.component';
 import { SuccessPageComponent } from './JOBS/success-page/success-page.component';
 
+import { CompanyCreateComponent } from './companies/company-create/company-create.component';
+import { AllCompaniesComponent } from './companies/all-companies/all-companies.component';
+import { CookieService } from 'ngx-cookie-service';
+import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
+import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
 //create object from routes module
 const appRoutes: Routes = [
   { path: 'discoverinterviews', component: DiscoverhomeComponent },
@@ -52,6 +57,12 @@ const appRoutes: Routes = [
   { path: 'getmyquestionpool', component: GetMyquestionpoolComponent },
   { path: 'getsavedquestions', component: GetSavedQuestionsComponent },
   { path: 'modify', component: UpdateInterviewsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'companyCreate', component: CompanyCreateComponent },
+  { path: 'allCompanies', component: AllCompaniesComponent },
+  { path: 'myCompanies', component: MyCompaniesComponent },
+  { path: 'myCompanyOverview', component: MyCompanyOverviewComponent },
 ];
 
 @NgModule({
@@ -76,6 +87,10 @@ const appRoutes: Routes = [
     RegisterComponent,
     JobViewComponent,
     SuccessPageComponent,
+    CompanyCreateComponent,
+    AllCompaniesComponent,
+    MyCompaniesComponent,
+    MyCompanyOverviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +114,7 @@ const appRoutes: Routes = [
     SimpleNotificationsModule.forRoot(),
     Ng2SearchPipeModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent],
   exports: [NgxPaginationModule],
 })

@@ -1,0 +1,41 @@
+<!-- <div *ngIf="companies.length > 0">
+  <div class="card mb-3" style="max-width: 300px; height: 150px; border-radius: 10px;"
+    *ngFor="let company of companies">
+  </div>
+</div>
+<p *ngIf="companies.length <= 0">No companies</p> -->
+
+<section id="gallery" class="cards">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-4 mb-4" *ngFor="let company of companies">
+        <div class="card">
+          <div class="crop">
+            <img src="{{company.coverPhoto}}">
+          </div>
+
+          <div class=" card-body">
+            <form (submit)="onSave(companyId)" #companyForm="ngForm">
+
+              <input type="hidden" name="id" value='{{company._id}}' #companyId>
+              <!-- <span class="card-text  text-black-50">{{company.logo}}</span>
+            <span class="card-text  text-black-50">{{company.coverPhoto}}</span>
+            <span class="card-text  text-black-50">{{company.industry}}</span>
+            <span class="card-text  text-black-50">{{company.emp_count}}</span> -->
+
+              <h5 class="card-title">{{company.title}}</h5>
+              <p class="card-text">{{company.description}}</p>
+              <!-- <button (click)="onSave()" class="btn btn-outline-success btn-sm">Read More</button> -->
+              <input type="submit" value="View Company" class="btn btn-outline-success btn-sm" />
+
+              <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
