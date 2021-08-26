@@ -9,24 +9,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./all-companies.component.css'],
 })
 export class AllCompaniesComponent implements OnInit, OnDestroy {
-  // companies: Company[] = [
-  //   {
-  //     title: 'company 1',
-  //     description:
-  //       'A top rated software company in Sri Lanka A top rated software company in Sri Lanka  A top rated software company in Sri Lanka',
-  //   },
-  //   {
-  //     title: 'company 2',
-  //     description:
-  //       'A top rated software company in Sri Lanka A top rated software company in Sri Lanka  A top rated software company in Sri Lanka',
-  //   },
-  //   {
-  //     title: 'company 3',
-  //     description:
-  //       'A top rated software company in Sri Lanka A top rated software company in Sri Lanka  A top rated software company in Sri Lanka',
-  //   },
-  // ];
-
   companies: Company[] = [];
   private companiesSub!: Subscription;
 

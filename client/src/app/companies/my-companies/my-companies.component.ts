@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CompaniesService } from '../companies.service';
 import { Company } from '../company.model';
@@ -8,7 +9,7 @@ import { Company } from '../company.model';
   templateUrl: './my-companies.component.html',
   styleUrls: ['./my-companies.component.css'],
 })
-export class MyCompaniesComponent implements OnInit, OnDestroy {
+export class MyCompaniesComponent implements OnInit {
   companies: Company[] = [];
   private companiesSub!: Subscription;
 
@@ -16,12 +17,11 @@ export class MyCompaniesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.companiesService.getMyCompaniesDB().subscribe((res) => {
-      console.log(res);
       this.companies = res.data as Company[];
     });
   }
 
-  ngOnDestroy() {
-    this.companiesSub.unsubscribe();
+  onSave(id: any) {
+    this.companiesService.getSingleCompany(id.value);
   }
 }

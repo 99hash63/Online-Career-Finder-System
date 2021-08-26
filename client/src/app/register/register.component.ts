@@ -33,5 +33,6 @@ export class RegisterComponent implements OnInit {
       console.log(res);
       M.toast({ html: 'saved successfully', classes: 'rounded' });
     });
+    alert('Register success!');
   }
 }
