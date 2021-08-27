@@ -8,7 +8,8 @@
     <div class="panel panel-primary" *ngFor="let interview of is.InterviewQuestion | filter:searchtext">
         <div class="question">
             {{interview.Question}}
-            <button style="font-size:14px" class="star"><i class="fa fa-star-o" style="font-size:22px" ></i></button>
+            <!--<button style="font-size:14px" class="heart"><i class="fa fa-heart-o" style="font-size:22px"></i></button>-->
+           <button style="font-size:14px" class="heart" class="fa fa-heart-o" style="font-size:22px;background-color:#6cbceb;border:none; text-align:right ;height: 10;width: 70vw;" (click)="save()"></button>
         </div>
         <div class="answer">
             {{interview.Answer}}
