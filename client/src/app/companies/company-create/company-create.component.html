@@ -1,0 +1,73 @@
+<!-- <br>
+<form>
+  <input type="text" name="title" value="Mark" ngModel required>
+  <br> <br>
+  <textarea rows="5" name="description" ngModel required></textarea>
+  <hr>
+  <input type="submit" value="Save Company" />
+
+</form> -->
+<br>
+
+<div class="In-add">
+  <div class="In-wrapper">
+    <br>
+    <h2 class="In-Formheaders">Create a New Company</h2><br>
+
+    <form (submit)="onAddCompany(companyForm)" #companyForm="ngForm">
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Title</label>
+        <input type="text" name="title" class="form-control" placeholder="Google" ngModel required>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Industry</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="industry" ngModel required>
+          <option>IT/Software</option>
+          <option>Technology</option>
+          <option>Real Estate</option>
+          <option>Consumer Goods</option>
+          <option>Automobile</option>
+          <option>Other</option>
+          <option>Error</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Employee Count</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="emp_count" ngModel required>
+          <option>0-10</option>
+          <option>10-50</option>
+          <option>50-200</option>
+          <option>200-1000</option>
+          <option>Above 1000</option>
+          <option>Error</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Founded</label>
+        <input type="date" class="form-control" placeholder="1999-06-03" required>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Revenue</label>
+        <input type="number" class="form-control" placeholder="$50000" required>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea name="description" class="form-control" id="exampleFormControlTextarea1"
+          placeholder="Enter your description here" rows="3" ngModel required></textarea>
+      </div>
+
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Save Company" />
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<!-- <app-all-companies></app-all-companies> -->

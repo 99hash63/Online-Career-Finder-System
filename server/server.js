@@ -10,7 +10,6 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 
 const app = express();
-const bodyParser = require("body-parser");
 
 //reuqests allow any domain
 app.use(cors({ origin: "http://localhost:4200" }));
