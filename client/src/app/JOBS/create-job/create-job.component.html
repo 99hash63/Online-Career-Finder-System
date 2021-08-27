@@ -115,9 +115,7 @@
                         <input (focus)="markTouchedWebsite()" matInput placeholder="Enter your url" [formControl]="url"
                             formControlName="website" name="website" [(ngModel)]="jobpostservice.selectedJob.website"
                             type="text" required>
-                        <mat-error *ngIf="url.hasError('required')">
-                            Url required
-                        </mat-error>
+                     
                         <mat-error *ngIf="url.hasError('pattern')">
                             Url Pattern Invalid
                         </mat-error>
@@ -128,8 +126,7 @@
 
 
 
-                <button matStepperNext class="btn btn-primary pull-right mt-3 mx-5">Continue to job
-                    description</button>
+                <button matStepperNext class="btn btn-primary pull-right mt-3 mx-5">Next</button>
 
             </form>
 
