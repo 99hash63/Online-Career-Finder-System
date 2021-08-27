@@ -45,3 +45,14 @@
     height: 10;
     width: 37vw;
 }
+.toast-center {
+    top: 150%;
+    left: 40%;
+}
+.ng-valid[required], .ng-valid.required {
+	border-left: 5px solid #42A948;
+}
+.ng-invalid:not(form){
+	border-left: 5px solid #e04441;
+	/*a94442*/
+}

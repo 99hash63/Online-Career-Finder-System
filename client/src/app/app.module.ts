@@ -43,7 +43,23 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { JobViewComponent } from './JOBS/all-jobs/job-view/job-view.component';
 import { SuccessPageComponent } from './JOBS/success-page/success-page.component';
 
+import { CompanyCreateComponent } from './companies/company-create/company-create.component';
+import { AllCompaniesComponent } from './companies/all-companies/all-companies.component';
+import { CookieService } from 'ngx-cookie-service';
+import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
+import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
 //create object from routes module
+/*<<<<<<< HEAD
+const appRoutes: Routes =[
+  {path:'discoverinterviews' ,component: DiscoverhomeComponent},
+  {path:'insert' ,component: AddInterviewsComponent},
+  {path:'getcommoninterviews' ,component: GetCommonInterviewsComponent},
+  {path:'getinterviewguidlines' ,component: GetInterviewGuidlinesComponent},
+  {path:'getmyquestionpool' ,component: GetMyquestionpoolComponent},
+  {path:'getsavedquestions' ,component: GetSavedQuestionsComponent},
+  {path:'modify/:_id' ,component: UpdateInterviewsComponent}
+]
+=======*/
 const appRoutes: Routes = [
   { path: 'discoverinterviews', component: DiscoverhomeComponent },
   { path: 'insert', component: AddInterviewsComponent },
@@ -51,8 +67,15 @@ const appRoutes: Routes = [
   { path: 'getinterviewguidlines', component: GetInterviewGuidlinesComponent },
   { path: 'getmyquestionpool', component: GetMyquestionpoolComponent },
   { path: 'getsavedquestions', component: GetSavedQuestionsComponent },
-  { path: 'modify', component: UpdateInterviewsComponent },
+  { path: 'modify/:_id', component: UpdateInterviewsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'companyCreate', component: CompanyCreateComponent },
+  { path: 'allCompanies', component: AllCompaniesComponent },
+  { path: 'myCompanies', component: MyCompaniesComponent },
+  { path: 'myCompanyOverview', component: MyCompanyOverviewComponent },
 ];
+//>>>>>>> 4bf47a05a3e9ea4574b8c666ee804b92136e3ea0
 
 @NgModule({
   declarations: [
@@ -76,6 +99,10 @@ const appRoutes: Routes = [
     RegisterComponent,
     JobViewComponent,
     SuccessPageComponent,
+    CompanyCreateComponent,
+    AllCompaniesComponent,
+    MyCompaniesComponent,
+    MyCompanyOverviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +126,7 @@ const appRoutes: Routes = [
     SimpleNotificationsModule.forRoot(),
     Ng2SearchPipeModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent],
   exports: [NgxPaginationModule],
 })
