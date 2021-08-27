@@ -1,4 +1,4 @@
-<div class="container-fluid" style="width: 1500px; margin-bottom: 200px;">
+<!-- <div class="container-fluid" style="width: 1500px; margin-bottom: 200px;">
 
     <div class="mt-4">
         <div class="hstack d-flex justify-content-between gap-3">
@@ -166,7 +166,7 @@
         </div>
 
     </div>
-</div>
+</div> -->
 
 
 
@@ -185,3 +185,134 @@
         <button type="button" class="btn btn-danger w-25" (click)="c('Save click')">Yes</button>
     </div>
 </ng-template>
+
+
+<div class="container-fluid" style="width: 1500px; margin-bottom: 200px;">
+    <div class="mt-4">
+        <div class="hstack d-flex justify-content-between gap-3">
+            <div class="hstack mx-4">
+
+                <div class="me-3">
+                    <mat-form-field appearance="outline" [style.width.px]=340>
+                        <mat-label>Industry</mat-label>
+                        <mat-select [(ngModel)]="industry">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let state of IndustryOptions" [value]="state">{{state}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="me-3">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Type</mat-label>
+                        <mat-select [formControl]="JobType" [(ngModel)]="selectedTypes">
+                            <mat-option *ngFor="let st of typeList" [value]="st">{{st}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+            </div>
+            <div>
+                <div class="d-flex mx-4">
+                    <input class="form-control " style="width: 400px;" type="text" placeholder="Search"
+                        aria-label="Search" [(ngModel)]="searchTerm">
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="row m-4 ">
+        <div class="col-5 bg-light border rounded-3 p-3 ">
+            <div class="m-1 mt-4 overflow-auto" style="height: 1000px">
+                <div class="card mb-3" style="max-width: 510px; height: 150px; border-radius: 10px; cursor: pointer;"
+                    *ngFor="let job of jobpostservice.jobs | paginate: { itemsPerPage: pageSize, currentPage: page+1 ,totalItems:totalLength }
+                    | filter:searchTerm | filter:selectedTypes | filter:industry" (click)="setJob(job) ">
+                    <div class="row g-0">
+                        <div class="col-md-3 display:block text-center">
+                            <img [src]="job.image" style="max-height: 100px;"
+                                class="img-fluid mx-auto card-img-overlay rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <span class="card-text text-black-50">{{job.company}}</span>
+                                <h6 class="card-title m-0">{{job.title}}</h6>
+                                <span class="card-text  text-black-50">{{job.location}}</span><br>
+                                <small class="text-muted ">{{calcDateDiff(job.createdDate)}}</small>
+                                <button type="button" *ngIf="job.publish"
+                                    class="btn mt-2 btn-outline-dark pull-right w-50">Unpublish</button>
+                                <button type="button" *ngIf="!job.publish"
+                                    class="btn mt-2 btn-dark pull-right w-50">Publish</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <mat-paginator class="" [length]="totalLength" [pageSize]="pageSize" [pageSizeOptions]="[10, 25, 50, 100]"
+                aria-label="Select page" (page)="handlePageEvent($event)">
+            </mat-paginator>
+
+
+        </div>
+        <div class="col-7 bg-white rounded-3 border border-secondary" style="height: 1150px">
+
+            <div class=" m-4 p-4" *ngIf="!jobpostservice.selectedJob">
+                <h2 class="text-center mt-5"> Please select a job</h2>
+            </div>
+            <div class=" m-4 p-4" *ngIf="jobpostservice.selectedJob ">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="d-inline-flex">
+                            <h6 class="text-muted ">{{jobpostservice.selectedJob.company}}</h6>
+                            <span class="text-muted mx-3 small">{{jobpostservice.selectedJob.location}}</span>
+                        </div>
+
+                        <h4 class="">{{jobpostservice.selectedJob.title}}</h4>
+                        <h6 class="text-muted">{{jobpostservice.selectedJob.type}}</h6>
+                        <div class="d-block">
+                            <p class="mt-4 text-success" style="font-weight: 500;">
+                                {{jobpostservice.selectedJob.appliedApplicants}} applicants</p>
+                            <p class="badge bg-warning" *ngIf="achiring()">
+                                Actively
+                                Hiring</p>
+
+                        </div>
+
+                    </div>
+                    <div class="col-4 mt-4 ">
+                        <button type="button" class="btn w-50 mx-2 btn-primary " routerLink="editjobs">Edit</button>
+                        <button type="button" class="btn  btn-danger" (click)="open(content)">Delete</button>
+
+                    </div>
+
+                    <div class="mt-5 overflow-auto jobdescription" style="height: 700px;">
+
+                        {{jobpostservice.selectedJob.description}}
+                    </div>
+                    <hr class="mt-5">
+                    <div class="d-flex justify-content-around">
+                        <div class="d-block ">
+                            <h5 class="text-center">Salary</h5>
+                            <h4 class="text-muted ">$&nbsp;{{jobpostservice.selectedJob.salary}}.00
+                            </h4>
+
+                        </div>
+                        <div class="d-block">
+                            <h5 class="text-center">Website</h5>
+                            <a href="https://{{jobpostservice.selectedJob.website}}">
+                                <h4 class="text-muted">{{jobpostservice.selectedJob.website}}</h4>
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
