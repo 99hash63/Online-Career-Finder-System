@@ -162,31 +162,26 @@ export class EditJobComponent implements OnInit {
       description: this.secondFormGroup.value.description,
     });
 
-    var today = new Date();
-    var dd = String(today.getUTCDate()).padStart(2, '0');
-    var mm = String(today.getUTCMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getUTCFullYear();
-
-    var CurrentDate = mm + '/' + dd + '/' + yyyy;
-
     this.jobForm.value.publish = this.publish;
     this.jobForm.value.appliedApplicants = 0;
-    this.jobForm.value.createdDate = CurrentDate;
+    this.jobForm.value.createdDate =
+      this.jobpostservice.selectedJob.createdDate;
     this.jobForm.value.image = this.cardImageBase64 || this.image;
     this.jobForm.value.website = this.url.value;
 
     if (
-      this.cardImageBase64 &&
       !this.imageError &&
       this.firstFormGroup.valid &&
       this.secondFormGroup.valid
     ) {
-      this.jobpostservice.postJob(this.jobForm.value).subscribe((res) => {
-        this.resetForm();
-        this.removeImage();
-        // window.location.href = '/createJob/success';
-        this.router?.navigate(['/createJob/success']);
-      });
+      this.jobpostservice
+        .updateJobPost(this.jobForm.value, this.jobpostservice.selectedJob._id)
+        .subscribe((res) => {
+          this.resetForm();
+          this.removeImage();
+          // window.location.href = '/createJob/success';
+          this.router?.navigate(['/createJob/success']);
+        });
     }
   }
 

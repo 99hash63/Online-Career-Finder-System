@@ -11,7 +11,7 @@ export class JobpostService {
 
   readonly baseURLCJ = 'http://localhost:5000/findjobs/createjob';
   readonly baseURLGA = 'http://localhost:5000/findjobs/jobs';
-  readonly baseURLGAMY = 'http://localhost:5000/findjobs//myjobs';
+  readonly baseURLGAMY = 'http://localhost:5000/findjobs/myjobs';
   readonly baseURLPUBLISH = 'http://localhost:5000/findjobs/jobs/publish';
 
   constructor(private http: HttpClient) {}
@@ -24,6 +24,9 @@ export class JobpostService {
   }
   getAJobPost(jobID: string) {
     return this.http.get(this.baseURLGA + `/${jobID}`);
+  }
+  updateJobPost(job: Jobpost, jobID: string) {
+    return this.http.put(this.baseURLGA + `/${jobID}`, job);
   }
   getmyalljobs() {
     return this.http.get(this.baseURLGAMY + `/${this.userID}`);

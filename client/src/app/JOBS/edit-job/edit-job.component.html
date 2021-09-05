@@ -242,7 +242,7 @@
 
                         <div class="card mt-5 job-description pull-right" style="width: 18rem;">
                             <ng-container *ngIf="isImageSaved">
-                                <img [src]="jobpostservice.selectedJob.image" />
+                                <img [src]="cardImageBase64" />
                             </ng-container>
                             <img *ngIf="!isImageSaved" [src]="jobpostservice.selectedJob.image" class="card-img-top"
                                 alt="...">

@@ -134,7 +134,21 @@ exports.updateJobPost = async (req, res) => {
   });
   await Jobs.findByIdAndUpdate(
     req.params.id,
-    { $set: job },
+    {
+      $set: {
+        title,
+        company,
+        location,
+        industry,
+        type,
+        activelyHiring,
+        salary,
+        expectedApplicants,
+        website,
+        description,
+        image,
+      },
+    },
     { new: true },
     (err, doc) => {
       if (!err) {
