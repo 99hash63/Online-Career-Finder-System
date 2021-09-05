@@ -241,9 +241,13 @@
                                 <span class="card-text  text-black-50">{{job.location}}</span><br>
                                 <small class="text-muted ">{{calcDateDiff(job.createdDate)}}</small>
                                 <button type="button" *ngIf="job.publish" (click)="updatePublish(job._id,job.publish)"
-                                    class="btn mt-2 btn-outline-dark pull-right w-50">Unpublish</button>
+                                    class="btn mt-2 btn-outline-dark pull-right w-50">Unpublish <i
+                                        *ngIf="loading() && job._id == ujob"
+                                        class="fa fa-circle-o-notch fa-spin"></i></button>
                                 <button type="button" *ngIf="!job.publish" (click)="updatePublish(job._id,job.publish)"
-                                    class="btn mt-2 btn-dark pull-right w-50">Publish</button>
+                                    class="btn mt-2 btn-dark pull-right w-50">Publish <i
+                                        *ngIf="loading() && job._id == ujob"
+                                        class="fa fa-circle-o-notch fa-spin"></i></button>
                             </div>
                         </div>
                     </div>

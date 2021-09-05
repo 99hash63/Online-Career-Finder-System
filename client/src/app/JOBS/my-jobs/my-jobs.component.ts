@@ -37,6 +37,7 @@ import {
   Validators,
   PatternValidator,
 } from '@angular/forms';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-my-jobs',
@@ -73,6 +74,8 @@ export class MyJobsComponent implements OnInit {
 
   jobForm!: FormGroup;
 
+  ujob!: string;
+
   handlePageEvent(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.page = event.pageIndex;
@@ -107,9 +110,9 @@ export class MyJobsComponent implements OnInit {
   refreshJobList() {
     this.jobpostservice.getalljobs().subscribe((res) => {
       this.jobpostservice.jobs = res as Jobpost[];
-
       this.showJobPost = res;
       this.totalLength = this.showJobPost.length;
+      this.ujob = '';
     });
   }
   calcDateDiff(date: any) {
@@ -132,6 +135,7 @@ export class MyJobsComponent implements OnInit {
     });
   }
   updatePublish(id, con) {
+    this.ujob = id;
     if (con == true) {
       this.jobForm = this._formBuilder.group({
         publish: false,
@@ -152,5 +156,8 @@ export class MyJobsComponent implements OnInit {
           this.refreshJobList();
         });
     }
+  }
+  loading() {
+    return true;
   }
 }
