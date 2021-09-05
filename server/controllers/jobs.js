@@ -2,15 +2,30 @@ const Jobs = require("../models/Jobs");
 var ObjectId = require("mongoose").Types.ObjectId;
 
 exports.getJobPosts = async (req, res) => {
-  await Jobs.find((err, docs) => {
-    if (!err) {
-      res.send(docs);
-    } else {
-      console.log(
-        "Error in Retriving Jobs :" + JSON.stringify(err, undefined, 2)
-      );
+  await Jobs.find(
+    {
+      publish: true,
+    },
+    function (err, docs) {
+      if (!err) {
+        return res.send(docs);
+      } else {
+        console.log(
+          "Error in Retriving Jobs :" + JSON.stringify(err, undefined, 2)
+        );
+      }
     }
-  });
+  );
+
+  // find((err, docs) => {
+  //   if (!err) {
+  //     res.send(docs);
+  //   } else {
+  //     console.log(
+  //       "Error in Retriving Jobs :" + JSON.stringify(err, undefined, 2)
+  //     );
+  //   }
+  // });
 };
 exports.getJobPost = async (req, res) => {
   if (!ObjectId.isValid(req.params.id))
