@@ -7,7 +7,7 @@ import { Jobpost } from './jobpost.model';
 export class JobpostService {
   selectedJob!: Jobpost;
   jobs!: Jobpost[];
-  userID: string;
+  userID = '1';
 
   readonly baseURLCJ = 'http://localhost:5000/findjobs/createjob';
   readonly baseURLGA = 'http://localhost:5000/findjobs/jobs';

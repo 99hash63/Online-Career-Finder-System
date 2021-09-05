@@ -20,7 +20,7 @@ exports.getJobPosts = async (req, res) => {
 exports.getMyJobPosts = async (req, res) => {
   await Jobs.find(
     {
-      user: req.params.id,
+      user: req.params.userID,
     },
     function (err, docs) {
       if (!err) {
@@ -50,6 +50,7 @@ exports.getJobPost = async (req, res) => {
 
 exports.createJobPost = async (req, res) => {
   const {
+    user,
     title,
     company,
     location,
@@ -67,6 +68,7 @@ exports.createJobPost = async (req, res) => {
   } = req.body;
 
   var job = new Jobs({
+    user,
     title,
     company,
     location,
@@ -96,6 +98,7 @@ exports.updateJobPost = async (req, res) => {
     return res.status(400).send(`No record with given id : ${req.params.id}`);
 
   const {
+    // user,
     title,
     company,
     location,
@@ -113,6 +116,7 @@ exports.updateJobPost = async (req, res) => {
   } = req.body;
 
   var job = new Jobs({
+    // user,
     title,
     company,
     location,

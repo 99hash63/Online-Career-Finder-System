@@ -108,7 +108,7 @@ export class MyJobsComponent implements OnInit {
     });
   }
   refreshJobList() {
-    this.jobpostservice.getalljobs().subscribe((res) => {
+    this.jobpostservice.getmyalljobs().subscribe((res) => {
       this.jobpostservice.jobs = res as Jobpost[];
       this.showJobPost = res;
       this.totalLength = this.showJobPost.length;
