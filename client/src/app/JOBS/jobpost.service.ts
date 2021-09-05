@@ -34,4 +34,7 @@ export class JobpostService {
   updatePublish(id, value) {
     return this.http.put(this.baseURLPUBLISH + `/${id}`, value);
   }
+  deleteJobPost(jobID: string) {
+    return this.http.delete(this.baseURLGA + `/${jobID}`);
+  }
 }

@@ -139,4 +139,12 @@ export class MyJobsComponent implements OnInit {
   Edit(job: Jobpost) {
     this.jobpostservice.selectedJob = job;
   }
+  deletePost() {
+    this.jobpostservice
+      .deleteJobPost(this.jobpostservice.selectedJob._id)
+      .subscribe((res) => {
+        this.refreshJobList();
+        this.jobpostservice.selectedJob = null;
+      });
+  }
 }
