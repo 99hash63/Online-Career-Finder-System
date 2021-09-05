@@ -16,16 +16,22 @@ exports.getJobPosts = async (req, res) => {
       }
     }
   );
-
-  // find((err, docs) => {
-  //   if (!err) {
-  //     res.send(docs);
-  //   } else {
-  //     console.log(
-  //       "Error in Retriving Jobs :" + JSON.stringify(err, undefined, 2)
-  //     );
-  //   }
-  // });
+};
+exports.getMyJobPosts = async (req, res) => {
+  await Jobs.find(
+    {
+      user: req.params.id,
+    },
+    function (err, docs) {
+      if (!err) {
+        return res.send(docs);
+      } else {
+        console.log(
+          "Error in Retriving Jobs :" + JSON.stringify(err, undefined, 2)
+        );
+      }
+    }
+  );
 };
 exports.getJobPost = async (req, res) => {
   if (!ObjectId.isValid(req.params.id))
