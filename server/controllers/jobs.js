@@ -123,6 +123,25 @@ exports.updateJobPost = async (req, res) => {
   );
 };
 
+exports.publishJobPost = async (req, res) => {
+  let jobID = req.params.id;
+  const { publish } = req.body;
+
+  const updatePublish = {
+    $set: {
+      publish: publish,
+    },
+  };
+
+  await Jobs.findByIdAndUpdate(jobID, updatePublish)
+    .then(() => {
+      res.status(200).send({ status: "Job updated" });
+    })
+    .catch((e) => {
+      res.status(500).send({ status: "Error" });
+    });
+};
+
 exports.deleteJobPost = async (req, res) => {
   if (!ObjectId.isValid(req.params.id))
     return res.status(400).send(`No record with given id : ${req.params.id}`);

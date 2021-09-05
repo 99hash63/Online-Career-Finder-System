@@ -71,6 +71,8 @@ export class MyJobsComponent implements OnInit {
 
   IndustryOptions = IndustryOptions;
 
+  jobForm!: FormGroup;
+
   handlePageEvent(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.page = event.pageIndex;
@@ -81,6 +83,7 @@ export class MyJobsComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     public jobpostservice: JobpostService,
+    private _formBuilder: FormBuilder,
     config: NgbModalConfig
   ) {
     // customize default values of modals used by this component tree
@@ -127,5 +130,27 @@ export class MyJobsComponent implements OnInit {
     this.modalService.open(content, {
       backdrop: 'static',
     });
+  }
+  updatePublish(id, con) {
+    if (con == true) {
+      this.jobForm = this._formBuilder.group({
+        publish: false,
+      });
+      this.jobpostservice
+        .updatePublish(id, this.jobForm.value)
+        .subscribe((res) => {
+          this.refreshJobList();
+        });
+    }
+    if (con == false) {
+      this.jobForm = this._formBuilder.group({
+        publish: true,
+      });
+      this.jobpostservice
+        .updatePublish(id, this.jobForm.value)
+        .subscribe((res) => {
+          this.refreshJobList();
+        });
+    }
   }
 }

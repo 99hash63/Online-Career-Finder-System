@@ -9,6 +9,7 @@ export class JobpostService {
   jobs!: Jobpost[];
   readonly baseURLCJ = 'http://localhost:5000/findjobs/createjob';
   readonly baseURLGA = 'http://localhost:5000/findjobs/jobs';
+  readonly baseURLPUBLISH = 'http://localhost:5000/findjobs/jobs/publish';
 
   constructor(private http: HttpClient) {}
   postJob(job: Jobpost) {
@@ -16,5 +17,8 @@ export class JobpostService {
   }
   getalljobs() {
     return this.http.get(this.baseURLGA);
+  }
+  updatePublish(id, value) {
+    return this.http.put(this.baseURLPUBLISH + `/${id}`, value);
   }
 }

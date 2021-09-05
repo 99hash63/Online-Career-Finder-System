@@ -240,9 +240,9 @@
                                 <h6 class="card-title m-0">{{job.title}}</h6>
                                 <span class="card-text  text-black-50">{{job.location}}</span><br>
                                 <small class="text-muted ">{{calcDateDiff(job.createdDate)}}</small>
-                                <button type="button" *ngIf="job.publish"
+                                <button type="button" *ngIf="job.publish" (click)="updatePublish(job._id,job.publish)"
                                     class="btn mt-2 btn-outline-dark pull-right w-50">Unpublish</button>
-                                <button type="button" *ngIf="!job.publish"
+                                <button type="button" *ngIf="!job.publish" (click)="updatePublish(job._id,job.publish)"
                                     class="btn mt-2 btn-dark pull-right w-50">Publish</button>
                             </div>
                         </div>
