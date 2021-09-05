@@ -12,6 +12,7 @@
                 <input type="hidden" name='_id' [(ngModel)]="jobpostservice.selectedJob._id"
                     [ngModelOptions]="{standalone: true}">
 
+
                 <div class="">
 
                     <mat-form-field class="mat-form-field-job" appearance="outline" [hideRequiredMarker]="true">
@@ -163,14 +164,14 @@
                         <ng-container *ngIf="isImageSaved">
                             <img [src]="cardImageBase64" />
                         </ng-container>
-                        <img *ngIf="!isImageSaved" src="../../../assets/images/logo2.png" class="card-img-top"
+                        <img *ngIf="!isImageSaved" [src]="jobpostservice.selectedJob.image" class="card-img-top"
                             alt="...">
                         <div class="card-body">
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Upload your company logo here</label>
                                 <input class="form-control" type="file" id="formFile" (change)="fileChangeEvent($event)"
-                                    (click)="removeImage()" name="image" formControlName="image" #image
-                                    [(ngModel)]="jobpostservice.selectedJob.image" required>
+                                    name="image" formControlName="image" #image
+                                    [(ngModel)]="jobpostservice.selectedJob.image">
 
 
                                 <div *ngIf="imageError" class="alert alert-danger mt-2"> {{imageError}}</div>
@@ -241,9 +242,9 @@
 
                         <div class="card mt-5 job-description pull-right" style="width: 18rem;">
                             <ng-container *ngIf="isImageSaved">
-                                <img [src]="cardImageBase64" />
+                                <img [src]="jobpostservice.selectedJob.image" />
                             </ng-container>
-                            <img *ngIf="!isImageSaved" src="../../../assets/images/logo2.png" class="card-img-top"
+                            <img *ngIf="!isImageSaved" [src]="jobpostservice.selectedJob.image" class="card-img-top"
                                 alt="...">
 
                         </div>
@@ -262,12 +263,9 @@
                 <button type="submit" (click)="setPublish(true)" (click)="onSubmit()"
                     [disabled]="!firstFormGroup.valid || !secondFormGroup.valid || !thirdFormGroup.valid"
                     class="btn btn-primary mt-4 w-25 pull-right">
-                    Publish
+                    Update
                 </button>
-                <button type="submit" (click)="setPublish(false)" (click)="onSubmit()"
-                    [disabled]="!firstFormGroup.valid || !secondFormGroup.valid || !thirdFormGroup.valid"
-                    class="btn btn-dark mt-4 pull-right mx-3">Save as
-                    draft</button>
+
                 <button matStepperPrevious class="btn btn-outline-primary mt-4  pull-left">Back</button>
 
             </div>

@@ -1,41 +1,13 @@
-// import { Component, OnInit } from '@angular/core';
-// import { JobpostService } from '../jobpost.service';
-// import { Jobpost } from '../jobpost.model';
-// import { FormGroup, FormGroupDirective, NgForm } from '@angular/forms';
-
-// @Component({
-//   selector: 'app-edit-job',
-//   templateUrl: './edit-job.component.html',
-//   styleUrls: ['./edit-job.component.css'],
-//   providers: [JobpostService],
-// })
-// export class EditJobComponent implements OnInit {
-//   exform!: FormGroup;
-//   constructor(public jobpostservice: JobpostService) {
-//     publishnow: true;
-//   }
-
-//   ngOnInit(): void {}
-//   onSubmit(form: NgForm) {
-//     var today = new Date();
-//     var dd = String(today.getDate()).padStart(2, '0');
-//     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-//     var yyyy = today.getFullYear();
-
-//     var CurrentDate = mm + '/' + dd + '/' + yyyy;
-
-//     form.value.publish = true;
-//     form.value.appliedApplicants = 0;
-//     form.value.createdDate = CurrentDate;
-
-//     this.jobpostservice.postJob(form.value).subscribe((res) => {});
-//   }
-// }
-
 import { Component, OnInit, Input } from '@angular/core';
 import { JobpostService } from '../jobpost.service';
 import { Jobpost } from '../jobpost.model';
-import { RouterModule, Routes, Router, RouterLink } from '@angular/router';
+import {
+  RouterModule,
+  Routes,
+  Router,
+  RouterLink,
+  ActivatedRoute,
+} from '@angular/router';
 import { ValidationErrors, AbstractControl, ValidatorFn } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { IndustryOptions } from '../../../assets/industries';
@@ -85,7 +57,8 @@ export class EditJobComponent implements OnInit {
     private first: FormBuilder,
     private second: FormBuilder,
     private third: FormBuilder,
-    router: Router
+    router: Router,
+    private jobpostID: ActivatedRoute
   ) {
     this.router = router;
   }
@@ -93,9 +66,15 @@ export class EditJobComponent implements OnInit {
   public myreg =
     /^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/i;
 
+  image: string;
+
   ngOnInit(): void {
-    this.resetForm();
-    this.removeImage();
+    this.jobpostservice
+      .getAJobPost(this.jobpostID.snapshot.params.id)
+      .subscribe((res) => {
+        this.jobpostservice.selectedJob = res;
+        this.image = this.jobpostservice.selectedJob.image;
+      });
 
     (this.firstFormGroup = this.first.group({
       title: new FormControl('', [Validators.required]),
@@ -115,10 +94,8 @@ export class EditJobComponent implements OnInit {
         description: new FormControl('', [Validators.required]),
       }));
     this.thirdFormGroup = this.third.group({
-      image: new FormControl('', [Validators.required]),
+      image: new FormControl('.', [Validators.required]),
     });
-
-    // this.firstFormGroup.valueChanges.subscribe(console.log);
   }
 
   validateImage(): ValidatorFn {
@@ -195,7 +172,7 @@ export class EditJobComponent implements OnInit {
     this.jobForm.value.publish = this.publish;
     this.jobForm.value.appliedApplicants = 0;
     this.jobForm.value.createdDate = CurrentDate;
-    this.jobForm.value.image = this.cardImageBase64;
+    this.jobForm.value.image = this.cardImageBase64 || this.image;
     this.jobForm.value.website = this.url.value;
 
     if (

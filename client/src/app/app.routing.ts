@@ -21,7 +21,7 @@ export const ROUTES: Routes = [
     component: MyJobsComponent,
   },
   {
-    path: 'myjobs/editjobs',
+    path: 'myjobs/editjobs/:id',
     component: EditJobComponent,
   },
   {

@@ -22,6 +22,9 @@ export class JobpostService {
   getalljobs() {
     return this.http.get(this.baseURLGA);
   }
+  getAJobPost(jobID: string) {
+    return this.http.get(this.baseURLGA + `/${jobID}`);
+  }
   getmyalljobs() {
     return this.http.get(this.baseURLGAMY + `/${this.userID}`);
   }
