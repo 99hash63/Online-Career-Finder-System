@@ -48,6 +48,7 @@ import { AllCompaniesComponent } from './companies/all-companies/all-companies.c
 import { CookieService } from 'ngx-cookie-service';
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
 import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
+import { ProfileComponent } from './profile/profile.component';
 //create object from routes module
 /*<<<<<<< HEAD
 const appRoutes: Routes =[
@@ -103,6 +104,7 @@ const appRoutes: Routes = [
     AllCompaniesComponent,
     MyCompaniesComponent,
     MyCompanyOverviewComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
