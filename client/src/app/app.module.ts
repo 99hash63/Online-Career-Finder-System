@@ -26,6 +26,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DiscoverhomeComponent } from './Interview-components/discoverhome/discoverhome.component';
 import { AddInterviewsComponent } from './Interview-components/add-interviews/add-interviews.component';
@@ -118,6 +119,7 @@ const appRoutes: Routes = [
     NgxPaginationModule,
     MatPaginatorModule,
     NgbModule,
+    MatSnackBarModule,
     MatButtonModule,
     MatAutocompleteModule,
     MatRadioModule,

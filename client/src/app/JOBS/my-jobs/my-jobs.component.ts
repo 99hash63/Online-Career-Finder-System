@@ -4,6 +4,7 @@ import { JobpostService } from '../jobpost.service';
 import { Jobpost } from '../jobpost.model';
 import { PageEvent } from '@angular/material/paginator';
 import { IndustryOptions } from '../../../assets/industries';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   FormGroup,
   FormBuilder,
@@ -52,6 +53,8 @@ export class MyJobsComponent implements OnInit {
 
   ujob!: string;
 
+  durationInSeconds = 5;
+
   handlePageEvent(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.page = event.pageIndex;
@@ -63,7 +66,8 @@ export class MyJobsComponent implements OnInit {
     private modalService: NgbModal,
     public jobpostservice: JobpostService,
     private _formBuilder: FormBuilder,
-    config: NgbModalConfig
+    config: NgbModalConfig,
+    private _snackBar: MatSnackBar
   ) {
     // customize default values of modals used by this component tree
     config.backdrop = 'static';
@@ -145,6 +149,26 @@ export class MyJobsComponent implements OnInit {
       .subscribe((res) => {
         this.refreshJobList();
         this.jobpostservice.selectedJob = null;
+        this.openSnackBar();
       });
   }
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackBarComponentExample, {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
 }
+
+@Component({
+  selector: 'snack-bar-component-example',
+  templateUrl: 'snack-bar-component-example.html',
+  styles: [
+    `
+      .jobpost-deleted {
+        color: white;
+        margin-left: 50px;
+      }
+    `,
+  ],
+})
+export class SnackBarComponentExample {}
