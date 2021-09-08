@@ -1,6 +1,7 @@
 export class Jobpost {
-  _id?:string;
-  title?:string;
+  _id?: string;
+  user?: string;
+  title?: string;
   company?: string;
   location?: string;
   industry?: string;

@@ -7,8 +7,9 @@ const { options } = require('../routes/companies');
 //@route POST /api/v1/auth/register
 //@access public
 exports.register = asyncHandler(async (req, res, next) => {
-	const { name, email, password } = req.body;
 
+	const { name, email, password } = req.body;
+	console.log(req.body);
 	//create user
 	const user = await User.create({
 		name,
@@ -17,6 +18,7 @@ exports.register = asyncHandler(async (req, res, next) => {
 	});
 
 	sendTokenResponse(user, 200, res);
+	console.log('success');
 });
 
 //@desc Login user

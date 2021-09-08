@@ -2,15 +2,36 @@ const Jobs = require("../models/Jobs");
 var ObjectId = require("mongoose").Types.ObjectId;
 
 exports.getJobPosts = async (req, res) => {
-  await Jobs.find((err, docs) => {
-    if (!err) {
-      res.send(docs);
-    } else {
-      console.log(
-        "Error in Retriving Jobs :" + JSON.stringify(err, undefined, 2)
-      );
+  await Jobs.find(
+    {
+      publish: true,
+    },
+    function (err, docs) {
+      if (!err) {
+        return res.send(docs);
+      } else {
+        console.log(
+          "Error in Retriving Jobs :" + JSON.stringify(err, undefined, 2)
+        );
+      }
     }
-  });
+  );
+};
+exports.getMyJobPosts = async (req, res) => {
+  await Jobs.find(
+    {
+      user: req.params.userID,
+    },
+    function (err, docs) {
+      if (!err) {
+        return res.send(docs);
+      } else {
+        console.log(
+          "Error in Retriving Jobs :" + JSON.stringify(err, undefined, 2)
+        );
+      }
+    }
+  );
 };
 exports.getJobPost = async (req, res) => {
   if (!ObjectId.isValid(req.params.id))
@@ -29,6 +50,7 @@ exports.getJobPost = async (req, res) => {
 
 exports.createJobPost = async (req, res) => {
   const {
+    user,
     title,
     company,
     location,
@@ -46,6 +68,7 @@ exports.createJobPost = async (req, res) => {
   } = req.body;
 
   var job = new Jobs({
+    user,
     title,
     company,
     location,
@@ -75,6 +98,7 @@ exports.updateJobPost = async (req, res) => {
     return res.status(400).send(`No record with given id : ${req.params.id}`);
 
   const {
+    // user,
     title,
     company,
     location,
@@ -92,6 +116,7 @@ exports.updateJobPost = async (req, res) => {
   } = req.body;
 
   var job = new Jobs({
+    // user,
     title,
     company,
     location,
@@ -109,7 +134,21 @@ exports.updateJobPost = async (req, res) => {
   });
   await Jobs.findByIdAndUpdate(
     req.params.id,
-    { $set: job },
+    {
+      $set: {
+        title,
+        company,
+        location,
+        industry,
+        type,
+        activelyHiring,
+        salary,
+        expectedApplicants,
+        website,
+        description,
+        image,
+      },
+    },
     { new: true },
     (err, doc) => {
       if (!err) {
@@ -121,6 +160,25 @@ exports.updateJobPost = async (req, res) => {
       }
     }
   );
+};
+
+exports.publishJobPost = async (req, res) => {
+  let jobID = req.params.id;
+  const { publish } = req.body;
+
+  const updatePublish = {
+    $set: {
+      publish: publish,
+    },
+  };
+
+  await Jobs.findByIdAndUpdate(jobID, updatePublish)
+    .then(() => {
+      res.status(200).send({ status: "Job updated" });
+    })
+    .catch((e) => {
+      res.status(500).send({ status: "Error" });
+    });
 };
 
 exports.deleteJobPost = async (req, res) => {

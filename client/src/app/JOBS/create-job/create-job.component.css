@@ -1,3 +1,7 @@
+.main {
+  background: white;
+}
+
 #description {
   min-height: 250px;
 }

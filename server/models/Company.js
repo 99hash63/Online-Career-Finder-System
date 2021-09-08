@@ -5,7 +5,7 @@ const geocoder = require('../utils/geocoder');
 const CompanySchema = new mongoose.Schema({
 	industry: {
 		type: String,
-		required: [true, 'Please add an industry'],
+		// required: [true, 'Please add an industry'],
 		trim: true,
 		enum: [
 			'IT/Software',
@@ -19,19 +19,19 @@ const CompanySchema = new mongoose.Schema({
 
 	emp_count: {
 		type: String,
-		required: [true, 'Please add an emp_count'],
+		// required: [true, 'Please add an emp_count'],
 		trim: true,
 		enum: ['0-10', '10-50', '50-200', '200-1000', 'Above 1000'],
 	},
 
 	founded: {
 		type: Date,
-		required: [true, 'Please add a founded date'],
+		// required: [true, 'Please add a founded date'],
 	},
 
 	website: {
 		type: String,
-		required: [true, 'Please add a website'],
+		// required: [true, 'Please add a website'],
 		trim: true,
 		match: [
 			/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
@@ -41,12 +41,12 @@ const CompanySchema = new mongoose.Schema({
 
 	revenue: {
 		type: Number,
-		required: [true, 'Please add a revenue'],
+		// required: [true, 'Please add a revenue'],
 	},
 
 	address: {
 		type: String,
-		required: [true, 'Please add an address'],
+		// required: [true, 'Please add an address'],
 	},
 
 	location: {
@@ -69,7 +69,7 @@ const CompanySchema = new mongoose.Schema({
 
 	title: {
 		type: String,
-		required: [true, 'Please add a title'],
+		// required: [true, 'Please add a title'],
 		minLength: [1, 'Title should be more than 1 character'],
 		maxLength: [50, 'Title should be below 50 characters'],
 		unique: true,
@@ -79,7 +79,7 @@ const CompanySchema = new mongoose.Schema({
 
 	description: {
 		type: String,
-		required: [true, 'Please add a description'],
+		// required: [true, 'Please add a description'],
 		minLength: [50, 'Description should be more than 50 characters'],
 		maxLength: [500, 'Description should be below 500 characters'],
 	},
@@ -103,7 +103,7 @@ const CompanySchema = new mongoose.Schema({
 	isPublic: {
 		type: Boolean,
 		default: false,
-		required: true,
+		// required: true,
 	},
 
 	createdAt: {
@@ -124,23 +124,22 @@ CompanySchema.pre('save', function (next) {
 });
 
 // Geocode & create location field
-CompanySchema.pre('save', async function (next) {
-	const loc = await geocoder.geocode(this.address);
-	this.location = {
-		type: 'Point',
-		coordinates: [loc[0].longitude, loc[0].latitude],
-		formattedAddress: loc[0].formattedAddress,
-		street: loc[0].streetName,
-		city: loc[0].city,
-		state: loc[0].stateCode,
-		zipcode: loc[0].zipcode,
-		country: loc[0].countryCode,
-	};
+// CompanySchema.pre('save', async function (next) {
+// 	const loc = await geocoder.geocode(this.address);
+// 	this.location = {
+// 		type: 'Point',
+// 		coordinates: [loc[0].longitude, loc[0].latitude],
+// 		formattedAddress: loc[0].formattedAddress,
+// 		street: loc[0].streetName,
+// 		city: loc[0].city,
+// 		state: loc[0].stateCode,
+// 		zipcode: loc[0].zipcode,
+// 		country: loc[0].countryCode,
+// 	};
 
-	// Do not save address in DB
-	this.address = undefined;
-	next();
-});
-
+// 	// Do not save address in DB
+// 	this.address = undefined;
+// 	next();
+// });
 
 module.exports = mongoose.model('Company', CompanySchema);

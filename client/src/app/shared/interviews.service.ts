@@ -17,7 +17,9 @@ export class InterviewsService {
   InterviewQuestion: Interviews[] = [];
 
   //URl
-  readonly baseURL = "http://localhost:5000/Interviews/add";
+  readonly baseURL = "http://localhost:5000/Interviews";
+
+  readonly URL_addInterview = "http://localhost:5000/Interviews/add";
 
   readonly URL_getCommonInterviews = "http://localhost:5000/Interviews/displayci";
 
@@ -27,12 +29,14 @@ export class InterviewsService {
 
   readonly URL_getsavedQuestions = "http://localhost:5000/Interviews/displaysq";
 
+  readonly URL_update = "http://localhost:5000/Interviews/update";
+
   //constructor
   constructor(private http: HttpClient) { }
 
   //using this postInterview methods users can add interview questions
   postInterview(In : Interviews){
-    return this.http.post(this.baseURL,In)
+    return this.http.post(this.URL_addInterview,In)
   }
 
   //getCommonInterviewList method use to retrieve all common interview questions
@@ -53,5 +57,17 @@ export class InterviewsService {
   //getsavedQuestions method used to retrieve all bookmarked questions
   getsavedQuestions(){
     return this.http.get(this.URL_getsavedQuestions);
+  }
+
+  putInterviews(In : Interviews){
+    return this.http.put(this.URL_update + `/${In._id}`, In);
+  }
+
+  deleteInterview(_id : string){
+    return this.http.delete(this.baseURL + `/${_id}`);
+  }
+
+  saveQuestion(In : Interviews){
+    return this.http.put(this.URL_update + '/${In._id}',In);
   }
 }
