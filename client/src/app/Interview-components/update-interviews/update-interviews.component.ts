@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { NotificationsService } from 'angular2-notifications';
+import { result } from 'lodash';
 
 import { InterviewsService } from 'src/app/shared/interviews.service';
 
@@ -13,14 +14,22 @@ import { InterviewsService } from 'src/app/shared/interviews.service';
 })
 export class UpdateInterviewsComponent implements OnInit {
 
-  JobTitle : String = "";
+  
+
+  /*JobTitle : String = "";
   QuestionType : String = "";
   Offer : String = "";
   Question : String = "";
-  Answer : String = "";
+  Answer : String = "";*/
+
   constructor(private r : ActivatedRoute,private notification : NotificationsService,public interviewService : InterviewsService) { }
 
   ngOnInit(): void {
+    console.log(this.r.snapshot.params._id)
+    this.interviewService.getCurrentData(this.r.snapshot.params._id).subscribe((result)=>{
+      console.log(result)
+      
+    })
   }
 
   OnUpdateInterviews(){

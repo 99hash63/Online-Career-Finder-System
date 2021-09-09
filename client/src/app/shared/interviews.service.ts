@@ -58,7 +58,10 @@ export class InterviewsService {
   getsavedQuestions(){
     return this.http.get(this.URL_getsavedQuestions);
   }
-
+  //
+  getCurrentData(In : Interviews){
+    return this.http.get(this.URL_getQuestiopool+`/${In._id}`)
+  }
   putInterviews(In : Interviews){
     return this.http.put(this.URL_update + `/${In._id}`, In);
   }

@@ -75,7 +75,7 @@ const appRoutes: Routes = [
   { path: 'myCompanies', component: MyCompaniesComponent },
   { path: 'myCompanyOverview', component: MyCompanyOverviewComponent },
 ];
-//>>>>>>> 4bf47a05a3e9ea4574b8c666ee804b92136e3ea0
+
 
 @NgModule({
   declarations: [
