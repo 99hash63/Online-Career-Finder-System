@@ -51,7 +51,7 @@ router.route('/displayci').get((req, res) => {
 //retrive interview guildlines
 router.route('/displayig').get((req, res) => {
 	//body
-	Interviews.find({ QuestionType: 'InterviewGuidelines' })
+	Interviews.find({ QuestionType: 'tips' })
 		.then((questions) => {
 			res.json(questions);
 		})
