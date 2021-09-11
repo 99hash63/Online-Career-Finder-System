@@ -60,12 +60,15 @@ export class InterviewsService {
   getsavedQuestions(){
     return this.http.get(this.URL_getsavedQuestions);
   }
-  //to update
+
+  //to update fetch the data into update form
   getCurrentData(_id:String): Observable<Interviews>{
     return this.http.get<Interviews>(this.URL_getCurrentDataToupdate+`/${_id}`)
   }
-  putInterviews(In : Interviews){
-    return this.http.put(this.URL_update + `/${In._id}`, In);
+
+  //update data 
+  updateInterviews(id:String , In : Interviews): Observable<Interviews>{
+    return this.http.put<Interviews>(this.URL_update + `/${In._id}`, In);
   }
 
   deleteInterview(_id : string){

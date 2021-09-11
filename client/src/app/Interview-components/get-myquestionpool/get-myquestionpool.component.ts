@@ -61,11 +61,11 @@ Answer : String = "";
   }
   
   //update question and answer
-  onUpdate(form : NgForm){
-    this.questionpool.putInterviews(form.value).subscribe((res)=>{
-      this.resetForm(form);
-    })
-  }
+  //onUpdate(form : NgForm){
+   // this.questionpool.putInterviews(form.value).subscribe((res)=>{
+   //   this.resetForm(form);
+   // })
+ // }
   
   /*onEdit(In : Interviews) {
     this.questionpool.selectedQuestion = In;
