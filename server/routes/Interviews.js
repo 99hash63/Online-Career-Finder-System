@@ -84,6 +84,16 @@ router.route('/displayuserqp').get((req, res) => {
 		});
 });
 
+//find by id
+router.route('/getuersbyID/:id').get((req,res)=>{
+	Interviews.findById(req.params.id).then((questions) => {
+		res.json(questions);
+	})
+	.catch((err) => {
+		console.log(err);
+	});
+})
+
 //update
 router.route('/update/:id').put(async (req, res) => {
 	let qno = req.params.id;

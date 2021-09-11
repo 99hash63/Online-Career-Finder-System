@@ -7,7 +7,7 @@
     <form (Submit)="OnUpdateInterviews()">
         <div class="form-group">
             <label for="JobTitle" >JobTitle *</label>
-            <input type="text" name="JobTitle" #JobTitle="ngModel"  required maxlength="20" [(ngModel)]="interviewService.selectedQuestion.JobTitle" class="form-control">
+            <input type="text" name="JobTitle" #JobTitle="ngModel"  required maxlength="20" [(ngModel)]="selectedQuestion.JobTitle" class="form-control" disabled>
 
             <div *ngIf="JobTitle.errors && (JobTitle.dirty || JobTitle.touched)" class="alert alert-danger">
 
@@ -20,7 +20,7 @@
         <div class="form-group">
             <label for="QuestionType" >Question Type *</label>
             <!--<input name="QuestionType" type="text" class="form-control">--><!--[(ngModel)]="QuestionType" -->
-            <select name="QuestionType" #QuestionType="ngModel" [(ngModel)]="interviewService.selectedQuestion.QuestionType" required class="form-control" disabled>
+            <select name="QuestionType" #QuestionType="ngModel" [(ngModel)]="selectedQuestion.QuestionType" required class="form-control" disabled>
                 <option value="CommonInterviewQuestion">Common Interview Question</option>
                 <option value="InterviewGuidlines">Interview Guidlines</option>
             </select>
@@ -29,7 +29,7 @@
         <div class="form-group">
             <label for="Offer" >Did you get an offer *</label>
             <!--<input name="Offer" type="text" class="form-control">--><!--[(ngModel)]="Offer" -->
-            <select name="Offer" #Offer="ngModel" [(ngModel)]="interviewService.selectedQuestion.Offer" required class="form-control" disabled>
+            <select name="Offer" #Offer="ngModel" [(ngModel)]="selectedQuestion.Offer" required class="form-control" disabled >
                 <option value="No">No</option>
                 <option value="Yes,but declined">Yes,but declined</option>
                 <option value="Yes,and accepted">Yes,and accepted</option>
@@ -38,7 +38,7 @@
 
         <div class="form-group">
             <label for="Question" >Interview Question *</label>
-            <textarea name="Question" #Question="ngModel" required minlength="15" maxlength="100" [(ngModel)]="interviewService.selectedQuestion.Question" class="form-control"></textarea>
+            <textarea name="Question" #Question="ngModel" required minlength="15" maxlength="100" [(ngModel)]="selectedQuestion.Question" class="form-control"></textarea>
 
             <div *ngIf="Question.errors && (Question.dirty || Question.touched)" class="alert alert-danger">
 
@@ -51,7 +51,7 @@
         </div>
         <div class="form-group">
             <label for="Answer" >How to answer this *</label>
-            <textarea name="Answer" #Answer="ngModel" required minlength="150" [(ngModel)]="interviewService.selectedQuestion.Answer" class="form-control"></textarea>
+            <textarea name="Answer" #Answer="ngModel" required minlength="150" [(ngModel)]="selectedQuestion.Answer" class="form-control"></textarea>
 
            
             <div *ngIf="Answer.errors && (Answer.dirty || Answer.touched)" class="alert alert-danger">

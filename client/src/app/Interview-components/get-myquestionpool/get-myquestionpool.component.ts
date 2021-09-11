@@ -1,5 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { NgbModalConfig,NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
 
 import {InterviewsService} from '../../shared/interviews.service';
 import { Interviews } from 'src/app/shared/interviews.model';
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class GetMyquestionpoolComponent implements OnInit {
 
-  constructor(public questionpool : InterviewsService, private router :Router,config: NgbModalConfig, private modalService: NgbModal) {
+  constructor(public questionpool : InterviewsService, private router :Router,config: NgbModalConfig, private modalService: NgbModal,private r:ActivatedRoute) {
      // customize default values of modals used by this component tree
      config.backdrop = 'static';
      config.keyboard = false;
@@ -65,13 +66,13 @@ Answer : String = "";
       this.resetForm(form);
     })
   }
+  
   /*onEdit(In : Interviews) {
     this.questionpool.selectedQuestion = In;
   }*/
 
   onEdit(_id : string){
     this.router.navigate(['/modify' , _id])
-
   }
 
   onDelete(_id : string){

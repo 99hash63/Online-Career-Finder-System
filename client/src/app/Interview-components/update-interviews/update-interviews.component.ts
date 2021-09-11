@@ -5,6 +5,7 @@ import { NotificationsService } from 'angular2-notifications';
 import { result } from 'lodash';
 
 import { InterviewsService } from 'src/app/shared/interviews.service';
+import { Interviews } from 'src/app/shared/interviews.model';
 
 
 @Component({
@@ -21,15 +22,20 @@ export class UpdateInterviewsComponent implements OnInit {
   Offer : String = "";
   Question : String = "";
   Answer : String = "";*/
-
+  _id : String;
+  selectedQuestion: Interviews = new Interviews();
   constructor(private r : ActivatedRoute,private notification : NotificationsService,public interviewService : InterviewsService) { }
 
   ngOnInit(): void {
-    console.log(this.r.snapshot.params._id)
-    this.interviewService.getCurrentData(this.r.snapshot.params._id).subscribe((result)=>{
-      console.log(result)
-      
+    this._id = this.r.snapshot.params['_id'];
+    this.interviewService.getCurrentData(this._id).subscribe(data=>{
+      this.selectedQuestion = data;
     })
+    //console.log(this.r.snapshot.params._id)
+    //this.interviewService.getCurrentData(this.r.snapshot.params._id).subscribe((result)=>{
+      //console.log(result)
+      
+    //})
   }
 
   OnUpdateInterviews(){
