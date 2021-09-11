@@ -7,13 +7,20 @@
     <form (Submit)="OnUpdateInterviews()">
         <div class="form-group">
             <label for="JobTitle" >JobTitle *</label>
-            <input name="JobTitle" [(ngModel)]="JobTitle" type="text" class="form-control"><!--[(ngModel)]="JobTitle"-->
+            <input type="text" name="JobTitle" #JobTitle="ngModel"  required maxlength="20" [(ngModel)]="interviewService.selectedQuestion.JobTitle" class="form-control">
+
+            <div *ngIf="JobTitle.errors && (JobTitle.dirty || JobTitle.touched)" class="alert alert-danger">
+
+                <div [hidden]="!JobTitle.errors.required"> JobTitle is required </div>
+                <div [hidden]="!JobTitle.errors.maxlength" >JobTitle cannot be more than 20 long </div>
+
+            </div>
         </div>
                 
         <div class="form-group">
             <label for="QuestionType" >Question Type *</label>
             <!--<input name="QuestionType" type="text" class="form-control">--><!--[(ngModel)]="QuestionType" -->
-            <select id="QuestionType" [(ngModel)]="QuestionType" name="QuestionType" class="form-control">
+            <select name="QuestionType" #QuestionType="ngModel" [(ngModel)]="interviewService.selectedQuestion.QuestionType" required class="form-control" disabled>
                 <option value="CommonInterviewQuestion">Common Interview Question</option>
                 <option value="InterviewGuidlines">Interview Guidlines</option>
             </select>
@@ -22,7 +29,7 @@
         <div class="form-group">
             <label for="Offer" >Did you get an offer *</label>
             <!--<input name="Offer" type="text" class="form-control">--><!--[(ngModel)]="Offer" -->
-            <select id="Offer" [(ngModel)]="Offer" name="Offer" class="form-control">
+            <select name="Offer" #Offer="ngModel" [(ngModel)]="interviewService.selectedQuestion.Offer" required class="form-control" disabled>
                 <option value="No">No</option>
                 <option value="Yes,but declined">Yes,but declined</option>
                 <option value="Yes,and accepted">Yes,and accepted</option>
@@ -31,19 +38,33 @@
 
         <div class="form-group">
             <label for="Question" >Interview Question *</label>
-            <textarea name="Question" [(ngModel)]="Question" type="text" class="form-control"></textarea><!--[(ngModel)]="Question" -->
+            <textarea name="Question" #Question="ngModel" required minlength="15" maxlength="100" [(ngModel)]="interviewService.selectedQuestion.Question" class="form-control"></textarea>
+
+            <div *ngIf="Question.errors && (Question.dirty || Question.touched)" class="alert alert-danger">
+
+                <div [hidden]="!Question.errors.required"> Question is required </div>
+                <div [hidden]="!Question.errors.minlength"> Question must be at least 15 characters </div>
+                <div [hidden]="!Question.errors.maxlength" >Question cannot be more than 100 long </div>
+
+            </div>
+
         </div>
         <div class="form-group">
             <label for="Answer" >How to answer this *</label>
-            <textarea name="Answer" [(ngModel)]="Answer" type="Answer" class="form-control"></textarea><!--[(ngModel)]="Answer" -->
+            <textarea name="Answer" #Answer="ngModel" required minlength="150" [(ngModel)]="interviewService.selectedQuestion.Answer" class="form-control"></textarea>
+
+           
+            <div *ngIf="Answer.errors && (Answer.dirty || Answer.touched)" class="alert alert-danger">
+
+                <div [hidden]="!Answer.errors.required"> Answer is required </div>
+                <div [hidden]="!Answer.errors.minlength"> Answer must be at least 150 characters </div>
+
+            </div>
+
         </div>
         <br>
-        
-            <!--<button type="submit" class="btn btn-primary" value="Submit" class="In-submit">Submit</button>--><!--class="btn btn-primary"-->
-            
-            <!--<input type="submit" class="btn btn-primary" value="Update" class="In-submit">-->
             <div class="center">
-            <button type="submit" class="btn btn-primary" value="Update" class="In-submit">Update</button>
+            <button type="submit" class="btn btn-primary" value="Update">Update</button>
             </div>
             
 

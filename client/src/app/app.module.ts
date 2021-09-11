@@ -26,6 +26,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DiscoverhomeComponent } from './Interview-components/discoverhome/discoverhome.component';
 import { AddInterviewsComponent } from './Interview-components/add-interviews/add-interviews.component';
@@ -48,7 +49,19 @@ import { AllCompaniesComponent } from './companies/all-companies/all-companies.c
 import { CookieService } from 'ngx-cookie-service';
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
 import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
+import { ProfileComponent } from './profile/profile.component';
 //create object from routes module
+/*<<<<<<< HEAD
+const appRoutes: Routes =[
+  {path:'discoverinterviews' ,component: DiscoverhomeComponent},
+  {path:'insert' ,component: AddInterviewsComponent},
+  {path:'getcommoninterviews' ,component: GetCommonInterviewsComponent},
+  {path:'getinterviewguidlines' ,component: GetInterviewGuidlinesComponent},
+  {path:'getmyquestionpool' ,component: GetMyquestionpoolComponent},
+  {path:'getsavedquestions' ,component: GetSavedQuestionsComponent},
+  {path:'modify/:_id' ,component: UpdateInterviewsComponent}
+]
+=======*/
 const appRoutes: Routes = [
   { path: 'discoverinterviews', component: DiscoverhomeComponent },
   { path: 'insert', component: AddInterviewsComponent },
@@ -56,7 +69,7 @@ const appRoutes: Routes = [
   { path: 'getinterviewguidlines', component: GetInterviewGuidlinesComponent },
   { path: 'getmyquestionpool', component: GetMyquestionpoolComponent },
   { path: 'getsavedquestions', component: GetSavedQuestionsComponent },
-  { path: 'modify', component: UpdateInterviewsComponent },
+  { path: 'modify/:_id', component: UpdateInterviewsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'companyCreate', component: CompanyCreateComponent },
@@ -64,6 +77,7 @@ const appRoutes: Routes = [
   { path: 'myCompanies', component: MyCompaniesComponent },
   { path: 'myCompanyOverview', component: MyCompanyOverviewComponent },
 ];
+//>>>>>>> 4bf47a05a3e9ea4574b8c666ee804b92136e3ea0
 
 @NgModule({
   declarations: [
@@ -91,6 +105,7 @@ const appRoutes: Routes = [
     AllCompaniesComponent,
     MyCompaniesComponent,
     MyCompanyOverviewComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,6 +119,7 @@ const appRoutes: Routes = [
     NgxPaginationModule,
     MatPaginatorModule,
     NgbModule,
+    MatSnackBarModule,
     MatButtonModule,
     MatAutocompleteModule,
     MatRadioModule,

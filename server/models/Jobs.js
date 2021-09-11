@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const JobPost = new Schema({
+  user: {
+    type: String,
+    require: true,
+  },
   title: {
     type: String,
     require: true,

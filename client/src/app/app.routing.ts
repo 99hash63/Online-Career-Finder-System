@@ -5,6 +5,7 @@ import { CreateJobComponent } from './JOBS/create-job/create-job.component';
 import { EditJobComponent } from './JOBS/edit-job/edit-job.component';
 import { MyJobsComponent } from './JOBS/my-jobs/my-jobs.component';
 import { SuccessPageComponent } from './JOBS/success-page/success-page.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const ROUTES: Routes = [
   {
@@ -20,11 +21,15 @@ export const ROUTES: Routes = [
     component: MyJobsComponent,
   },
   {
-    path: 'myjobs/editjobs',
+    path: 'myjobs/editjobs/:id',
     component: EditJobComponent,
   },
   {
     path: 'createJob/success',
     component: SuccessPageComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
   },
 ];

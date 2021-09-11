@@ -16,9 +16,12 @@ export class GetSavedQuestionsComponent implements OnInit {
   ngOnInit(): void {
     this.refreshsavedQuestions();
   }
+
+  //retrive all saved questions
   refreshsavedQuestions() {
     this.savedQuestions.getsavedQuestions().subscribe((res) => {
       this.savedQuestions.InterviewQuestion = res as Interviews[];
     });
   }
+
 }
