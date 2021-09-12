@@ -40,18 +40,18 @@ export class UpdateInterviewsComponent implements OnInit {
     this.interviewService.updateInterviews(this._id,this.selectedQuestion).subscribe( res => {
       console.log(res);
       this.OnSucess('Successfully updated');
-      //this.refreshQuestionpool();
+      this.refreshQuestionpool();
     },error=> this.OnError('Unsuccessful'));
   }
-  /*refreshQuestionpool() {
+  refreshQuestionpool() {
     this.interviewService.getQuestionpool().subscribe((res) => {
       this.interviewService.InterviewQuestion = res as Interviews[];
     });
-  }*/
+  }
   OnSucess(message){
     this.notification.success('Success',message,{
       position:['bottom','right'],
-      timeOut : 3000,
+      timeOut : 2500,
       animate : 'fade',
       showProgressBar : true
     })
