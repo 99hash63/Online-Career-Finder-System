@@ -31,6 +31,8 @@ export class InterviewsService {
 
   readonly URL_update = "http://localhost:5000/Interviews/update";
 
+  readonly URL_getCurrentDataToupdate = "http://localhost:5000/Interviews/getuersbyID";
+
   //constructor
   constructor(private http: HttpClient) { }
 
@@ -59,8 +61,14 @@ export class InterviewsService {
     return this.http.get(this.URL_getsavedQuestions);
   }
 
-  putInterviews(In : Interviews){
-    return this.http.put(this.URL_update + `/${In._id}`, In);
+  //to update fetch the data into update form
+  getCurrentData(_id:String): Observable<Interviews>{
+    return this.http.get<Interviews>(this.URL_getCurrentDataToupdate+`/${_id}`)
+  }
+
+  //update data 
+  updateInterviews(id:String , In : Interviews): Observable<Interviews>{
+    return this.http.put<Interviews>(this.URL_update + `/${In._id}`, In);
   }
 
   deleteInterview(_id : string){

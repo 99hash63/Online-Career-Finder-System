@@ -51,7 +51,7 @@ router.route('/displayci').get((req, res) => {
 //retrive interview guildlines
 router.route('/displayig').get((req, res) => {
 	//body
-	Interviews.find({ QuestionType: 'InterviewGuidelines' })
+	Interviews.find({ QuestionType: 'tips' })
 		.then((questions) => {
 			res.json(questions);
 		})
@@ -83,6 +83,16 @@ router.route('/displayuserqp').get((req, res) => {
 			console.log(err);
 		});
 });
+
+//find by id
+router.route('/getuersbyID/:id').get((req,res)=>{
+	Interviews.findById(req.params.id).then((questions) => {
+		res.json(questions);
+	})
+	.catch((err) => {
+		console.log(err);
+	});
+})
 
 //update
 router.route('/update/:id').put(async (req, res) => {
