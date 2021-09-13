@@ -6,6 +6,7 @@ import {InterviewsService} from '../../shared/interviews.service';
 import { Interviews } from 'src/app/shared/interviews.model';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
   selector: 'app-get-myquestionpool',
@@ -20,7 +21,8 @@ export class GetMyquestionpoolComponent implements OnInit {
     private router :Router,
     config: NgbModalConfig,
     private modalService: NgbModal,
-    private r:ActivatedRoute) {
+    private r:ActivatedRoute,
+    private notification: NotificationsService ) {
 
      // customize default values of modals used by this component tree
      config.backdrop = 'static';
@@ -68,11 +70,26 @@ export class GetMyquestionpoolComponent implements OnInit {
     });
   }
 
+  close(){
+    this.modalService.dismissAll()
+  }
+
   //delete question and answer deleteQuestion()
   Ondelete(_id : string){
     this.questionpool.deleteInterview(_id).subscribe( res =>{
       console.log(res);
+      this.close();
       this.refreshQuestionpool();
+    })
+  }
+
+  //Successful notification
+  OnSucess(message){
+    this.notification.success('Success',message,{
+      position:['bottom','right'],
+      timeOut : 15000,
+      animate : 'fade',
+      showProgressBar : true
     })
   }
   
