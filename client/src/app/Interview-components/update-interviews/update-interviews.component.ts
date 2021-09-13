@@ -16,16 +16,13 @@ import { NgForm } from '@angular/forms';
 })
 export class UpdateInterviewsComponent implements OnInit {
 
-  
-
-  /*JobTitle : String = "";
-  QuestionType : String = "";
-  Offer : String = "";
-  Question : String = "";
-  Answer : String = "";*/
   _id : String;
   selectedQuestion: Interviews = new Interviews();
-  constructor(private r : ActivatedRoute,private notification : NotificationsService,public interviewService : InterviewsService) { }
+  
+  constructor(
+    private r : ActivatedRoute,
+    private notification : NotificationsService,
+    public interviewService : InterviewsService) { }
 
   ngOnInit(): void {
     this._id = this.r.snapshot.params['_id'];
@@ -40,14 +37,16 @@ export class UpdateInterviewsComponent implements OnInit {
     this.interviewService.updateInterviews(this._id,this.selectedQuestion).subscribe( res => {
       console.log(res);
       this.OnSucess('Successfully updated');
-      this.refreshQuestionpool();
+      //this.refreshQuestionpool();
     },error=> this.OnError('Unsuccessful'));
   }
-  refreshQuestionpool() {
+  /*refreshQuestionpool() {
     this.interviewService.getQuestionpool().subscribe((res) => {
       this.interviewService.InterviewQuestion = res as Interviews[];
     });
-  }
+  }*/
+
+  //Successful notification
   OnSucess(message){
     this.notification.success('Success',message,{
       position:['bottom','right'],
@@ -57,6 +56,7 @@ export class UpdateInterviewsComponent implements OnInit {
     })
   }
 
+  //Unsuccessful notification
   OnError(message){
     this.notification.error('Error',message,{
       position:['bottom','right'],

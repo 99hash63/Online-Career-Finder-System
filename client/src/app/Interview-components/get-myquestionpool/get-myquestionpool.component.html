@@ -22,10 +22,42 @@
                 <button type="submit" (click)="onEdit(In._id)" class="btn w-35 mx-3 btn-primary">Update</button>
                 <button type="submit" (click)="open(content)" class="btn w-35 btn-danger" value="Delete" data-toggle="modal" data-target="DeleteModal">Delete</button>
             </div>
+
+            <!--delete -->
+            <ng-template #content let-c="close" let-d="dismiss">
+              <div class="modal-header ">
+                <h4 class="modal-title" id="modal-basic-title">Confirm Delete</h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure you want to delete?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark w-25" (click)="c()">No</button>
+                <button type="button" class="btn btn-danger w-25" (click)="Ondelete(In._id)">Yes</button>
+              </div>
+            </ng-template>
+
         </div>
 
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Update Modal -->
 <!--<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
@@ -97,19 +129,3 @@
       </div>
     </div>
   </div>-->
-
-  <ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header ">
-        <h4 class="modal-title" id="modal-basic-title">Confirm Delete</h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <p>Are you sure you want to delete?</p>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark w-25" (click)="c('close')">No</button>
-        <button type="button" class="btn btn-danger w-25" (click)="c('Save click')">Yes</button>
-    </div>
-</ng-template>
