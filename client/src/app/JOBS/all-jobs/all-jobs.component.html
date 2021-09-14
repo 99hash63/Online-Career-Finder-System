@@ -140,12 +140,20 @@
 
                 <div class="modal-body p-4  ">
 
-                    <form>
+                    <form class="needs-validation" novalidate>
                         <div class="mb-3">
                             <label for="apply-name" class="form-label">Full Name</label>
-                            <input type="email" class="form-control" id="apply-name" aria-describedby="emailHelp">
+                            <input type="email" class="form-control" id="apply-name" aria-describedby="emailHelp"
+                                required>
 
                         </div>
+
+                        <mat-form-field class="mat-form-field-job" appearance="outline" [hideRequiredMarker]="true">
+                            <mat-label>Full Name</mat-label>
+                            <input matInput type="text" id="title" name='title' formControlName="title"
+                                [(ngModel)]="jobpostservice.selectedJob.title" required>
+                        </mat-form-field>
+
                         <div class="mb-3">
                             <label for="apply-address" class="form-label">Address</label>
                             <input type="email" class="form-control" id="apply-address" aria-describedby="emailHelp">

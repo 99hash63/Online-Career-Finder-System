@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Jobpost } from './jobpost.model';
+import { Applicant } from './applicant.model';
 
 @Injectable()
 export class JobpostService {
   selectedJob!: Jobpost;
   jobs!: Jobpost[];
+  applyjob!:Applicant;
   userID = '1';
 
   readonly baseURLCJ = 'http://localhost:5000/findjobs/createjob';

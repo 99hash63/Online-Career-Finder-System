@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JobpostService } from '../jobpost.service';
 import { Jobpost } from '../jobpost.model';
+import { Applicant } from '../applicant.model';
 import { PageEvent } from '@angular/material/paginator';
 import { IndustryOptions } from '../../../assets/industries';
 import {
@@ -64,6 +65,9 @@ export class AllJobsComponent implements OnInit {
   }
   setJob(job: Jobpost) {
     this.jobpostservice.selectedJob = job;
+  }
+  setApplyJob(candidate: Applicant) {
+    this.jobpostservice.applyjob = candidate;
   }
 
   openScrollableContent(longContent: any) {
