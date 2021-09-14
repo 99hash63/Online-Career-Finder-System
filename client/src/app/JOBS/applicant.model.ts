@@ -7,4 +7,6 @@ export class Applicant {
   phone!: string;
   coverletter!: string;
   resume!: string;
+
+  constructor() {}
 }

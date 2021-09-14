@@ -8,7 +8,7 @@ import { Applicant } from './applicant.model';
 export class JobpostService {
   selectedJob!: Jobpost;
   jobs!: Jobpost[];
-  applyjob!:Applicant;
+  applicant!:Applicant;
   userID = '1';
 
   readonly baseURLCJ = 'http://localhost:5000/findjobs/createjob';

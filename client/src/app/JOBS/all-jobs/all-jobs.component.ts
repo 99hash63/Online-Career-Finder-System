@@ -48,6 +48,12 @@ export class AllJobsComponent implements OnInit {
 
   IndustryOptions = IndustryOptions;
 
+  applicantFormGroup!: FormGroup;
+
+  applicant: Applicant = null;
+
+  email;
+
   handlePageEvent(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.page = event.pageIndex;
@@ -57,17 +63,36 @@ export class AllJobsComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    public jobpostservice: JobpostService
+    public jobpostservice: JobpostService,
+    private first: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.refreshJobList();
+
+    this.applicantFormGroup = this.first.group({
+      aFullname: new FormControl('', [Validators.required]),
+      aAddress: new FormControl('', [Validators.required]),
+      aEmail: new FormControl('', [Validators.required, Validators.email]),
+      aPhone: new FormControl('', [Validators.required]),
+      aCV: new FormControl('', [Validators.required]),
+      aResume: new FormControl('', [Validators.required]),
+    });
   }
+  // aEmail = new FormControl('', [Validators.required, Validators.email]);
+  // getErrorMessage() {
+  //   if (this.aEmail.hasError('required')) {
+  //     return 'You must enter a value';
+  //   }
+
+  //   return this.aEmail.hasError('email') ? 'Not a valid email' : '';
+  // }
+
   setJob(job: Jobpost) {
     this.jobpostservice.selectedJob = job;
   }
   setApplyJob(candidate: Applicant) {
-    this.jobpostservice.applyjob = candidate;
+    this.jobpostservice.applicant = candidate;
   }
 
   openScrollableContent(longContent: any) {
@@ -98,5 +123,11 @@ export class AllJobsComponent implements OnInit {
       return true;
     }
     return false;
+  }
+  downloadPDF() {
+    console.log(this.jobpostservice.applicant);
+  }
+  SubmitApplication(jobID) {
+    console.log('have fun' + jobID);
   }
 }
