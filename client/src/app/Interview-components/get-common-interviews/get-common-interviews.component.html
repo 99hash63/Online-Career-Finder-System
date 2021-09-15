@@ -9,9 +9,17 @@
         <div class="question">
             {{interview.Question}}
             <!--<button style="font-size:14px" class="heart"><i class="fa fa-heart-o" style="font-size:22px"></i></button>-->
-           <button style="font-size:14px" class="heart" class="fa fa-heart-o" style="font-size:22px;background-color:#6cbceb;border:none; text-align:right ;height: 10;width: 70vw;" (click)="save()"></button>
+           <button style="font-size:14px" class="fa fa-heart" 
+                style="font-size:22px; background-color:#6cbceb;border:none; text-align:right ;height: 10;width: 69vw; color: #ccc;
+                font-size: 1.5em;"
+                (click)="save('yes')"
+                ></button>
+
+          <!--<a routerLink="getcommoninterviews" class="like">
+              <i class="fa fa-heart" aria-hideen="true" (click)="save('yes')"></i>
+        </a>-->
         </div>
-        <div class="answer">
+        <div class="answer" >
             {{interview.Answer}}
         </div>
         <br>

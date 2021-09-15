@@ -6,6 +6,6 @@ export class Interviews {
     Question:String  = "";
     Answer:String  = "";
     User?:String  = "";
-    SaveOp?:String  = "";
+    SaveOp?:String = "";
 
 }

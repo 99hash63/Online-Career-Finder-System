@@ -1,7 +1,7 @@
 .question{
     color: black;
     /*background-color: rgb(119, 163, 243);*/
-    background-color: rgb(108, 188, 235);
+    background-color: #6cbceb;
     /*background-color: rgb(115, 179, 216);*/
     padding: 10px 10px 10px 10px;
     font-size: medium;
@@ -33,24 +33,13 @@
     border-radius: 15px;
     
 }
-.heart{
-    background-color: #6cbceb;
-    text-align:right ;
-    border: none;
-    height: 10;
-    width: 70vw;
-}
-/*.fa-heart-o:hover{
-    animation: animate .8s steps(28) 1;
-    background-position: right;
+
+
+ .heart i.fa-heart{
+    color: #f44336;
  }
- @keyframes animate {
-     0%{
-         background-position: left;
-     }
-     100%{
-         background-position: right;
-     }
- }*/
+ .heart{
+     animation: heart 0.5s linear;
+ }
 
 

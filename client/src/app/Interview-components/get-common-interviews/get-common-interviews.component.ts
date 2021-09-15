@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 //import { InterviewsService } from 'src/app/shared/interviews.service';
 import {InterviewsService} from '../../shared/interviews.service';
@@ -15,6 +15,8 @@ export class GetCommonInterviewsComponent implements OnInit {
   constructor(public is : InterviewsService) { }
 
   searchtext: string =""
+  _id : string;
+  selectedQuestion: Interviews = new Interviews();
 
   ngOnInit(): void {
     this.refreshCommonInterviews();
@@ -24,8 +26,21 @@ export class GetCommonInterviewsComponent implements OnInit {
       this.is.InterviewQuestion = res as Interviews[];
     });
   }
-  save(){
-    this.is.selectedQuestion.SaveOp = 'yes';
+  /*@Input()
+  isActive: boolean;
+  onClick(){
+    this.isActive = !this.isActive;
+  }*/
+  @Input()
+  isActivate:boolean;
+  save(SaveOp : String){
+    this.is.saveQuestion(this._id,this.selectedQuestion).subscribe(res=>{
+      //this.is.selectedQuestion.SaveOp = 'yes';
+      console.log(res);
+    })
+      
   }
+
+  
 
 }

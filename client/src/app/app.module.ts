@@ -51,17 +51,7 @@ import { MyCompaniesComponent } from './companies/my-companies/my-companies.comp
 import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
 import { ProfileComponent } from './profile/profile.component';
 //create object from routes module
-/*<<<<<<< HEAD
-const appRoutes: Routes =[
-  {path:'discoverinterviews' ,component: DiscoverhomeComponent},
-  {path:'insert' ,component: AddInterviewsComponent},
-  {path:'getcommoninterviews' ,component: GetCommonInterviewsComponent},
-  {path:'getinterviewguidlines' ,component: GetInterviewGuidlinesComponent},
-  {path:'getmyquestionpool' ,component: GetMyquestionpoolComponent},
-  {path:'getsavedquestions' ,component: GetSavedQuestionsComponent},
-  {path:'modify/:_id' ,component: UpdateInterviewsComponent}
-]
-=======*/
+
 const appRoutes: Routes = [
   { path: 'discoverinterviews', component: DiscoverhomeComponent },
   { path: 'insert', component: AddInterviewsComponent },
