@@ -35,6 +35,8 @@ export class InterviewsService {
 
   readonly URL_delete = "http://localhost:5000/Interviews/delete"
 
+  readonly URL_save = "http://localhost:5000/Interviews/updatestatus"
+
   //constructor
   constructor(private http: HttpClient) { }
 
@@ -78,7 +80,8 @@ export class InterviewsService {
     return this.http.delete<Interviews>(this.URL_delete + `/${_id}`);
   }
 
-  saveQuestion(In : Interviews){
-    return this.http.put(this.URL_update + '/${In._id}',In);
+  //save button
+  saveQuestion(_id:string , In : Interviews): Observable<Interviews>{
+    return this.http.put<Interviews>(this.URL_save + '/${In._id}',In);
   }
 }
