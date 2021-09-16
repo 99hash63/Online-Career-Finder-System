@@ -19,7 +19,7 @@ export class GetCommonInterviewsComponent implements OnInit {
 
   searchtext: string =""
   _id : string;
-  SaveOp : String = "yes";
+  SaveOp : any = "yes";
   selectedQuestion: Interviews = new Interviews();
 
   ngOnInit(): void {
@@ -39,9 +39,9 @@ export class GetCommonInterviewsComponent implements OnInit {
   save(_id:string){
     console.log(_id);
     console.log(this.SaveOp);
-    this._id = this.r.snapshot.params['_id'];
+    //this._id = this.r.snapshot.params['_id'];
     //this.selectedQuestion = this.SaveOp;
-    this.is.saveQuestion(this._id,this.selectedQuestion).subscribe(res=>{
+    this.is.saveQuestion(_id,this.SaveOp).subscribe(res=>{
       console.log(res);
     })
       

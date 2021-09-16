@@ -82,7 +82,7 @@ export class InterviewsService {
 
   //save button
   saveQuestion(_id:string , In : Interviews): Observable<Interviews>{
-    return this.http.put<Interviews>(this.URL_save + `/${In._id}`,In);
+    return this.http.put<Interviews>(this.URL_save + `/${_id}`,In);
   }
   /*saveQuestion(_id:string , In : Interviews): Observable<Interviews>{
     return this.http.put<Interviews>(this.URL_save + `/${In._id}`,In);
