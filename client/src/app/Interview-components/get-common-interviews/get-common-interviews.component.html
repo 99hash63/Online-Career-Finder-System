@@ -9,10 +9,11 @@
         <div class="question">
             {{interview.Question}}
             <!--<button style="font-size:14px" class="heart"><i class="fa fa-heart-o" style="font-size:22px"></i></button>-->
-           <button style="font-size:14px" class="fa fa-heart" (click)="save(interview._id)"
-                ></button>
-
-        <!--<input type="checkbox">-->
+           <button class="fa fa-heart" (click)="save(interview._id)"></button>
+           <!--
+            <input type="checkbox" class="fa fa-heart" (click)="save(interview._id)" checked>   
+            <input type="checkbox" class="fa fa-heart-o" (click)="unsave(interview._id)" uncheked>-->
+            
                 
         </div>
         <div class="answer" >
