@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 //import { InterviewsService } from 'src/app/shared/interviews.service';
 import {InterviewsService} from '../../shared/interviews.service';
 import { Interviews } from 'src/app/shared/interviews.model';
@@ -12,10 +13,13 @@ import { Interviews } from 'src/app/shared/interviews.model';
 })
 export class GetCommonInterviewsComponent implements OnInit {
   
-  constructor(public is : InterviewsService) { }
+  constructor(public is : InterviewsService, 
+    private r : ActivatedRoute,
+    private router: Router) { }
 
   searchtext: string =""
   _id : string;
+  SaveOp : String = "yes";
   selectedQuestion: Interviews = new Interviews();
 
   ngOnInit(): void {
@@ -31,11 +35,13 @@ export class GetCommonInterviewsComponent implements OnInit {
   onClick(){
     this.isActive = !this.isActive;
   }*/
-  @Input()
-  isActivate:boolean;
-  save(SaveOp : String){
+
+  save(_id:string){
+    console.log(_id);
+    console.log(this.SaveOp);
+    this._id = this.r.snapshot.params['_id'];
+    //this.selectedQuestion = this.SaveOp;
     this.is.saveQuestion(this._id,this.selectedQuestion).subscribe(res=>{
-      //this.is.selectedQuestion.SaveOp = 'yes';
       console.log(res);
     })
       
