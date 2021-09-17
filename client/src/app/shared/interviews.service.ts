@@ -37,6 +37,8 @@ export class InterviewsService {
 
   readonly URL_save = "http://localhost:5000/Interviews/updatestatus"
 
+  readonly URL_Notsave = "http://localhost:5000/Interviews/reupdatestatus"
+
   //constructor
   constructor(private http: HttpClient) { }
 
@@ -87,6 +89,6 @@ export class InterviewsService {
 
   //unsave
   unsaveQuestion(_id:string , In : Interviews): Observable<Interviews>{
-    return this.http.put<Interviews>(this.URL_save + `/${_id}`,In);
+    return this.http.put<Interviews>(this.URL_Notsave + `/${_id}`,In);
   }
 }

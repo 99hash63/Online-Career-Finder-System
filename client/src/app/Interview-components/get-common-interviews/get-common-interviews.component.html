@@ -8,11 +8,12 @@
     <div class="panel panel-primary" *ngFor="let interview of is.InterviewQuestion | filter:searchtext">
         <div class="question">
             {{interview.Question}}
-            <!--<button style="font-size:14px" class="heart"><i class="fa fa-heart-o" style="font-size:22px"></i></button>-->
-           <button class="fa fa-heart" (click)="save(interview._id)"></button>
-           <!--
-            <input type="checkbox" class="fa fa-heart" (click)="save(interview._id)" checked>   
-            <input type="checkbox" class="fa fa-heart-o" (click)="unsave(interview._id)" uncheked>-->
+    
+            <button type="checkbox" class="fa fa-heart"
+            aria-checked="true" (click)="save(interview._id)"></button>
+           
+            <!--<input type="checkbox" [checked] class="fa fa-heart" (click)="save(interview._id)"
+            unchecked (click)="unsave(interview._id)">-->
             
                 
         </div>

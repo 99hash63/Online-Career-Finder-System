@@ -46,15 +46,6 @@ export class GetCommonInterviewsComponent implements OnInit {
       
   }
 
-  /*unsave(_id:string){
-    console.log(_id);
-    console.log(this.S);
-    this.is.saveQuestion(_id,this.S).subscribe(res=>{
-      console.log(res);
-    })
-      
-  }*/
-
   
 
 }

@@ -3,6 +3,8 @@
     <div class="panel panel-primary" *ngFor="let interview of savedQuestions.InterviewQuestion">
         <div class="question">
             {{interview.Question}}
+            <button type="checkbox" class="fa fa-heart"
+            aria-checked="true" (click)="unsave(interview._id)"></button>
             <div row></div>
         </div>
         <div class="answer">
