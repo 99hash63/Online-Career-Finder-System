@@ -51,4 +51,7 @@
     color: red;
     font-size: 1.5em;
  }
-
+ .fa-heart:checked,
+    .fa-heart:focus{
+        color: #ccc;
+ }
