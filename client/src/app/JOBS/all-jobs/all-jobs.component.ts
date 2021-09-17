@@ -6,6 +6,9 @@ import { Applicant } from '../applicant.model';
 import { PageEvent } from '@angular/material/paginator';
 import { IndustryOptions } from '../../../assets/industries';
 import * as _ from 'lodash';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import { pdftemp } from './pdftemp';
 import {
   FormGroup,
   FormBuilder,
@@ -136,7 +139,41 @@ export class AllJobsComponent implements OnInit {
   }
 
   downloadPDF() {
-    console.log(this.pdfBase64.result);
+    let DATA = document.getElementById('htmlData');
+
+    // html2canvas(DATA).then((canvas) => {
+    //   let fileWidth = 208;
+    //   let fileHeight = (canvas.height * fileWidth) / canvas.width;
+
+    //   const FILEURI = canvas.toDataURL('image/png');
+    //   let PDF = new jsPDF('p', 'mm', 'a4');
+    //   let position = 0;
+    //   PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+
+    //   PDF.save('angular-demo.pdf');
+    // });
+    const doc = new jsPDF({
+      orientation: 'p',
+      unit: 'px',
+      format: [1000, 700],
+    });
+    doc.html(
+      pdftemp(
+        this.jobpostservice.selectedJob.company,
+        this.jobpostservice.selectedJob.title,
+        this.applicantFormGroup.get('aFullname').value,
+        this.applicantFormGroup.get('aAddress').value,
+        this.applicantFormGroup.get('aEmail').value,
+        this.applicantFormGroup.get('aPhone').value,
+        this.applicantFormGroup.get('aCV').value
+      ),
+      {
+        callback: function (doc) {
+          doc.save('foo.pdf');
+        },
+        margin: 45,
+      }
+    );
   }
 
   SubmitApplication(jobID: any) {
