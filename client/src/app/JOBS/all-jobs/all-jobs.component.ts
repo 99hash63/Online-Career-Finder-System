@@ -145,6 +145,7 @@ export class AllJobsComponent implements OnInit {
   }
 
   downloadPDF() {
+    if (this.applicantFormGroup.valid) {
     const doc = new jsPDF({
       orientation: 'p',
       unit: 'px',
@@ -167,6 +168,7 @@ export class AllJobsComponent implements OnInit {
         margin: 45,
       }
     );
+    }
   }
 
   SubmitApplication(jobID: any) {
