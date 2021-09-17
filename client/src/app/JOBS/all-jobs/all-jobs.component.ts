@@ -5,6 +5,7 @@ import { Jobpost } from '../jobpost.model';
 import { Applicant } from '../applicant.model';
 import { PageEvent } from '@angular/material/paginator';
 import { IndustryOptions } from '../../../assets/industries';
+import { RouterModule, Routes, Router, RouterLink } from '@angular/router';
 import * as _ from 'lodash';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -58,6 +59,8 @@ export class AllJobsComponent implements OnInit {
 
   applicant: Applicant = null;
 
+  router?: Router;
+
   handlePageEvent(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.page = event.pageIndex;
@@ -68,8 +71,11 @@ export class AllJobsComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     public jobpostservice: JobpostService,
-    private first: FormBuilder
-  ) {}
+    private first: FormBuilder,
+    router: Router
+  ) {
+    this.router = router;
+  }
 
   ngOnInit(): void {
     this.refreshJobList();
@@ -139,19 +145,6 @@ export class AllJobsComponent implements OnInit {
   }
 
   downloadPDF() {
-    let DATA = document.getElementById('htmlData');
-
-    // html2canvas(DATA).then((canvas) => {
-    //   let fileWidth = 208;
-    //   let fileHeight = (canvas.height * fileWidth) / canvas.width;
-
-    //   const FILEURI = canvas.toDataURL('image/png');
-    //   let PDF = new jsPDF('p', 'mm', 'a4');
-    //   let position = 0;
-    //   PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-
-    //   PDF.save('angular-demo.pdf');
-    // });
     const doc = new jsPDF({
       orientation: 'p',
       unit: 'px',
@@ -181,7 +174,7 @@ export class AllJobsComponent implements OnInit {
       this.jobpostservice
         .newApplicant(jobID, this.applicantFormGroup.value)
         .subscribe((res) => {
-          console.log('send');
+          this.router?.navigate(['/applied/success']);
         });
     }
   }

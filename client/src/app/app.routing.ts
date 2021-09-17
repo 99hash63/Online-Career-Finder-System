@@ -1,5 +1,6 @@
 import { Router, RouterModule, Routes } from '@angular/router';
 import { AllJobsComponent } from './JOBS/all-jobs/all-jobs.component';
+import { AppliedSuccessComponent } from './JOBS/applied-success/applied-success.component';
 import { ApplyJobsComponent } from './JOBS/apply-jobs/apply-jobs.component';
 import { CreateJobComponent } from './JOBS/create-job/create-job.component';
 import { EditJobComponent } from './JOBS/edit-job/edit-job.component';
@@ -27,6 +28,10 @@ export const ROUTES: Routes = [
   {
     path: 'createJob/success',
     component: SuccessPageComponent,
+  },
+  {
+    path: 'applied/success',
+    component: AppliedSuccessComponent,
   },
   {
     path: 'profile',
