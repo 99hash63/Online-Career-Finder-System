@@ -193,3 +193,18 @@ exports.deleteJobPost = async (req, res) => {
     }
   });
 };
+
+exports.newapplicant = async (req, res) => {
+  let jobID = req.params.id;
+
+  //increace the appliedApplicants count by 1
+  const updateApplicants = { $inc: { appliedApplicants: 1 } };
+
+  await Jobs.findByIdAndUpdate(jobID, updateApplicants)
+    .then(() => {
+      res.status(200).send({ status: "New applicant added" });
+    })
+    .catch((e) => {
+      res.status(500).send({ status: "Error" });
+    });
+};

@@ -5,6 +5,7 @@ import { Jobpost } from '../jobpost.model';
 import { Applicant } from '../applicant.model';
 import { PageEvent } from '@angular/material/paginator';
 import { IndustryOptions } from '../../../assets/industries';
+import * as _ from 'lodash';
 import {
   FormGroup,
   FormBuilder,
@@ -27,9 +28,11 @@ export class AllJobsComponent implements OnInit {
   imageError?: string;
   isImageSaved?: boolean;
   cardImageBase64?: string;
+  pdfBase64: any;
   datediff?: number;
   searchTerm!: string;
   industry!: string;
+
   type: string = 'Type';
   _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
@@ -51,8 +54,6 @@ export class AllJobsComponent implements OnInit {
   applicantFormGroup!: FormGroup;
 
   applicant: Applicant = null;
-
-  email;
 
   handlePageEvent(event: PageEvent) {
     this.pageSize = event.pageSize;
@@ -79,14 +80,6 @@ export class AllJobsComponent implements OnInit {
       aResume: new FormControl('', [Validators.required]),
     });
   }
-  // aEmail = new FormControl('', [Validators.required, Validators.email]);
-  // getErrorMessage() {
-  //   if (this.aEmail.hasError('required')) {
-  //     return 'You must enter a value';
-  //   }
-
-  //   return this.aEmail.hasError('email') ? 'Not a valid email' : '';
-  // }
 
   setJob(job: Jobpost) {
     this.jobpostservice.selectedJob = job;
@@ -124,10 +117,35 @@ export class AllJobsComponent implements OnInit {
     }
     return false;
   }
-  downloadPDF() {
-    console.log(this.jobpostservice.applicant);
+
+  fileChangeEvent(evt: any) {
+    var f = evt.target.files[0]; // FileList object
+    var reader = new FileReader();
+    // Closure to capture the file information.
+    reader.onload = (function (theFile) {
+      return function (e) {
+        var binaryData = e.target.result;
+        //Converting Binary Data to base 64
+        var base64String = binaryData.toString();
+        //showing file converted to base64
+      };
+    })(f);
+    this.pdfBase64 = reader;
+    // Read in the image file as a data URL.
+    reader.readAsBinaryString(f);
   }
-  SubmitApplication(jobID) {
-    console.log('have fun' + jobID);
+
+  downloadPDF() {
+    console.log(this.pdfBase64.result);
+  }
+
+  SubmitApplication(jobID: any) {
+    if (this.applicantFormGroup.valid) {
+      this.jobpostservice
+        .newApplicant(jobID, this.applicantFormGroup.value)
+        .subscribe((res) => {
+          console.log('send');
+        });
+    }
   }
 }

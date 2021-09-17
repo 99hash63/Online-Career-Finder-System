@@ -199,14 +199,18 @@
 
                         <div class="mb-3 ">
                             <label for="formFileSm" class="form-label">Upload your resume here</label>
-                            <input class="form-control form-control-sm" id="formFileSm" type="file"
-                                formControlName="aResume">
+                            <input class="form-control form-control-sm" id="resume" type="file" accept=".pdf"
+                                formControlName="aResume" (change)="fileChangeEvent($event)" required>
                         </div>
+
+
                         <div class="modal-footer ">
                             <button type="button" class="btn btn-outline-primary pull-right"
-                                (click)="downloadPDF">Download PDF</button>
+                                (click)="downloadPDF()">Download PDF</button>
                             <button type="submit" class="btn btn-primary pull-right mx-3"
-                                (click)="modal.close('Close click')">Submit</button>
+                                *ngIf="applicantFormGroup.valid" (click)="modal.close()">Submit</button>
+                            <button type="submit" class="btn btn-primary pull-right mx-3"
+                                *ngIf="!applicantFormGroup.valid">Submit</button>
                         </div>
                     </form>
 
