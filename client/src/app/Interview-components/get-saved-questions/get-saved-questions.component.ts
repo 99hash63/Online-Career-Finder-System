@@ -38,7 +38,7 @@ export class GetSavedQuestionsComponent implements OnInit {
     console.log(this.S);
     this.savedQuestions.unsaveQuestion(_id,this.S).subscribe(res=>{
       console.log(res);
-      
+      this.refreshsavedQuestions();
     })
     
   }
