@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 // import 'rxjs/add/operator/toPromise'
 
 import { User } from './user.model';
+import { LoginResponse } from './login-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,8 +18,6 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   postUser(user: User) {
-    console.log('post user clicked');
-    console.log(user);
-    return this.http.post(this.baseURL, user);
+    return this.http.post<LoginResponse>(this.baseURL, user);
   }
 }

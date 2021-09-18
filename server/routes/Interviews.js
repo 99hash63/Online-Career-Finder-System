@@ -51,7 +51,7 @@ router.route('/displayci').get((req, res) => {
 //retrive interview guildlines
 router.route('/displayig').get((req, res) => {
 	//body
-	Interviews.find({ QuestionType: 'InterviewGuidelines' })
+	Interviews.find({ QuestionType: 'tips' })
 		.then((questions) => {
 			res.json(questions);
 		})
@@ -83,6 +83,16 @@ router.route('/displayuserqp').get((req, res) => {
 			console.log(err);
 		});
 });
+
+//find by id
+router.route('/getuersbyID/:id').get((req,res)=>{
+	Interviews.findById(req.params.id).then((questions) => {
+		res.json(questions);
+	})
+	.catch((err) => {
+		console.log(err);
+	});
+})
 
 //update
 router.route('/update/:id').put(async (req, res) => {
@@ -143,5 +153,47 @@ router.route('/delete/:id').delete(async (req, res) => {
         res.status(500).send({status: "Error fetching", error: err.message});
     })
 })*/
+
+//update status
+router.route('/updatestatus/:id').put(async (req, res) => {
+	let qno = req.params.id;
+	const SaveOp = 'yes';
+
+	const updateInterview = {
+		SaveOp
+	};
+
+	const updatestatus = await Interviews.findByIdAndUpdate(qno, updateInterview)
+		.then(() => {
+			res.status(200).send({ status: 'Successfully Updated status to yes' });
+		})
+		.catch((err) => {
+			console.log(err);
+			res
+				.status(500)
+				.send({ status: 'Error with updating data.......', error: err.message });
+		});
+});
+
+//update status to no
+router.route('/reupdatestatus/:id').put(async (req, res) => {
+	let qno = req.params.id;
+	const SaveOp = 'no';
+
+	const updateInterview = {
+		SaveOp
+	};
+
+	const reupdatestatus = await Interviews.findByIdAndUpdate(qno, updateInterview)
+		.then(() => {
+			res.status(200).send({ status: 'Successfully Updated status to No' });
+		})
+		.catch((err) => {
+			console.log(err);
+			res
+				.status(500)
+				.send({ status: 'Error with updating data.......', error: err.message });
+		});
+});
 
 module.exports = router;

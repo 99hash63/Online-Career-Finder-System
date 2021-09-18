@@ -17,7 +17,10 @@ const Company = require('../models/Company');
 const advancedResults = require('../middleware/advancedResults');
 const { protect } = require('../middleware/auth');
 
-router.route('/').get(advancedResults(Company), getCompanies).post(addCompany);
+router
+	.route('/')
+	.get(advancedResults(Company), getCompanies)
+	.post(protect, addCompany);
 router.route('/my').get(protect, getMyCompanies);
 router
 	.route('/:id')

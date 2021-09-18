@@ -6,7 +6,9 @@ import { EditJobComponent } from './JOBS/edit-job/edit-job.component';
 import { MyJobsComponent } from './JOBS/my-jobs/my-jobs.component';
 import { SuccessPageComponent } from './JOBS/success-page/success-page.component';
 import { ProfileComponent } from './profile/profile.component';
-
+import { UserComponent } from './user/user.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
 export const ROUTES: Routes = [
   {
     path: 'createJob',
@@ -31,5 +33,15 @@ export const ROUTES: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+  },
+  {
+    path: 'signUp',
+    component: UserComponent,
+    children: [{ path: '', component: SignUpComponent }],
+  },
+  {
+    path: 'signIn',
+    component: UserComponent,
+    children: [{ path: '', component: SignInComponent }],
   },
 ];
