@@ -19,6 +19,7 @@ export const ROUTES: Routes = [
   {
     path: 'createJob',
     component: CreateJobComponent,
+    canActivate: [AuthGuard],
   },
 
   {
@@ -34,6 +35,7 @@ export const ROUTES: Routes = [
   {
     path: 'myjobs/editjobs/:id',
     component: EditJobComponent,
+    canActivate: [AuthGuard],
   },
 
   {

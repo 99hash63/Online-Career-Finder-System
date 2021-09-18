@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 const JobPost = new Schema({
   user: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
     require: true,
   },
   title: {

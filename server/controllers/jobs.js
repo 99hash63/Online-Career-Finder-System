@@ -18,9 +18,11 @@ exports.getJobPosts = async (req, res) => {
   );
 };
 exports.getMyJobPosts = async (req, res) => {
+  userId = req.user.id;
+
   await Jobs.find(
     {
-      user: req.params.userID,
+      user: userId,
     },
     function (err, docs) {
       if (!err) {
@@ -49,6 +51,8 @@ exports.getJobPost = async (req, res) => {
 };
 
 exports.createJobPost = async (req, res) => {
+  req.body.user = req.user._id;
+  console.log(req.body.userId + "rwefauwsgofiusdgo");
   const {
     user,
     title,
@@ -84,6 +88,7 @@ exports.createJobPost = async (req, res) => {
     appliedApplicants,
     createdDate,
   });
+
   await job.save((err, doc) => {
     if (!err) {
       res.send(doc);
