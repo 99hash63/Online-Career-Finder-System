@@ -22,94 +22,26 @@
                 <button type="submit" (click)="onEdit(In._id)" class="btn w-35 mx-3 btn-primary">Update</button>
                 <button type="submit" (click)="open(content)" class="btn w-35 btn-danger" value="Delete" data-toggle="modal" data-target="DeleteModal">Delete</button>
             </div>
+
+            <!--delete -->
+            <ng-template #content let-c="close" let-d="dismiss">
+              <div class="modal-header ">
+                <h4 class="modal-title" id="modal-basic-title">Confirm Delete</h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure you want to delete?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark w-25" (click)="c()">No</button>
+                <button type="button" class="btn btn-danger w-25" (click)="Ondelete(In._id)">Yes</button>
+              </div>
+            </ng-template>
+            <simple-notifications></simple-notifications>
+
         </div>
 
     </div>
 </div>
-
-<!-- Update Modal -->
-<!--<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="updateModalLabel">Update Job Interviews</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-
-
-            <form #UpdateForm="ngForm" (ngSubmit)="onUpdate(UpdateForm)">
-                <div class="form-group">
-                    <label for="JobTitle" >JobTitle *</label>
-                    <input name="JobTitle" [(ngModel)]="JobTitle" type="text" class="form-control">
-                </div>
-                        
-                <div class="form-group">
-                    <label for="QuestionType" >Question Type *</label>
-                    <select id="QuestionType" [(ngModel)]="QuestionType" name="QuestionType" class="form-control">
-                        <option value="CommonInterviewQuestion">Common Interview Question</option>
-                        <option value="InterviewGuidlines">Interview Guidlines</option>
-                    </select>
-                </div>
-        
-                <div class="form-group">
-                    <label for="Offer" >Did you get an offer *</label>
-                    <select id="Offer" [(ngModel)]="Offer" name="Offer" class="form-control">
-                        <option value="No">No</option>
-                        <option value="Yes,but declined">Yes,but declined</option>
-                        <option value="Yes,and accepted">Yes,and accepted</option>
-                    </select>
-                </div>
-        
-                <div class="form-group">
-                    <label for="Question" >Interview Question *</label>
-                    <textarea name="Question" [(ngModel)]="Question" type="text" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="Answer" >How to answer this *</label>
-                    <textarea name="Answer" [(ngModel)]="Answer" type="Answer" class="form-control"></textarea>
-                </div>
-                <button type="button" class="btn btn-primary" value="submit" >Save changes</button>
-            </form>
-        </div>
-    </div>
-  </div>-->
-
-  <!--delete modal-->
-  <!--<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="DeleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="DeleteModalLabel">Confirm Delete</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Are you sure you want to delete?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-          <button type="button" class="btn btn-danger">Yes</button>
-        </div>
-      </div>
-    </div>
-  </div>-->
-
-  <ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header ">
-        <h4 class="modal-title" id="modal-basic-title">Confirm Delete</h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <p>Are you sure you want to delete?</p>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark w-25" (click)="c('close')">No</button>
-        <button type="button" class="btn btn-danger w-25" (click)="c('Save click')">Yes</button>
-    </div>
-</ng-template>

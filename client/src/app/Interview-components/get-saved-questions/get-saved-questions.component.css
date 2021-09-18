@@ -1,6 +1,6 @@
 .question{
     color: black;
-    background-color: rgb(132, 175, 255);
+    background-color: #68afff;
     padding: 10px 10px 10px 10px;
     font-size: medium;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, Geneva, Tahoma, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -8,7 +8,7 @@
 }
 .answer{
     color: black;
-    background-color: rgb(195, 216, 255);
+    background-color: rgb(189, 212, 255);
     padding: 15px 15px 15px 15px;
     font-family: Arial, Helvetica, sans-serif, 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: medium
@@ -41,3 +41,18 @@
     height: 10;
     width: 70vw;
 }
+.fa-heart{
+    font-size:20px; 
+    background-color:#68afff;
+    border:none; 
+    text-align: right;
+    height: 10;
+    width: 69vw;
+    color: red;
+    font-size: 1.5em;
+ }
+ .fa-heart:checked,
+    .fa-heart:focus{
+        color: #ccc;
+ }
+

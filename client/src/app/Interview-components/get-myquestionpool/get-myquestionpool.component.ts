@@ -6,6 +6,7 @@ import {InterviewsService} from '../../shared/interviews.service';
 import { Interviews } from 'src/app/shared/interviews.model';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
   selector: 'app-get-myquestionpool',
@@ -13,28 +14,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./get-myquestionpool.component.css'],
   providers:[InterviewsService]
 })
-export class GetMyquestionpoolComponent implements OnInit {
+export class GetMyquestionpoolComponent implements OnInit { 
 
-  constructor(public questionpool : InterviewsService, private router :Router,config: NgbModalConfig, private modalService: NgbModal,private r:ActivatedRoute) {
+  constructor(
+    public questionpool : InterviewsService,
+    private router :Router,
+    config: NgbModalConfig,
+    private modalService: NgbModal,
+    private r:ActivatedRoute,
+    private notification: NotificationsService ) {
+
      // customize default values of modals used by this component tree
      config.backdrop = 'static';
      config.keyboard = false;
    }
-  searchtext: string ="";
+    searchtext: string ="";
 
-  /*updateInterview ={
-  JobTitle : "",
-  QuestionType : "",
-  Offer :  "",
-  Question :"",
-  Answer : ""
-}*/
-
-JobTitle : String = "";
-QuestionType : String = "";
-Offer : String = "";
-Question : String = "";
-Answer : String = "";
+  JobTitle : String = "";
+  QuestionType : String = "";
+  Offer : String = "";
+  Question : String = "";
+  Answer : String = "";
 
   ngOnInit(): void {
     this.refreshQuestionpool();
@@ -59,24 +59,9 @@ Answer : String = "";
       SaveOp: ""
     }
   }
-  
-  //update question and answer
-  //onUpdate(form : NgForm){
-   // this.questionpool.putInterviews(form.value).subscribe((res)=>{
-   //   this.resetForm(form);
-   // })
- // }
-  
-  /*onEdit(In : Interviews) {
-    this.questionpool.selectedQuestion = In;
-  }*/
 
   onEdit(_id : string){
     this.router.navigate(['/modify' , _id])
-  }
-
-  onDelete(_id : string){
-
   }
 
   open(content: any) {
@@ -85,14 +70,27 @@ Answer : String = "";
     });
   }
 
-  //delete question and answer
-  /*onDelete(_id: string, form: NgForm) {
-    if (confirm('Are you sure to delete this record ?') == true) {
-      this.employeeService.deleteEmployee(_id).subscribe((res) => {
-        this.refreshEmployeeList();
-        this.resetForm(form);
-        M.toast({ html: 'Deleted successfully', classes: 'rounded' });
-      });
-    }
-  }*/
+  close(){
+    this.modalService.dismissAll()
+  }
+
+  //delete question and answer deleteQuestion()
+  Ondelete(_id : string){
+    this.questionpool.deleteInterview(_id).subscribe( res =>{
+      console.log(res);
+      this.close();
+      this.refreshQuestionpool();
+    })
+  }
+
+  //Successful notification
+  OnSucess(message){
+    this.notification.success('Success',message,{
+      position:['bottom','right'],
+      timeOut : 15000,
+      animate : 'fade',
+      showProgressBar : true
+    })
+  }
+  
 }

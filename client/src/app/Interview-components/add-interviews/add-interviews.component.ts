@@ -21,9 +21,6 @@ export class AddInterviewsComponent implements OnInit {
   ngOnInit() {
     this.resetForm();
   }
-  /*OnInsertInterviews(){
-    console.log(123);
-  }*/
 
   resetForm(form?: NgForm) {
     if (form) form.reset;
@@ -50,7 +47,7 @@ export class AddInterviewsComponent implements OnInit {
   OnSucess(message) {
     this.notification.success('Success', message, {
       position: ['bottom', 'right'],
-      timeOut: 3000,
+      timeOut: 2500,
       animate: 'fade',
       showProgressBar: true,
     });
