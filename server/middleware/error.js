@@ -4,7 +4,7 @@ const errorHandler = (err, req, res, next) => {
 	let error = { ...err };
 
 	error.message = err.message;
-	var validationErrors = [];
+	var errorResponses = [];
 
 	// Log error to console
 	// console.log(err);
@@ -14,26 +14,27 @@ const errorHandler = (err, req, res, next) => {
 	if (err.name === 'CastError') {
 		const message = `The Id you entered: ${err.value} is invalid`;
 		error = new ErrorResponse(message, 404);
-		validationErrors.push(error.message);
 	}
 
 	// Monggose duplicate key
 	if (err.code === 11000) {
 		const key = Object.keys(err.keyValue);
 		const message = `${key} already exists`;
-		error = new ErrorResponse(message, 400);
-		validationErrors.push(error.message);
+		error = new ErrorResponse(message, 422);
 	}
 
 	// Mongoose validation error
 	if (err.name === 'ValidationError') {
 		Object.values(err.errors).map((val) => {
 			const message = val.message;
-			error = new ErrorResponse(message, 400);
-			validationErrors.push(error.message);
+			error = new ErrorResponse(message, 422);
+			errorResponses.push(error.message);
 		});
+	} else {
+		errorResponses.push(error.message);
 	}
-	res.status(error.statusCode || 500).send(validationErrors || 'Server Error');
+
+	res.status(error.statusCode || 500).send(errorResponses || 'Server Error');
 };
 
 module.exports = errorHandler;

@@ -52,6 +52,10 @@ import { MyCompaniesComponent } from './companies/my-companies/my-companies.comp
 import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
 
 import { ProfileComponent } from './profile/profile.component';
+import { UserComponent } from './user/user.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
+import { UserService } from './shared/user.service';
 //create object from routes module
 
 const appRoutes: Routes = [
@@ -69,7 +73,6 @@ const appRoutes: Routes = [
   { path: 'myCompanies', component: MyCompaniesComponent },
   { path: 'myCompanyOverview', component: MyCompanyOverviewComponent },
 ];
-
 
 @NgModule({
   declarations: [
@@ -98,6 +101,9 @@ const appRoutes: Routes = [
     MyCompaniesComponent,
     MyCompanyOverviewComponent,
     ProfileComponent,
+    UserComponent,
+    SignUpComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
@@ -121,9 +127,9 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot(),
     Ng2SearchPipeModule,
-    NgxPrintModule
+    NgxPrintModule,
   ],
-  providers: [CookieService],
+  providers: [CookieService, UserService],
   bootstrap: [AppComponent],
   exports: [NgxPaginationModule],
 })
