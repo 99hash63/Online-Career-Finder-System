@@ -58,6 +58,7 @@ export class AllJobsComponent implements OnInit {
     private modalService: NgbModal,
     public jobpostservice: JobpostService
   ) {}
+
   ngOnInit(): void {
     this.refreshJobList();
   }

@@ -39,7 +39,7 @@
             <div class="m-1 mt-4 overflow-auto" style="height: 1000px">
                 <div class="card mb-3" style="max-width: 510px; height: 120px; border-radius: 10px; cursor: pointer;"
                     *ngFor="let job of jobpostservice.jobs | paginate: { itemsPerPage: pageSize, currentPage: page+1 ,totalItems:totalLength }
-                    | filter:searchTerm | filter:selectedTypes | filter:industry" (click)="setJob(job) ">
+                    | filter:searchTerm | filter:selectedTypes | filter:industry" (click)="setJob(job)">
                     <div class="row g-0">
                         <div class="col-md-3 display:block text-center">
                             <img [src]="job.image" style="max-height: 100px;"
