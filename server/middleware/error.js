@@ -4,6 +4,7 @@ const errorHandler = (err, req, res, next) => {
 	let error = { ...err };
 
 	error.message = err.message;
+	var validationErrors = [];
 
 	// Log error to console
 	// console.log(err);
@@ -13,24 +14,26 @@ const errorHandler = (err, req, res, next) => {
 	if (err.name === 'CastError') {
 		const message = `The Id you entered: ${err.value} is invalid`;
 		error = new ErrorResponse(message, 404);
+		validationErrors.push(error.message);
 	}
 
 	// Monggose duplicate key
 	if (err.code === 11000) {
 		const key = Object.keys(err.keyValue);
-		const message = `Duplicate value entered for field: ${key}`;
+		const message = `${key} already exists`;
 		error = new ErrorResponse(message, 400);
+		validationErrors.push(error.message);
 	}
 
 	// Mongoose validation error
 	if (err.name === 'ValidationError') {
-		const message = Object.values(err.errors).map((val) => val.message);
-		error = new ErrorResponse(message, 400);
+		Object.values(err.errors).map((val) => {
+			const message = val.message;
+			error = new ErrorResponse(message, 400);
+			validationErrors.push(error.message);
+		});
 	}
-	res.status(error.statusCode || 500).json({
-		success: false,
-		error: error.message || 'Server Error',
-	});
+	res.status(error.statusCode || 500).send(validationErrors || 'Server Error');
 };
 
 module.exports = errorHandler;

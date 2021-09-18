@@ -13,7 +13,7 @@ declare var M: any;
 })
 export class RegisterComponent implements OnInit {
   registerImg: string = '../../assets/images/signup-image.jpg';
-  res: any;
+  success: Boolean;
 
   constructor(public userService: UserService, private cookie: CookieService) {}
 
@@ -31,11 +31,11 @@ export class RegisterComponent implements OnInit {
   }
   onSubmit(form: NgForm) {
     this.userService.postUser(form.value).subscribe((res) => {
-      this.res = res;
+      this.success = res.success;
     });
     // alert('Register success!');
     // M.toast({ html: 'saved successfully', classes: 'rounded' });
-    console.log(this.res);
+    console.log(this.success);
 
     //login user
     //once the response is recieved we gonna save those info in the cookie
