@@ -6,6 +6,8 @@ import { EditJobComponent } from './JOBS/edit-job/edit-job.component';
 import { MyJobsComponent } from './JOBS/my-jobs/my-jobs.component';
 import { SuccessPageComponent } from './JOBS/success-page/success-page.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UserComponent } from './user/user.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
 
 export const ROUTES: Routes = [
   {
@@ -31,5 +33,10 @@ export const ROUTES: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+  },
+  {
+    path: 'signUp',
+    component: UserComponent,
+    children: [{ path: '', component: SignUpComponent }],
   },
 ];

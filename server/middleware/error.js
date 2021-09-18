@@ -21,7 +21,7 @@ const errorHandler = (err, req, res, next) => {
 	if (err.code === 11000) {
 		const key = Object.keys(err.keyValue);
 		const message = `${key} already exists`;
-		error = new ErrorResponse(message, 400);
+		error = new ErrorResponse(message, 422);
 		validationErrors.push(error.message);
 	}
 
@@ -29,7 +29,7 @@ const errorHandler = (err, req, res, next) => {
 	if (err.name === 'ValidationError') {
 		Object.values(err.errors).map((val) => {
 			const message = val.message;
-			error = new ErrorResponse(message, 400);
+			error = new ErrorResponse(message, 422);
 			validationErrors.push(error.message);
 		});
 	}
