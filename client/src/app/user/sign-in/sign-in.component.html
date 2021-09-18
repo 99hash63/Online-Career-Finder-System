@@ -1,0 +1,23 @@
+<div>
+  <img src="/assets/images/signin-image.jpg" id="icon" alt="User Icon">
+</div>
+<form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+  <input type="text" #email="ngModel" [(ngModel)]="model.email" name="email" placeholder="Email" required
+    [pattern]="emailRegex" [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid}">
+  <div *ngIf="signInForm.submitted && email.errors">
+    <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
+    <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
+  </div>
+  <input type="password" #password="ngModel" [(ngModel)]="model.password" name="password" placeholder="Password"
+    minlength="6" required [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid}">
+  <div *ngIf="signInForm.submitted && password.errors">
+    <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+    <label *ngIf="password.errors.minlength" class="validation-message">Password should be atleast 6 characters.</label>
+  </div>
+  <input type="submit" value="signIn">
+</form>
+
+<!-- error message -->
+<div class="alert" *ngIf="serverErrorMessages">
+  {{serverErrorMessages}}
+</div>

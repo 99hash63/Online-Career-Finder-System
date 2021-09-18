@@ -6,7 +6,6 @@ import { NgForm } from '@angular/forms';
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
-  providers: [UserService],
 })
 export class SignUpComponent implements OnInit {
   emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -20,7 +19,7 @@ export class SignUpComponent implements OnInit {
     this.userService.postUser(form.value).subscribe(
       (res) => {
         this.showSuccessMessage = true;
-        setTimeout(() => (this.showSuccessMessage = false), 4000);
+        setTimeout(() => (this.showSuccessMessage = false), 3000);
         this.resetForm(form);
       },
       (err) => {

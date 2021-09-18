@@ -13,7 +13,21 @@ export class UserService {
   };
   constructor(public http: HttpClient) {}
 
+  //function to register user
   postUser(user: User) {
     return this.http.post(environment.apiBaseUrl + '/auth/register', user);
+  }
+
+  //function to login user
+  login(authCredentials) {
+    return this.http.post(
+      environment.apiBaseUrl + '/auth/login',
+      authCredentials
+    );
+  }
+
+  //function to set token response in the browser
+  setToken(token: string) {
+    localStorage.setItem('token', token);
   }
 }

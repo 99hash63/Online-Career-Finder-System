@@ -54,6 +54,8 @@ import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-c
 import { ProfileComponent } from './profile/profile.component';
 import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
+import { UserService } from './shared/user.service';
 //create object from routes module
 
 const appRoutes: Routes = [
@@ -101,6 +103,7 @@ const appRoutes: Routes = [
     ProfileComponent,
     UserComponent,
     SignUpComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
@@ -126,7 +129,7 @@ const appRoutes: Routes = [
     Ng2SearchPipeModule,
     NgxPrintModule,
   ],
-  providers: [CookieService],
+  providers: [CookieService, UserService],
   bootstrap: [AppComponent],
   exports: [NgxPaginationModule],
 })
