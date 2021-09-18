@@ -7,6 +7,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { CompanyResponse } from './company-response.model';
 import { MyCompanyOverviewModel } from './company-overview.model';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class CompaniesService {
@@ -15,8 +16,6 @@ export class CompaniesService {
   private companies: Company[] = [];
   private myCompany: MyCompanyOverviewModel[] = [];
   private companiesUpdated = new Subject<Company[]>();
-  readonly baseURL = 'http://localhost:5000/api/v1/companies';
-  readonly getSingleURL = `http://localhost:5000/api/v1/companies/`;
   getCompanies() {
     return [...this.companies];
   }
@@ -29,16 +28,18 @@ export class CompaniesService {
     this.companies.push(company);
     this.companiesUpdated.next([...this.companies]);
 
-    return this.http.post<CompanyResponse>(this.baseURL, company);
+    return this.http.post<CompanyResponse>(
+      environment.apiBaseUrl + '/companies',
+      company
+    );
   }
 
   getMyCompaniesDB() {
-    const output = this.http.get<CompanyResponse>(this.baseURL);
-    return output;
+    return this.http.get(environment.apiBaseUrl + '/companies');
   }
 
   getSingleCompany(_id: Object) {
-    const newURL = this.getSingleURL + _id;
+    const newURL = environment.apiBaseUrl + '/companies/' + _id;
     // console.log(newURL);
     this.http.get<CompanyResponse>(newURL).subscribe((res) => {
       this.myCompany = res.data as MyCompanyOverviewModel[];
