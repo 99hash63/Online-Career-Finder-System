@@ -65,9 +65,19 @@
       <div class="form-group">
         <input type="submit" class="btn btn-primary" value="Save Company" />
       </div>
+      <!-- show success message -->
+      <div class="success" *ngIf="showSuccessMessage">
+        Company created successfully!
+      </div>
+
+      <!-- show error message -->
+      <div class="alert" *ngIf="serverErrorMessages">
+        {{serverErrorMessages}}
+      </div>
     </form>
 
   </div>
 </div>
+
 
 <!-- <app-all-companies></app-all-companies> -->

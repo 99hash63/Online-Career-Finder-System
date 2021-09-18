@@ -85,14 +85,15 @@ router.route('/displayuserqp').get((req, res) => {
 });
 
 //find by id
-router.route('/getuersbyID/:id').get((req,res)=>{
-	Interviews.findById(req.params.id).then((questions) => {
-		res.json(questions);
-	})
-	.catch((err) => {
-		console.log(err);
-	});
-})
+router.route('/getuersbyID/:id').get((req, res) => {
+	Interviews.findById(req.params.id)
+		.then((questions) => {
+			res.json(questions);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+});
 
 //update
 router.route('/update/:id').put(async (req, res) => {
@@ -160,7 +161,7 @@ router.route('/updatestatus/:id').put(async (req, res) => {
 	const SaveOp = 'yes';
 
 	const updateInterview = {
-		SaveOp
+		SaveOp,
 	};
 
 	const updatestatus = await Interviews.findByIdAndUpdate(qno, updateInterview)
@@ -171,7 +172,10 @@ router.route('/updatestatus/:id').put(async (req, res) => {
 			console.log(err);
 			res
 				.status(500)
-				.send({ status: 'Error with updating data.......', error: err.message });
+				.send({
+					status: 'Error with updating data.......',
+					error: err.message,
+				});
 		});
 });
 
@@ -181,10 +185,13 @@ router.route('/reupdatestatus/:id').put(async (req, res) => {
 	const SaveOp = 'no';
 
 	const updateInterview = {
-		SaveOp
+		SaveOp,
 	};
 
-	const reupdatestatus = await Interviews.findByIdAndUpdate(qno, updateInterview)
+	const reupdatestatus = await Interviews.findByIdAndUpdate(
+		qno,
+		updateInterview
+	)
 		.then(() => {
 			res.status(200).send({ status: 'Successfully Updated status to No' });
 		})
@@ -192,7 +199,10 @@ router.route('/reupdatestatus/:id').put(async (req, res) => {
 			console.log(err);
 			res
 				.status(500)
-				.send({ status: 'Error with updating data.......', error: err.message });
+				.send({
+					status: 'Error with updating data.......',
+					error: err.message,
+				});
 		});
 });
 

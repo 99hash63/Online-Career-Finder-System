@@ -12,13 +12,19 @@ import { Company } from '../company.model';
 export class MyCompaniesComponent implements OnInit {
   companies: Company[] = [];
   private companiesSub!: Subscription;
+  serverErrorMessages: string;
 
   constructor(public companiesService: CompaniesService) {}
 
   ngOnInit() {
-    this.companiesService.getMyCompaniesDB().subscribe((res) => {
-      this.companies = res.data as Company[];
-    });
+    this.companiesService.getMyCompaniesDB().subscribe(
+      (res) => {
+        this.companies = res['data'] as Company[];
+      },
+      (err) => {
+        this.serverErrorMessages = err.error.join('<br/>');
+      }
+    );
   }
 
   onSave(id: any) {
