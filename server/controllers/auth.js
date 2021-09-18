@@ -7,7 +7,6 @@ const { options } = require('../routes/companies');
 //@route POST /api/v1/auth/register
 //@access public
 exports.register = asyncHandler(async (req, res, next) => {
-
 	const { name, email, password } = req.body;
 	console.log(req.body);
 	//create user
@@ -27,8 +26,8 @@ exports.register = asyncHandler(async (req, res, next) => {
 exports.login = asyncHandler(async (req, res, next) => {
 	const { email, password } = req.body;
 
-	//validate email & password
 	if (!email || !password) {
+		//validate email & password
 		return next(new ErrorResponse('Please provide an email and password', 400));
 	}
 
@@ -68,11 +67,9 @@ const sendTokenResponse = (user, statusCode, res) => {
 	// }
 
 	res.status(statusCode).cookie('token', token, options).json({
-		success: true,
 		token,
 	});
 };
-
 
 //@desc Get current logged in user
 //@route POST /api/v1/auth/me

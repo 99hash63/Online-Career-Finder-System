@@ -48,7 +48,7 @@ const advancedResults = (model, populate) => async (req, res, next) => {
 	query = query.skip(startIndex).limit(limit);
 
 	if (populate) {
-		quer = query.populate(populate);
+		query = query.populate(populate);
 	}
 
 	// Executing query
