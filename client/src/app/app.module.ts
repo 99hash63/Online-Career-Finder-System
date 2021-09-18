@@ -49,6 +49,9 @@ import { AllCompaniesComponent } from './companies/all-companies/all-companies.c
 import { CookieService } from 'ngx-cookie-service';
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
 import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
+
+import { NgxPrintModule } from 'ngx-print';
+
 import { ProfileComponent } from './profile/profile.component';
 //create object from routes module
 
@@ -119,6 +122,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot(),
     Ng2SearchPipeModule,
+    NgxPrintModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],
