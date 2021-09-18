@@ -31,6 +31,14 @@ export class InterviewsService {
 
   readonly URL_update = "http://localhost:5000/Interviews/update";
 
+  readonly URL_getCurrentDataToupdate = "http://localhost:5000/Interviews/getuersbyID";
+
+  readonly URL_delete = "http://localhost:5000/Interviews/delete"
+
+  readonly URL_save = "http://localhost:5000/Interviews/updatestatus"
+
+  readonly URL_Notsave = "http://localhost:5000/Interviews/reupdatestatus"
+
   //constructor
   constructor(private http: HttpClient) { }
 
@@ -59,15 +67,28 @@ export class InterviewsService {
     return this.http.get(this.URL_getsavedQuestions);
   }
 
-  putInterviews(In : Interviews){
-    return this.http.put(this.URL_update + `/${In._id}`, In);
+  //to update fetch the data into update form
+  getCurrentData(_id:String): Observable<Interviews>{
+    return this.http.get<Interviews>(this.URL_getCurrentDataToupdate+`/${_id}`)
   }
 
-  deleteInterview(_id : string){
-    return this.http.delete(this.baseURL + `/${_id}`);
+  //update data 
+  updateInterviews(id:String , In : Interviews): Observable<Interviews>{
+    return this.http.put<Interviews>(this.URL_update + `/${In._id}`, In);
   }
 
-  saveQuestion(In : Interviews){
-    return this.http.put(this.URL_update + '/${In._id}',In);
+  //delete question and answer
+  deleteInterview(_id : string): Observable<Interviews>{
+    return this.http.delete<Interviews>(this.URL_delete + `/${_id}`);
+  }
+
+  //save button
+  saveQuestion(_id:string , In : Interviews): Observable<Interviews>{
+    return this.http.put<Interviews>(this.URL_save + `/${_id}`,In);
+  }
+
+  //unsave
+  unsaveQuestion(_id:string , In : Interviews): Observable<Interviews>{
+    return this.http.put<Interviews>(this.URL_Notsave + `/${_id}`,In);
   }
 }

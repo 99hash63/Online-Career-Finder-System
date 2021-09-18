@@ -9,6 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPrintModule } from 'ngx-print';
 
 import { ROUTES } from './app.routing';
 import { AppComponent } from './app.component';
@@ -50,20 +51,15 @@ import { AllCompaniesComponent } from './companies/all-companies/all-companies.c
 import { CookieService } from 'ngx-cookie-service';
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
 import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
+
 import { ProfileComponent } from './profile/profile.component';
 import { AppliedSuccessComponent } from './JOBS/applied-success/applied-success.component';
+import { UserComponent } from './user/user.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
+import { UserService } from './shared/user.service';
 //create object from routes module
-/*<<<<<<< HEAD
-const appRoutes: Routes =[
-  {path:'discoverinterviews' ,component: DiscoverhomeComponent},
-  {path:'insert' ,component: AddInterviewsComponent},
-  {path:'getcommoninterviews' ,component: GetCommonInterviewsComponent},
-  {path:'getinterviewguidlines' ,component: GetInterviewGuidlinesComponent},
-  {path:'getmyquestionpool' ,component: GetMyquestionpoolComponent},
-  {path:'getsavedquestions' ,component: GetSavedQuestionsComponent},
-  {path:'modify/:_id' ,component: UpdateInterviewsComponent}
-]
-=======*/
+
 const appRoutes: Routes = [
   { path: 'discoverinterviews', component: DiscoverhomeComponent },
   { path: 'insert', component: AddInterviewsComponent },
@@ -79,7 +75,6 @@ const appRoutes: Routes = [
   { path: 'myCompanies', component: MyCompaniesComponent },
   { path: 'myCompanyOverview', component: MyCompanyOverviewComponent },
 ];
-//>>>>>>> 4bf47a05a3e9ea4574b8c666ee804b92136e3ea0
 
 @NgModule({
   declarations: [
@@ -109,6 +104,9 @@ const appRoutes: Routes = [
     MyCompanyOverviewComponent,
     ProfileComponent,
     AppliedSuccessComponent,
+    UserComponent,
+    SignUpComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
@@ -133,8 +131,9 @@ const appRoutes: Routes = [
     SimpleNotificationsModule.forRoot(),
     Ng2SearchPipeModule,
     NgxTypedJsModule,
+    NgxPrintModule,
   ],
-  providers: [CookieService],
+  providers: [CookieService, UserService],
   bootstrap: [AppComponent],
   exports: [NgxPaginationModule],
 })

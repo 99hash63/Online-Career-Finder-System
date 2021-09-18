@@ -1,18 +1,23 @@
 <div class="container mt-5">
-    <h3 class="In-Formheaders">Interview Questions</h3><br>
-    <div class="panel panel-primary" *ngFor="let interview of savedQuestions.InterviewQuestion">
-        <div class="question">
-            {{interview.Question}}
-            <div row></div>
+    <div id="print-me">
+        <h3 class="In-Formheaders">Interview Questions</h3><br>
+        <div id="print-me" class="panel panel-primary" *ngFor="let interview of savedQuestions.InterviewQuestion">
+            <div class="question">
+                {{interview.Question}}
+                <button type="checkbox" class="fa fa-heart"
+                aria-checked="true" (click)="unsave(interview._id)"></button>
+            </div>
+            <div class="answer">
+                {{interview.Answer}}
+            </div>      
+            <br>
         </div>
-        <div class="answer">
-            {{interview.Answer}}
-            <br> 
-        </div>      
-        
     </div>
     <div class="center">
         <br>
-     <button type="submit" class="btn btn-outline-primary pull-righ" >Download</button>
+        <button printSectionId="print-me"
+         ngxPrint
+         [useExistingCss]="true"
+         type="submit" class="btn btn-outline-primary pull-righ" >Download</button>
     </div>
 </div>
