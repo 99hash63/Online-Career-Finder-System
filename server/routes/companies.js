@@ -19,12 +19,12 @@ const { protect } = require('../middleware/auth');
 
 router
 	.route('/')
-	.get(advancedResults(Company), getCompanies)
+	.get(advancedResults(Company), protect, getCompanies)
 	.post(protect, addCompany);
 router.route('/my').get(protect, getMyCompanies);
 router
 	.route('/:id')
-	.get(getCompany)
+	.get(protect, getCompany)
 	.put(protect, updateCompany)
 	.delete(protect, deleteCompany);
 router.route('/radius/:zipcode/:distance').get(getCompaniesInRadius);

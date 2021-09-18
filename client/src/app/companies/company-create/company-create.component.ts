@@ -9,22 +9,44 @@ import { CompaniesService } from '../companies.service';
   styleUrls: ['./company-create.component.css'],
 })
 export class CompanyCreateComponent {
-  enteredTitle = '';
-  enteredDesc = '';
-  isSucceess: string = 'Error with creating company!';
+  showSuccessMessage: boolean;
+  serverErrorMessages: string;
+  // enteredTitle = '';
+  // enteredDesc = '';
+  isSucceess: string;
 
   constructor(public companiesService: CompaniesService) {}
 
   onAddCompany(form: NgForm) {
-    this.companiesService.addCompany(form.value).subscribe((res) => {
-      console.log(res);
-      if (res.success == true) {
-        this.isSucceess = 'Company created successfully!';
-      } else if (res.success == false) {
-        this.isSucceess = 'Error with creating company!';
+    this.companiesService.addCompany(form.value).subscribe(
+      (res) => {
+        this.showSuccessMessage = true;
+        setTimeout(() => (this.showSuccessMessage = false), 3000);
+        this.resetForm(form);
+      },
+      (err) => {
+        if (err.status === 422) {
+          this.serverErrorMessages = err.error.join('<br/>');
+        } else if (err.status === 500) {
+          this.serverErrorMessages = 'User unauthorized!';
+        } else {
+          this.serverErrorMessages = 'Opps.. Something went wrong';
+        }
       }
-    });
-    alert(this.isSucceess);
-    this.isSucceess = 'Error with creating company!';
+    );
+  }
+
+  resetForm(form: NgForm) {
+    this.companiesService.selectedCompany = {
+      _id: '',
+      logo: '',
+      coverPhoto: '',
+      title: '',
+      industry: '',
+      emp_count: '',
+      description: '',
+    };
+    form.resetForm();
+    this.serverErrorMessages = '';
   }
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -10,7 +10,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxPrintModule } from 'ngx-print';
-
+import { AuthInterceptor } from './auth/auth.interceptor';
 import { ROUTES } from './app.routing';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -38,14 +38,14 @@ import { GetMyquestionpoolComponent } from './Interview-components/get-myquestio
 import { GetSavedQuestionsComponent } from './Interview-components/get-saved-questions/get-saved-questions.component';
 import { UpdateInterviewsComponent } from './Interview-components/update-interviews/update-interviews.component';
 import { pipe } from 'rxjs';
-
+import { AuthGuard } from './auth/auth.guard';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { JobViewComponent } from './JOBS/all-jobs/job-view/job-view.component';
 import { SuccessPageComponent } from './JOBS/success-page/success-page.component';
+import { CookieService } from 'ngx-cookie-service';
 
 import { CompanyCreateComponent } from './companies/company-create/company-create.component';
 import { AllCompaniesComponent } from './companies/all-companies/all-companies.component';
-import { CookieService } from 'ngx-cookie-service';
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
 import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
 
@@ -64,10 +64,6 @@ const appRoutes: Routes = [
   { path: 'getmyquestionpool', component: GetMyquestionpoolComponent },
   { path: 'getsavedquestions', component: GetSavedQuestionsComponent },
   { path: 'modify/:_id', component: UpdateInterviewsComponent },
-  { path: 'companyCreate', component: CompanyCreateComponent },
-  { path: 'allCompanies', component: AllCompaniesComponent },
-  { path: 'myCompanies', component: MyCompaniesComponent },
-  { path: 'myCompanyOverview', component: MyCompanyOverviewComponent },
 ];
 
 @NgModule({
@@ -123,7 +119,12 @@ const appRoutes: Routes = [
     Ng2SearchPipeModule,
     NgxPrintModule,
   ],
-  providers: [CookieService, UserService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    AuthGuard,
+    CookieService,
+    UserService,
+  ],
   bootstrap: [AppComponent],
   exports: [NgxPaginationModule],
 })
