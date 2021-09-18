@@ -3,7 +3,7 @@
         <div class="hstack d-flex justify-content-between gap-3">
             <div class="hstack mx-4">
 
-                <div class="me-3">
+                <div class="me-3" style="font-size: 12px">
                     <mat-form-field appearance="outline" [style.width.px]=340>
                         <mat-label>Industry</mat-label>
                         <mat-select [(ngModel)]="industry">
@@ -12,7 +12,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="me-3">
+                <div class="me-3" style="font-size: 12px">
                     <mat-form-field appearance="outline">
                         <mat-label>Type</mat-label>
                         <mat-select [formControl]="JobType" [(ngModel)]="selectedTypes">
@@ -123,10 +123,12 @@
 
 
             <ng-template #longContent let-modal style="width: 1000px;">
+
                 <div class="modal-header  p-4 ">
                     <div class="d-block">
                         <h1 class="modal-title">Apply Now</h1>
-                        <span class="text-black-50"><small>{{jobpostservice.selectedJob.company}}</small></span> <span>
+                        <span class="text-black-50"><small>{{jobpostservice.selectedJob.company}}</small></span>
+                        <span>
                             &nbsp;&nbsp; </span>
                         <span class="text-black-50"><small>{{jobpostservice.selectedJob.title}}</small></span>
                     </div>
@@ -138,45 +140,92 @@
 
                 </div>
 
-                <div class="modal-body p-4  ">
+                <div class="modal-body p-4 ">
 
-                    <form>
-                        <div class="mb-3">
-                            <label for="apply-name" class="form-label">Full Name</label>
-                            <input type="email" class="form-control" id="apply-name" aria-describedby="emailHelp">
-
-                        </div>
-                        <div class="mb-3">
-                            <label for="apply-address" class="form-label">Address</label>
-                            <input type="email" class="form-control" id="apply-address" aria-describedby="emailHelp">
-
-                        </div>
-                        <div class="mb-3">
-                            <label for="apply-email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="apply-email" aria-describedby="emailHelp">
+                    <form [formGroup]="applicantFormGroup" style="font-size: 13px"
+                        (ngSubmit)="SubmitApplication(jobpostservice.selectedJob._id)">
+                        <div class="">
+                            <mat-form-field class="mat-form-field-applicant" appearance="outline"
+                                [hideRequiredMarker]="true">
+                                <mat-label>Full Name</mat-label>
+                                <input matInput type="text" id="fullname" name='fullname' formControlName="aFullname"
+                                    [ngModel]="jobpostservice.applicant?.fullname">
+                            </mat-form-field>
 
                         </div>
-                        <div class="mb-3">
-                            <label for="apply-phone" class="form-label">Phone</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp">
+
+                        <div class="">
+                            <mat-form-field class="mat-form-field-applicant" appearance="outline"
+                                [hideRequiredMarker]="true">
+                                <mat-label>Address</mat-label>
+                                <input matInput type="text" id="aAddress" name='aAddress' formControlName="aAddress"
+                                    [ngModel]="jobpostservice.applicant?.address">
+                            </mat-form-field>
 
                         </div>
-                        <div class="mb-3">
-                            <label for="apply-cl" class="form-label">Cover Letter</label>
-                            <textarea class="form-control" id="apply-cl" rows="6"></textarea>
+                        <div class="">
+                            <mat-form-field class="mat-form-field-applicant" appearance="outline"
+                                [hideRequiredMarker]="true">
+                                <mat-label>Email</mat-label>
+                                <input matInput type="text" id="aEmail" name='aEmail' formControlName="aEmail"
+                                    [ngModel]="jobpostservice.applicant?.email" required>
+                                <mat-error *ngIf="applicantFormGroup.get('aEmail').hasError('email')">
+                                    Not a valid email
+                                </mat-error>
+
+                            </mat-form-field>
+
                         </div>
+                        <div class="">
+                            <mat-form-field class="mat-form-field-applicant" appearance="outline"
+                                [hideRequiredMarker]="true">
+                                <mat-label>Phone</mat-label>
+                                <input matInput type="text" id="aPhone" name='aPhone' formControlName="aPhone"
+                                    [ngModel]="jobpostservice.applicant?.phone">
+                                <mat-error *ngIf="applicantFormGroup.get('aPhone').hasError('pattern')">
+                                    Not a valid mobile number
+                                </mat-error>
+                            </mat-form-field>
+
+                        </div>
+                        <div class="">
+                            <mat-form-field class="mat-form-field-applicant applicant-cl " appearance="outline"
+                                [hideRequiredMarker]="true">
+                                <mat-label>Cover Letter</mat-label>
+                                <textarea matInput type="text" id="aCV" name='aCV' formControlName="aCV" rows="6"
+                                    minlength="10" maxlength="1000" #coverletter
+                                    [ngModel]="jobpostservice.applicant?.coverletter"></textarea>
+                                <mat-hint align="end">{{coverletter.value?.length || 0}}/1000</mat-hint>
+                            </mat-form-field>
+
+                        </div>
+
+
+
                         <div class="mb-3 ">
                             <label for="formFileSm" class="form-label">Upload your resume here</label>
-                            <input class="form-control form-control-sm" id="formFileSm" type="file">
+                            <input class="form-control form-control-sm" id="resume" type="file" accept=".pdf"
+                                formControlName="aResume" (change)="fileChangeEvent($event)" required>
                         </div>
+
+
                         <div class="modal-footer ">
-                            <button type="button" class="btn btn-outline-primary pull-right">Download PDF</button>
+
+                            <button type="button" class="btn btn-outline-secondary pull-right"
+                                *ngIf="applicantFormGroup.valid" (click)="downloadPDF()">Download PDF</button>
+
+                            <button type="button" class="btn btn-outline-secondary disabled pull-right"
+                                *ngIf="!applicantFormGroup.valid" (click)="downloadPDF()">Download PDF</button>
+
                             <button type="submit" class="btn btn-primary pull-right mx-3"
-                                (click)="modal.close('Close click')">Submit</button>
+                                *ngIf="applicantFormGroup.valid" (click)="modal.close()">Submit</button>
+
+                            <button type="submit" class="btn btn-primary disabled pull-right mx-3"
+                                *ngIf="!applicantFormGroup.valid">Submit</button>
                         </div>
                     </form>
 
                 </div>
+
             </ng-template>
         </div>

@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { NgxTypedJsModule } from 'ngx-typed-js';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -50,6 +51,7 @@ import { MyCompaniesComponent } from './companies/my-companies/my-companies.comp
 import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
 
 import { ProfileComponent } from './profile/profile.component';
+import { AppliedSuccessComponent } from './JOBS/applied-success/applied-success.component';
 import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
@@ -91,6 +93,7 @@ const appRoutes: Routes = [
     MyCompaniesComponent,
     MyCompanyOverviewComponent,
     ProfileComponent,
+    AppliedSuccessComponent,
     UserComponent,
     SignUpComponent,
     SignInComponent,
@@ -117,6 +120,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot(),
     Ng2SearchPipeModule,
+    NgxTypedJsModule,
     NgxPrintModule,
   ],
   providers: [
