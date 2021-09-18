@@ -45,7 +45,7 @@
     font-size:20px; 
     background-color:#68afff;
     border:none; 
-    text-align:right ;
+    text-align: right;
     height: 10;
     width: 69vw;
     color: red;
@@ -55,3 +55,4 @@
     .fa-heart:focus{
         color: #ccc;
  }
+

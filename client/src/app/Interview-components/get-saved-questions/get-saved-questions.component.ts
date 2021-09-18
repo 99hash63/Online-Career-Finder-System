@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { NgxPrintModule } from 'ngx-print';
 
 import {InterviewsService} from '../../shared/interviews.service';
 import { Interviews } from 'src/app/shared/interviews.model';
