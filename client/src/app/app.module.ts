@@ -9,6 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPrintModule } from 'ngx-print';
 
 import { ROUTES } from './app.routing';
 import { AppComponent } from './app.component';
@@ -48,7 +49,7 @@ import { AllCompaniesComponent } from './companies/all-companies/all-companies.c
 import { CookieService } from 'ngx-cookie-service';
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
 import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
-import { NgxPrintModule } from 'ngx-print';
+
 //create object from routes module
 
 const appRoutes: Routes = [
