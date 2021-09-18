@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { NgxTypedJsModule } from 'ngx-typed-js';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -131,6 +132,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot(),
     Ng2SearchPipeModule,
+    NgxTypedJsModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

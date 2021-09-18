@@ -59,7 +59,12 @@
     <div class="container hero" *ngIf="hasRoute('/')">
       <div class="row">
         <div class="col-md-8 offset-md-2">
-          <h1 class="text-center">Find Your Dream Job.</h1>
+          <h1 class=""></h1>
+          <ngx-typed-js
+            [strings]="['Find Your Dream Job.', 'Find Your Favorite Companies.','Let\'s Crack that Interview!']"
+            [loop]="true" [typeSpeed]="100" [backDelay]="2000" [backSpeed]="20" [smartBackspace]="true">
+            <h1 class="typing  "></h1>
+          </ngx-typed-js>
           <div class="hero-content"></div>
 
         </div>
