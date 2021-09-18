@@ -84,7 +84,10 @@ export class AllJobsComponent implements OnInit {
       aFullname: new FormControl('', [Validators.required]),
       aAddress: new FormControl('', [Validators.required]),
       aEmail: new FormControl('', [Validators.required, Validators.email]),
-      aPhone: new FormControl('', [Validators.required]),
+      aPhone: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'),
+      ]),
       aCV: new FormControl('', [Validators.required]),
       aResume: new FormControl('', [Validators.required]),
     });
@@ -145,29 +148,46 @@ export class AllJobsComponent implements OnInit {
   }
 
   downloadPDF() {
+    //generate now date
+    var today = new Date();
+    var dd = String(today.getUTCDate()).padStart(2, '0');
+    var mm = String(today.getUTCMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getUTCFullYear();
+
+    var CurrentDate = mm + '/' + dd + '/' + yyyy;
+    //pdf filename for saving
+    const filename =
+      this.jobpostservice.selectedJob.company +
+      '_' +
+      this.jobpostservice.selectedJob.title +
+      '_' +
+      CurrentDate +
+      '.pdf';
+
     if (this.applicantFormGroup.valid) {
-    const doc = new jsPDF({
-      orientation: 'p',
-      unit: 'px',
-      format: [1000, 700],
-    });
-    doc.html(
-      pdftemp(
-        this.jobpostservice.selectedJob.company,
-        this.jobpostservice.selectedJob.title,
-        this.applicantFormGroup.get('aFullname').value,
-        this.applicantFormGroup.get('aAddress').value,
-        this.applicantFormGroup.get('aEmail').value,
-        this.applicantFormGroup.get('aPhone').value,
-        this.applicantFormGroup.get('aCV').value
-      ),
-      {
-        callback: function (doc) {
-          doc.save('foo.pdf');
-        },
-        margin: 45,
-      }
-    );
+      const doc = new jsPDF({
+        orientation: 'p',
+        unit: 'px',
+        format: [1000, 700],
+      });
+      doc.html(
+        pdftemp(
+          this.jobpostservice.selectedJob.company,
+          this.jobpostservice.selectedJob.title,
+          this.applicantFormGroup.get('aFullname').value,
+          this.applicantFormGroup.get('aAddress').value,
+          this.applicantFormGroup.get('aEmail').value,
+          this.applicantFormGroup.get('aPhone').value,
+          this.applicantFormGroup.get('aCV').value
+        ),
+        {
+          callback: function (doc) {
+            //saving PDF
+            doc.save(filename);
+          },
+          margin: 45,
+        }
+      );
     }
   }
 
