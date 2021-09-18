@@ -26,6 +26,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DiscoverhomeComponent } from './Interview-components/discoverhome/discoverhome.component';
 import { AddInterviewsComponent } from './Interview-components/add-interviews/add-interviews.component';
@@ -48,7 +49,10 @@ import { AllCompaniesComponent } from './companies/all-companies/all-companies.c
 import { CookieService } from 'ngx-cookie-service';
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
 import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
+
 import { NgxPrintModule } from 'ngx-print';
+
+import { ProfileComponent } from './profile/profile.component';
 //create object from routes module
 
 const appRoutes: Routes = [
@@ -94,6 +98,7 @@ const appRoutes: Routes = [
     AllCompaniesComponent,
     MyCompaniesComponent,
     MyCompanyOverviewComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -107,6 +112,7 @@ const appRoutes: Routes = [
     NgxPaginationModule,
     MatPaginatorModule,
     NgbModule,
+    MatSnackBarModule,
     MatButtonModule,
     MatAutocompleteModule,
     MatRadioModule,

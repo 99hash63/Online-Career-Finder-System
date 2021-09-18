@@ -158,6 +158,7 @@ export class CreateJobComponent implements OnInit {
 
     var CurrentDate = mm + '/' + dd + '/' + yyyy;
 
+    this.jobForm.value.user = '1';
     this.jobForm.value.publish = this.publish;
     this.jobForm.value.appliedApplicants = 0;
     this.jobForm.value.createdDate = CurrentDate;
