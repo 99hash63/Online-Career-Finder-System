@@ -43,7 +43,6 @@ export class CompaniesService {
 
   getSingleCompany(_id: Object) {
     const newURL = environment.apiBaseUrl + '/companies/' + _id;
-    // console.log(newURL);
     this.http.get(newURL).subscribe((res) => {
       this.myCompany = res['data'] as MyCompanyOverviewModel[];
       // console.log(this.myCompany);
