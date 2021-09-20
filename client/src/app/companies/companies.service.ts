@@ -8,27 +8,22 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class CompaniesService {
-  selectedCompany: Company = {
-    _id: '',
-    logo: '',
-    coverPhoto: '',
-    title: '',
-    industry: '',
-    emp_count: '',
-    description: '',
-  };
+  //object to create company
+  selectedCompany: Company;
+  serverErrorMessages: string;
+  public companies: Company[] = [];
+
   constructor(private http: HttpClient, private router: Router) {}
 
-  public companies: Company[] = [];
-  private myCompany: MyCompanyOverviewModel[] = [];
+  // private myCompany: MyCompanyOverviewModel[] = [];
   private companiesUpdated = new Subject<Company[]>();
-  getCompanies() {
-    return [...this.companies];
-  }
+  // getCompanies() {
+  //   return [...this.companies];
+  // }
 
-  getCompanyUpdateListener() {
-    return this.companiesUpdated.asObservable();
-  }
+  // getCompanyUpdateListener() {
+  //   return this.companiesUpdated.asObservable();
+  // }
 
   addCompany(company: Company) {
     this.companies.push(company);
@@ -41,16 +36,19 @@ export class CompaniesService {
     return this.http.get(environment.apiBaseUrl + '/companies');
   }
 
-  getSingleCompany(_id: Object) {
-    const newURL = environment.apiBaseUrl + '/companies/' + _id;
-    this.http.get(newURL).subscribe((res) => {
-      this.myCompany = res['data'] as MyCompanyOverviewModel[];
-      // console.log(this.myCompany);
-      this.router.navigate(['myCompanyOverview']);
-    });
-  }
+  // getSingleCompany(_id: Object) {
+  //   const newURL = environment.apiBaseUrl + '/companies/' + _id;
+  //   this.http.get(newURL).subscribe(
+  //     (res) => {
+  //       this.myCompany = res['data'] as MyCompanyOverviewModel[];
+  //     }
+  //     // (err) => {
+  //     //   this.serverErrorMessages = err.error.join('<br/>');
+  //     // }
+  //   );
+  // }
 
-  getCompanyOverview() {
-    return (this.myCompany as MyCompanyOverviewModel[]) || [];
-  }
+  // getCompanyOverview() {
+  //   return (this.myCompany as MyCompanyOverviewModel[]) || [];
+  // }
 }

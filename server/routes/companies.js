@@ -19,7 +19,7 @@ const { protect } = require('../middleware/auth');
 
 router
 	.route('/')
-	.get(advancedResults(Company), protect, getCompanies)
+	.get(advancedResults(Company), getCompanies)
 	.post(protect, addCompany);
 router.route('/my').get(protect, getMyCompanies);
 router

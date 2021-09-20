@@ -12,10 +12,10 @@ export class MyCompanyOverviewComponent implements OnInit {
   constructor(public companiesService: CompaniesService) {}
 
   ngOnInit(): void {
-    this.myCompany =
-      this.companiesService.getCompanyOverview() as MyCompanyOverviewModel[];
-    Object.entries(this.myCompany).forEach(([key, value]) =>
-      console.log(key + ':' + value)
-    );
+    // this.myCompany =
+    //   this.companiesService.getCompanyOverview() as MyCompanyOverviewModel[];
+    // Object.entries(this.myCompany).forEach(([key, value]) =>
+    //   console.log(key + ':' + value)
+    // );
   }
 }

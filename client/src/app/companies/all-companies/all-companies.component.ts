@@ -15,12 +15,12 @@ export class AllCompaniesComponent implements OnInit, OnDestroy {
   constructor(public companiesService: CompaniesService) {}
 
   ngOnInit() {
-    this.companies = this.companiesService.getCompanies();
-    this.companiesSub = this.companiesService
-      .getCompanyUpdateListener()
-      .subscribe((companies: Company[]) => {
-        this.companies = companies;
-      });
+    //   this.companies = this.companiesService.getCompanies();
+    //   this.companiesSub = this.companiesService
+    //     .getCompanyUpdateListener()
+    //     .subscribe((companies: Company[]) => {
+    //       this.companies = companies;
+    //     });
   }
 
   ngOnDestroy() {

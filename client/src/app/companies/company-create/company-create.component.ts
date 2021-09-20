@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Company } from '../company.model';
 import { CompaniesService } from '../companies.service';
 
+declare var M: any;
 @Component({
   selector: 'app-company-create',
   templateUrl: './company-create.component.html',
@@ -23,6 +24,7 @@ export class CompanyCreateComponent {
         this.showSuccessMessage = true;
         setTimeout(() => (this.showSuccessMessage = false), 3000);
         this.resetForm(form);
+        // M.toast({ html: 'Saved successfully', classes: 'rounded' });
       },
       (err) => {
         if (err.status === 422) {
