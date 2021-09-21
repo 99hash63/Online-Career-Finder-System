@@ -6,7 +6,7 @@
 <p *ngIf="companies.length <= 0">No companies</p> -->
 
 
-<div class="container-fluid" style="width: 1500px; margin-bottom: 200px;">
+<div class="container-fluid" style="width: 1500px; margin-bottom: 200px;" *ngIf="companiesService.myCompanyMode==false">
   <div class="mt-4">
 
     <div class="hstack d-flex justify-content-between gap-3">
@@ -69,7 +69,7 @@
     <br>
     <div class="text-secondary">
       <h2 class="text-center">Companies You Have Created....</h2>
-    </div>>
+    </div>
 
     <div class="card-deck">
 
@@ -83,7 +83,7 @@
             <!-- </div> -->
 
             <div class="card-body">
-              <form (submit)="onSave(companyId)" #companyForm="ngForm">
+              <form (submit)="viewCompany(company._id)" #companyForm="ngForm">
 
                 <input type="hidden" name="id" value='{{company._id}}' #companyId>
                 <!-- <span class="card-text  text-black-50">{{company.logo}}</span>
@@ -115,4 +115,8 @@
     </div>
 
   </div>
+</div>
+
+<div *ngIf="companiesService.myCompanyMode==true">
+  <app-my-company-detail></app-my-company-detail>
 </div>

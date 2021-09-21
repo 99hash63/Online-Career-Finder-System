@@ -54,6 +54,7 @@ import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { UserService } from './shared/user.service';
+import { MyCompanyDetailComponent } from './companies/my-companies/my-company-detail/my-company-detail.component';
 //create object from routes module
 
 const appRoutes: Routes = [
@@ -94,6 +95,7 @@ const appRoutes: Routes = [
     UserComponent,
     SignUpComponent,
     SignInComponent,
+    MyCompanyDetailComponent,
   ],
   imports: [
     BrowserModule,
