@@ -8,6 +8,7 @@ import { Company } from '../company.model';
   selector: 'app-my-companies',
   templateUrl: './my-companies.component.html',
   styleUrls: ['./my-companies.component.css'],
+  providers: [CompaniesService],
 })
 export class MyCompaniesComponent implements OnInit {
   companies: Company[] = [];
@@ -28,6 +29,7 @@ export class MyCompaniesComponent implements OnInit {
   }
 
   onSave(id: any) {
-    this.companiesService.getSingleCompany(id.value);
+    // console.log('hey');
+    // this.companiesService.getSingleCompany(id.value);
   }
 }
