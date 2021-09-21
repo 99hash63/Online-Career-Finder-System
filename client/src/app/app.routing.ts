@@ -13,7 +13,6 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { CompanyCreateComponent } from './companies/company-create/company-create.component';
 import { AllCompaniesComponent } from './companies/all-companies/all-companies.component';
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
-import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
 import { AuthGuard } from './auth/auth.guard';
 export const ROUTES: Routes = [
   {
@@ -67,11 +66,11 @@ export const ROUTES: Routes = [
     canActivate: [AuthGuard],
   },
 
-  {
-    path: 'myCompanyOverview',
-    component: MyCompanyOverviewComponent,
-    canActivate: [AuthGuard],
-  },
+  // {
+  //   path: 'myCompanyOverview',
+  //   component: MyCompanyOverviewComponent,
+  //   canActivate: [AuthGuard],
+  // },
 
   {
     path: 'signUp',

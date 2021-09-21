@@ -47,7 +47,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { CompanyCreateComponent } from './companies/company-create/company-create.component';
 import { AllCompaniesComponent } from './companies/all-companies/all-companies.component';
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
-import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
 
 import { ProfileComponent } from './profile/profile.component';
 import { AppliedSuccessComponent } from './JOBS/applied-success/applied-success.component';
@@ -90,7 +89,6 @@ const appRoutes: Routes = [
     CompanyCreateComponent,
     AllCompaniesComponent,
     MyCompaniesComponent,
-    MyCompanyOverviewComponent,
     ProfileComponent,
     AppliedSuccessComponent,
     UserComponent,

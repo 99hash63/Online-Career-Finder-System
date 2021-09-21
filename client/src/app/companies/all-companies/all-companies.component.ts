@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './all-companies.component.html',
   styleUrls: ['./all-companies.component.css'],
 })
-export class AllCompaniesComponent implements OnInit, OnDestroy {
+export class AllCompaniesComponent implements OnInit {
   companies: Company[] = [];
   private companiesSub!: Subscription;
 
@@ -21,9 +21,5 @@ export class AllCompaniesComponent implements OnInit, OnDestroy {
     //     .subscribe((companies: Company[]) => {
     //       this.companies = companies;
     //     });
-  }
-
-  ngOnDestroy() {
-    this.companiesSub.unsubscribe();
   }
 }
