@@ -1,24 +1,28 @@
 .crop {
   width: 100%;
-  height: 200px;
+  height: 150px;
   overflow: hidden;
 }
 
+.navbar {
+  padding: 0px 0px 0px 0px;
+}
+
 .nav-item {
-  padding: 0px 50px 0px 50px;
-  font-size: 20px;
+  padding: 0px 50px 0px 30px;
+  font-size: 18px;
 }
 
 .nav-buttons {
-  font-size: 45px;
-  padding: 0px 40px 15px 0px;
+  /* font-size: 45px; */
+  padding: 0px 40px 0px 0px;
 }
 
 .overview-headings-left-container {
   padding-left: 0px;
 }
 
-.overview-headings-left-container h5 {
+.overview-headings-left-container h6 {
   color: rgb(60, 60, 60);
   font-weight: bold;
   padding-top: 15px;
@@ -29,7 +33,7 @@
   padding-left: 30px;
 }
 
-.overview-desc-left-container h5 {
+.overview-desc-left-container h6 {
   color: rgb(110, 110, 110);
   padding-top: 15px;
   padding-bottom: 5px;
@@ -39,7 +43,7 @@
   padding-left: 100px;
 }
 
-.overview-headings-right-container h5 {
+.overview-headings-right-container h6 {
   color: rgb(60, 60, 60);
   font-weight: bold;
   padding-top: 15px;
@@ -50,13 +54,13 @@
   padding-left: 30px;
 }
 
-.overview-desc-right-container h5 {
+.overview-desc-right-container h6 {
   color: rgb(110, 110, 110);
   padding-top: 15px;
   padding-bottom: 5px;
 }
 
-.description-container h5 {
+.description-container h6 {
   color: rgb(110, 110, 110);
   padding-top: 15px;
   padding-bottom: 5px;

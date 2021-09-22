@@ -6,7 +6,7 @@
 <p *ngIf="companies.length <= 0">No companies</p> -->
 
 
-<div class="container-fluid" style="width: 1600px; margin-bottom: 200px;" *ngIf="companiesService.myCompanyMode==false">
+<div class="container-fluid" style="width: 1300px; margin-bottom: 200px;" *ngIf="companiesService.myCompanyMode==false">
   <div class="mt-4">
 
     <div class="hstack d-flex justify-content-between gap-3">
@@ -68,13 +68,13 @@
     <hr>
     <br>
     <div class="text-secondary">
-      <h2 class="text-center">Companies You Have Created....</h2>
+      <h3 class="text-center">Companies You Have Created....</h3>
     </div>
 
     <div class="card-deck">
 
       <div class="col-sm-4" *ngFor="let company of companies">
-        <div style="padding: 50px 60px 50px 60px;">
+        <div style="padding: 25px 30px 25px 30px;">
           <div class="card">
             <!-- <div class="crop"> -->
             <!-- <img [src]="company.coverPhoto"> -->

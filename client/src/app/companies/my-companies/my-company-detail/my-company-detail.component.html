@@ -1,19 +1,19 @@
 <div class="card-img-overlay">
-  <button type="button" class="btn btn-light" (click)="companiesService.myCompanyModeOff()"
-    style="margin-left: 300px; position: relative; bottom: 4px;">Back</button>
+  <button type="button" class="btn btn-outline-light btn-sm" (click)="companiesService.myCompanyModeOff()"
+    style="margin-left: 105px;">Back</button>
 </div>
 
-<div class="container-fluid" style="width: 1600px; margin-bottom: 200px;">
+<div class="container-fluid" style="width: 1300px; margin-bottom: 200px;">
   <div class="mt-4">
 
     <div class="row">
-      <div style="width: 1600px">
+      <div style="width: 1500px">
         <div class="card">
           <div class="crop">
             <img class="card-img-top" [src]="myCompanyDetail.coverPhoto" alt="Card image cap">
           </div>
           <div class="card-body">
-            <h2 class="card-title" style="margin-left: 72px;">{{myCompanyDetail.title}}</h2>
+            <h3 class="card-title" style="margin-left: 36px;">{{myCompanyDetail.title}}</h3>
 
             <!-- navbar for card -->
             <nav class="navbar navbar-expand-lg navbar-light">
@@ -64,65 +64,65 @@
 
     <div class="row" style="margin-top: 25px;">
 
-      <div style="width: 1000px;">
+      <div style="width: 800px;">
         <div class="card">
           <div class="card-header">
-            <h4>Company Overview</h4>
+            <h5>Company Overview</h5>
           </div>
           <div class="card-body">
             <form class="form-inline">
               <div class="overview-headings-left-container">
-                <h5>Website:</h5>
-                <h5>Size:</h5>
-                <h5>Industry:</h5>
+                <h6>Website:</h6>
+                <h6>Size:</h6>
+                <h6>Industry:</h6>
               </div>
               <div class="overview-desc-left-container">
-                <h5>{{myCompanyDetail.website}}</h5>
-                <h5>{{myCompanyDetail.emp_count}}</h5>
-                <h5>{{myCompanyDetail.industry}}</h5>
+                <h6>{{myCompanyDetail.website}}</h6>
+                <h6>{{myCompanyDetail.emp_count}}</h6>
+                <h6>{{myCompanyDetail.industry}}</h6>
               </div>
               <div class="overview-headings-right-container">
-                <h5>Revenue:</h5>
-                <h5>Headquarters:</h5>
-                <h5>Founded:</h5>
+                <h6>Revenue:</h6>
+                <h6>Headquarters:</h6>
+                <h6>Founded:</h6>
               </div>
               <div class="overview-desc-right-container">
-                <h5>{{myCompanyDetail.revenue}}</h5>
-                <h5>{{myCompanyDetail.address}}</h5>
-                <h5>{{myCompanyDetail.founded}}</h5>
+                <h6>{{myCompanyDetail.revenue}}</h6>
+                <h6>{{myCompanyDetail.address}}</h6>
+                <h6>{{myCompanyDetail.founded}}</h6>
               </div>
             </form>
             <div class="description-container">
-              <h5>{{myCompanyDetail.description}}</h5>
+              <h6>{{myCompanyDetail.description}}</h6>
             </div>
           </div>
         </div>
       </div>
 
-      <div style="width: 600px">
+      <div style="width: 500px">
         <div class="card" style="height: 500px;">
           <div class="card-header">
-            <h4>Review Summary</h4>
+            <h5>Review Summary</h5>
           </div>
           <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
+            <h6 class="card-title">Special title treatment</h6>
             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
       </div>
 
-      <div style="width: 1000px;">
+      <div style="width: 800px;">
         <div class="card">
           <div class="card-header">
-            <h4>Company Photos</h4>
+            <h5>Company Photos</h5>
           </div>
           <div class="card-body">
-            <h4>photos of your company</h4>
-            <h4>photos of your company</h4>
-            <h4>photos of your company</h4>
-            <h4>photos of your company</h4>
-            <h4>photos of your company</h4>
+            <h6>photos of your company</h6>
+            <h6>photos of your company</h6>
+            <h6>photos of your company</h6>
+            <h6>photos of your company</h6>
+            <h6>photos of your company</h6>
           </div>
         </div>
       </div>
