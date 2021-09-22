@@ -2,29 +2,27 @@ import { Injectable } from '@angular/core';
 import { Company } from './company.model';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { MyCompanyOverviewModel } from './company-overview.model';
+import { MyCompanyDetail } from './myCompanyDetail';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class CompaniesService {
-  //object to create company
+  //create company properties
   selectedCompany: Company;
   serverErrorMessages: string;
   public companies: Company[] = [];
+  private companiesUpdated = new Subject<Company[]>();
+
+  //view company detail properties
+  myCompanyId: string;
+
+  //property change component visibility
+  public myCompanyMode: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  // private myCompany: MyCompanyOverviewModel[] = [];
-  private companiesUpdated = new Subject<Company[]>();
-  // getCompanies() {
-  //   return [...this.companies];
-  // }
-
-  // getCompanyUpdateListener() {
-  //   return this.companiesUpdated.asObservable();
-  // }
-
+  //function to create new company
   addCompany(company: Company) {
     this.companies.push(company);
     this.companiesUpdated.next([...this.companies]);
@@ -32,23 +30,39 @@ export class CompaniesService {
     return this.http.post(environment.apiBaseUrl + '/companies', company);
   }
 
+  //function to get all my companies
   getMyCompaniesDB() {
     return this.http.get(environment.apiBaseUrl + '/companies');
   }
 
-  // getSingleCompany(_id: Object) {
-  //   const newURL = environment.apiBaseUrl + '/companies/' + _id;
-  //   this.http.get(newURL).subscribe(
-  //     (res) => {
-  //       this.myCompany = res['data'] as MyCompanyOverviewModel[];
-  //     }
-  //     // (err) => {
-  //     //   this.serverErrorMessages = err.error.join('<br/>');
-  //     // }
-  //   );
-  // }
+  //setter for myCompanyId and change myCompany mode to true
+  setMyCompanyId(id: string) {
+    this.myCompanyId = id;
+    this.myCompanyMode = true;
+  }
 
-  // getCompanyOverview() {
-  //   return (this.myCompany as MyCompanyOverviewModel[]) || [];
-  // }
+  //getter for myCompanyId
+  getMyCompanyId() {
+    return this.myCompanyId;
+  }
+
+  //function to get a single company from DB
+  getSingleCompanyDB(id: string) {
+    return this.http.get(environment.apiBaseUrl + '/companies/' + id);
+  }
+
+  //function to display my company detail
+  myCompanyModeOn() {
+    this.myCompanyMode = true;
+  }
+
+  //function to stop displaying my company detail
+  myCompanyModeOff() {
+    this.myCompanyMode = false;
+  }
+
+  //delete a company
+  deleteCompany(id) {
+    return this.http.delete(environment.apiBaseUrl + '/companies/' + id);
+  }
 }

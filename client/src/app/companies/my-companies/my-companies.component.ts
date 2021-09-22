@@ -28,8 +28,7 @@ export class MyCompaniesComponent implements OnInit {
     );
   }
 
-  onSave(id: any) {
-    // console.log('hey');
-    // this.companiesService.getSingleCompany(id.value);
+  viewCompany(id: any) {
+    this.companiesService.setMyCompanyId(id);
   }
 }

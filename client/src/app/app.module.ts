@@ -47,7 +47,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { CompanyCreateComponent } from './companies/company-create/company-create.component';
 import { AllCompaniesComponent } from './companies/all-companies/all-companies.component';
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
-import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
 
 import { ProfileComponent } from './profile/profile.component';
 import { AppliedSuccessComponent } from './JOBS/applied-success/applied-success.component';
@@ -55,6 +54,7 @@ import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { UserService } from './shared/user.service';
+import { MyCompanyDetailComponent } from './companies/my-companies/my-company-detail/my-company-detail.component';
 //create object from routes module
 
 const appRoutes: Routes = [
@@ -90,12 +90,12 @@ const appRoutes: Routes = [
     CompanyCreateComponent,
     AllCompaniesComponent,
     MyCompaniesComponent,
-    MyCompanyOverviewComponent,
     ProfileComponent,
     AppliedSuccessComponent,
     UserComponent,
     SignUpComponent,
     SignInComponent,
+    MyCompanyDetailComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-export interface MyCompanyOverviewModel {
+export interface MyCompanyDetail {
   _id: string;
 
   industry: string;

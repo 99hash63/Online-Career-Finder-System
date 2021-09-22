@@ -1,0 +1,153 @@
+<div class="card-img-overlay">
+  <button type="button" class="btn btn-outline-light btn-sm" (click)="companiesService.myCompanyModeOff()"
+    style="margin-left: 105px;">Back</button>
+</div>
+
+<div class="container-fluid" style="width: 1300px; margin-bottom: 200px;">
+  <div class="mt-4">
+
+    <div class="row">
+      <div style="width: 1500px">
+        <div class="card">
+          <div class="crop">
+            <img class="card-img-top" [src]="myCompanyDetail.coverPhoto" alt="Card image cap">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title" style="margin-left: 36px;">{{myCompanyDetail.title}}</h3>
+
+            <!-- navbar for card -->
+            <nav class="navbar navbar-expand-lg navbar-light">
+
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Overview </a>
+                    </li>
+                  </div>
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Reviews</a>
+                    </li>
+                  </div>
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Jobs</a>
+                    </li>
+                  </div>
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Interviews</a>
+                    </li>
+                  </div>
+                </ul>
+              </div>
+              <form class="form-inline">
+                <div class="nav-buttons">
+                  <button class="btn btn-primary" type="button">Edit Post</button>
+                </div>
+                <div class="nav-buttons">
+                  <button class="btn btn-danger" type="button" (click)="open(content)">Delete</button>
+                </div>
+              </form>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row" style="margin-top: 25px;">
+
+      <div style="width: 800px;">
+        <div class="card">
+          <div class="card-header">
+            <h5>Company Overview</h5>
+          </div>
+          <div class="card-body">
+            <form class="form-inline">
+              <div class="overview-headings-left-container">
+                <h6>Website:</h6>
+                <h6>Size:</h6>
+                <h6>Industry:</h6>
+              </div>
+              <div class="overview-desc-left-container">
+                <h6>{{myCompanyDetail.website}}</h6>
+                <h6>{{myCompanyDetail.emp_count}}</h6>
+                <h6>{{myCompanyDetail.industry}}</h6>
+              </div>
+              <div class="overview-headings-right-container">
+                <h6>Revenue:</h6>
+                <h6>Headquarters:</h6>
+                <h6>Founded:</h6>
+              </div>
+              <div class="overview-desc-right-container">
+                <h6>{{myCompanyDetail.revenue}}</h6>
+                <h6>{{myCompanyDetail.address}}</h6>
+                <h6>{{myCompanyDetail.founded}}</h6>
+              </div>
+            </form>
+            <div class="description-container">
+              <h6>{{myCompanyDetail.description}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 500px">
+        <div class="card" style="height: 500px;">
+          <div class="card-header">
+            <h5>Review Summary</h5>
+          </div>
+          <div class="card-body">
+            <h6 class="card-title">Special title treatment</h6>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 800px;">
+        <div class="card">
+          <div class="card-header">
+            <h5>Company Photos</h5>
+          </div>
+          <div class="card-body">
+            <h6>photos of your company</h6>
+            <h6>photos of your company</h6>
+            <h6>photos of your company</h6>
+            <h6>photos of your company</h6>
+            <h6>photos of your company</h6>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+</div>
+
+<!--delete -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header ">
+    <h4 class="modal-title" id="modal-basic-title">Confirm Delete</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to delete?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark w-25" (click)="c()">No</button>
+    <button type="button" class="btn btn-danger w-25" (click)="onDelete()">Yes</button>
+  </div>
+</ng-template>
