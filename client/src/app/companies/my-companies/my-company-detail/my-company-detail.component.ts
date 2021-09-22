@@ -14,6 +14,8 @@ export class MyCompanyDetailComponent implements OnInit {
   constructor(public companiesService: CompaniesService) {}
 
   ngOnInit(): void {
+    window.scroll(0, 0);
+
     this.myCompanyId = this.companiesService.getMyCompanyId();
     this.companiesService.getSingleCompanyDB(this.myCompanyId).subscribe(
       (res) => {

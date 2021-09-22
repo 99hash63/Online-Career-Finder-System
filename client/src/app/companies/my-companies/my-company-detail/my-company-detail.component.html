@@ -1,3 +1,136 @@
-<button (click)="companiesService.myCompanyModeOff()">Back</button>
-<h1> {{myCompanyDetail.title}}
-</h1>
+<div class="card-img-overlay">
+  <button type="button" class="btn btn-light" (click)="companiesService.myCompanyModeOff()"
+    style="margin-left: 300px; position: relative; bottom: 4px;">Back</button>
+</div>
+
+<div class="container-fluid" style="width: 1600px; margin-bottom: 200px;">
+  <div class="mt-4">
+
+    <div class="row">
+      <div style="width: 1600px">
+        <div class="card">
+          <div class="crop">
+            <img class="card-img-top" [src]="myCompanyDetail.coverPhoto" alt="Card image cap">
+          </div>
+          <div class="card-body">
+            <h2 class="card-title" style="margin-left: 72px;">{{myCompanyDetail.title}}</h2>
+
+            <!-- navbar for card -->
+            <nav class="navbar navbar-expand-lg navbar-light">
+
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Overview </a>
+                    </li>
+                  </div>
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Reviews</a>
+                    </li>
+                  </div>
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Jobs</a>
+                    </li>
+                  </div>
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Interviews</a>
+                    </li>
+                  </div>
+                </ul>
+              </div>
+              <form class="form-inline">
+                <div class="nav-buttons">
+                  <button class="btn btn-primary" type="button">Edit Post</button>
+                </div>
+                <div class="nav-buttons">
+                  <button class="btn btn-danger" type="button">Delete</button>
+                </div>
+              </form>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row" style="margin-top: 25px;">
+
+      <div style="width: 1000px;">
+        <div class="card">
+          <div class="card-header">
+            <h4>Company Overview</h4>
+          </div>
+          <div class="card-body">
+            <form class="form-inline">
+              <div class="overview-headings-left-container">
+                <h5>Website:</h5>
+                <h5>Size:</h5>
+                <h5>Industry:</h5>
+              </div>
+              <div class="overview-desc-left-container">
+                <h5>{{myCompanyDetail.website}}</h5>
+                <h5>{{myCompanyDetail.emp_count}}</h5>
+                <h5>{{myCompanyDetail.industry}}</h5>
+              </div>
+              <div class="overview-headings-right-container">
+                <h5>Revenue:</h5>
+                <h5>Headquarters:</h5>
+                <h5>Founded:</h5>
+              </div>
+              <div class="overview-desc-right-container">
+                <h5>{{myCompanyDetail.revenue}}</h5>
+                <h5>{{myCompanyDetail.address}}</h5>
+                <h5>{{myCompanyDetail.founded}}</h5>
+              </div>
+            </form>
+            <div class="description-container">
+              <h5>{{myCompanyDetail.description}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 600px">
+        <div class="card" style="height: 500px;">
+          <div class="card-header">
+            <h4>Review Summary</h4>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="width: 1000px;">
+        <div class="card">
+          <div class="card-header">
+            <h4>Company Photos</h4>
+          </div>
+          <div class="card-body">
+            <h4>photos of your company</h4>
+            <h4>photos of your company</h4>
+            <h4>photos of your company</h4>
+            <h4>photos of your company</h4>
+            <h4>photos of your company</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+</div>
