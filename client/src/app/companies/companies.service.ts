@@ -18,7 +18,7 @@ export class CompaniesService {
   myCompanyId: string;
 
   //property change component visibility
-  myCompanyMode: boolean = false;
+  public myCompanyMode: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -51,11 +51,18 @@ export class CompaniesService {
     return this.http.get(environment.apiBaseUrl + '/companies/' + id);
   }
 
+  //function to display my company detail
   myCompanyModeOn() {
     this.myCompanyMode = true;
   }
 
+  //function to stop displaying my company detail
   myCompanyModeOff() {
     this.myCompanyMode = false;
+  }
+
+  //delete a company
+  deleteCompany(id) {
+    return this.http.delete(environment.apiBaseUrl + '/companies/' + id);
   }
 }
