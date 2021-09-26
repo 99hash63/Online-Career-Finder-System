@@ -134,9 +134,21 @@
         </form>
       </mat-step>
 
+      <mat-step [stepControl]="seventhFormGroup" errorMessage="required.">
+        <form [formGroup]="seventhFormGroup">
+          <ng-template matStepLabel>Upload images</ng-template>
+          <!-- <mat-label>Title</mat-label> -->
+          <input type="file" (change)="uploadFile($event)">
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
       <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
+        <ng-template matStepLabel>Preview</ng-template>
+        <p>This his how others will see your company post</p>
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button (click)="stepper.reset()">Reset</button>

@@ -31,6 +31,7 @@ export class CreateCompanyComponent implements OnInit {
   fourthFormGroup: FormGroup;
   fifthFormGroup: FormGroup;
   sixthFormGroup: FormGroup;
+  seventhFormGroup: FormGroup;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -59,6 +60,19 @@ export class CreateCompanyComponent implements OnInit {
     this.sixthFormGroup = this._formBuilder.group({
       description: ['', Validators.required],
     });
+    this.seventhFormGroup = this._formBuilder.group({
+      testFile: [null, Validators.required],
+    });
+  }
+
+  uploadFile(event) {
+    console.log('file selected');
+
+    const file = (event.target as HTMLInputElement).files[0];
+    this.seventhFormGroup.patchValue({
+      testFile: file,
+    });
+    this.seventhFormGroup.get('testFile').updateValueAndValidity();
   }
 
   onSubmit() {
@@ -68,19 +82,37 @@ export class CreateCompanyComponent implements OnInit {
       this.thirdFormGroup.valid &&
       this.fourthFormGroup.valid &&
       this.fifthFormGroup.valid &&
-      this.sixthFormGroup.valid
+      this.sixthFormGroup.valid &&
+      this.seventhFormGroup.valid
     ) {
-      const result = Object.assign(
-        {},
-        this.firstFormGroup.value,
-        this.secondFormGroup.value,
-        this.thirdFormGroup.value,
-        this.fourthFormGroup.value,
-        this.fifthFormGroup.value,
-        this.sixthFormGroup.value
+      // const result = Object.assign(
+      //   {},
+      //   this.firstFormGroup.value,
+      //   this.secondFormGroup.value,
+      //   this.thirdFormGroup.value,
+      //   this.fourthFormGroup.value,
+      //   this.fifthFormGroup.value,
+      //   this.sixthFormGroup.value
+      // );
+      const formData: any = new FormData();
+
+      formData.append('industry', this.firstFormGroup.get('industry').value);
+      formData.append('emp_count', this.secondFormGroup.get('emp_count').value);
+      formData.append('founded', this.thirdFormGroup.get('founded').value);
+      formData.append('website', this.thirdFormGroup.get('website').value);
+      formData.append('revenue', this.thirdFormGroup.get('revenue').value);
+      formData.append('country', this.fourthFormGroup.get('country').value);
+      formData.append('city', this.fourthFormGroup.get('city').value);
+      formData.append('title', this.fifthFormGroup.get('title').value);
+      formData.append(
+        'description',
+        this.sixthFormGroup.get('description').value
       );
-      console.log(result);
-      this.companiesService.postCompany(result).subscribe(
+      formData.append('testFile', this.seventhFormGroup.get('testFile').value);
+
+      // console.log('hey' + this.seventhFormGroup.get('testFile').value);
+      // console.log(formData);
+      this.companiesService.postCompany(formData).subscribe(
         (res) => {
           alert('success!');
         },
