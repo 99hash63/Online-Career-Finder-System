@@ -44,7 +44,6 @@ import { JobViewComponent } from './JOBS/all-jobs/job-view/job-view.component';
 import { SuccessPageComponent } from './JOBS/success-page/success-page.component';
 import { CookieService } from 'ngx-cookie-service';
 
-import { CompanyCreateComponent } from './companies/company-create/company-create.component';
 import { AllCompaniesComponent } from './companies/all-companies/all-companies.component';
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
 
@@ -91,7 +90,6 @@ const appRoutes: Routes = [
     UpdateInterviewsComponent,
     JobViewComponent,
     SuccessPageComponent,
-    CompanyCreateComponent,
     AllCompaniesComponent,
     MyCompaniesComponent,
     ProfileComponent,
