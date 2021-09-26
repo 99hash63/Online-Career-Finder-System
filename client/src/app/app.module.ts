@@ -44,7 +44,6 @@ import { JobViewComponent } from './JOBS/all-jobs/job-view/job-view.component';
 import { SuccessPageComponent } from './JOBS/success-page/success-page.component';
 import { CookieService } from 'ngx-cookie-service';
 
-import { CompanyCreateComponent } from './companies/company-create/company-create.component';
 import { AllCompaniesComponent } from './companies/all-companies/all-companies.component';
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
 
@@ -58,6 +57,7 @@ import { MyCompanyDetailComponent } from './companies/my-companies/my-company-de
 import { CreateCompanyComponent } from './companies/create-company/create-company.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { AllCompanyDetailComponent } from './companies/all-companies/all-company-detail/all-company-detail.component';
 
 //create object from routes module
 
@@ -91,7 +91,6 @@ const appRoutes: Routes = [
     UpdateInterviewsComponent,
     JobViewComponent,
     SuccessPageComponent,
-    CompanyCreateComponent,
     AllCompaniesComponent,
     MyCompaniesComponent,
     ProfileComponent,
@@ -101,6 +100,7 @@ const appRoutes: Routes = [
     SignInComponent,
     MyCompanyDetailComponent,
     CreateCompanyComponent,
+    AllCompanyDetailComponent,
   ],
   imports: [
     BrowserModule,

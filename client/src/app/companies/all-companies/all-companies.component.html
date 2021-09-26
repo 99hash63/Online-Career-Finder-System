@@ -1,13 +1,122 @@
-<!-- <div class="card mb-3" style="max-width: 800px; height: 500px; border-radius: 10px;" *ngIf="companies.length > 0">
+<!-- <div *ngIf="companies.length > 0">
   <div class="card mb-3" style="max-width: 300px; height: 150px; border-radius: 10px;"
     *ngFor="let company of companies">
-    <div class="row g-0">
-      <div class="card-body">
-        <h5 class="card-title m-0">{{company.title}}</h5>
-        <span class="card-text  text-black-50">{{company.description}}</span>
-      </div>
-    </div>
   </div>
 </div>
 <p *ngIf="companies.length <= 0">No companies</p> -->
-<h1>all companies</h1>
+
+
+<div class="container-fluid" style="width: 1300px; margin-bottom: 200px;" *ngIf="companiesService.myCompanyMode==false">
+  <div class="mt-4">
+
+    <div class="hstack d-flex justify-content-between gap-3">
+      <div class="hstack mx-4">
+
+        <div class="me-3" style="font-size: 12px">
+          <mat-form-field appearance="outline" [style.width.px]=340>
+            <mat-label>Industry</mat-label>
+            <mat-select>
+              <mat-option>None</mat-option>
+              <mat-option></mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <!-- <div class="me-3" style="font-size: 12px">
+          <mat-form-field appearance="outline" [style.width.px]=340>
+            <mat-label>Industry</mat-label>
+            <mat-select [(ngModel)]="industry">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let state of IndustryOptions" [value]="state">{{state}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div> -->
+
+        <div class="me-3" style="font-size: 12px">
+          <mat-form-field appearance="outline">
+            <mat-label>Location</mat-label>
+            <mat-select>
+              <mat-option></mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- <div class="me-3" style="font-size: 12px">
+        <mat-form-field appearance="outline">
+          <mat-label>Type</mat-label>
+          <mat-select [formControl]="JobType" [(ngModel)]="selectedTypes">
+            <mat-option *ngFor="let st of typeList" [value]="st">{{st}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div> -->
+
+
+      <div>
+        <div class="d-flex mx-4">
+          <input class="form-control " style="width: 400px;" type="text" placeholder="Search" aria-label="Search">
+        </div>
+      </div>
+      <!-- <div>
+        <div class="d-flex mx-4">
+          <input class="form-control " style="width: 400px;" type="text" placeholder="Search" aria-label="Search"
+            [(ngModel)]="searchTerm">
+        </div>
+      </div> -->
+
+    </div>
+    <hr>
+    <br>
+    <div class="text-secondary">
+      <h3 class="text-center">Companies You Have Created....</h3>
+    </div>
+
+    <div class="card-deck">
+
+      <div class="col-sm-4" *ngFor="let company of companies">
+        <div style="padding: 25px 30px 25px 30px;">
+          <div class="card">
+            <!-- <div class="crop"> -->
+            <!-- <img [src]="company.coverPhoto"> -->
+            <img [src]="company.coverPhoto" class="card-img-top" src="..." alt="Card image cap">
+
+            <!-- </div> -->
+
+            <div class="card-body">
+              <form (submit)="viewCompany(company._id)" #companyForm="ngForm">
+
+                <input type="hidden" name="id" value='{{company._id}}' #companyId>
+                <!-- <span class="card-text  text-black-50">{{company.logo}}</span>
+          <span class="card-text  text-black-50">{{company.coverPhoto}}</span>
+          <span class="card-text  text-black-50">{{company.industry}}</span>
+          <span class="card-text  text-black-50">{{company.emp_count}}</span> -->
+
+                <h5 class="card-title">{{company.title}}</h5>
+                <p class="card-text">{{company.description}}</p>
+                <!-- <button (click)="onSave()" class="btn btn-outline-success btn-sm">Read More</button> -->
+                <input type="submit" value="View Company" class="btn btn-outline-success btn-sm" />
+                &nbsp;
+                <a [routerLink]="['/myCompanies']" routerLinkActive="router-link-active"
+                  class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+    <!-- error message -->
+    <div class="alert" *ngIf="serverErrorMessages">
+      {{serverErrorMessages}}
+    </div>
+
+  </div>
+</div>
+
+<div *ngIf="companiesService.myCompanyMode==true">
+  <app-all-company-detail></app-all-company-detail>
+</div>

@@ -11,15 +11,21 @@ import { Subscription } from 'rxjs';
 export class AllCompaniesComponent implements OnInit {
   companies: Company[] = [];
   private companiesSub!: Subscription;
-
+  serverErrorMessages: string;
   constructor(public companiesService: CompaniesService) {}
 
   ngOnInit() {
-    //   this.companies = this.companiesService.getCompanies();
-    //   this.companiesSub = this.companiesService
-    //     .getCompanyUpdateListener()
-    //     .subscribe((companies: Company[]) => {
-    //       this.companies = companies;
-    //     });
+    this.companiesService.getAllCompaniesDB().subscribe(
+      (res) => {
+        this.companies = res['data'] as Company[];
+      },
+      (err) => {
+        this.serverErrorMessages = err.error.join('<br/>');
+      }
+    );
+  }
+
+  viewCompany(id: any) {
+    this.companiesService.setMyCompanyId(id);
   }
 }

@@ -10,7 +10,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
-import { CompanyCreateComponent } from './companies/company-create/company-create.component';
 import { AllCompaniesComponent } from './companies/all-companies/all-companies.component';
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
 import { AuthGuard } from './auth/auth.guard';
@@ -48,12 +47,6 @@ export const ROUTES: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-  },
-
-  {
-    path: 'companyCreate',
-    component: CompanyCreateComponent,
-    canActivate: [AuthGuard],
   },
 
   {
