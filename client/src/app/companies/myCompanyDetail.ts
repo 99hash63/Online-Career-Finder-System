@@ -11,6 +11,9 @@ export interface MyCompanyDetail {
   address: string;
   location: Object;
 
+  country: string;
+  city: string;
+
   title: string;
   description: string;
 

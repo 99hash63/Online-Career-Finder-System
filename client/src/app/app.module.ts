@@ -55,6 +55,10 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { UserService } from './shared/user.service';
 import { MyCompanyDetailComponent } from './companies/my-companies/my-company-detail/my-company-detail.component';
+import { CreateCompanyComponent } from './companies/create-company/create-company.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
 //create object from routes module
 
 const appRoutes: Routes = [
@@ -96,6 +100,7 @@ const appRoutes: Routes = [
     SignUpComponent,
     SignInComponent,
     MyCompanyDetailComponent,
+    CreateCompanyComponent,
   ],
   imports: [
     BrowserModule,
@@ -121,6 +126,8 @@ const appRoutes: Routes = [
     Ng2SearchPipeModule,
     NgxTypedJsModule,
     NgxPrintModule,
+    MatCardModule,
+    MatButtonToggleModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

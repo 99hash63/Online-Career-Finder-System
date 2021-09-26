@@ -14,6 +14,28 @@ export class CompaniesService {
   public companies: Company[] = [];
   private companiesUpdated = new Subject<Company[]>();
 
+  selectedCompany2: MyCompanyDetail = {
+    _id: '',
+    industry: '',
+    emp_count: '',
+    founded: '',
+    website: '',
+    revenue: 0,
+    address: '',
+    location: Object[''],
+    country: '',
+    city: '',
+    title: '',
+    description: '',
+    logo: '',
+    coverPhoto: '',
+    otherPhotos: [''],
+    isPublic: false,
+    createdAt: '',
+    createdBy: '',
+    slug: '',
+  };
+
   //view company detail properties
   myCompanyId: string;
 
@@ -27,6 +49,11 @@ export class CompaniesService {
     this.companies.push(company);
     this.companiesUpdated.next([...this.companies]);
 
+    return this.http.post(environment.apiBaseUrl + '/companies', company);
+  }
+
+  //new function to create new company
+  postCompany(company: MyCompanyDetail) {
     return this.http.post(environment.apiBaseUrl + '/companies', company);
   }
 
