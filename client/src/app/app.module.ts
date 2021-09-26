@@ -57,6 +57,7 @@ import { MyCompanyDetailComponent } from './companies/my-companies/my-company-de
 import { CreateCompanyComponent } from './companies/create-company/create-company.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { AllCompanyDetailComponent } from './companies/all-companies/all-company-detail/all-company-detail.component';
 
 //create object from routes module
 
@@ -99,6 +100,7 @@ const appRoutes: Routes = [
     SignInComponent,
     MyCompanyDetailComponent,
     CreateCompanyComponent,
+    AllCompanyDetailComponent,
   ],
   imports: [
     BrowserModule,
