@@ -14,6 +14,7 @@ import { CompanyCreateComponent } from './companies/company-create/company-creat
 import { AllCompaniesComponent } from './companies/all-companies/all-companies.component';
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
 import { AuthGuard } from './auth/auth.guard';
+import { CreateCompanyComponent } from './companies/create-company/create-company.component';
 export const ROUTES: Routes = [
   {
     path: 'createJob',
@@ -76,5 +77,10 @@ export const ROUTES: Routes = [
     path: 'signIn',
     component: UserComponent,
     children: [{ path: '', component: SignInComponent }],
+  },
+
+  {
+    path: 'createCompany',
+    component: CreateCompanyComponent,
   },
 ];
