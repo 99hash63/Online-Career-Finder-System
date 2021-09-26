@@ -57,9 +57,14 @@ export class CompaniesService {
     return this.http.post(environment.apiBaseUrl + '/companies', company);
   }
 
+  //function to get all  companies
+  getAllCompaniesDB() {
+    return this.http.get(environment.apiBaseUrl + '/companies');
+  }
+
   //function to get all my companies
   getMyCompaniesDB() {
-    return this.http.get(environment.apiBaseUrl + '/companies');
+    return this.http.get(environment.apiBaseUrl + '/companies/my');
   }
 
   //setter for myCompanyId and change myCompany mode to true

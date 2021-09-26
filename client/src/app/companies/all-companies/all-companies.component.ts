@@ -9,7 +9,23 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./all-companies.component.css'],
 })
 export class AllCompaniesComponent implements OnInit {
-  constructor() {}
+  companies: Company[] = [];
+  private companiesSub!: Subscription;
+  serverErrorMessages: string;
+  constructor(public companiesService: CompaniesService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.companiesService.getAllCompaniesDB().subscribe(
+      (res) => {
+        this.companies = res['data'] as Company[];
+      },
+      (err) => {
+        this.serverErrorMessages = err.error.join('<br/>');
+      }
+    );
+  }
+
+  viewCompany(id: any) {
+    this.companiesService.setMyCompanyId(id);
+  }
 }
