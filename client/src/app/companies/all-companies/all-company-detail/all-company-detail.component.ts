@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CompaniesService } from '../../companies.service';
@@ -66,5 +67,9 @@ export class AllCompanyDetailComponent implements OnInit {
         this.serverErrorMessages = err.error.join('<br/>');
       }
     );
+  }
+
+  addReview(form: NgForm) {
+    alert('hreyyyy');
   }
 }

@@ -135,19 +135,104 @@
   </div>
 </div>
 
-<!--delete -->
+<!--add review -->
 <ng-template #content let-c="close" let-d="dismiss">
+
   <div class="modal-header ">
-    <h4 class="modal-title" id="modal-basic-title">Confirm Delete</h4>
+    <h4 class="modal-title" id="modal-basic-title">Add Review</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+
   <div class="modal-body">
-    <p>Are you sure you want to delete?</p>
+    <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && addReview(signUpForm)">
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Are You a Current or Former Employee?</label>
+        <select class="form-control" id="exampleFormControlSelect1" required>
+          <option>-select-</option>
+          <option>Current Employee</option>
+          <option>Former Employee</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Your Job Title</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Your Name (Optional)</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Your Comment on Our Company</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+
+      <div class="form-inline" style="margin-bottom: 10px;">
+        <label>Rate Culture & Values of the Company</label>
+
+        <div class="btn-group" style="position: relative; left: 110px;">
+          <select type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <option>-select-</option>
+            <option>1 Star</option>
+            <option>2 Stars</option>
+            <option>3 Stars</option>
+            <option>4 Stars</option>
+            <option>5 Stars</option>
+          </select>
+        </div>
+      </div>
+
+
+
+
+      <div class="form-inline" style="margin-bottom: 10px;">
+        <label>Rate Work/Life Balance of the Company</label>
+        <div class=" btn-group" style="position: relative; left: 101px;">
+          <select type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <option>-select-</option>
+            <option>1 Star</option>
+            <option>2 Stars</option>
+            <option>3 Stars</option>
+            <option>4 Stars</option>
+            <option>5 Stars</option>
+          </select>
+        </div>
+      </div>
+
+
+
+      <div class="form-inline" style="margin-bottom: 10px;">
+        <label>Rate Senior Management of the Company</label>
+        <div class=" btn-group" style="position: relative; left: 85px;">
+          <select type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <option>-select-</option>
+            <option>1 Star</option>
+            <option>2 Stars</option>
+            <option>3 Stars</option>
+            <option>4 Stars</option>
+            <option>5 Stars</option>
+          </select>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark w-25" (click)="c()">Cancel</button>
+        <button type="button" class="btn btn-primary w-25" type="submit">Publish</button>
+      </div>
+
+    </form>
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark w-25" (click)="c()">No</button>
-    <button type="button" class="btn btn-danger w-25" (click)="onDelete()">Yes</button>
-  </div>
+
+
+
 </ng-template>
