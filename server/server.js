@@ -22,6 +22,7 @@ connectDB();
 
 // Route files
 const companies = require('./routes/companies');
+const companyReviews = require('./routes/companyReviews');
 const jobs = require('./routes/jobs');
 const auth = require('./routes/auth');
 const InterviewRouter = require('./routes/Interviews.js');
@@ -49,6 +50,8 @@ app.use('/api/v1/companies', companies);
 app.use('/findjobs', jobs);
 app.use('/Interviews', InterviewRouter);
 app.use('/api/v1/auth', auth);
+app.use('/api/v1/companyReviews', companyReviews);
+
 // app.use('/', (req, res) => {
 // 	res.json({ hi: 'bye' });
 // });
