@@ -97,4 +97,12 @@ export class CompaniesService {
   deleteCompany(id) {
     return this.http.delete(environment.apiBaseUrl + '/companies/' + id);
   }
+
+  //update company
+  updateCompany(company: MyCompanyDetail) {
+    return this.http.put(
+      environment.apiBaseUrl + '/companies/' + company._id,
+      company
+    );
+  }
 }

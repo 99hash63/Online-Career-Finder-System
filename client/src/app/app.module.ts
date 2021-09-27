@@ -58,6 +58,7 @@ import { CreateCompanyComponent } from './companies/create-company/create-compan
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { AllCompanyDetailComponent } from './companies/all-companies/all-company-detail/all-company-detail.component';
+import { MyCompanyEditComponent } from './companies/my-companies/my-company-detail/my-company-edit/my-company-edit.component';
 
 //create object from routes module
 
@@ -101,6 +102,7 @@ const appRoutes: Routes = [
     MyCompanyDetailComponent,
     CreateCompanyComponent,
     AllCompanyDetailComponent,
+    MyCompanyEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -128,6 +130,7 @@ const appRoutes: Routes = [
     NgxPrintModule,
     MatCardModule,
     MatButtonToggleModule,
+    NgxPaginationModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

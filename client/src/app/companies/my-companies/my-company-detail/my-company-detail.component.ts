@@ -10,6 +10,7 @@ import { MyCompanyDetail } from '../../myCompanyDetail';
   styleUrls: ['./my-company-detail.component.css'],
 })
 export class MyCompanyDetailComponent implements OnInit {
+  public companyEditMode: boolean = false;
   public myCompanyId: string;
   public myCompanyDetail: MyCompanyDetail;
   public serverErrorMessages: string;
@@ -66,5 +67,12 @@ export class MyCompanyDetailComponent implements OnInit {
         this.serverErrorMessages = err.error.join('<br/>');
       }
     );
+  }
+
+  companyEditModeOn() {
+    this.companyEditMode = true;
+  }
+  companyEditModeOff() {
+    this.companyEditMode = false;
   }
 }

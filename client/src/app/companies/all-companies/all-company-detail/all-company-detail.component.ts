@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbModal,
+  NgbModalConfig,
+  NgbPopover,
+} from '@ng-bootstrap/ng-bootstrap';
 import { CompaniesService } from '../../companies.service';
+import { CompanyRatingsService } from '../../company-ratings.service';
 import { MyCompanyDetail } from '../../myCompanyDetail';
 
 @Component({
@@ -14,12 +20,15 @@ export class AllCompanyDetailComponent implements OnInit {
   public myCompanyDetail: MyCompanyDetail;
   public serverErrorMessages: string;
   public showSuccessMessage: boolean;
+  public closePopup: boolean;
+  @ViewChild('div') public popover: NgbPopover;
 
   constructor(
     public companiesService: CompaniesService,
     private modalService: NgbModal,
     config: NgbModalConfig,
-    private router: Router
+    private router: Router,
+    public companyRatingsService: CompanyRatingsService
   ) {
     // customize default values of modals used by this component tree
     config.backdrop = 'static';
@@ -52,19 +61,52 @@ export class AllCompanyDetailComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
-  onDelete() {
-    this.companiesService.deleteCompany(this.myCompanyId).subscribe(
+  // onDelete() {
+  //   this.companiesService.deleteCompany(this.myCompanyId).subscribe(
+  //     (res) => {
+  //       this.showSuccessMessage = true;
+
+  //       // navigate and reload myCompanies component after deleting the company
+  //       this.router.navigate(['/myCompanies']).then(() => {
+  //         window.location.reload();
+  //       });
+  //     },
+  //     (err) => {
+  //       this.serverErrorMessages = err.error.join('<br/>');
+  //     }
+  //   );
+  // }
+
+  addReview(form: NgForm) {
+    console.log(form.value);
+
+    this.companyRatingsService.postRating(form.value).subscribe(
       (res) => {
         this.showSuccessMessage = true;
-
-        // navigate and reload myCompanies component after deleting the company
-        this.router.navigate(['/myCompanies']).then(() => {
-          window.location.reload();
-        });
+        setTimeout(() => {
+          this.showSuccessMessage = false;
+          document.getElementById('test').click();
+        }, 2500);
+        this.resetForm(form);
       },
       (err) => {
-        this.serverErrorMessages = err.error.join('<br/>');
+        this.serverErrorMessages = err.error.join('</br>');
       }
     );
+  }
+
+  resetForm(form: NgForm) {
+    this.companyRatingsService.selectedRating = {
+      emp_state: '',
+      job_title: '',
+      name: '',
+      comment: '',
+      rate_cultureValue: '',
+      rate_workLife: '',
+      rate_seniorManagement: '',
+      companyId: '',
+    };
+    // form.resetForm();
+    this.serverErrorMessages = '';
   }
 }
