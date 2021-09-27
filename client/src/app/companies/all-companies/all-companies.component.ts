@@ -17,6 +17,8 @@ export class AllCompaniesComponent implements OnInit {
   p: number = 1;
   constructor(public companiesService: CompaniesService) {}
 
+  //Initalization of the all companies component
+  //calls the method getAllCompaniesDB to get all companies from the database
   ngOnInit() {
     this.companiesService.getAllCompaniesDB().subscribe(
       (res) => {
@@ -29,18 +31,16 @@ export class AllCompaniesComponent implements OnInit {
     );
   }
 
+  //This method will call setMyCompanyId method to redirect to the overview page of a selected company
   viewCompany(id: any) {
     this.companiesService.setMyCompanyId(id);
   }
 
+  //This search function will handle both search by text and filter by industry functions
   Search() {
     let x: any;
     if (this.industry != 'none') {
       this.companies = this.companies.filter((res) => {
-        //   return res.title
-        //     .toLocaleLowerCase()
-        //     .match(this.title.toLocaleLowerCase());
-
         x = res.industry.match(this.industry);
         return x;
       });
