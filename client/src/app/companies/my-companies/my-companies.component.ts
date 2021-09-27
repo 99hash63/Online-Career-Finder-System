@@ -14,6 +14,8 @@ export class MyCompaniesComponent implements OnInit {
   companies: Company[] = [];
   private companiesSub!: Subscription;
   serverErrorMessages: string;
+  title: string = '';
+  industry: string = 'none';
 
   constructor(public companiesService: CompaniesService) {}
 
@@ -21,6 +23,7 @@ export class MyCompaniesComponent implements OnInit {
     this.companiesService.getMyCompaniesDB().subscribe(
       (res) => {
         this.companies = res['data'] as Company[];
+        this.Search();
       },
       (err) => {
         this.serverErrorMessages = err.error.join('<br/>');
@@ -30,5 +33,25 @@ export class MyCompaniesComponent implements OnInit {
 
   viewCompany(id: any) {
     this.companiesService.setMyCompanyId(id);
+  }
+
+  Search() {
+    let x: any;
+    if (this.industry != 'none') {
+      this.companies = this.companies.filter((res) => {
+        //   return res.title
+        //     .toLocaleLowerCase()
+        //     .match(this.title.toLocaleLowerCase());
+
+        x = res.industry.match(this.industry);
+        return x;
+      });
+    }
+    if (this.title != '') {
+      this.companies = this.companies.filter((res) => {
+        x = res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase());
+        return x;
+      });
+    }
   }
 }

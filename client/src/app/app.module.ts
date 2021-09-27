@@ -130,6 +130,7 @@ const appRoutes: Routes = [
     NgxPrintModule,
     MatCardModule,
     MatButtonToggleModule,
+    NgxPaginationModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

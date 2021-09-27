@@ -10,14 +10,18 @@ import { Subscription } from 'rxjs';
 })
 export class AllCompaniesComponent implements OnInit {
   companies: Company[] = [];
+  title: string = '';
+  industry: string = 'none';
   private companiesSub!: Subscription;
   serverErrorMessages: string;
+  p: number = 1;
   constructor(public companiesService: CompaniesService) {}
 
   ngOnInit() {
     this.companiesService.getAllCompaniesDB().subscribe(
       (res) => {
         this.companies = res['data'] as Company[];
+        this.Search();
       },
       (err) => {
         this.serverErrorMessages = err.error.join('<br/>');
@@ -27,5 +31,25 @@ export class AllCompaniesComponent implements OnInit {
 
   viewCompany(id: any) {
     this.companiesService.setMyCompanyId(id);
+  }
+
+  Search() {
+    let x: any;
+    if (this.industry != 'none') {
+      this.companies = this.companies.filter((res) => {
+        //   return res.title
+        //     .toLocaleLowerCase()
+        //     .match(this.title.toLocaleLowerCase());
+
+        x = res.industry.match(this.industry);
+        return x;
+      });
+    }
+    if (this.title != '') {
+      this.companies = this.companies.filter((res) => {
+        x = res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase());
+        return x;
+      });
+    }
   }
 }
