@@ -1,22 +1,17 @@
-<div *ngIf="companyEditMode==false">
-
-  <div class="card-img-overlay">
-    <button type="button" class="btn btn-outline-light btn-sm" (click)="companiesService.myCompanyModeOff()"
-      style="margin-left: 105px;">Back</button>
-  </div>
-
-  <div class="container-fluid" style="width: 1300px; margin-bottom: 200px;">
-    <div class="mt-4">
+<div class="container-fluid" style="width: 1300px; margin-bottom: 200px;">
+  <div class="mt-4">
+    <!-- main edit company form -->
+    <form #companyEditForm="ngForm" (ngSubmit)="companyEditForm.valid && onSubmit()">
 
       <div class="row">
         <div style="width: 1500px">
           <div class="card">
+
             <div class="crop">
-              <img class="card-img-top" [src]="myCompanyDetail.coverPhoto" alt="Card image cap">
+              <img class="card-img-top" [src]="company.coverPhoto" alt="Card image cap">
             </div>
             <div class="card-body">
-              <h3 class="card-title" style="margin-left: 36px;">{{myCompanyDetail.title}}</h3>
-
+              <input type="text" [(ngModel)]="company.title" [ngModelOptions]="{standalone: true}">
               <!-- navbar for card -->
               <nav class="navbar navbar-expand-lg navbar-light">
 
@@ -48,14 +43,12 @@
                     </div>
                   </ul>
                 </div>
-                <form class="form-inline">
+                <div class="form-inline">
                   <div class="nav-buttons">
-                    <button class="btn btn-primary" type="button" (click)="companyEditModeOn()">Edit Post</button>
+                    <button class="btn btn-primary" type="submit">Save Changes</button>
                   </div>
-                  <div class="nav-buttons">
-                    <button class="btn btn-danger" type="button" (click)="open(content)">Delete</button>
-                  </div>
-                </form>
+
+                </div>
               </nav>
             </div>
 
@@ -72,16 +65,42 @@
               <h5>Company Overview</h5>
             </div>
             <div class="card-body">
-              <form class="form-inline">
+
+              <div class="form-group form-inline">
+                <label for="exampleInputEmail1">Website</label>
+                <input type="text" [(ngModel)]="company.website" [ngModelOptions]="{standalone: true}">
+
+                <label for="exampleInputEmail1">Revenue</label>
+                <input type="text" [(ngModel)]="company.revenue" [ngModelOptions]="{standalone: true}"><br><br>
+              </div>
+
+              <div class="form-group form-inline">
+                <label for="exampleInputEmail1">Size</label>
+                <input type="text" [(ngModel)]="company.emp_count" [ngModelOptions]="{standalone: true}">
+
+                <label for="exampleInputEmail1">Headquarters</label>
+                <input type="text" [(ngModel)]="company.city" [ngModelOptions]="{standalone: true}"><br>
+                <input type="text" [(ngModel)]="company.country" [ngModelOptions]="{standalone: true}">
+              </div>
+
+              <div class="form-group form-inline">
+                <label for="exampleInputEmail1">Industry</label>
+                <input type="text" [(ngModel)]="company.industry" [ngModelOptions]="{standalone: true}">
+
+                <label for="exampleInputEmail1">Founded</label>
+                <input type="text" [(ngModel)]="company.founded" [ngModelOptions]="{standalone: true}">
+              </div>
+
+              <!-- <div class="form-group form-inline">
                 <div class="overview-headings-left-container">
                   <h6>Website:</h6>
                   <h6>Size:</h6>
                   <h6>Industry:</h6>
                 </div>
                 <div class="overview-desc-left-container">
-                  <h6>{{myCompanyDetail.website}}</h6>
-                  <h6>{{myCompanyDetail.emp_count}}</h6>
-                  <h6>{{myCompanyDetail.industry}}</h6>
+                  <h6>{{company.website}}</h6>
+                  <h6>{{company.emp_count}}</h6>
+                  <h6>{{company.industry}}</h6>
                 </div>
                 <div class="overview-headings-right-container">
                   <h6>Revenue:</h6>
@@ -89,18 +108,21 @@
                   <h6>Founded:</h6>
                 </div>
                 <div class="overview-desc-right-container">
-                  <h6>{{myCompanyDetail.revenue}}</h6>
-                  <h6>{{myCompanyDetail.city}}, {{myCompanyDetail.country}}</h6>
-                  <h6>{{myCompanyDetail.founded}}</h6>
+                  <h6>{{company.revenue}}</h6>
+                  <h6>{{company.city}}, {{company.country}}</h6>
+                  <h6>{{company.founded}}</h6>
                 </div>
-              </form>
+              </div> -->
+
               <div class="description-container">
-                <h6>{{myCompanyDetail.description}}</h6>
+                <!-- <input type="text" [(ngModel)]="company.description" [ngModelOptions]="{standalone: true}" size="50"> -->
+                <textarea cols="100" rows="5" [(ngModel)]="company.description"
+                  [ngModelOptions]="{standalone: true}"></textarea>
               </div>
+
             </div>
           </div>
         </div>
-
         <div style="width: 500px">
           <div class="card" style="height: 500px;">
             <div class="card-header">
@@ -114,47 +136,8 @@
           </div>
         </div>
 
-        <!-- <div style="width: 800px;">
-        <div class="card">
-          <div class="card-header">
-            <h5>Company Photos</h5>
-          </div>
-          <div class="card-body">
-            <h6>photos of your company</h6>
-            <h6>photos of your company</h6>
-            <h6>photos of your company</h6>
-            <h6>photos of your company</h6>
-            <h6>photos of your company</h6>
-          </div>
-        </div>
-      </div> -->
-
       </div>
+    </form>
 
-    </div>
   </div>
-
-  <!--delete -->
-  <ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header ">
-      <h4 class="modal-title" id="modal-basic-title">Confirm Delete</h4>
-      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <p>Are you sure you want to delete?</p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark w-25" (click)="c()">No</button>
-      <button type="button" class="btn btn-danger w-25" (click)="onDelete()">Yes</button>
-    </div>
-  </ng-template>
-</div>
-<div *ngIf="companyEditMode==true">
-  <div class="card-img-overlay">
-    <button type="button" class="btn btn-outline-light btn-sm" (click)="companyEditModeOff()"
-      style="margin-left: 105px;">Back</button>
-  </div>
-  <app-my-company-edit [myCompanyDetail]="myCompanyDetail"></app-my-company-edit>
 </div>

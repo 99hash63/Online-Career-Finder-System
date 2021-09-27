@@ -75,5 +75,6 @@ export const ROUTES: Routes = [
   {
     path: 'createCompany',
     component: CreateCompanyComponent,
+    canActivate: [AuthGuard],
   },
 ];
