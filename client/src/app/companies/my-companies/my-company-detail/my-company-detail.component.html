@@ -6,67 +6,67 @@
   </div>
 
   <div class="container-fluid" style="width: 1300px; margin-bottom: 200px;">
-    <div class="mt-4">
 
-      <div class="row">
-        <div style="width: 1500px">
-          <div class="card">
-            <div class="crop">
-              <img class="card-img-top" [src]="myCompanyDetail.coverPhoto" alt="Card image cap">
-            </div>
-            <div class="card-body">
-              <h3 class="card-title" style="margin-left: 36px;">{{myCompanyDetail.title}}</h3>
-
-              <!-- navbar for card -->
-              <nav class="navbar navbar-expand-lg navbar-light">
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                  <ul class="navbar-nav">
-                    <div class="navItems">
-                      <li class="nav-item">
-                        <a class="nav-link" routerLink="myCompanies">Overview </a>
-                      </li>
-                    </div>
-                    <div class="navItems">
-                      <li class="nav-item">
-                        <a class="nav-link" routerLink="myCompanies">Reviews</a>
-                      </li>
-                    </div>
-                    <div class="navItems">
-                      <li class="nav-item">
-                        <a class="nav-link" routerLink="myCompanies">Jobs</a>
-                      </li>
-                    </div>
-                    <div class="navItems">
-                      <li class="nav-item">
-                        <a class="nav-link" routerLink="myCompanies">Interviews</a>
-                      </li>
-                    </div>
-                  </ul>
-                </div>
-                <form class="form-inline">
-                  <div class="nav-buttons">
-                    <button class="btn btn-primary" type="button" (click)="companyEditModeOn()">Edit Post</button>
-                  </div>
-                  <div class="nav-buttons">
-                    <button class="btn btn-danger" type="button" (click)="open(content)">Delete</button>
-                  </div>
-                </form>
-              </nav>
-            </div>
-
+    <div class="row">
+      <div style="width: 1500px">
+        <div class="card">
+          <div class="crop">
+            <img class="card-img-top" [src]="myCompanyDetail.coverPhoto" alt="Card image cap">
           </div>
+          <div class="card-body">
+            <h3 class="card-title" style="margin-left: 36px;">{{myCompanyDetail.title}}</h3>
+
+            <!-- navbar for card -->
+            <nav class="navbar navbar-expand-lg navbar-light">
+
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Overview </a>
+                    </li>
+                  </div>
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Reviews</a>
+                    </li>
+                  </div>
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Jobs</a>
+                    </li>
+                  </div>
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Interviews</a>
+                    </li>
+                  </div>
+                </ul>
+              </div>
+              <form class="form-inline">
+                <div class="nav-buttons">
+                  <button class="btn btn-primary" type="button" (click)="companyEditModeOn()">Edit Post</button>
+                </div>
+                <div class="nav-buttons">
+                  <button class="btn btn-danger" type="button" (click)="open(content)">Delete</button>
+                </div>
+              </form>
+            </nav>
+          </div>
+
         </div>
       </div>
+    </div>
 
 
-      <div class="row" style="margin-top: 25px;">
+    <div class="row" style="margin-top: 25px;">
+      <div class="col-7">
 
-        <div style="width: 800px;">
+        <div style="width: 100%">
           <div class="card">
             <div class="card-header">
               <h5>Company Overview</h5>
@@ -100,9 +100,25 @@
             </div>
           </div>
         </div>
-
-        <div style="width: 500px">
-          <div class="card" style="height: 500px;">
+        <br>
+        <div style="width: 100%">
+          <div class="card" style="height: 400px;">
+            <div class=" card-header">
+              <h5>Company Reviews</h5>
+            </div>
+            <div class="card-body">
+              <h6>photos of your company</h6>
+              <h6>photos of your company</h6>
+              <h6>photos of your company</h6>
+              <h6>photos of your company</h6>
+              <h6>photos of your company</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div style="width: 100%">
+          <div class="card" style="height: 700px;">
             <div class="card-header">
               <h5>Review Summary</h5>
             </div>
@@ -113,25 +129,12 @@
             </div>
           </div>
         </div>
-
-        <!-- <div style="width: 800px;">
-        <div class="card">
-          <div class="card-header">
-            <h5>Company Photos</h5>
-          </div>
-          <div class="card-body">
-            <h6>photos of your company</h6>
-            <h6>photos of your company</h6>
-            <h6>photos of your company</h6>
-            <h6>photos of your company</h6>
-            <h6>photos of your company</h6>
-          </div>
-        </div>
-      </div> -->
-
       </div>
 
+
+
     </div>
+
   </div>
 
   <!--delete -->

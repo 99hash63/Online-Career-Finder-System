@@ -3,8 +3,8 @@ export class CompanyRating {
   job_title: string;
   name: string;
   comment: string;
-  rate_cultureValue: string;
-  rate_workLife: string;
-  rate_seniorManagement: string;
+  rate_cultureValue: number;
+  rate_workLife: number;
+  rate_seniorManagement: number;
   companyId: string;
 }
