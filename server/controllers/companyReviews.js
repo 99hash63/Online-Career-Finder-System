@@ -15,3 +15,19 @@ exports.addReview = asyncHandler(async (req, res, next) => {
 		data: companyReview,
 	});
 });
+
+//@desc get all reviews of a company
+//@route GET /api/v1/auth/companyReview
+//@access public
+exports.getReview = asyncHandler(async (req, res, next) => {
+	const companyId = req.body.companyId;
+	const ratings = await CompanyReview.find({ companyId });
+
+	if (ratings.length === 0) {
+		return next(new ErrorResponse("Company doesn't have any reviews", 400));
+	}
+	res.status(200).json({
+		success: true,
+		data: ratings,
+	});
+});
