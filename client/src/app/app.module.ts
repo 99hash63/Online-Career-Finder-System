@@ -59,6 +59,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { AllCompanyDetailComponent } from './companies/all-companies/all-company-detail/all-company-detail.component';
 import { MyCompanyEditComponent } from './companies/my-companies/my-company-detail/my-company-edit/my-company-edit.component';
+import { CompanyRatingsComponent } from './companies/company-ratings/company-ratings.component';
 
 //create object from routes module
 
@@ -103,6 +104,7 @@ const appRoutes: Routes = [
     CreateCompanyComponent,
     AllCompanyDetailComponent,
     MyCompanyEditComponent,
+    CompanyRatingsComponent,
   ],
   imports: [
     BrowserModule,

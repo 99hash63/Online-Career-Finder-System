@@ -14,6 +14,8 @@ import { AllCompaniesComponent } from './companies/all-companies/all-companies.c
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
 import { AuthGuard } from './auth/auth.guard';
 import { CreateCompanyComponent } from './companies/create-company/create-company.component';
+import { CompanyRating } from './companies/company-rating.model';
+import { CompanyRatingsComponent } from './companies/company-ratings/company-ratings.component';
 export const ROUTES: Routes = [
   {
     path: 'createJob',
@@ -77,4 +79,10 @@ export const ROUTES: Routes = [
     component: CreateCompanyComponent,
     canActivate: [AuthGuard],
   },
+
+  // {
+  //   path: 'createCompany',
+  //   component: CompanyRatingsComponent,
+  //   canActivate: [AuthGuard],
+  // },
 ];

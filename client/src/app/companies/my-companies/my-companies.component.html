@@ -68,10 +68,6 @@
               <form (submit)="viewCompany(company._id)" #companyForm="ngForm">
 
                 <input type="hidden" name="id" value='{{company._id}}' #companyId>
-                <!-- <span class="card-text  text-black-50">{{company.logo}}</span>
-          <span class="card-text  text-black-50">{{company.coverPhoto}}</span>
-          <span class="card-text  text-black-50">{{company.industry}}</span>
-          <span class="card-text  text-black-50">{{company.emp_count}}</span> -->
 
                 <h5 class="card-title">{{company.title}}</h5>
                 <p class="card-text">{{company.description}}</p>

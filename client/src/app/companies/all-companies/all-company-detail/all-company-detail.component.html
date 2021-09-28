@@ -10,7 +10,7 @@
       <div style="width: 1500px">
         <div class="card">
           <div class="crop">
-            <img class="card-img-top" [src]="myCompanyDetail.coverPhoto" alt="Card image cap">
+            <img class="card-img-top " [src]="myCompanyDetail.coverPhoto" alt="Card image cap">
           </div>
           <div class="card-body">
             <h3 class="card-title" style="margin-left: 36px;">{{myCompanyDetail.title}}</h3>
@@ -63,75 +63,71 @@
 
 
     <div class="row" style="margin-top: 25px;">
+      <div class="col-7">
 
-      <div style="width: 800px;">
-        <div class="card">
-          <div class="card-header">
-            <h5>Company Overview</h5>
+        <div style="width: 100%">
+          <div class="card">
+            <div class="card-header">
+              <h5>Company Overview</h5>
+            </div>
+            <div class="card-body">
+              <form class="form-inline">
+                <div class="overview-headings-left-container">
+                  <h6>Website:</h6>
+                  <h6>Size:</h6>
+                  <h6>Industry:</h6>
+                </div>
+                <div class="overview-desc-left-container">
+                  <h6>{{myCompanyDetail.website}}</h6>
+                  <h6>{{myCompanyDetail.emp_count}}</h6>
+                  <h6>{{myCompanyDetail.industry}}</h6>
+                </div>
+                <div class="overview-headings-right-container">
+                  <h6>Revenue:</h6>
+                  <h6>Headquarters:</h6>
+                  <h6>Founded:</h6>
+                </div>
+                <div class="overview-desc-right-container">
+                  <h6>{{myCompanyDetail.revenue}}</h6>
+                  <h6>{{myCompanyDetail.city}}, {{myCompanyDetail.country}}</h6>
+                  <h6>{{myCompanyDetail.founded}}</h6>
+                </div>
+              </form>
+              <div class="description-container">
+                <h6>{{myCompanyDetail.description}}</h6>
+              </div>
+            </div>
           </div>
-          <div class="card-body">
-            <form class="form-inline">
-              <div class="overview-headings-left-container">
-                <h6>Website:</h6>
-                <h6>Size:</h6>
-                <h6>Industry:</h6>
-              </div>
-              <div class="overview-desc-left-container">
-                <h6>{{myCompanyDetail.website}}</h6>
-                <h6>{{myCompanyDetail.emp_count}}</h6>
-                <h6>{{myCompanyDetail.industry}}</h6>
-              </div>
-              <div class="overview-headings-right-container">
-                <h6>Revenue:</h6>
-                <h6>Headquarters:</h6>
-                <h6>Founded:</h6>
-              </div>
-              <div class="overview-desc-right-container">
-                <h6>{{myCompanyDetail.revenue}}</h6>
-                <h6>{{myCompanyDetail.city}}, {{myCompanyDetail.country}}</h6>
-                <h6>{{myCompanyDetail.founded}}</h6>
-              </div>
-            </form>
-            <div class="description-container">
-              <h6>{{myCompanyDetail.description}}</h6>
+        </div>
+        <br>
+
+        <div style="width: 100%">
+          <div class="card">
+            <div class=" card-header">
+              <h5>Company Reviews</h5>
+            </div>
+            <div class="card-body overflow-auto" style="height: 450px;">
+              <app-company-ratings></app-company-ratings>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col">
+        <div style="width: 100%">
+          <div class="card" style="height: 700px;">
+            <div class="card-header">
+              <h5>Review Summary</h5>
+            </div>
+            <div class="card-body">
+              <h6 class="card-title">Special title treatment</h6>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
         </div>
       </div>
-
-      <div style="width: 500px">
-        <div class="card" style="height: 500px;">
-          <div class="card-header">
-            <h5>Review Summary</h5>
-          </div>
-          <div class="card-body">
-            <h6 class="card-title">Special title treatment</h6>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- <div style="width: 800px;">
-        <div class="card">
-          <div class="card-header">
-            <h5>Company Photos</h5>
-          </div>
-          <div class="card-body">
-            <h6>photos of your company</h6>
-            <h6>photos of your company</h6>
-            <h6>photos of your company</h6>
-            <h6>photos of your company</h6>
-            <h6>photos of your company</h6>
-          </div>
-        </div>
-      </div> -->
-
     </div>
-
-
-
-
   </div>
 </div>
 
@@ -213,12 +209,12 @@
           <select type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false" #rate_cultureValue="ngModel"
             [(ngModel)]="companyRatingsService.selectedRating.rate_cultureValue" name="rate_cultureValue">
-            <option value="" selected disabled>select</option>
-            <option>1 Star</option>
-            <option>2 Stars</option>
-            <option>3 Stars</option>
-            <option>4 Stars</option>
-            <option>5 Stars</option>
+            <option value="null" selected disabled>select</option>
+            <option value="1">1 Star</option>
+            <option value="2">2 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="5">5 Stars</option>
           </select>
         </div>
       </div>
@@ -232,12 +228,12 @@
           <select type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false" #rate_workLife="ngModel"
             [(ngModel)]="companyRatingsService.selectedRating.rate_workLife" name="rate_workLife">
-            <option value="" selected disabled>select</option>
-            <option>1 Star</option>
-            <option>2 Stars</option>
-            <option>3 Stars</option>
-            <option>4 Stars</option>
-            <option>5 Stars</option>
+            <option value="null" selected disabled>select</option>
+            <option value="1">1 Star</option>
+            <option value="2">2 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="5">5 Stars</option>
           </select>
         </div>
       </div>
@@ -251,12 +247,12 @@
           <select type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false" #rate_seniorManagement="ngModel"
             [(ngModel)]="companyRatingsService.selectedRating.rate_seniorManagement" name="rate_seniorManagement">
-            <option value="" selected disabled>select</option>
-            <option>1 Star</option>
-            <option>2 Stars</option>
-            <option>3 Stars</option>
-            <option>4 Stars</option>
-            <option>5 Stars</option>
+            <option value="null" selected disabled>select</option>
+            <option value="1">1 Star</option>
+            <option value="2">2 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="5">5 Stars</option>
           </select>
         </div>
       </div>
@@ -271,7 +267,7 @@
 
   <!-- show success message -->
   <div class="success" *ngIf="showSuccessMessage">
-    Register success!
+    Review added successfully!
   </div>
 
   <!-- show error message -->

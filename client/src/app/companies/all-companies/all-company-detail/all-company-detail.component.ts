@@ -101,9 +101,10 @@ export class AllCompanyDetailComponent implements OnInit {
       job_title: '',
       name: '',
       comment: '',
-      rate_cultureValue: '',
-      rate_workLife: '',
-      rate_seniorManagement: '',
+      rate_cultureValue: null,
+      rate_workLife: null,
+      rate_seniorManagement: null,
+      rate_overall: null,
       companyId: '',
     };
     // form.resetForm();
