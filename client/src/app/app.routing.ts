@@ -74,15 +74,15 @@ export const ROUTES: Routes = [
     children: [{ path: '', component: SignInComponent }],
   },
 
-  // {
-  //   path: 'createCompany',
-  //   component: CreateCompanyComponent,
-  //   canActivate: [AuthGuard],
-  // },
-
   {
     path: 'createCompany',
-    component: CompanyRatingsComponent,
+    component: CreateCompanyComponent,
     canActivate: [AuthGuard],
   },
+
+  // {
+  //   path: 'createCompany',
+  //   component: CompanyRatingsComponent,
+  //   canActivate: [AuthGuard],
+  // },
 ];
