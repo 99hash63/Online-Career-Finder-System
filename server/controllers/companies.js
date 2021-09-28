@@ -15,19 +15,19 @@ exports.getCompanies = asyncHandler(async (req, res, next) => {
 //@route GET /api/v1/companies/my
 //@access private
 exports.getMyCompanies = asyncHandler(async (req, res, next) => {
-	userId = req.user.id
+	userId = req.user.id;
 
-	const companies = await Company.find({createdBy: userId})
+	const companies = await Company.find({ createdBy: userId });
 
-	if(companies.length===0){
+	if (companies.length === 0) {
 		return next(
 			new ErrorResponse('This user does not have created any comapnies', 400)
-		)
+		);
 	}
 	res.status(200).json({
 		success: true,
-		data: companies
-	})
+		data: companies,
+	});
 });
 
 //@desc Get a single company
@@ -53,6 +53,40 @@ exports.getCompany = asyncHandler(async (req, res, next) => {
 //@route POST /api/v1/companies
 //@access private
 exports.addCompany = asyncHandler(async (req, res, next) => {
+	if (!req.files) {
+		return next(new ErrorResponse('Please upload a file', 400));
+	}
+
+	if (req.files) {
+		const file = req.files.testFile;
+		// Make sure the image is a photo
+		if (!file.mimetype.startsWith('image')) {
+			return next(new ErrorResponse('Please upload an image file', 400));
+		}
+		// Check file size
+		if (file.size > process.env.MAX_FILE_UPLOAD) {
+			return next(
+				new ErrorResponse(
+					`Please upload an image less than ${process.env.MAX_FILE_UPLOAD}`,
+					400
+				)
+			);
+		}
+		// Create custom filename
+		file.name = `cover_${req.body.title}${path.parse(file.name).ext}`;
+		file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async (err) => {
+			if (err) {
+				console.error(err);
+				return next(
+					new ErrorResponse(
+						`Problem with file upload${process.env.MAX_FILE_UPLOAD}`,
+						500
+					)
+				);
+			}
+		});
+		req.body.coverPhoto = 'http://localhost:5000/' + file.name;
+	}
 	req.body.createdBy = req.user;
 	const company = await Company.create(req.body);
 

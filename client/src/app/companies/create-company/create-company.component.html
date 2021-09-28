@@ -1,0 +1,163 @@
+<div class="container-fluid" style="width: 1300px; margin-bottom: 200px;">
+  <div class="mt-4">
+
+    <mat-stepper #stepper>
+
+      <!-- step industry -->
+      <mat-step [stepControl]="firstFormGroup" errorMessage="Industry is required.">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Industry</ng-template>
+          <section>
+            <mat-button-toggle-group formControlName="industry" aria-label="Font Style" vertical style=" border:0px;
+            outline:0px;">
+              <br>
+              <mat-button-toggle class="toggle-button-industry" value="IT/Software">IT/Software
+              </mat-button-toggle>
+              <br>
+              <mat-button-toggle class="toggle-button-industry" value="Technology">Technology</mat-button-toggle>
+              <br>
+              <mat-button-toggle class="toggle-button-industry" value="Real Estate">Real Estate</mat-button-toggle>
+              <br>
+              <mat-button-toggle class="toggle-button-industry" value="Consumer Goods">Consumer Goods
+              </mat-button-toggle>
+              <br>
+              <mat-button-toggle class="toggle-button-industry" value="Automobile">Automobile</mat-button-toggle>
+              <br>
+              <mat-button-toggle class="toggle-button-industry" value="Other">Other</mat-button-toggle>
+              <br>
+            </mat-button-toggle-group>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </section>
+        </form>
+
+
+
+
+      </mat-step>
+
+      <!-- step emp count -->
+      <mat-step [stepControl]="secondFormGroup" errorMessage="Size is required.">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Size</ng-template>
+          <section>
+            <mat-button-toggle-group formControlName="emp_count" aria-label="Font Style" vertical style=" border:0px;
+            outline:0px;">
+              <br>
+              <mat-button-toggle class="toggle-button-industry" value="0-10">0-10
+              </mat-button-toggle>
+              <br>
+              <mat-button-toggle class="toggle-button-industry" value="10-50">10-50</mat-button-toggle>
+              <br>
+              <mat-button-toggle class="toggle-button-industry" value="50-200">50-200</mat-button-toggle>
+              <br>
+              <mat-button-toggle class="toggle-button-industry" value="200-1000">200-1000</mat-button-toggle>
+              <br>
+              <mat-button-toggle class="toggle-button-industry" value="Above 1000">Above 1000</mat-button-toggle>
+              <br>
+            </mat-button-toggle-group>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </section>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="thirdFormGroup" errorMessage="required.">
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>Fill out details</ng-template>
+          <mat-form-field appearance="fill">
+            <input type="date" matInput placeholder="Founded" formControlName="founded" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <input type="text" matInput placeholder="Website" formControlName="website" required
+              [pattern]="companyRegex">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <input type="number" matInput placeholder="Revenue" formControlName="revenue" required>
+          </mat-form-field>
+          <br>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="fourthFormGroup" errorMessage="required.">
+        <form [formGroup]="fourthFormGroup">
+          <ng-template matStepLabel>Set Address</ng-template>
+          <mat-form-field appearance="fill">
+            <input type="text" matInput placeholder="Country" formControlName="country" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <input type="text" matInput placeholder="City" formControlName="city" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="fifthFormGroup" errorMessage="required.">
+        <form [formGroup]="fifthFormGroup">
+          <ng-template matStepLabel>Add a title</ng-template>
+          <mat-form-field appearance="fill">
+            <!-- <mat-label>Title</mat-label> -->
+            <input type="text" matInput placeholder="Company TItle" name="title" formControlName="title" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="sixthFormGroup" errorMessage="required.">
+        <form [formGroup]="sixthFormGroup">
+          <ng-template matStepLabel>Add a description</ng-template>
+          <mat-form-field appearance="fill">
+            <!-- <mat-label>Title</mat-label> -->
+            <input type="text" matInput placeholder="Company Description" name="description"
+              formControlName="description" required minlength="50" maxlength="500">
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="seventhFormGroup" errorMessage="required.">
+        <form [formGroup]="seventhFormGroup">
+          <ng-template matStepLabel>Upload images</ng-template>
+          <!-- <mat-label>Title</mat-label> -->
+          <input type="file" (change)="uploadFile($event)">
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Preview</ng-template>
+        <p>This his how others will see your company post</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+          <button mat-button (click)="onSubmit()">Submit</button>
+
+        </div>
+      </mat-step>
+
+    </mat-stepper>
+
+  </div>
+</div>

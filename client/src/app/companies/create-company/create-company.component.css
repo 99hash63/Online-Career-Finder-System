@@ -1,0 +1,9 @@
+.mat-form-field {
+  margin-top: 16px;
+}
+
+.toggle-button-industry {
+  padding: 3px 150px 3px 150px;
+  border: 2px solid #93979e;
+  border-radius: 10px; /*All corners*/
+}

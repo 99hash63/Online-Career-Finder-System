@@ -24,7 +24,7 @@ router
 router.route('/my').get(protect, getMyCompanies);
 router
 	.route('/:id')
-	.get(getCompany)
+	.get(protect, getCompany)
 	.put(protect, updateCompany)
 	.delete(protect, deleteCompany);
 router.route('/radius/:zipcode/:distance').get(getCompaniesInRadius);

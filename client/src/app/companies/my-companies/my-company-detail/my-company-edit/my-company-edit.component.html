@@ -1,0 +1,143 @@
+<div class="container-fluid" style="width: 1300px; margin-bottom: 200px;">
+  <div class="mt-4">
+    <!-- main edit company form -->
+    <form #companyEditForm="ngForm" (ngSubmit)="companyEditForm.valid && onSubmit()">
+
+      <div class="row">
+        <div style="width: 1500px">
+          <div class="card">
+
+            <div class="crop">
+              <img class="card-img-top" [src]="company.coverPhoto" alt="Card image cap">
+            </div>
+            <div class="card-body">
+              <input type="text" [(ngModel)]="company.title" [ngModelOptions]="{standalone: true}">
+              <!-- navbar for card -->
+              <nav class="navbar navbar-expand-lg navbar-light">
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                  <ul class="navbar-nav">
+                    <div class="navItems">
+                      <li class="nav-item">
+                        <a class="nav-link" routerLink="myCompanies">Overview </a>
+                      </li>
+                    </div>
+                    <div class="navItems">
+                      <li class="nav-item">
+                        <a class="nav-link" routerLink="myCompanies">Reviews</a>
+                      </li>
+                    </div>
+                    <div class="navItems">
+                      <li class="nav-item">
+                        <a class="nav-link" routerLink="myCompanies">Jobs</a>
+                      </li>
+                    </div>
+                    <div class="navItems">
+                      <li class="nav-item">
+                        <a class="nav-link" routerLink="myCompanies">Interviews</a>
+                      </li>
+                    </div>
+                  </ul>
+                </div>
+                <div class="form-inline">
+                  <div class="nav-buttons">
+                    <button class="btn btn-primary" type="submit">Save Changes</button>
+                  </div>
+
+                </div>
+              </nav>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row" style="margin-top: 25px;">
+
+        <div style="width: 800px;">
+          <div class="card">
+            <div class="card-header">
+              <h5>Company Overview</h5>
+            </div>
+            <div class="card-body">
+
+              <div class="form-group form-inline">
+                <label for="exampleInputEmail1">Website</label>
+                <input type="text" [(ngModel)]="company.website" [ngModelOptions]="{standalone: true}">
+
+                <label for="exampleInputEmail1">Revenue</label>
+                <input type="text" [(ngModel)]="company.revenue" [ngModelOptions]="{standalone: true}"><br><br>
+              </div>
+
+              <div class="form-group form-inline">
+                <label for="exampleInputEmail1">Size</label>
+                <input type="text" [(ngModel)]="company.emp_count" [ngModelOptions]="{standalone: true}">
+
+                <label for="exampleInputEmail1">Headquarters</label>
+                <input type="text" [(ngModel)]="company.city" [ngModelOptions]="{standalone: true}"><br>
+                <input type="text" [(ngModel)]="company.country" [ngModelOptions]="{standalone: true}">
+              </div>
+
+              <div class="form-group form-inline">
+                <label for="exampleInputEmail1">Industry</label>
+                <input type="text" [(ngModel)]="company.industry" [ngModelOptions]="{standalone: true}">
+
+                <label for="exampleInputEmail1">Founded</label>
+                <input type="text" [(ngModel)]="company.founded" [ngModelOptions]="{standalone: true}">
+              </div>
+
+              <!-- <div class="form-group form-inline">
+                <div class="overview-headings-left-container">
+                  <h6>Website:</h6>
+                  <h6>Size:</h6>
+                  <h6>Industry:</h6>
+                </div>
+                <div class="overview-desc-left-container">
+                  <h6>{{company.website}}</h6>
+                  <h6>{{company.emp_count}}</h6>
+                  <h6>{{company.industry}}</h6>
+                </div>
+                <div class="overview-headings-right-container">
+                  <h6>Revenue:</h6>
+                  <h6>Headquarters:</h6>
+                  <h6>Founded:</h6>
+                </div>
+                <div class="overview-desc-right-container">
+                  <h6>{{company.revenue}}</h6>
+                  <h6>{{company.city}}, {{company.country}}</h6>
+                  <h6>{{company.founded}}</h6>
+                </div>
+              </div> -->
+
+              <div class="description-container">
+                <!-- <input type="text" [(ngModel)]="company.description" [ngModelOptions]="{standalone: true}" size="50"> -->
+                <textarea cols="100" rows="5" [(ngModel)]="company.description"
+                  [ngModelOptions]="{standalone: true}"></textarea>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div style="width: 500px">
+          <div class="card" style="height: 500px;">
+            <div class="card-header">
+              <h5>Review Summary</h5>
+            </div>
+            <div class="card-body">
+              <h6 class="card-title">Special title treatment</h6>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+</div>

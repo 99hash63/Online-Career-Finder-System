@@ -2,17 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Jobpost } from './jobpost.model';
+import { Applicant } from './applicant.model';
 
 @Injectable()
 export class JobpostService {
   selectedJob!: Jobpost;
   jobs!: Jobpost[];
+  applicant!: Applicant;
   userID = '1';
 
   readonly baseURLCJ = 'http://localhost:5000/findjobs/createjob';
   readonly baseURLGA = 'http://localhost:5000/findjobs/jobs';
   readonly baseURLGAMY = 'http://localhost:5000/findjobs/myjobs';
   readonly baseURLPUBLISH = 'http://localhost:5000/findjobs/jobs/publish';
+  readonly baseURLNA = 'http://localhost:5000/findjobs/newapplicant';
 
   constructor(private http: HttpClient) {}
 
@@ -36,5 +39,8 @@ export class JobpostService {
   }
   deleteJobPost(jobID: string) {
     return this.http.delete(this.baseURLGA + `/${jobID}`);
+  }
+  newApplicant(jobID: string, value: any) {
+    return this.http.put(this.baseURLNA + `/${jobID}`, value);
   }
 }

@@ -1,0 +1,68 @@
+.crop {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+
+.navbar {
+  padding: 0px 0px 0px 0px;
+}
+
+.nav-item {
+  padding: 0px 50px 0px 30px;
+  font-size: 18px;
+}
+
+.nav-buttons {
+  /* font-size: 45px; */
+  padding: 0px 20px 0px 0px;
+}
+
+.overview-headings-left-container {
+  padding-left: 0px;
+  display: inline;
+}
+
+.overview-headings-left-container h6 {
+  color: rgb(60, 60, 60);
+  font-weight: bold;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.overview-desc-left-container input {
+  padding-left: 30px;
+}
+
+.overview-desc-left-container h6 {
+  color: rgb(110, 110, 110);
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.overview-headings-right-container {
+  padding-left: 100px;
+}
+
+.overview-headings-right-container h6 {
+  color: rgb(60, 60, 60);
+  font-weight: bold;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.overview-desc-right-container input {
+  padding-left: 30px;
+}
+
+.overview-desc-right-container h6 {
+  color: rgb(110, 110, 110);
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.description-container h6 {
+  color: rgb(110, 110, 110);
+  padding-top: 15px;
+  padding-bottom: 5px;
+}

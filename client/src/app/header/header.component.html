@@ -22,7 +22,7 @@
               <div class="dropdown-menu" role="menu">
                 <a class="dropdown-item" role="presentation" routerLink="allCompanies">Find Companies</a>
                 <a class="dropdown-item" role="presentation" routerLink="myCompanies">My Companies</a>
-                <a class="dropdown-item" role="presentation" routerLink="companyCreate">Post New Company</a>
+                <a class="dropdown-item" role="presentation" routerLink="/createCompany">Post New Company</a>
               </div>
             </li>
             <!-- Interview -->
@@ -49,8 +49,8 @@
               <i class="fas fa-user-circle" style="font-size:28px;"></i></a>
             <div class="dropdown-menu" role="menu">
               <a class="dropdown-item" role="presentation" routerLink="profile">Profile</a>
-              <a class="dropdown-item" role="presentation" routerLink="login">Log In</a>
-              <a class="dropdown-item" role="presentation" routerLink="register">Sign Up</a>
+              <a class="dropdown-item" role="presentation" routerLink="signIn">Log In</a>
+              <a class="dropdown-item" role="presentation" routerLink="signUp">Sign Up</a>
             </div>
           </li>
         </div>
@@ -59,7 +59,12 @@
     <div class="container hero" *ngIf="hasRoute('/')">
       <div class="row">
         <div class="col-md-8 offset-md-2">
-          <h1 class="text-center">Find Your Dream Job.</h1>
+          <h1 class=""></h1>
+          <ngx-typed-js
+            [strings]="['Find Your Dream Job.', 'Find Your Favorite Company.','Let\'s Crack That Interview!', 'Build And Manage Your Resumes.']"
+            [loop]="true" [typeSpeed]="100" [backDelay]="2000" [backSpeed]="20" [smartBackspace]="true">
+            <h1 class="typing  "></h1>
+          </ngx-typed-js>
           <div class="hero-content"></div>
 
         </div>
