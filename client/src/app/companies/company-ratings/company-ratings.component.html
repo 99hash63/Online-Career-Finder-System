@@ -1,0 +1,32 @@
+<div *ngFor="let companyRating of companyRatings">
+  <div style="padding: 25px 30px 25px 30px;">
+    <div class="card">
+      <div class="card-body">
+        <!-- <input type="hidden" name="id" value='{{company._id}}' #companyId> -->
+        <h5 class="card-title"></h5>
+        <h6 class="card-text">{{companyRating.job_title}} ({{companyRating.emp_state}})</h6>
+        <h6 class="card-text">{{companyRating.name}}</h6>
+
+        <!-- Default dropright button -->
+        <div class="btn-group dropright">
+          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            {{companyRating.rate_overall}} Stars</button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item">Culture & Values <button type="button" class="btn btn-success"
+                disabled>{{companyRating.rate_cultureValue}} Stars</button></a>
+
+            <a class="dropdown-item">Work/Life Balance <button type="button" class="btn btn-success"
+                disabled>{{companyRating.rate_workLife}} Stars</button></a>
+
+            <a class="dropdown-item">Senior Management <button type="button" class="btn btn-success"
+                disabled>{{companyRating.rate_seniorManagement}} Stars</button></a>
+          </div>
+        </div>
+
+        <p class="card-text">{{companyRating.comment}}</p>
+
+
+      </div>
+    </div>
+  </div>

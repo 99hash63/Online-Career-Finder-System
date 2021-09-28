@@ -17,11 +17,14 @@ exports.addReview = asyncHandler(async (req, res, next) => {
 });
 
 //@desc get all reviews of a company
-//@route GET /api/v1/auth/companyReview
+//@route GET /api/v1/auth/companyReview/:id
 //@access public
 exports.getReview = asyncHandler(async (req, res, next) => {
-	const companyId = req.body.companyId;
+	const companyId = req.params.id;
+	console.log('req params ' + req.params);
+	console.log('company ' + companyId);
 	const ratings = await CompanyReview.find({ companyId });
+	console.log('ratings' + ratings);
 
 	if (ratings.length === 0) {
 		return next(new ErrorResponse("Company doesn't have any reviews", 400));

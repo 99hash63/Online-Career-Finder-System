@@ -55,9 +55,10 @@ const CompanyReviewSchema = new mongoose.Schema({
 
 //generate overall rating
 CompanyReviewSchema.pre('save', function (next) {
-	this.rate_overall =
+	this.rate_overall = (
 		(this.rate_cultureValue + this.rate_workLife + this.rate_seniorManagement) /
-		3;
+		3
+	).toFixed(2);
 	next();
 });
 

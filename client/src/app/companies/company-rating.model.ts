@@ -7,4 +7,5 @@ export class CompanyRating {
   rate_workLife: number;
   rate_seniorManagement: number;
   companyId: string;
+  rate_overall: number;
 }
