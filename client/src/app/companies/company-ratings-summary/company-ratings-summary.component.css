@@ -1,0 +1,20 @@
+.overview-headings-left-container {
+  padding-left: 10px;
+}
+
+.overview-headings-left-container h6 {
+  color: rgb(0, 0, 196);
+  font-weight: bold;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.overview-desc-left-container {
+  padding-left: 125px;
+}
+
+.overview-desc-left-container h6 {
+  color: rgb(0, 177, 0);
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

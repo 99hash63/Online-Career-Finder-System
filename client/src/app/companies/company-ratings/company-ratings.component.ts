@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyRating } from '../company-rating.model';
 import { CompanyRatingsService } from '../company-ratings.service';
-
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import {
-  NgbModal,
-  NgbModalConfig,
-  NgbPopover,
-} from '@ng-bootstrap/ng-bootstrap';
 import { CompaniesService } from '../companies.service';
 
 @Component({
