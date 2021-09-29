@@ -29,14 +29,14 @@
         </div>
 
         <!-- filter by location -->
-        <div class="me-3" style="font-size: 12px">
+        <!-- <div class="me-3" style="font-size: 12px">
           <mat-form-field appearance="outline">
             <mat-label>Location</mat-label>
             <mat-select>
               <mat-option></mat-option>
             </mat-select>
           </mat-form-field>
-        </div>
+        </div> -->
       </div>
 
       <!-- search function -->
@@ -65,7 +65,7 @@
             <!-- </div> -->
 
             <div class="card-body">
-              <form (submit)="viewCompany(company._id)" #companyForm="ngForm">
+              <form (submit)="viewCompany(company._id, company.title)" #companyForm="ngForm">
 
                 <input type="hidden" name="id" value='{{company._id}}' #companyId>
 
