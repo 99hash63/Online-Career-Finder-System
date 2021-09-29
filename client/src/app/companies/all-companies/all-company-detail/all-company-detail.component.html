@@ -47,11 +47,11 @@
                 </ul>
               </div>
               <form class="form-inline">
-                <div class="nav-buttons">
+                <!-- <div class="nav-buttons">
                   <button class="btn btn-primary" type="button">Favorite</button>
-                </div>
+                </div> -->
                 <div class="nav-buttons">
-                  <button class="btn btn-success" type="button" (click)="open(content)">Review</button>
+                  <button class="btn btn-success" type="button" (click)="open(content)">Add Review</button>
                 </div>
               </form>
             </nav>
@@ -63,7 +63,7 @@
 
 
     <div class="row" style="margin-top: 25px;">
-      <div class="col-7">
+      <div class="col-8">
 
         <div style="width: 100%">
           <div class="card">
@@ -115,14 +115,14 @@
       </div>
       <div class="col">
         <div style="width: 100%">
-          <div class="card" style="height: 700px;">
+          <div class="card" style="height: 800px;">
             <div class="card-header">
               <h5>Review Summary</h5>
             </div>
             <div class="card-body">
-              <h6 class="card-title">Special title treatment</h6>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <app-company-ratings-summary></app-company-ratings-summary>
+              <!-- <button type="button" class="btn btn-success" style="margin-left: 120px;">Add Review<i
+                  class="bi bi-download"></i></button> -->
             </div>
           </div>
         </div>
@@ -198,7 +198,7 @@
       </div>
 
 
-      <div class="form-inline" style="margin-bottom: 10px;">
+      <div class="form-inline" style="margin-bottom: 18px;">
         <label>Rate Culture & Values of the Company <div
             *ngIf="reviewForm.submitted && !companyRatingsService.selectedRating.rate_cultureValue">
             <label class="validation-message" style="margin-left: 5px;">*</label>
@@ -219,7 +219,7 @@
         </div>
       </div>
 
-      <div class="form-inline" style="margin-bottom: 10px;">
+      <div class="form-inline" style="margin-bottom: 18px;">
         <label>Rate Work/Life Balance of the Company<div
             *ngIf="reviewForm.submitted && !companyRatingsService.selectedRating.rate_workLife">
             <label class="validation-message" style="margin-left: 5px;">*</label>
@@ -238,7 +238,7 @@
         </div>
       </div>
 
-      <div class="form-inline" style="margin-bottom: 10px;">
+      <div class="form-inline" style="margin-bottom: 18px;">
         <label>Rate Senior Management of the Company<div
             *ngIf="reviewForm.submitted && !companyRatingsService.selectedRating.rate_seniorManagement">
             <label class="validation-message" style="margin-left: 5px;">*</label>
