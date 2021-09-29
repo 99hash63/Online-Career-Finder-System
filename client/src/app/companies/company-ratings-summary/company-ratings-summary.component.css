@@ -5,18 +5,16 @@
 .overview-headings-left-container h6 {
   color: rgb(0, 0, 196);
   font-weight: bold;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 25px;
 }
 
 .overview-desc-left-container {
-  padding-left: 125px;
+  padding-left: 35px;
 }
 
 .overview-desc-left-container h6 {
   color: rgb(0, 177, 0);
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 25px;
 }
 
 #divChart {
