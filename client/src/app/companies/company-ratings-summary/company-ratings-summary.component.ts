@@ -15,6 +15,7 @@ export class CompanyRatingsSummaryComponent implements OnInit {
   companyRatings: CompanyRating[] = [];
   chart: any = [];
   //properties for display summary
+  public companyName: string;
   public totalReviews: number;
   public ratingsOverall: string;
   public ratingsCnV: string;
@@ -33,6 +34,7 @@ export class CompanyRatingsSummaryComponent implements OnInit {
   ngOnInit(): void {
     this.model.companyId = this.companiesService.getMyCompanyId();
     this.getRatings();
+    this.companyName = this.companiesService.getMyCompanyTitle();
   }
 
   //get company reviews from the database
@@ -113,8 +115,7 @@ export class CompanyRatingsSummaryComponent implements OnInit {
 
     var CurrentDate = mm + '/' + dd + '/' + yyyy;
     //pdf filename for saving
-    const filename =
-      this.model.companyId + '_ratings' + '_' + CurrentDate + '.pdf';
+    const filename = this.companyName + '_ratings' + '_' + CurrentDate + '.pdf';
 
     const doc = new jsPDF({
       orientation: 'p',
@@ -123,8 +124,8 @@ export class CompanyRatingsSummaryComponent implements OnInit {
     });
     doc.html(
       companyPdfTemplate(
-        this.model.companyId,
-        this.model.companyId,
+        this.companyName,
+        'Date: ' + CurrentDate,
         this.totalReviews,
         this.ratingsOverall + ' Stars',
         this.ratingsCnV + ' Stars',

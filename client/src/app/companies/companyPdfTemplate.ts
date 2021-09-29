@@ -540,7 +540,7 @@ export const companyPdfTemplate = (
                                   <td align="left" style="padding:0;Margin:0;padding-bottom:10px;padding-top:20px">
                                     <h1
                                       style="Margin:0;line-height:30px;mso-line-height-rule:exactly;font-family:roboto, 'helvetica neue', helvetica, arial, sans-serif;font-size:30px;font-style:normal;font-weight:bold;color:#302e2e">
-                                      APPLICATION</h1>
+                                      Review Summary</h1>
                                   </td>
                                 </tr>
                               </table>
@@ -563,7 +563,7 @@ export const companyPdfTemplate = (
                                   <td align="left" style="padding:0;Margin:0">
                                     <p
                                       style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:26px;color:#666666;font-size:17px">
-                                      <strong>${company}</strong></p>
+                                      <strong>Company: ${company}</strong></p>
                                   </td>
                                 </tr>
                               </table>
