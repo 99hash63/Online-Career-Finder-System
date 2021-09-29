@@ -61,22 +61,6 @@ export class AllCompanyDetailComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
-  // onDelete() {
-  //   this.companiesService.deleteCompany(this.myCompanyId).subscribe(
-  //     (res) => {
-  //       this.showSuccessMessage = true;
-
-  //       // navigate and reload myCompanies component after deleting the company
-  //       this.router.navigate(['/myCompanies']).then(() => {
-  //         window.location.reload();
-  //       });
-  //     },
-  //     (err) => {
-  //       this.serverErrorMessages = err.error.join('<br/>');
-  //     }
-  //   );
-  // }
-
   addReview(form: NgForm) {
     console.log(form.value);
 
