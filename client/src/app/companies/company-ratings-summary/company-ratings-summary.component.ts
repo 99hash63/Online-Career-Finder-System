@@ -13,10 +13,10 @@ export class CompanyRatingsSummaryComponent implements OnInit {
   chart: any = [];
   //properties for display summary
   public totalReviews: number;
-  public ratingsOverall: number;
-  public ratingsCnV: number;
-  public ratingsWnL: number;
-  public ratingsSM: number;
+  public ratingsOverall: string;
+  public ratingsCnV: string;
+  public ratingsWnL: string;
+  public ratingsSM: string;
 
   constructor(
     public companyRatingsService: CompanyRatingsService,
@@ -97,9 +97,9 @@ export class CompanyRatingsSummaryComponent implements OnInit {
       ratingsSMTotal += companyRating.rate_seniorManagement;
     });
 
-    this.ratingsOverall = ratingsOverallTotal / this.totalReviews;
-    this.ratingsCnV = ratingsCnVTotal / this.totalReviews;
-    this.ratingsWnL = ratingsWnLTotal / this.totalReviews;
-    this.ratingsSM = ratingsSMTotal / this.totalReviews;
+    this.ratingsOverall = (ratingsOverallTotal / this.totalReviews).toFixed(2);
+    this.ratingsCnV = (ratingsCnVTotal / this.totalReviews).toFixed(2);
+    this.ratingsWnL = (ratingsWnLTotal / this.totalReviews).toFixed(2);
+    this.ratingsSM = (ratingsSMTotal / this.totalReviews).toFixed(2);
   }
 }
