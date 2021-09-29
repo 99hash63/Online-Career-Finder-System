@@ -3,6 +3,8 @@ import { CompanyRating } from '../company-rating.model';
 import { CompanyRatingsService } from '../company-ratings.service';
 import { CompaniesService } from '../companies.service';
 import { Chart, registerables } from 'chart.js';
+import jsPDF from 'jspdf';
+import { companyPdfTemplate } from 'src/app/companies/companyPdfTemplate';
 Chart.register(...registerables);
 @Component({
   selector: 'app-company-ratings-summary',
@@ -33,6 +35,7 @@ export class CompanyRatingsSummaryComponent implements OnInit {
     this.getRatings();
   }
 
+  //get company reviews from the database
   getRatings() {
     this.companyRatingsService.getRatings(this.model.companyId).subscribe(
       (res) => {
@@ -45,6 +48,7 @@ export class CompanyRatingsSummaryComponent implements OnInit {
     );
   }
 
+  //function to calculate total reviews
   calTotalReviews() {
     let ratingsOverallTotal = 0;
     let ratingsCnVTotal = 0;
@@ -66,8 +70,8 @@ export class CompanyRatingsSummaryComponent implements OnInit {
     this.displayChart();
   }
 
+  //function to display pie chart
   displayChart() {
-    //create chart
     var myChart = new Chart('canvas', {
       type: 'doughnut',
       data: {
@@ -97,5 +101,43 @@ export class CompanyRatingsSummaryComponent implements OnInit {
         ],
       },
     });
+  }
+
+  //generate report function
+  downloadPDF() {
+    //generate now date
+    var today = new Date();
+    var dd = String(today.getUTCDate()).padStart(2, '0');
+    var mm = String(today.getUTCMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getUTCFullYear();
+
+    var CurrentDate = mm + '/' + dd + '/' + yyyy;
+    //pdf filename for saving
+    const filename =
+      this.model.companyId + '_ratings' + '_' + CurrentDate + '.pdf';
+
+    const doc = new jsPDF({
+      orientation: 'p',
+      unit: 'px',
+      format: [1000, 700],
+    });
+    doc.html(
+      companyPdfTemplate(
+        this.model.companyId,
+        this.model.companyId,
+        this.totalReviews,
+        this.ratingsOverall + ' Stars',
+        this.ratingsCnV + ' Stars',
+        this.ratingsWnL + ' Stars',
+        this.ratingsSM + ' Stars'
+      ),
+      {
+        callback: function (doc) {
+          //saving PDF
+          doc.save(filename);
+        },
+        margin: 45,
+      }
+    );
   }
 }
