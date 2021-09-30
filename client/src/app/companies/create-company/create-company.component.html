@@ -103,16 +103,16 @@
                   <div class="container">
                     <h3 style="margin: 80px 0px 20px 50px;">Fill Out Details</h3>
 
-                    <mat-form-field appearance="fill" class="inputBoxes">
+                    <mat-form-field appearance="outline" class="inputBoxes">
                       <input type="date" matInput placeholder="Founded" formControlName="founded" required>
                     </mat-form-field>
                     <br>
-                    <mat-form-field appearance="fill" class="inputBoxes">
+                    <mat-form-field appearance="outline" class="inputBoxes">
                       <input type="text" matInput placeholder="Website" formControlName="website" required
                         [pattern]="companyRegex">
                     </mat-form-field>
                     <br>
-                    <mat-form-field appearance="fill" class="inputBoxes">
+                    <mat-form-field appearance="outline" class="inputBoxes">
                       <input type="number" matInput placeholder="Revenue" formControlName="revenue" required>
                     </mat-form-field>
                     <br>
@@ -141,11 +141,11 @@
                   <ng-template matStepLabel>Set Address</ng-template>
                   <div class="container">
                     <h3 style="margin: 130px 0px 20px 50px;">Enter Address</h3>
-                    <mat-form-field appearance="fill" class="inputBoxes">
+                    <mat-form-field appearance="outline" class="inputBoxes">
                       <input type="text" matInput placeholder="Country" formControlName="country" required>
                     </mat-form-field>
                     <br>
-                    <mat-form-field appearance="fill" class="inputBoxes">
+                    <mat-form-field appearance="outline" class="inputBoxes">
                       <input type="text" matInput placeholder="City" formControlName="city" required>
                     </mat-form-field>
                     <div>
@@ -169,16 +169,19 @@
                 <img src=" /assets/images/main image test.jpg" id="icon" alt="User Icon" style="padding: 0; margin: 0;">
               </div>
               <div class="col-sm d-flex justify-content-center">
-                <form [formGroup]="fifthFormGroup">
+                <form [formGroup]="fifthFormGroup" style="width: 70%" class="d-flex justify-content-center">
                   <ng-template matStepLabel>Add a title</ng-template>
-                  <mat-form-field appearance="fill">
-                    <!-- <mat-label>Title</mat-label> -->
-                    <input type="text" matInput placeholder="Company TItle" name="title" formControlName="title"
-                      required>
-                  </mat-form-field>
-                  <div>
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext>Next</button>
+                  <div class="container" style="width: 100%;">
+                    <h3 style="margin: 158px 0px 5px 85px;">Create Title</h3>
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                      <textarea #title type="text" matInput placeholder="Company TItle" name="title"
+                        formControlName="title" minlength="1" maxlength="30" rows="5" required>HREY</textarea>
+                      <mat-hint align="end">{{title.value?.length || 0}}/30</mat-hint>
+                    </mat-form-field>
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
                   </div>
                 </form>
               </div>
@@ -196,16 +199,19 @@
                 <img src=" /assets/images/main image test.jpg" id="icon" alt="User Icon" style="padding: 0; margin: 0;">
               </div>
               <div class="col-sm d-flex justify-content-center">
-                <form [formGroup]="sixthFormGroup">
+                <form [formGroup]="sixthFormGroup" style="width: 70%" class="d-flex justify-content-center">
                   <ng-template matStepLabel>Add a description</ng-template>
-                  <mat-form-field appearance="fill">
-                    <!-- <mat-label>Title</mat-label> -->
-                    <input type="text" matInput placeholder="Company Description" name="description"
-                      formControlName="description" required minlength="50" maxlength="500">
-                  </mat-form-field>
-                  <div>
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext>Next</button>
+                  <div class="container" style="width: 100%;">
+                    <h3 style="margin: 158px 0px 5px 40px;">Create Description</h3>
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                      <textarea #description type="text" matInput placeholder="Company Description" name="description"
+                        formControlName="description" required minlength="50" maxlength="500" rows="5"></textarea>
+                      <mat-hint align="end">{{description.value?.length || 0}}/500</mat-hint>
+                    </mat-form-field>
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
                   </div>
                 </form>
               </div>
