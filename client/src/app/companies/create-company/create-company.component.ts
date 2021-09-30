@@ -25,6 +25,7 @@ export class CreateCompanyComponent implements OnInit {
   // industry = new FormControl();
   companyRegex =
     /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+  uploadImgUrl = '/assets/images/No_Preview_image.jpg';
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -69,6 +70,14 @@ export class CreateCompanyComponent implements OnInit {
 
   uploadFile(event) {
     console.log('file selected');
+
+    if (event.target.files) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.uploadImgUrl = e.target.result;
+      };
+    }
 
     const file = (event.target as HTMLInputElement).files[0];
     this.seventhFormGroup.patchValue({
