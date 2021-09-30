@@ -14,7 +14,8 @@ export class AllCompaniesComponent implements OnInit {
   industry: string = 'none';
   private companiesSub!: Subscription;
   serverErrorMessages: string;
-  p: number = 1;
+  // pagination
+  page: number = 1;
   constructor(public companiesService: CompaniesService) {}
 
   //Initalization of the all companies component

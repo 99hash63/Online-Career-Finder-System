@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { CompaniesService } from '../companies.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-company',
@@ -24,6 +25,7 @@ export class CreateCompanyComponent implements OnInit {
   // industry = new FormControl();
   companyRegex =
     /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+  uploadImgUrl = '/assets/images/No_Preview_image.jpg';
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -35,7 +37,8 @@ export class CreateCompanyComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    public companiesService: CompaniesService
+    public companiesService: CompaniesService,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
@@ -67,6 +70,14 @@ export class CreateCompanyComponent implements OnInit {
 
   uploadFile(event) {
     console.log('file selected');
+
+    if (event.target.files) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.uploadImgUrl = e.target.result;
+      };
+    }
 
     const file = (event.target as HTMLInputElement).files[0];
     this.seventhFormGroup.patchValue({
@@ -115,6 +126,7 @@ export class CreateCompanyComponent implements OnInit {
       this.companiesService.postCompany(formData).subscribe(
         (res) => {
           alert('success!');
+          this.route.navigateByUrl('myCompanies');
         },
         (err) => {
           alert('error!');
