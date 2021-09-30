@@ -96,15 +96,6 @@ export class CreateCompanyComponent implements OnInit {
       this.sixthFormGroup.valid &&
       this.seventhFormGroup.valid
     ) {
-      // const result = Object.assign(
-      //   {},
-      //   this.firstFormGroup.value,
-      //   this.secondFormGroup.value,
-      //   this.thirdFormGroup.value,
-      //   this.fourthFormGroup.value,
-      //   this.fifthFormGroup.value,
-      //   this.sixthFormGroup.value
-      // );
       const formData: any = new FormData();
 
       formData.append('industry', this.firstFormGroup.get('industry').value);
@@ -134,5 +125,10 @@ export class CreateCompanyComponent implements OnInit {
         }
       );
     }
+  }
+
+  //reset image when reset button is clicked
+  resetImg() {
+    this.uploadImgUrl = '/assets/images/No_Preview_image.jpg';
   }
 }

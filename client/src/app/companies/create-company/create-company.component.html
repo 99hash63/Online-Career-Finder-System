@@ -313,7 +313,7 @@
           </div>
           <div class="d-flex justify-content-end" style="margin-top: 25px; margin-right: 53px;">
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button (click)="stepper.reset(); resetImg();">Reset</button>
             <button mat-button (click)="onSubmit()">Submit</button>
           </div>
         </mat-step>
