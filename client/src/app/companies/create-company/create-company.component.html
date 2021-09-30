@@ -126,24 +126,54 @@
             </div>
             <br>
           </div>
-
         </mat-step>
 
+        <!-- step 4 -->
         <mat-step [stepControl]="fourthFormGroup" errorMessage="required.">
-          <form [formGroup]="fourthFormGroup">
-            <ng-template matStepLabel>Set Address</ng-template>
-            <mat-form-field appearance="fill">
-              <input type="text" matInput placeholder="Country" formControlName="country" required>
-            </mat-form-field>
+
+
+
+
+          <div class="container">
+
             <br>
-            <mat-form-field appearance="fill">
-              <input type="text" matInput placeholder="City" formControlName="city" required>
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
+            <div class="row" style="border: 2px solid rgb(0, 63, 105); padding: 0; margin: 0;">
+              <div class="col-sm" style="padding: 0; margin: 0; position:relative; top: 0;">
+                <img src=" /assets/images/main image test.jpg" id="icon" alt="User Icon" style="padding: 0; margin: 0;">
+              </div>
+              <div class="col-sm d-flex justify-content-center">
+
+                <form [formGroup]="fourthFormGroup" style="width: 60%" class="d-flex justify-content-center">
+                  <ng-template matStepLabel>Set Address</ng-template>
+                  <div class="container">
+                    <h3 style="margin: 130px 0px 20px 50px;">Enter Address</h3>
+                    <mat-form-field appearance="fill" class="inputBoxes">
+                      <input type="text" matInput placeholder="Country" formControlName="country" required>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field appearance="fill" class="inputBoxes">
+                      <input type="text" matInput placeholder="City" formControlName="city" required>
+                    </mat-form-field>
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
-          </form>
+            <br>
+          </div>
+
+
+
+
+
+
+
+
+
+
         </mat-step>
 
         <mat-step [stepControl]="fifthFormGroup" errorMessage="required.">
