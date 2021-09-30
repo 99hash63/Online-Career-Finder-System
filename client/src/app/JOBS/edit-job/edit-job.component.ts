@@ -35,17 +35,27 @@ import {
   ],
 })
 export class EditJobComponent implements OnInit {
+  //publish status
   publish?: boolean;
+
   public imageError?: string;
+
   isImageSaved?: boolean;
+
   cardImageBase64?: string;
+
   isLinear = false;
+
+  //progress bar (show or hide) when updating a job post
   progressBar = false;
 
+  //initialized router
   router?: Router;
 
+  //get industry data set to show in dropdown
   IndustryOptions = IndustryOptions;
 
+  //form Groups
   jobForm!: FormGroup;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
@@ -63,9 +73,11 @@ export class EditJobComponent implements OnInit {
     this.router = router;
   }
 
+  //web URL pattern for validations
   public myreg =
     /^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/i;
 
+  //store image as base64
   image: string;
 
   ngOnInit(): void {
@@ -98,22 +110,28 @@ export class EditJobComponent implements OnInit {
     });
   }
 
+  //validate image
   validateImage(): ValidatorFn {
     return (control: AbstractControl): {} | null =>
       this.imageError!.length > 0 ? null : {};
   }
 
+  //web URL validation function
   url = new FormControl('', [
     Validators.required,
     Validators.pattern(this.myreg),
   ]);
 
+  //expect applicants validation function
   exApplicants = new FormControl('', [Validators.minLength(5)]);
+
+  //salary input validation function
+  salaryfn = new FormControl('', [Validators.minLength(10)]);
+
   markTouchedExApplicants() {
     this.exApplicants.markAsTouched();
     this.exApplicants.updateValueAndValidity();
   }
-  salaryfn = new FormControl('', [Validators.minLength(10)]);
   markTouchedSalary() {
     this.salaryfn.markAsTouched();
     this.salaryfn.updateValueAndValidity();
@@ -144,6 +162,7 @@ export class EditJobComponent implements OnInit {
       createdDate: undefined,
     };
   }
+  //set publish value
   setPublish(value: boolean) {
     this.publish = value;
   }
@@ -169,6 +188,7 @@ export class EditJobComponent implements OnInit {
     this.jobForm.value.image = this.cardImageBase64 || this.image;
     this.jobForm.value.website = this.url.value;
 
+    //check inputs and errors
     if (
       !this.imageError &&
       this.firstFormGroup.valid &&
@@ -179,12 +199,13 @@ export class EditJobComponent implements OnInit {
         .subscribe((res) => {
           this.resetForm();
           this.removeImage();
-          // window.location.href = '/createJob/success';
+
           this.router?.navigate(['/createJob/success']);
         });
     }
   }
 
+  //convert image into base64 funtion
   fileChangeEvent(fileInput: any) {
     if (fileInput.target.files && fileInput.target.files[0]) {
       // Size Filter Bytes

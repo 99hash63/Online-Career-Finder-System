@@ -8,6 +8,7 @@ import { CompaniesService } from '../companies.service';
   templateUrl: './company-ratings.component.html',
   styleUrls: ['./company-ratings.component.css'],
 })
+
 export class CompanyRatingsComponent implements OnInit {
   companyRatings: CompanyRating[] = [];
 

@@ -14,6 +14,7 @@ Chart.register(...registerables);
 export class CompanyRatingsSummaryComponent implements OnInit {
   companyRatings: CompanyRating[] = [];
   chart: any = [];
+  
   //properties for display summary
   public companyName: string;
   public totalReviews: number;

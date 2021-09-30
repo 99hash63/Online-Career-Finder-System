@@ -24,30 +24,49 @@ import { timer } from 'rxjs';
   providers: [JobpostService, NgbModalConfig, NgbModal],
 })
 export class MyJobsComponent implements OnInit {
+  //img to base64 convertion variables start
   closeResult!: string;
+
   imageError?: string;
+
   isImageSaved?: boolean;
+
   cardImageBase64?: string;
+  //img to base64 convertion variables end
+
   datediff?: number;
+
+  //search terms start
   searchTerm!: string;
+
   industry!: string;
-  type: string = 'Type';
-  _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-  showJobPost: any = [];
-  totalLength!: number;
-  page!: number;
-  // MatPaginator Output
-  pageEvent!: PageEvent;
-
-  pageSize: number = 10;
-
-  JobType = new FormControl();
   typeList: string[] = ['All', 'Full Time', 'Part Time', 'Internship'];
 
   selectedTypes!: string;
 
   IndustryOptions = IndustryOptions;
+
+  type: string = 'Type';
+
+  _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+  //search terms end
+
+  //pagination variables start
+  showJobPost: any = [];
+
+  totalLength!: number;
+
+  page!: number;
+
+  // MatPaginator Output
+  pageEvent!: PageEvent;
+
+  pageSize: number = 10;
+  //pagination variables end
+
+  JobType = new FormControl();
 
   jobForm!: FormGroup;
 
@@ -95,6 +114,8 @@ export class MyJobsComponent implements OnInit {
       this.ujob = '';
     });
   }
+
+  //calculate date different
   calcDateDiff(date: any) {
     var today = new Date();
     var s = new Date(date);
@@ -103,17 +124,21 @@ export class MyJobsComponent implements OnInit {
     var diffDays = Math.ceil(diff / (1000 * 3600 * 24));
     return diffDays + 'd';
   }
+  //show actively hiring badge in job post
   achiring() {
     if (this.jobpostservice.selectedJob.activelyHiring == 'Yes') {
       return true;
     }
     return false;
   }
+  //open model
   open(content: any) {
     this.modalService.open(content, {
       backdrop: 'static',
     });
   }
+
+  //update publish status
   updatePublish(id, con) {
     this.ujob = id;
     if (con == true) {
@@ -137,12 +162,16 @@ export class MyJobsComponent implements OnInit {
         });
     }
   }
+  //loading funtion for inside btn progress bar
   loading() {
     return true;
   }
+  //save job post for updating
   Edit(job: Jobpost) {
     this.jobpostservice.selectedJob = job;
   }
+
+  //delete job post function
   deletePost() {
     this.jobpostservice
       .deleteJobPost(this.jobpostservice.selectedJob._id)
@@ -152,6 +181,7 @@ export class MyJobsComponent implements OnInit {
         this.openSnackBar();
       });
   }
+  //delete toast message
   openSnackBar() {
     this._snackBar.openFromComponent(SnackBarComponentExample, {
       duration: this.durationInSeconds * 1000,

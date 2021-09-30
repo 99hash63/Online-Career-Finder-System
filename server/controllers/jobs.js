@@ -1,6 +1,8 @@
 const Jobs = require("../models/Jobs");
 var ObjectId = require("mongoose").Types.ObjectId;
 
+//@desc Get all JOb Posts
+//@route GET /findjobs/jobs
 exports.getJobPosts = async (req, res) => {
   await Jobs.find(
     {
@@ -17,6 +19,8 @@ exports.getJobPosts = async (req, res) => {
     }
   );
 };
+//@desc Get specific user's Job Posts
+//@route GET /findjobs/jobs/:id
 exports.getMyJobPosts = async (req, res) => {
   userId = req.user.id;
 
@@ -35,6 +39,7 @@ exports.getMyJobPosts = async (req, res) => {
     }
   );
 };
+
 exports.getJobPost = async (req, res) => {
   if (!ObjectId.isValid(req.params.id))
     return res.status(400).send(`No record with given id : ${req.params.id}`);
@@ -50,6 +55,8 @@ exports.getJobPost = async (req, res) => {
   });
 };
 
+//@desc Add Job Post
+//@route POST /findjobs/createjob
 exports.createJobPost = async (req, res) => {
   req.body.user = req.user._id;
   console.log(req.body.userId + "rwefauwsgofiusdgo");
@@ -98,6 +105,8 @@ exports.createJobPost = async (req, res) => {
   });
 };
 
+//@desc Update Job Post
+//@route PUT /findjobs/jobs/:id
 exports.updateJobPost = async (req, res) => {
   if (!ObjectId.isValid(req.params.id))
     return res.status(400).send(`No record with given id : ${req.params.id}`);
@@ -167,6 +176,8 @@ exports.updateJobPost = async (req, res) => {
   );
 };
 
+//@desc Change publish unpublish status
+//@route PUT /findjobs/jobs/publish/:id
 exports.publishJobPost = async (req, res) => {
   let jobID = req.params.id;
   const { publish } = req.body;
@@ -186,6 +197,8 @@ exports.publishJobPost = async (req, res) => {
     });
 };
 
+//@desc Delete Job Post
+//@route DELETE /findjobs/jobs/:id
 exports.deleteJobPost = async (req, res) => {
   if (!ObjectId.isValid(req.params.id))
     return res.status(400).send(`No record with given id : ${req.params.id}`);
@@ -199,6 +212,8 @@ exports.deleteJobPost = async (req, res) => {
   });
 };
 
+//@desc Update Job Post applicant count
+//@route PUT /findjobs/newapplicant/:id
 exports.newapplicant = async (req, res) => {
   let jobID = req.params.id;
 
