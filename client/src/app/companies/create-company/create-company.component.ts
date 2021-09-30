@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { CompaniesService } from '../companies.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-company',
@@ -35,7 +36,8 @@ export class CreateCompanyComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    public companiesService: CompaniesService
+    public companiesService: CompaniesService,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
@@ -115,6 +117,7 @@ export class CreateCompanyComponent implements OnInit {
       this.companiesService.postCompany(formData).subscribe(
         (res) => {
           alert('success!');
+          this.route.navigateByUrl('myCompanies');
         },
         (err) => {
           alert('error!');
