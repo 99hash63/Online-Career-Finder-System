@@ -2,28 +2,54 @@
   <div style="padding: 10px 10px 10px 10px;">
     <div class="card">
       <div class="card-body">
-        <!-- <input type="hidden" name="id" value='{{company._id}}' #companyId> -->
-        <h5 class="card-title"></h5>
-        <h6 class="card-text">{{companyRating.job_title}} ({{companyRating.emp_state}})</h6>
-        <h6 class="card-text">{{companyRating.name}}</h6>
 
-        <!-- Default dropright button -->
-        <div class="btn-group dropright">
-          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            {{companyRating.rate_overall}} Stars</button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item">Culture & Values <button type="button" class="btn btn-success"
-                disabled>{{companyRating.rate_cultureValue}} Stars</button></a>
+        <div class="container" style="padding: 0;">
+          <div class="row" style="padding: 0;">
+            <div class="col-sm-6">
+              <!-- <input type="hidden" name="id" value='{{company._id}}' #companyId> -->
+              <h6 class="card-text">{{companyRating.job_title}} ({{companyRating.emp_state}})</h6>
+              <h6 class="card-text">{{companyRating.name}}</h6>
+            </div>
+            <div class="col-sm d-flex justify-content-start">
+              <!-- Default dropright button -->
+              <div class="btn-group dropdown btn-sm">
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  {{companyRating.rate_overall}} Stars</button>
+                <div class="dropdown-menu" style="width: 350px;">
 
-            <a class="dropdown-item">Work/Life Balance <button type="button" class="btn btn-success"
-                disabled>{{companyRating.rate_workLife}} Stars</button></a>
 
-            <a class="dropdown-item">Senior Management <button type="button" class="btn btn-success"
-                disabled>{{companyRating.rate_seniorManagement}} Stars</button></a>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <a class="dropdown-item">Culture & Values </a>
+                        <a class="dropdown-item" style="margin-top: 14px;">Work/Life Balance </a>
+                        <a class="dropdown-item" style="margin-top: 14px;">Senior Management</a>
+                      </div>
+                      <div class="col">
+                        <button type="button" class="btn btn-success" disabled>{{companyRating.rate_cultureValue}}
+                          Stars</button> <br>
+                        <button style="margin-top: 8px;" type="button" class="btn btn-success"
+                          disabled>{{companyRating.rate_workLife}}
+                          Stars</button><br>
+                        <button style="margin-top: 8px;" type="button" class="btn btn-success"
+                          disabled>{{companyRating.rate_seniorManagement}}
+                          Stars</button>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
+
+
+
+        <br>
         <p class="card-text">{{companyRating.comment}}</p>
 
 
