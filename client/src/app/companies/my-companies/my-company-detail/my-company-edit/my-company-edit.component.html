@@ -5,13 +5,17 @@
 
       <div class="row">
         <div style="width: 1500px">
-          <div class="card">
+          <div class="card cardShadow">
 
             <div class="crop">
               <img class="card-img-top" [src]="company.coverPhoto" alt="Card image cap">
             </div>
             <div class="card-body">
-              <input type="text" [(ngModel)]="company.title" [ngModelOptions]="{standalone: true}">
+              <h3>
+                <input style="margin-left: 35px; width: 20ch;" type="text" [(ngModel)]="company.title"
+                  [ngModelOptions]="{standalone: true}">
+
+              </h3>
               <!-- navbar for card -->
               <nav class="navbar navbar-expand-lg navbar-light">
 
@@ -58,40 +62,95 @@
 
 
       <div class="row" style="margin-top: 25px;">
+        <div class="col-8">
 
-        <div style="width: 800px;">
-          <div class="card">
-            <div class="card-header">
-              <h5>Company Overview</h5>
-            </div>
-            <div class="card-body">
-
-              <div class="form-group form-inline">
-                <label for="exampleInputEmail1">Website</label>
-                <input type="text" [(ngModel)]="company.website" [ngModelOptions]="{standalone: true}">
-
-                <label for="exampleInputEmail1">Revenue</label>
-                <input type="text" [(ngModel)]="company.revenue" [ngModelOptions]="{standalone: true}"><br><br>
+          <div style="width: 100%;">
+            <div class="card cardShadow">
+              <div class="card-header">
+                <h5>Company Overview</h5>
               </div>
+              <div class="card-body">
 
-              <div class="form-group form-inline">
-                <label for="exampleInputEmail1">Size</label>
-                <input type="text" [(ngModel)]="company.emp_count" [ngModelOptions]="{standalone: true}">
+                <div class="container">
+                  <div class="row">
 
-                <label for="exampleInputEmail1">Headquarters</label>
-                <input type="text" [(ngModel)]="company.city" [ngModelOptions]="{standalone: true}"><br>
-                <input type="text" [(ngModel)]="company.country" [ngModelOptions]="{standalone: true}">
-              </div>
+                    <div class="col-2 d-flex justify-content-start">
+                      <div> <label for="exampleInputEmail1">Website</label><br>
+                        <label for="exampleInputEmail1" style="margin-top: 15px;">Size</label><br>
+                        <label for="exampleInputEmail1" style="margin-top: 15px;">Industry</label>
+                      </div>
 
-              <div class="form-group form-inline">
-                <label for="exampleInputEmail1">Industry</label>
-                <input type="text" [(ngModel)]="company.industry" [ngModelOptions]="{standalone: true}">
 
-                <label for="exampleInputEmail1">Founded</label>
-                <input type="text" [(ngModel)]="company.founded" [ngModelOptions]="{standalone: true}">
-              </div>
+                    </div>
 
-              <!-- <div class="form-group form-inline">
+                    <div class="col-4 d-flex justify-content-start" style="padding-left: 0;">
+                      <div><input type="text" [(ngModel)]="company.website" [ngModelOptions]="{standalone: true}"
+                          style="width: 100%;">
+
+                        <input type="text" [(ngModel)]="company.emp_count" [ngModelOptions]="{standalone: true}"
+                          style="margin-top: 15px; width: 100%;">
+                        <input type="text" [(ngModel)]="company.industry" [ngModelOptions]="{standalone: true}"
+                          style="margin-top: 15px; width: 100%;">
+                      </div>
+
+                    </div>
+
+                    <div class="col-2 d-flex justify-content-start">
+                      <div><label for="exampleInputEmail1">Revenue</label><br>
+                        <label for="exampleInputEmail1" style="margin-top: 15px;">Founded</label>
+                        <label for="exampleInputEmail1" style="margin-top: 15px;">Headquarters</label>
+                      </div>
+
+                    </div>
+
+                    <div class="col-4 d-flex justify-content-start">
+                      <div> <input type="text" [(ngModel)]="company.revenue" [ngModelOptions]="{standalone: true}"
+                          style="width: 100%;">
+                        <input type="text" [(ngModel)]="company.founded" [ngModelOptions]="{standalone: true}"
+                          style="margin-top: 15px; width: 100%;">
+                        <input type="text" [(ngModel)]="company.city" [ngModelOptions]="{standalone: true}"
+                          style="margin-top: 15px; width: 100%;"><br>
+                        <input type="text" [(ngModel)]="company.country" [ngModelOptions]="{standalone: true}"
+                          style="margin-top: 8px;" style="width: 100%;">
+                      </div>
+
+
+
+                    </div>
+
+                  </div>
+                </div>
+
+
+
+
+
+                <!-- <div class="form-group form-inline">
+                  <label for="exampleInputEmail1">Website</label>
+                  <input type="text" [(ngModel)]="company.website" [ngModelOptions]="{standalone: true}">
+
+                  <label for="exampleInputEmail1">Revenue</label>
+                  <input type="text" [(ngModel)]="company.revenue" [ngModelOptions]="{standalone: true}"><br><br>
+                </div>
+
+                <div class="form-group form-inline">
+                  <label for="exampleInputEmail1">Size</label>
+                  <input type="text" [(ngModel)]="company.emp_count" [ngModelOptions]="{standalone: true}">
+
+                  <label for="exampleInputEmail1">Headquarters</label>
+                  <input type="text" [(ngModel)]="company.city" [ngModelOptions]="{standalone: true}"><br>
+                  <input type="text" [(ngModel)]="company.country" [ngModelOptions]="{standalone: true}">
+                </div>
+
+                <div class="form-group form-inline">
+                  <label for="exampleInputEmail1">Industry</label>
+                  <input type="text" [(ngModel)]="company.industry" [ngModelOptions]="{standalone: true}">
+
+                  <label for="exampleInputEmail1">Founded</label>
+                  <input type="text" [(ngModel)]="company.founded" [ngModelOptions]="{standalone: true}">
+                </div> -->
+
+                <!-- <div class="form-group form-inline">
                 <div class="overview-headings-left-container">
                   <h6>Website:</h6>
                   <h6>Size:</h6>
@@ -114,24 +173,42 @@
                 </div>
               </div> -->
 
-              <div class="description-container">
-                <!-- <input type="text" [(ngModel)]="company.description" [ngModelOptions]="{standalone: true}" size="50"> -->
-                <textarea cols="100" rows="5" [(ngModel)]="company.description"
-                  [ngModelOptions]="{standalone: true}"></textarea>
-              </div>
+                <div class="description-container" style="margin-top: 20px;">
+                  <!-- <input type="text" [(ngModel)]="company.description" [ngModelOptions]="{standalone: true}" size="50"> -->
 
+                  <textarea cols="100" rows="5" [(ngModel)]="company.description" [ngModelOptions]="{standalone: true}"
+                    required minlength="50" maxlength="250" rows="5" style="width: 100%;"></textarea>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div style="width: 100%; ">
+            <div class="card cardShadow">
+              <div class=" card-header">
+                <h5>Company Reviews</h5>
+              </div>
+              <div class="card-body overflow-auto" style="height: 325px;">
+                <app-company-ratings></app-company-ratings>
+                <!-- <button type="button" class="btn btn-primary"
+                  style="position: absolute; left: 1018px; top: 380px; z-index: 1">Get
+                  Report<i class="bi bi-download"></i></button> -->
+
+              </div>
             </div>
           </div>
         </div>
-        <div style="width: 500px">
-          <div class="card" style="height: 500px;">
-            <div class="card-header">
-              <h5>Review Summary</h5>
-            </div>
-            <div class="card-body">
-              <h6 class="card-title">Special title treatment</h6>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="col">
+          <div style="width: 100% ">
+            <div class="card cardShadow" style="height: 800px;">
+              <div class="card-header">
+                <h5>Review Summary</h5>
+              </div>
+              <div class="card-body">
+                <app-company-ratings-summary></app-company-ratings-summary>
+              </div>
             </div>
           </div>
         </div>
