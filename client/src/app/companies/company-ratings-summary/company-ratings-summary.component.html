@@ -1,33 +1,38 @@
-<div style="display: flex; justify-content: center; align-items: center;">
+<!-- show error message -->
+<div *ngIf="noReviews">
+  <h3>Opps there is no reviews yet</h3>
+</div>
+
+<!-- show only if data is available -->
+<div *ngIf="noReviews==false">
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <form class="form-inline">
+      <div class="overview-headings-left-container">
+        <h5>Total Reviews</h5>
+      </div>
+      <div style="padding-left: 14px;">
+        <h5 style="color: black;">{{totalReviews}} </h5>
+      </div>
+    </form>
+  </div>
+  <div class="align-items-center" style="width: 328px; margin-left: 18px;">
+    <canvas id="canvas"></canvas>
+  </div>
+  <br><br>
   <form class="form-inline">
     <div class="overview-headings-left-container">
-      <h5>Total Reviews</h5>
+      <h6>Ratings - Overall</h6>
+      <h6>Ratings - Culture & Values</h6>
+      <h6>Ratings - Work/Life Balance</h6>
+      <h6>Ratings - Senior Management</h6>
     </div>
-    <div style="padding-left: 14px;">
-      <h5 style="color: black;">{{totalReviews}} </h5>
+    <div class="overview-desc-left-container">
+      <h6>{{ratingsOverall}} Stars</h6>
+      <h6>{{ratingsCnV}} Stars</h6>
+      <h6>{{ratingsWnL}} Stars</h6>
+      <h6>{{ratingsSM}} Stars</h6>
     </div>
   </form>
+  <br>
+  <button class="btn btn-primary" style="margin-left: 130px;" (click)="downloadPDF() ">Get Report</button>
 </div>
-
-
-
-<div class="align-items-center" style="width: 328px; margin-left: 18px;">
-  <canvas id="canvas"></canvas>
-</div>
-<br><br>
-<form class="form-inline">
-  <div class="overview-headings-left-container">
-    <h6>Ratings - Overall</h6>
-    <h6>Ratings - Culture & Values</h6>
-    <h6>Ratings - Work/Life Balance</h6>
-    <h6>Ratings - Senior Management</h6>
-  </div>
-  <div class="overview-desc-left-container">
-    <h6>{{ratingsOverall}} Stars</h6>
-    <h6>{{ratingsCnV}} Stars</h6>
-    <h6>{{ratingsWnL}} Stars</h6>
-    <h6>{{ratingsSM}} Stars</h6>
-  </div>
-</form>
-<br>
-<button class="btn btn-primary" style="margin-left: 130px;" (click)="downloadPDF() ">Get Report</button>

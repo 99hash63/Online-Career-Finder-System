@@ -12,6 +12,8 @@ Chart.register(...registerables);
   styleUrls: ['./company-ratings-summary.component.css'],
 })
 export class CompanyRatingsSummaryComponent implements OnInit {
+  noReviews: boolean = false;
+
   companyRatings: CompanyRating[] = [];
   chart: any = [];
   //properties for display summary
@@ -46,6 +48,7 @@ export class CompanyRatingsSummaryComponent implements OnInit {
       },
       (err) => {
         console.log(err.error);
+        this.noReviews = true;
       }
     );
   }

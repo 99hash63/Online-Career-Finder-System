@@ -26,6 +26,7 @@ export class CreateCompanyComponent implements OnInit {
   companyRegex =
     /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
   uploadImgUrl = '/assets/images/No_Preview_image.jpg';
+  serverErrorMessages: string;
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -120,8 +121,10 @@ export class CreateCompanyComponent implements OnInit {
           this.route.navigateByUrl('myCompanies');
         },
         (err) => {
-          alert('error!');
-          console.log(err);
+          this.serverErrorMessages = err.error.join('<br/>');
+
+          alert(this.serverErrorMessages);
+          console.log(this.serverErrorMessages);
         }
       );
     }

@@ -19,3 +19,8 @@
   max-width: 500px;
   max-height: 500px;
 }
+
+.allCardShadows {
+  -webkit-box-shadow: 5px 5px 12px -12px #7c7c7c;
+  box-shadow: 5px 5px 12px -12px #7c7c7c;
+}

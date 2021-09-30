@@ -10,6 +10,7 @@ import { CompaniesService } from '../companies.service';
 })
 export class CompanyRatingsComponent implements OnInit {
   companyRatings: CompanyRating[] = [];
+  noReviews: boolean = false;
 
   constructor(
     public companyRatingsService: CompanyRatingsService,
@@ -32,6 +33,7 @@ export class CompanyRatingsComponent implements OnInit {
       },
       (err) => {
         console.log(err.error);
+        this.noReviews = true;
       }
     );
   }
