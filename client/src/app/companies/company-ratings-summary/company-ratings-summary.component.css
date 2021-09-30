@@ -1,0 +1,24 @@
+.overview-headings-left-container {
+  padding-left: 10px;
+}
+
+.overview-headings-left-container h6 {
+  color: rgb(0, 0, 196);
+  font-weight: bold;
+  padding-bottom: 25px;
+}
+
+.overview-desc-left-container {
+  padding-left: 35px;
+}
+
+.overview-desc-left-container h6 {
+  color: rgb(0, 177, 0);
+  padding-bottom: 25px;
+}
+
+#divChart {
+  display: block;
+  width: 400px;
+  height: 400px;
+}

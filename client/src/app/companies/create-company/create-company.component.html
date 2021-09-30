@@ -1,0 +1,326 @@
+<div class="container-fluid" style="width: 1300px; margin-bottom: 200px;">
+  <div class="mt-4">
+
+    <div class="card" style="width:100%">
+      <mat-stepper #stepper>
+
+        <!-- step industry -->
+        <mat-step [stepControl]="firstFormGroup" errorMessage="Industry is required.">
+          <div class="container">
+            <br>
+            <div class="row" style="border: 2px solid rgb(0, 63, 105); padding: 0; margin: 0;">
+              <div class="col-sm" style="padding: 0; margin: 0; position:relative; top: 0;">
+                <img src=" /assets/images/main image test.jpg" id="icon" alt="User Icon" style="padding: 0; margin: 0;">
+              </div>
+              <div class="col-sm d-flex justify-content-center">
+                <form [formGroup]="firstFormGroup" style="width: 60%;" class="d-flex justify-content-center">
+                  <ng-template matStepLabel>Industry</ng-template>
+                  <section style="width: 100%;">
+                    <mat-button-toggle-group formControlName="industry" aria-label="Font Style" vertical style=" border:0px;
+                      outline:0px; width: 100%;">
+                      <h3 style="margin: 50px 0px 27px 63px;">Select Industry</h3>
+                      <mat-button-toggle class="toggle-button-industry" value="IT/Software">IT/Software
+                      </mat-button-toggle>
+                      <br>
+                      <mat-button-toggle class="toggle-button-industry" value="Technology">Technology
+                      </mat-button-toggle>
+                      <br>
+                      <mat-button-toggle class="toggle-button-industry" value="Real Estate">Real Estate
+                      </mat-button-toggle>
+                      <br>
+                      <mat-button-toggle class="toggle-button-industry" value="Consumer Goods">Consumer Goods
+                      </mat-button-toggle>
+                      <br>
+                      <!-- <mat-button-toggle class="toggle-button-industry" value="Automobile">Automobile
+                      </mat-button-toggle>
+                      <br> -->
+                      <mat-button-toggle class="toggle-button-industry" value="Other">Other</mat-button-toggle>
+                      <br>
+                    </mat-button-toggle-group>
+                    <div class="d-flex justify-content-end">
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                  </section>
+                </form>
+              </div>
+            </div>
+            <br>
+          </div>
+        </mat-step>
+
+        <!-- step emp count -->
+        <mat-step [stepControl]="secondFormGroup" errorMessage="Size is required.">
+          <div class="container">
+            <br>
+            <div class="row" style="border: 2px solid rgb(0, 63, 105); padding: 0; margin: 0;">
+              <div class="col-sm" style="padding: 0; margin: 0; position:relative; top: 0;">
+                <img src=" /assets/images/main image test.jpg" id="icon" alt="User Icon" style="padding: 0; margin: 0;">
+              </div>
+              <div class="col-sm d-flex justify-content-center">
+                <form [formGroup]="secondFormGroup" style="width: 60%;" class="d-flex justify-content-center">
+                  <ng-template matStepLabel>Size</ng-template>
+                  <section style="width: 100%;">
+
+                    <mat-button-toggle-group formControlName="emp_count" aria-label="Font Style" vertical style=" border:0px;
+                      outline:0px; width: 100%;">
+                      <h3 style="margin: 50px 0px 27px 63px;">Employee Count</h3>
+                      <mat-button-toggle class="toggle-button-industry" value="0-10">0-10
+                      </mat-button-toggle>
+                      <br>
+                      <mat-button-toggle class="toggle-button-industry" value="10-50">10-50</mat-button-toggle>
+                      <br>
+                      <mat-button-toggle class="toggle-button-industry" value="50-200">50-200</mat-button-toggle>
+                      <br>
+                      <mat-button-toggle class="toggle-button-industry" value="200-1000">200-1000</mat-button-toggle>
+                      <br>
+                      <mat-button-toggle class="toggle-button-industry" value="Above 1000">Above 1000
+                      </mat-button-toggle>
+                      <br>
+                    </mat-button-toggle-group>
+                    <div class="d-flex justify-content-end">
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                  </section>
+                </form>
+              </div>
+            </div>
+            <br>
+          </div>
+        </mat-step>
+
+        <!-- third form -->
+        <mat-step [stepControl]="thirdFormGroup" errorMessage="required.">
+          <div class="container">
+            <br>
+            <div class="row" style="border: 2px solid rgb(0, 63, 105); padding: 0; margin: 0;">
+              <div class="col-sm" style="padding: 0; margin: 0; position:relative; top: 0;">
+                <img src=" /assets/images/main image test.jpg" id="icon" alt="User Icon" style="padding: 0; margin: 0;">
+              </div>
+              <div class="col-sm d-flex justify-content-center">
+                <form [formGroup]="thirdFormGroup" style="width: 60%" class="d-flex justify-content-center">
+                  <ng-template matStepLabel>Fill out details</ng-template>
+                  <div class="container">
+                    <h3 style="margin: 80px 0px 20px 50px;">Fill Out Details</h3>
+
+                    <mat-form-field appearance="outline" class="inputBoxes">
+                      <input type="date" matInput placeholder="Founded" formControlName="founded" required>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field appearance="outline" class="inputBoxes">
+                      <input type="text" matInput placeholder="Website" formControlName="website" required
+                        [pattern]="companyRegex">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field appearance="outline" class="inputBoxes">
+                      <input type="number" matInput placeholder="Revenue" formControlName="revenue" required>
+                    </mat-form-field>
+                    <br>
+                    <div class="d-flex justify-content-end">
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <br>
+          </div>
+        </mat-step>
+
+        <!-- step 4 -->
+        <mat-step [stepControl]="fourthFormGroup" errorMessage="required.">
+          <div class="container">
+            <br>
+            <div class="row" style="border: 2px solid rgb(0, 63, 105); padding: 0; margin: 0;">
+              <div class="col-sm" style="padding: 0; margin: 0; position:relative; top: 0;">
+                <img src=" /assets/images/main image test.jpg" id="icon" alt="User Icon" style="padding: 0; margin: 0;">
+              </div>
+              <div class="col-sm d-flex justify-content-center">
+                <form [formGroup]="fourthFormGroup" style="width: 60%" class="d-flex justify-content-center">
+                  <ng-template matStepLabel>Set Address</ng-template>
+                  <div class="container">
+                    <h3 style="margin: 130px 0px 20px 50px;">Enter Address</h3>
+                    <mat-form-field appearance="outline" class="inputBoxes">
+                      <input type="text" matInput placeholder="Country" formControlName="country" required>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field appearance="outline" class="inputBoxes">
+                      <input type="text" matInput placeholder="City" formControlName="city" required>
+                    </mat-form-field>
+                    <div class="d-flex justify-content-end">
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <br>
+          </div>
+        </mat-step>
+
+        <!-- step 5 -->
+        <mat-step [stepControl]="fifthFormGroup" errorMessage="required.">
+          <div class="container">
+            <br>
+            <div class="row" style="border: 2px solid rgb(0, 63, 105); padding: 0; margin: 0;">
+              <div class="col-sm" style="padding: 0; margin: 0; position:relative; top: 0;">
+                <img src=" /assets/images/main image test.jpg" id="icon" alt="User Icon" style="padding: 0; margin: 0;">
+              </div>
+              <div class="col-sm d-flex justify-content-center">
+                <form [formGroup]="fifthFormGroup" style="width: 70%" class="d-flex justify-content-center">
+                  <ng-template matStepLabel>Add a title</ng-template>
+                  <div class="container" style="width: 100%;">
+                    <h3 style="margin: 158px 0px 5px 85px;">Create Title</h3>
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                      <textarea #title type="text" matInput placeholder="Company TItle" name="title"
+                        formControlName="title" minlength="1" maxlength="30" rows="5" required></textarea>
+                      <mat-hint align="end">{{title.value?.length || 0}}/30</mat-hint>
+                    </mat-form-field>
+                    <div class="d-flex justify-content-end" style="margin-top: 10px;">
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <br>
+          </div>
+        </mat-step>
+
+        <!-- step 6 -->
+        <mat-step [stepControl]="sixthFormGroup" errorMessage="required.">
+          <div class="container">
+            <br>
+            <div class="row" style="border: 2px solid rgb(0, 63, 105); padding: 0; margin: 0;">
+              <div class="col-sm" style="padding: 0; margin: 0; position:relative; top: 0;">
+                <img src=" /assets/images/main image test.jpg" id="icon" alt="User Icon" style="padding: 0; margin: 0;">
+              </div>
+              <div class="col-sm d-flex justify-content-center">
+                <form [formGroup]="sixthFormGroup" style="width: 70%" class="d-flex justify-content-center">
+                  <ng-template matStepLabel>Add a description</ng-template>
+                  <div class="container" style="width: 100%;">
+                    <h3 style="margin: 158px 0px 5px 40px;">Create Description</h3>
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                      <textarea #description type="text" matInput placeholder="Company Description" name="description"
+                        formControlName="description" required minlength="50" maxlength="500" rows="5"></textarea>
+                      <mat-hint align="end">{{description.value?.length || 0}}/500</mat-hint>
+                    </mat-form-field>
+                    <div class="d-flex justify-content-end" style="margin-top: 10px;">
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <br>
+          </div>
+        </mat-step>
+
+        <!-- step 7 -->
+        <mat-step [stepControl]="seventhFormGroup" errorMessage="required.">
+          <div class="container">
+            <br>
+            <div class="row" style="border: 2px solid rgb(0, 63, 105); padding: 0; margin: 0;">
+              <div class="col-sm" style="padding: 0; margin: 0; position:relative; top: 0;">
+                <img src=" /assets/images/main image test.jpg" id="icon" alt="User Icon" style="padding: 0; margin: 0;">
+              </div>
+              <div class="col-sm d-flex justify-content-center">
+                <form [formGroup]="seventhFormGroup" style="width: 70%" class="d-flex justify-content-center">
+                  <ng-template matStepLabel>Upload images</ng-template>
+                  <div class="container ">
+                    <div>
+                      <div style="margin-top: 80px; text-align:center;">
+                        <h3 style="margin-bottom: 30px;">Upload Image</h3>
+                        <img [src]="uploadImgUrl" id="icon" alt="User Icon"
+                          style="padding: 0; margin: 0; max-height: 240px; max-width: 330px; border: 4px solid #555"
+                          alt="Image">
+                      </div>
+                      <br>
+                      <div class="input-group mb-3">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="inputGroupFile01"
+                            (change)="uploadFile($event)">
+                          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+            <br>
+          </div>
+        </mat-step>
+
+        <!-- step 8 -->
+        <mat-step>
+          <ng-template matStepLabel>Preview</ng-template>
+          <div class="d-flex justify-content-center" style="margin: 20px 0px 20px 0px;">
+            <h5>This his how others will see your company post</h5>
+          </div>
+          <div class="container d-flex justify-content-center">
+            <div class="row ">
+              <div class="col-sm">
+                <div class="card" style="width: 620px; height: 280px;">
+                  <div>
+                    <h5>{{this.fifthFormGroup.get('title').value}}</h5>
+                  </div>
+                  <div class="card-body">
+                    <form class="form-inline">
+                      <div class="overview-headings-left-container">
+                        <h6>Website:</h6>
+                        <h6>Size:</h6>
+                        <h6>Industry:</h6>
+                      </div>
+                      <div class="overview-desc-left-container">
+                        <h6>{{this.thirdFormGroup.get('website').value}}</h6>
+                        <h6>{{this.secondFormGroup.get('emp_count').value}}</h6>
+                        <h6>{{this.firstFormGroup.get('industry').value}}</h6>
+                      </div>
+                      <div class="overview-headings-right-container">
+                        <h6>Revenue:</h6>
+                        <h6>Headquarters:</h6>
+                        <h6>Founded:</h6>
+                      </div>
+                      <div class="overview-desc-right-container">
+                        <h6>{{this.thirdFormGroup.get('revenue').value}}</h6>
+                        <h6>{{this.fourthFormGroup.get('country').value}}, {{this.fourthFormGroup.get('city').value}}
+                        </h6>
+                        <h6>{{this.thirdFormGroup.get('founded').value}}</h6>
+                      </div>
+                    </form>
+                    <div class="description-container">
+                      <h6>{{this.sixthFormGroup.get('description').value}}</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm d-flex justify-content-start"
+                style="width: 475px; height: 280px; border: 1px solid rgb(220, 220, 220); padding: 0; margin: 0;">
+                <img [src]="uploadImgUrl" id="icon" alt="User Icon"
+                  style="padding: 0; margin: 0; max-height: 280px; max-width: 475px;" alt="Image">
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end" style="margin-top: 25px; margin-right: 53px;">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button (click)="onSubmit()">Submit</button>
+          </div>
+        </mat-step>
+
+      </mat-stepper>
+    </div>
+
+
+  </div>
+</div>

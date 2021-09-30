@@ -1,0 +1,277 @@
+<div class="card-img-overlay">
+  <button type="button" class="btn btn-outline-light btn-sm" (click)="companiesService.myCompanyModeOff()"
+    style="margin-left: 105px;">Back</button>
+</div>
+
+<div class="container-fluid" style="width: 1300px; margin-bottom: 200px;">
+  <div class="mt-4">
+
+    <div class="row">
+      <div style="width: 1500px">
+        <div class="card">
+          <div class="crop">
+            <img class="card-img-top " [src]="myCompanyDetail.coverPhoto" alt="Card image cap">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title" style="margin-left: 36px;">{{myCompanyDetail.title}}</h3>
+
+            <!-- navbar for card -->
+            <nav class="navbar navbar-expand-lg navbar-light">
+
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Overview </a>
+                    </li>
+                  </div>
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Reviews</a>
+                    </li>
+                  </div>
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Jobs</a>
+                    </li>
+                  </div>
+                  <div class="navItems">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="myCompanies">Interviews</a>
+                    </li>
+                  </div>
+                </ul>
+              </div>
+              <form class="form-inline">
+                <!-- <div class="nav-buttons">
+                  <button class="btn btn-primary" type="button">Favorite</button>
+                </div> -->
+                <div class="nav-buttons">
+                  <button class="btn btn-success" type="button" (click)="open(content)">Add Review</button>
+                </div>
+              </form>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row" style="margin-top: 25px;">
+      <div class="col-8">
+
+        <div style="width: 100%">
+          <div class="card">
+            <div class="card-header">
+              <h5>Company Overview</h5>
+            </div>
+            <div class="card-body">
+              <form class="form-inline">
+                <div class="overview-headings-left-container">
+                  <h6>Website:</h6>
+                  <h6>Size:</h6>
+                  <h6>Industry:</h6>
+                </div>
+                <div class="overview-desc-left-container">
+                  <h6>{{myCompanyDetail.website}}</h6>
+                  <h6>{{myCompanyDetail.emp_count}}</h6>
+                  <h6>{{myCompanyDetail.industry}}</h6>
+                </div>
+                <div class="overview-headings-right-container">
+                  <h6>Revenue:</h6>
+                  <h6>Headquarters:</h6>
+                  <h6>Founded:</h6>
+                </div>
+                <div class="overview-desc-right-container">
+                  <h6>{{myCompanyDetail.revenue}}</h6>
+                  <h6>{{myCompanyDetail.city}}, {{myCompanyDetail.country}}</h6>
+                  <h6>{{myCompanyDetail.founded}}</h6>
+                </div>
+              </form>
+              <div class="description-container">
+                <h6>{{myCompanyDetail.description}}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <div style="width: 100%">
+          <div class="card">
+            <div class=" card-header">
+              <h5>Company Reviews</h5>
+            </div>
+            <div class="card-body overflow-auto" style="height: 392px;">
+              <app-company-ratings></app-company-ratings>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col">
+        <div style="width: 100%">
+          <div class="card" style="height: 800px;">
+            <div class="card-header">
+              <h5>Review Summary</h5>
+            </div>
+            <div class="card-body">
+              <app-company-ratings-summary></app-company-ratings-summary>
+              <!-- <button type="button" class="btn btn-success" style="margin-left: 120px;">Add Review<i
+                  class="bi bi-download"></i></button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--add review -->
+<ng-template #content let-c="close" let-d="dismiss">
+
+  <div class="modal-header ">
+    <h5 class="modal-title" id="modal-basic-title">Add Review</h5>
+    <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  </div>
+
+  <div class="modal-body">
+
+    <form #reviewForm="ngForm" (ngSubmit)="reviewForm.valid && addReview(reviewForm)">
+      <input type="hidden" #emp_state="ngModel" [(ngModel)]="myCompanyDetail._id" name="companyId">
+
+      <div class="form-group">
+        <div class="form-inline">
+          <label for="exampleFormControlSelect1">Are You a Current or Former Employee?<div
+              *ngIf="reviewForm.submitted && !companyRatingsService.selectedRating.emp_state">
+              <label class="validation-message" style="margin-left: 7px;">*</label>
+            </div></label>
+        </div>
+        <select class="form-control" id="exampleFormControlSelect1" #emp_state="ngModel"
+          [(ngModel)]="companyRatingsService.selectedRating.emp_state" name="emp_state" required
+          [ngClass]="{'invalid-textbox' :reviewForm.submitted && !emp_state.valid}">
+          <option value="" selected disabled>Please select</option>
+          <option>Current Employee</option>
+          <option>Former Employee</option>
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <div class="form-inline">
+          <label for="exampleFormControlInput1">Your Job Title <div *ngIf="reviewForm.submitted && !job_title.valid">
+              <label class="validation-message" style="margin-left: 7px;">*</label>
+            </div></label>
+        </div>
+        <input type="email" class="form-control" id="exampleFormControlInput1" #job_title="ngModel"
+          [(ngModel)]="companyRatingsService.selectedRating.job_title" name="job_title" required
+          [ngClass]="{'invalid-textbox' :reviewForm.submitted && !job_title.valid}">
+      </div>
+
+
+      <div class="form-group">
+        <div class="form-inline">
+          <label for="exampleFormControlInput1">Your Name <div *ngIf="reviewForm.submitted && !name.valid">
+              <label class="validation-message" style="margin-left: 7px;">*</label>
+            </div></label>
+        </div>
+        <input type="email" class="form-control" id="exampleFormControlInput1" #name="ngModel"
+          [(ngModel)]="companyRatingsService.selectedRating.name" name="name" required>
+      </div>
+
+
+      <div class="form-group">
+        <div class="form-inline">
+          <label for="exampleFormControlTextarea1">Your Comment on Our Company <div
+              *ngIf="reviewForm.submitted && !companyRatingsService.selectedRating.comment">
+              <label class="validation-message" style="margin-left: 7px;">*</label>
+            </div></label>
+        </div>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" #comment="ngModel"
+          [(ngModel)]="companyRatingsService.selectedRating.comment" name="comment"></textarea>
+      </div>
+
+
+      <div class="form-inline" style="margin-bottom: 18px;">
+        <label>Rate Culture & Values of the Company <div
+            *ngIf="reviewForm.submitted && !companyRatingsService.selectedRating.rate_cultureValue">
+            <label class="validation-message" style="margin-left: 5px;">*</label>
+          </div></label>
+
+        <div class="btn-group" style="position: absolute; left: 400px;">
+
+          <select type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" #rate_cultureValue="ngModel"
+            [(ngModel)]="companyRatingsService.selectedRating.rate_cultureValue" name="rate_cultureValue">
+            <option value="null" selected disabled>select</option>
+            <option value="1">1 Star</option>
+            <option value="2">2 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="5">5 Stars</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-inline" style="margin-bottom: 18px;">
+        <label>Rate Work/Life Balance of the Company<div
+            *ngIf="reviewForm.submitted && !companyRatingsService.selectedRating.rate_workLife">
+            <label class="validation-message" style="margin-left: 5px;">*</label>
+          </div></label>
+        <div class=" btn-group" style="position: absolute; left: 400px;">
+          <select type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" #rate_workLife="ngModel"
+            [(ngModel)]="companyRatingsService.selectedRating.rate_workLife" name="rate_workLife">
+            <option value="null" selected disabled>select</option>
+            <option value="1">1 Star</option>
+            <option value="2">2 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="5">5 Stars</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-inline" style="margin-bottom: 18px;">
+        <label>Rate Senior Management of the Company<div
+            *ngIf="reviewForm.submitted && !companyRatingsService.selectedRating.rate_seniorManagement">
+            <label class="validation-message" style="margin-left: 5px;">*</label>
+          </div></label>
+        <div class=" btn-group" style="position: absolute; left: 400px;">
+          <select type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" #rate_seniorManagement="ngModel"
+            [(ngModel)]="companyRatingsService.selectedRating.rate_seniorManagement" name="rate_seniorManagement">
+            <option value="null" selected disabled>select</option>
+            <option value="1">1 Star</option>
+            <option value="2">2 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="5">5 Stars</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="test" class="btn btn-outline-dark " (click)="c()">Cancel</button>
+        <button type="button" class="btn btn-primary " type="submit">Publish</button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- show success message -->
+  <div class="success" *ngIf="showSuccessMessage">
+    Review added successfully!
+  </div>
+
+  <!-- show error message -->
+  <div class="alert" *ngIf="serverErrorMessages">
+    {{serverErrorMessages}}
+  </div>
+</ng-template>

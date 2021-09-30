@@ -26,7 +26,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgxTypedJsModule } from 'ngx-typed-js';
-
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -45,10 +44,8 @@ import { JobViewComponent } from './JOBS/all-jobs/job-view/job-view.component';
 import { SuccessPageComponent } from './JOBS/success-page/success-page.component';
 import { CookieService } from 'ngx-cookie-service';
 
-import { CompanyCreateComponent } from './companies/company-create/company-create.component';
 import { AllCompaniesComponent } from './companies/all-companies/all-companies.component';
 import { MyCompaniesComponent } from './companies/my-companies/my-companies.component';
-import { MyCompanyOverviewComponent } from './companies/my-company-overview/my-company-overview.component';
 
 import { ProfileComponent } from './profile/profile.component';
 import { AppliedSuccessComponent } from './JOBS/applied-success/applied-success.component';
@@ -56,6 +53,15 @@ import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { UserService } from './shared/user.service';
+import { MyCompanyDetailComponent } from './companies/my-companies/my-company-detail/my-company-detail.component';
+import { CreateCompanyComponent } from './companies/create-company/create-company.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { AllCompanyDetailComponent } from './companies/all-companies/all-company-detail/all-company-detail.component';
+import { MyCompanyEditComponent } from './companies/my-companies/my-company-detail/my-company-edit/my-company-edit.component';
+import { CompanyRatingsComponent } from './companies/company-ratings/company-ratings.component';
+import { CompanyRatingsSummaryComponent } from './companies/company-ratings-summary/company-ratings-summary.component';
+
 //create object from routes module
 
 const appRoutes: Routes = [
@@ -88,15 +94,19 @@ const appRoutes: Routes = [
     UpdateInterviewsComponent,
     JobViewComponent,
     SuccessPageComponent,
-    CompanyCreateComponent,
     AllCompaniesComponent,
     MyCompaniesComponent,
-    MyCompanyOverviewComponent,
     ProfileComponent,
     AppliedSuccessComponent,
     UserComponent,
     SignUpComponent,
     SignInComponent,
+    MyCompanyDetailComponent,
+    CreateCompanyComponent,
+    AllCompanyDetailComponent,
+    MyCompanyEditComponent,
+    CompanyRatingsComponent,
+    CompanyRatingsSummaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -122,6 +132,9 @@ const appRoutes: Routes = [
     Ng2SearchPipeModule,
     NgxTypedJsModule,
     NgxPrintModule,
+    MatCardModule,
+    MatButtonToggleModule,
+    NgxPaginationModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
