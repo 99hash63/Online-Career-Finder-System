@@ -55,7 +55,7 @@
 
     <div class="card-deck">
 
-      <div class="col-sm-4" *ngFor="let company of companies | paginate: {itemsPerPage:5, currentPage:p}">
+      <div class="col-sm-4" *ngFor="let company of companies | paginate: {itemsPerPage:6, currentPage:page}">
         <div style="padding: 25px 30px 25px 30px;">
           <div class="card">
             <!-- <div class="crop"> -->
@@ -85,7 +85,8 @@
 
     </div>
     <br>
-    <pagination-controls (pageChange)="p = $event" style=" text-align: center;"></pagination-controls>
+    <!-- pagination -->
+    <pagination-controls (pageChange)="page = $event" style=" text-align: center;"></pagination-controls>
     <!-- error message -->
     <div class="alert" *ngIf="serverErrorMessages">
       {{serverErrorMessages}}
