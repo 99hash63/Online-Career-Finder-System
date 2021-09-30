@@ -3,7 +3,19 @@
 }
 
 .toggle-button-industry {
-  padding: 3px 150px 3px 150px;
+  padding: 0px 0px 0px 0px;
   border: 2px solid #93979e;
   border-radius: 10px; /*All corners*/
+}
+
+.formStyle {
+  width: 60%;
+}
+
+.selectionStyle {
+  width: 100%;
+}
+
+.inputBoxes {
+  width: 100%;
 }
