@@ -205,8 +205,8 @@
                     <h3 style="margin: 158px 0px 5px 40px;">Create Description</h3>
                     <mat-form-field appearance="outline" style="width: 100%;">
                       <textarea #description type="text" matInput placeholder="Company Description" name="description"
-                        formControlName="description" required minlength="50" maxlength="500" rows="5"></textarea>
-                      <mat-hint align="end">{{description.value?.length || 0}}/500</mat-hint>
+                        formControlName="description" required minlength="50" maxlength="250" rows="5"></textarea>
+                      <mat-hint align="end">{{description.value?.length || 0}}/250</mat-hint>
                     </mat-form-field>
                     <div class="d-flex justify-content-end" style="margin-top: 10px;">
                       <button mat-button matStepperPrevious>Back</button>
