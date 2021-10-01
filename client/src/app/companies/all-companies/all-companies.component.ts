@@ -14,7 +14,8 @@ export class AllCompaniesComponent implements OnInit {
   industry: string = 'none';
   private companiesSub!: Subscription;
   serverErrorMessages: string;
-  p: number = 1;
+  // pagination
+  page: number = 1;
   constructor(public companiesService: CompaniesService) {}
 
   //Initalization of the all companies component
@@ -32,8 +33,9 @@ export class AllCompaniesComponent implements OnInit {
   }
 
   //This method will call setMyCompanyId method to redirect to the overview page of a selected company
-  viewCompany(id: any) {
+  viewCompany(id: any, title: any) {
     this.companiesService.setMyCompanyId(id);
+    this.companiesService.setMyCompanyTitle(title);
   }
 
   //This search function will handle both search by text and filter by industry functions

@@ -29,17 +29,27 @@ import {
   ],
 })
 export class CreateJobComponent implements OnInit {
+  //publish status
   publish?: boolean;
+
   public imageError?: string;
+
   isImageSaved?: boolean;
+
   cardImageBase64?: string;
+
   isLinear = false;
+
+  //progress bar (show or hide) when create a job post
   progressBar = false;
 
+  //initialized router
   router?: Router;
 
+  //get industry data set to show in dropdown
   IndustryOptions = IndustryOptions;
 
+  //form Groups
   jobForm!: FormGroup;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
@@ -56,13 +66,16 @@ export class CreateJobComponent implements OnInit {
     this.router = router;
   }
 
+  //web URL pattern for validations
   public myreg =
     /^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/i;
 
   ngOnInit(): void {
+    //remove image in image input and reset form on load
     this.resetForm();
     this.removeImage();
 
+    //create form group 1
     (this.firstFormGroup = this.first.group({
       title: new FormControl('', [Validators.required]),
       company: new FormControl('', [Validators.required]),
@@ -77,32 +90,39 @@ export class CreateJobComponent implements OnInit {
         Validators.pattern(this.myreg),
       ]),
     })),
+      //create form group 2
       (this.secondFormGroup = this.second.group({
         description: new FormControl('', [Validators.required]),
       }));
+
+    //create form group 3
     this.thirdFormGroup = this.third.group({
       image: new FormControl('', [Validators.required]),
     });
-
-    // this.firstFormGroup.valueChanges.subscribe(console.log);
   }
 
+  //image validation function
   validateImage(): ValidatorFn {
     return (control: AbstractControl): {} | null =>
       this.imageError!.length > 0 ? null : {};
   }
 
+  //web URL validation function
   url = new FormControl('', [
     Validators.required,
     Validators.pattern(this.myreg),
   ]);
 
+  //expect applicants validation function
   exApplicants = new FormControl('', [Validators.minLength(5)]);
+
+  //salary input validation function
+  salaryfn = new FormControl('', [Validators.minLength(10)]);
+
   markTouchedExApplicants() {
     this.exApplicants.markAsTouched();
     this.exApplicants.updateValueAndValidity();
   }
-  salaryfn = new FormControl('', [Validators.minLength(10)]);
   markTouchedSalary() {
     this.salaryfn.markAsTouched();
     this.salaryfn.updateValueAndValidity();
@@ -112,6 +132,7 @@ export class CreateJobComponent implements OnInit {
     this.url.updateValueAndValidity();
   }
 
+  //reset form function
   resetForm() {
     this.progressBar = false;
     if (this.firstFormGroup) this.firstFormGroup.reset;
@@ -137,8 +158,10 @@ export class CreateJobComponent implements OnInit {
     this.publish = value;
   }
 
+  //submit form function
   onSubmit() {
     this.progressBar = true;
+    //build the form
     this.jobForm = this._formBuilder.group({
       title: this.firstFormGroup.value.title,
       company: this.firstFormGroup.value.company,
@@ -151,6 +174,7 @@ export class CreateJobComponent implements OnInit {
       description: this.secondFormGroup.value.description,
     });
 
+    //get current date
     var today = new Date();
     var dd = String(today.getUTCDate()).padStart(2, '0');
     var mm = String(today.getUTCMonth() + 1).padStart(2, '0'); //January is 0!
@@ -158,6 +182,7 @@ export class CreateJobComponent implements OnInit {
 
     var CurrentDate = mm + '/' + dd + '/' + yyyy;
 
+    //assign values
     this.jobForm.value.user = '1';
     this.jobForm.value.publish = this.publish;
     this.jobForm.value.appliedApplicants = 0;
@@ -165,6 +190,7 @@ export class CreateJobComponent implements OnInit {
     this.jobForm.value.image = this.cardImageBase64;
     this.jobForm.value.website = this.url.value;
 
+    //check inputs and errors
     if (
       this.cardImageBase64 &&
       !this.imageError &&
@@ -180,6 +206,7 @@ export class CreateJobComponent implements OnInit {
     }
   }
 
+  //convert image into base64 funtion
   fileChangeEvent(fileInput: any) {
     if (fileInput.target.files && fileInput.target.files[0]) {
       // Size Filter Bytes
@@ -241,7 +268,4 @@ export class CreateJobComponent implements OnInit {
     this.imageError = '';
     this.isImageSaved = false;
   }
-}
-function requiredIfValidator(): ValidatorFn {
-  throw new Error('Function not implemented.');
 }

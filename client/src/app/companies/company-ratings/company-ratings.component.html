@@ -1,0 +1,67 @@
+<!-- error message -->
+<div style="text-align: center;" *ngIf="noReviews">
+  <div class="alert alert-info" role="alert" style="width: 60%;" style="text-align: center;">
+    <h5>Oppsss! there are no reviews yet...</h5>
+  </div>
+</div>
+
+<div *ngFor="let companyRating of companyRatings">
+  <div style="padding: 10px 10px 10px 10px;">
+    <div class="card">
+      <div class="card-body">
+
+
+
+        <div class="container" style="padding: 0;">
+          <div class="row" style="padding: 0;">
+            <div class="col-sm-6">
+              <!-- <input type="hidden" name="id" value='{{company._id}}' #companyId> -->
+              <h6 class="card-text">{{companyRating.job_title}} ({{companyRating.emp_state}})</h6>
+              <h6 class="card-text">{{companyRating.name}}</h6>
+            </div>
+            <div class="col-sm d-flex justify-content-start">
+              <!-- Default dropright button -->
+              <div class="btn-group dropdown btn-sm">
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  {{companyRating.rate_overall}} Stars</button>
+                <div class="dropdown-menu" style="width: 350px;">
+
+
+                  <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <a class="dropdown-item">Culture & Values </a>
+                        <a class="dropdown-item" style="margin-top: 14px;">Work/Life Balance </a>
+                        <a class="dropdown-item" style="margin-top: 14px;">Senior Management</a>
+                      </div>
+                      <div class="col">
+                        <button type="button" class="btn btn-success" disabled>{{companyRating.rate_cultureValue}}
+                          Stars</button> <br>
+                        <button style="margin-top: 8px;" type="button" class="btn btn-success"
+                          disabled>{{companyRating.rate_workLife}}
+                          Stars</button><br>
+                        <button style="margin-top: 8px;" type="button" class="btn btn-success"
+                          disabled>{{companyRating.rate_seniorManagement}}
+                          Stars</button>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <br>
+        <p class="card-text">{{companyRating.comment}}</p>
+
+
+      </div>
+    </div>
+  </div>

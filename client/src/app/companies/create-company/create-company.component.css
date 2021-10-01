@@ -3,7 +3,74 @@
 }
 
 .toggle-button-industry {
-  padding: 3px 150px 3px 150px;
+  padding: 0px 0px 0px 0px;
   border: 2px solid #93979e;
   border-radius: 10px; /*All corners*/
+}
+
+.formStyle {
+  width: 60%;
+}
+
+.selectionStyle {
+  width: 100%;
+}
+
+.inputBoxes {
+  width: 100%;
+}
+
+.overview-headings-left-container {
+  padding-left: 0px;
+}
+
+.overview-headings-left-container h6 {
+  color: rgb(60, 60, 60);
+  font-weight: bold;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.overview-desc-left-container {
+  padding-left: 30px;
+}
+
+.overview-desc-left-container h6 {
+  color: rgb(110, 110, 110);
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.overview-headings-right-container {
+  padding-left: 100px;
+}
+
+.overview-headings-right-container h6 {
+  color: rgb(60, 60, 60);
+  font-weight: bold;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.overview-desc-right-container {
+  padding-left: 30px;
+}
+
+.overview-desc-right-container h6 {
+  color: rgb(110, 110, 110);
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.description-container h6 {
+  color: rgb(110, 110, 110);
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.currencyinput {
+  border: 1px inset #ccc;
+}
+.currencyinput input {
+  border: 0;
 }

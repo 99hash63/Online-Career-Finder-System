@@ -1,4 +1,6 @@
 const express = require("express");
+const { protect } = require("../middleware/auth");
+
 const {
   getJobPost,
   getJobPosts,
@@ -13,11 +15,11 @@ const {
 const router = express.Router();
 
 router.get("/jobs", getJobPosts);
-router.get("/myjobs/:userID", getMyJobPosts);
+router.get("/myjobs/:userID", protect, getMyJobPosts);
 router.get("/jobs/:id", getJobPost);
-router.post("/createjob", createJobPost);
-router.put("/jobs/:id", updateJobPost);
+router.post("/createjob", protect, createJobPost);
+router.put("/jobs/:id", protect, updateJobPost);
 router.put("/newapplicant/:id", newapplicant);
 router.put("/jobs/publish/:id", publishJobPost);
-router.delete("/jobs/:id", deleteJobPost);
+router.delete("/jobs/:id", protect, deleteJobPost);
 module.exports = router;

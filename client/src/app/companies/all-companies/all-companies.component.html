@@ -29,14 +29,14 @@
         </div>
 
         <!-- filter by location -->
-        <div class="me-3" style="font-size: 12px">
+        <!-- <div class="me-3" style="font-size: 12px">
           <mat-form-field appearance="outline">
             <mat-label>Location</mat-label>
             <mat-select>
               <mat-option></mat-option>
             </mat-select>
           </mat-form-field>
-        </div>
+        </div> -->
       </div>
 
       <!-- search function -->
@@ -55,37 +55,43 @@
 
     <div class="card-deck">
 
-      <div class="col-sm-4" *ngFor="let company of companies | paginate: {itemsPerPage:5, currentPage:p}">
+      <div class="col-sm-4" *ngFor="let company of companies | paginate: {itemsPerPage:6, currentPage:page}">
         <div style="padding: 25px 30px 25px 30px;">
-          <div class="card">
-            <!-- <div class="crop"> -->
-            <!-- <img [src]="company.coverPhoto"> -->
-            <img [src]="company.coverPhoto" class="card-img-top" src="..." alt="Card image cap">
+          <form (submit)="viewCompany(company._id, company.title)" #companyForm="ngForm">
 
-            <!-- </div> -->
+            <div class="card allCardShadows">
+              <div class="crop">
+                <!-- <img [src]="company.coverPhoto"> -->
+                <img [src]="company.coverPhoto" class="card-img-top" src="..." alt="Card image cap">
 
-            <div class="card-body">
-              <form (submit)="viewCompany(company._id)" #companyForm="ngForm">
+              </div>
+
+              <div class="card-body">
 
                 <input type="hidden" name="id" value='{{company._id}}' #companyId>
 
                 <h5 class="card-title">{{company.title}}</h5>
-                <p class="card-text">{{company.description}}</p>
-                <!-- <button (click)="onSave()" class="btn btn-outline-success btn-sm">Read More</button> -->
+                <p class="card-text text">{{company.description}}</p>
+
+
+
+              </div>
+              <div class="card-footer text-muted" style="background-color: white; border: none;">
                 <input type="submit" value="View Company" class="btn btn-outline-success btn-sm" />
                 &nbsp;
-                <a [routerLink]="['/myCompanies']" routerLinkActive="router-link-active"
-                  class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
 
-              </form>
+              </div>
             </div>
-          </div>
+
+          </form>
+
         </div>
       </div>
 
     </div>
     <br>
-    <pagination-controls (pageChange)="p = $event" style=" text-align: center;"></pagination-controls>
+    <!-- pagination -->
+    <pagination-controls (pageChange)="page = $event" style=" text-align: center;"></pagination-controls>
     <!-- error message -->
     <div class="alert" *ngIf="serverErrorMessages">
       {{serverErrorMessages}}

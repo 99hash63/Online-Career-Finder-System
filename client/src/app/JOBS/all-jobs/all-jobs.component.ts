@@ -28,27 +28,42 @@ import {
   providers: [JobpostService],
 })
 export class AllJobsComponent implements OnInit {
+  //img to base64 convertion variables start
   closeResult!: string;
+
   imageError?: string;
+
   isImageSaved?: boolean;
+
   cardImageBase64?: string;
+  //img to base64 convertion variables end
+
+  //save PDF as base64
   pdfBase64: any;
+
   datediff?: number;
+
   searchTerm!: string;
+
   industry!: string;
 
   type: string = 'Type';
+
   _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
   showJobPost: any = [];
+
   totalLength!: number;
+
   page!: number;
+
   // MatPaginator Output
   pageEvent!: PageEvent;
 
   pageSize: number = 10;
 
   JobType = new FormControl();
+
   typeList: string[] = ['All', 'Full Time', 'Part Time', 'Internship'];
 
   selectedTypes!: string;
@@ -88,14 +103,18 @@ export class AllJobsComponent implements OnInit {
         Validators.required,
         Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'),
       ]),
+
       aCV: new FormControl('', [Validators.required]),
+
       aResume: new FormControl('', [Validators.required]),
     });
   }
 
+  //set selected job post on display
   setJob(job: Jobpost) {
     this.jobpostservice.selectedJob = job;
   }
+
   setApplyJob(candidate: Applicant) {
     this.jobpostservice.applicant = candidate;
   }
@@ -115,6 +134,8 @@ export class AllJobsComponent implements OnInit {
       this.totalLength = this.showJobPost.length;
     });
   }
+
+  //date diffrent function
   calcDateDiff(date: any) {
     var today = new Date();
     var s = new Date(date);
@@ -123,13 +144,14 @@ export class AllJobsComponent implements OnInit {
     var diffDays = Math.ceil(diff / (1000 * 3600 * 24));
     return diffDays + 'd';
   }
+  //show actively hiring badge in job post
   achiring() {
     if (this.jobpostservice.selectedJob.activelyHiring == 'Yes') {
       return true;
     }
     return false;
   }
-
+  //convert image into base64 funtion
   fileChangeEvent(evt: any) {
     var f = evt.target.files[0]; // FileList object
     var reader = new FileReader();
@@ -147,6 +169,7 @@ export class AllJobsComponent implements OnInit {
     reader.readAsBinaryString(f);
   }
 
+  //download PDF function
   downloadPDF() {
     //generate now date
     var today = new Date();
@@ -172,6 +195,7 @@ export class AllJobsComponent implements OnInit {
       });
       doc.html(
         pdftemp(
+          //get pdf tempalate
           this.jobpostservice.selectedJob.company,
           this.jobpostservice.selectedJob.title,
           this.applicantFormGroup.get('aFullname').value,
@@ -191,6 +215,7 @@ export class AllJobsComponent implements OnInit {
     }
   }
 
+  //update applicant count and navigate to success page
   SubmitApplication(jobID: any) {
     if (this.applicantFormGroup.valid) {
       this.jobpostservice

@@ -38,6 +38,7 @@ export class CompaniesService {
 
   //view company detail properties
   myCompanyId: string;
+  myCompanyTitle: string;
 
   //property change component visibility
   public myCompanyMode: boolean = false;
@@ -70,12 +71,21 @@ export class CompaniesService {
   //setter for myCompanyId and change myCompany mode to true
   setMyCompanyId(id: string) {
     this.myCompanyId = id;
+  }
+  //setter for company title
+  setMyCompanyTitle(title: string) {
+    this.myCompanyTitle = title;
     this.myCompanyMode = true;
   }
 
   //getter for myCompanyId
   getMyCompanyId() {
     return this.myCompanyId;
+  }
+
+  //getter for myCompanyTitle
+  getMyCompanyTitle() {
+    return this.myCompanyTitle;
   }
 
   //function to get a single company from DB

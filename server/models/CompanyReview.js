@@ -23,16 +23,21 @@ const CompanyReviewSchema = new mongoose.Schema({
 	},
 
 	rate_cultureValue: {
-		type: String,
+		type: Number,
 		required: [true, 'Please rate cultureValue'],
 	},
 	rate_workLife: {
-		type: String,
+		type: Number,
 		required: [true, 'Please rate workLife'],
 	},
 	rate_seniorManagement: {
-		type: String,
+		type: Number,
 		required: [true, 'Please rate seniorManagement'],
+	},
+
+	rate_overall: {
+		type: Number,
+		default: '',
 	},
 
 	companyId: {
@@ -46,6 +51,15 @@ const CompanyReviewSchema = new mongoose.Schema({
 		ref: 'user',
 		required: [true, 'Please add user Id'],
 	},
+});
+
+//generate overall rating
+CompanyReviewSchema.pre('save', function (next) {
+	this.rate_overall = (
+		(this.rate_cultureValue + this.rate_workLife + this.rate_seniorManagement) /
+		3
+	).toFixed(2);
+	next();
 });
 
 module.exports = mongoose.model('CompanyReview', CompanyReviewSchema);

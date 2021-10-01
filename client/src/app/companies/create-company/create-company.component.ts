@@ -8,6 +8,9 @@ import {
 } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { CompaniesService } from '../companies.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { result } from 'lodash';
 
 @Component({
   selector: 'app-create-company',
@@ -23,7 +26,9 @@ import { CompaniesService } from '../companies.service';
 export class CreateCompanyComponent implements OnInit {
   // industry = new FormControl();
   companyRegex =
-    /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+    /^(http(s?):\/\/)?(www\.)+[a-zA-Z0-9\.\-\_]+(\.[a-zA-Z]{2,3})+(\/[a-zA-Z0-9\_\-\s\.\/\?\%\#\&\=]*)?$/;
+  uploadImgUrl = '/assets/images/No_Preview_image.jpg';
+  serverErrorMessages: string;
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -35,7 +40,8 @@ export class CreateCompanyComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    public companiesService: CompaniesService
+    public companiesService: CompaniesService,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
@@ -68,6 +74,14 @@ export class CreateCompanyComponent implements OnInit {
   uploadFile(event) {
     console.log('file selected');
 
+    if (event.target.files) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (e: any) => {
+        this.uploadImgUrl = e.target.result;
+      };
+    }
+
     const file = (event.target as HTMLInputElement).files[0];
     this.seventhFormGroup.patchValue({
       testFile: file,
@@ -85,15 +99,6 @@ export class CreateCompanyComponent implements OnInit {
       this.sixthFormGroup.valid &&
       this.seventhFormGroup.valid
     ) {
-      // const result = Object.assign(
-      //   {},
-      //   this.firstFormGroup.value,
-      //   this.secondFormGroup.value,
-      //   this.thirdFormGroup.value,
-      //   this.fourthFormGroup.value,
-      //   this.fifthFormGroup.value,
-      //   this.sixthFormGroup.value
-      // );
       const formData: any = new FormData();
 
       formData.append('industry', this.firstFormGroup.get('industry').value);
@@ -114,13 +119,28 @@ export class CreateCompanyComponent implements OnInit {
       // console.log(formData);
       this.companiesService.postCompany(formData).subscribe(
         (res) => {
-          alert('success!');
+          Swal.fire('Done!', 'Your post has been created.', 'success').then(
+            (result) => {
+              if (result.value) {
+                this.route.navigateByUrl('myCompanies');
+              }
+            }
+          );
         },
         (err) => {
-          alert('error!');
-          console.log(err);
+          this.serverErrorMessages = err.error.join('<br/>');
+
+          Swal.fire('Error!', this.serverErrorMessages, 'error');
+
+          // alert(this.serverErrorMessages);
+          console.log(this.serverErrorMessages);
         }
       );
     }
+  }
+
+  //reset image when reset button is clicked
+  resetImg() {
+    this.uploadImgUrl = '/assets/images/No_Preview_image.jpg';
   }
 }
