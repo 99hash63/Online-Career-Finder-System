@@ -9,6 +9,7 @@ import { RouterModule, Routes, Router, RouterLink } from '@angular/router';
 import * as _ from 'lodash';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import Swal from 'sweetalert2';
 import { pdftemp } from './pdftemp';
 import {
   FormGroup,
@@ -221,7 +222,15 @@ export class AllJobsComponent implements OnInit {
       this.jobpostservice
         .newApplicant(jobID, this.applicantFormGroup.value)
         .subscribe((res) => {
-          this.router?.navigate(['/applied/success']);
+          Swal.fire(
+            'Done!',
+            'Your application submmited successfully.',
+            'success'
+          ).then((result) => {
+            if (result.value) {
+              this.router?.navigate(['/jobs']);
+            }
+          });
         });
     }
   }

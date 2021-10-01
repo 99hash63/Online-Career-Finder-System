@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { JobpostService } from '../jobpost.service';
 import { Jobpost } from '../jobpost.model';
+import Swal from 'sweetalert2';
 import {
   RouterModule,
   Routes,
@@ -200,7 +201,15 @@ export class EditJobComponent implements OnInit {
           this.resetForm();
           this.removeImage();
 
-          this.router?.navigate(['/createJob/success']);
+          Swal.fire(
+            'Done!',
+            'Your job post has been updated successfully.',
+            'success'
+          ).then((result) => {
+            if (result.value) {
+              this.router?.navigate(['/myjobs']);
+            }
+          });
         });
     }
   }
@@ -267,7 +276,4 @@ export class EditJobComponent implements OnInit {
     this.imageError = '';
     this.isImageSaved = false;
   }
-}
-function requiredIfValidator(): ValidatorFn {
-  throw new Error('Function not implemented.');
 }

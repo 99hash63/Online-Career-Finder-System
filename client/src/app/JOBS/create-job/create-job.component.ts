@@ -6,6 +6,7 @@ import { ValidationErrors, AbstractControl, ValidatorFn } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { IndustryOptions } from '../../../assets/industries';
 import * as _ from 'lodash';
+import Swal from 'sweetalert2';
 import {
   FormGroup,
   FormBuilder,
@@ -201,7 +202,13 @@ export class CreateJobComponent implements OnInit {
         this.resetForm();
         this.removeImage();
         // window.location.href = '/createJob/success';
-        this.router?.navigate(['/createJob/success']);
+        Swal.fire('Done!', 'Your job post has been created.', 'success').then(
+          (result) => {
+            if (result.value) {
+              this.router?.navigate(['/myjobs']);
+            }
+          }
+        );
       });
     }
   }

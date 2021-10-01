@@ -5,6 +5,7 @@ import { Jobpost } from '../jobpost.model';
 import { PageEvent } from '@angular/material/paginator';
 import { IndustryOptions } from '../../../assets/industries';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import Swal from 'sweetalert2';
 import {
   FormGroup,
   FormBuilder,
@@ -173,13 +174,29 @@ export class MyJobsComponent implements OnInit {
 
   //delete job post function
   deletePost() {
-    this.jobpostservice
-      .deleteJobPost(this.jobpostservice.selectedJob._id)
-      .subscribe((res) => {
-        this.refreshJobList();
-        this.jobpostservice.selectedJob = null;
-        this.openSnackBar();
-      });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this job post!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.jobpostservice
+          .deleteJobPost(this.jobpostservice.selectedJob._id)
+          .subscribe((res) => {
+            this.refreshJobList();
+            this.jobpostservice.selectedJob = null;
+          });
+
+        Swal.fire('Deleted!', 'Your job post has been deleted.', 'success');
+        // For more information about handling dismissals please visit
+        // https://sweetalert2.github.io/#handling-dismissals
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'Your job post is safe :)', 'error');
+      }
+    });
   }
   //delete toast message
   openSnackBar() {

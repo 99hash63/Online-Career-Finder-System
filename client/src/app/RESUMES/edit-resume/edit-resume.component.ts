@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ResumeService } from '../resume.service';
 import { Resume } from '../model/resume.model';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-resume',
@@ -63,10 +64,18 @@ export class EditResumeComponent implements OnInit {
   }
 
   updateData() {
-    this.resumeService.updateData(this.id, this.form.value).subscribe((res) => {
-      this.data = res;
-      alert('Update Successful');
-      this.router.navigateByUrl('/resume');
-    });
+    Swal.fire('Done!', 'Your resume has been updated.', 'success').then(
+      (result) => {
+        if (result.value) {
+          this.resumeService
+            .updateData(this.id, this.form.value)
+            .subscribe((res) => {
+              this.data = res;
+
+              this.router.navigateByUrl('/resume');
+            });
+        }
+      }
+    );
   }
 }
