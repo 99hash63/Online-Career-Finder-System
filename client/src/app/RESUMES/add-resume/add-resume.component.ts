@@ -3,7 +3,7 @@ import { ResumeService } from '../resume.service';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-resume',
   templateUrl: './add-resume.component.html',
@@ -50,10 +50,16 @@ export class AddResumeComponent implements OnInit {
       return;
     }
 
-    this.resumeService.insertData(this.form.value).subscribe((res) => {
-      this.data = res;
-      alert('Resume Created Successful');
-      this.router.navigateByUrl('/resume');
-    });
+    Swal.fire('Done!', 'Your resume has been created.', 'success').then(
+      (result) => {
+        if (result.value) {
+          this.resumeService.insertData(this.form.value).subscribe((res) => {
+            this.data = res;
+
+            this.router.navigateByUrl('/resume');
+          });
+        }
+      }
+    );
   }
 }
