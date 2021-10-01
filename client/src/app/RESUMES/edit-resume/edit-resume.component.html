@@ -1,0 +1,85 @@
+<button id="print" printTitle="My Resume" printSectionId="print-pdf"
+    [printStyle]="{input: {'width': '100%', 'border-style': 'none'}, label: {'font-weight': 'bold'}}" ngxPrint>Print to
+    PDF</button><br><br><br>
+
+<div class="container">
+    <h2>Update Resume</h2><br><br>
+    <form (ngSubmit)="updateData()" [formGroup]="form">
+
+        <div id="print-pdf">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" formControlName="name" class="form-control" placeholder="Enter your name">
+            </div><br>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" formControlName="email" class="form-control" placeholder="Enter your email address">
+            </div><br>
+
+            <div class="form-group">
+                <label for="contact">Contact Number</label>
+                <input type="text" formControlName="contact" class="form-control"
+                    placeholder="Enter your contact number">
+            </div><br>
+
+            <div class="form-group">
+                <label for="birth">Date of Birth</label>
+                <input type="text" formControlName="birth" class="form-control" placeholder="Enter your date of birth">
+            </div><br>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <input type="text" formControlName="gender" class="form-control" placeholder="Enter your gender">
+            </div><br>
+
+            <div class="form-group">
+                <label for="background">Background</label>
+                <input type="text" formControlName="background" class="form-control"
+                    placeholder="Enter your background details">
+            </div><br>
+
+            <div class="form-group">
+                <label for="experience">Experience</label>
+                <input type="text" formControlName="experience" class="form-control"
+                    placeholder="Enter your experience">
+            </div><br>
+
+            <div class="form-group">
+                <label for="technologies">Tools & Technologies</label>
+                <input type="text" formControlName="technologies" class="form-control"
+                    placeholder="Enter your tools and technologies">
+            </div><br>
+
+            <div class="form-group">
+                <label for="education">Education</label>
+                <input type="text" formControlName="education" class="form-control"
+                    placeholder="Enter your educational details">
+            </div><br>
+
+            <div class="form-group">
+                <label for="projects">Projects</label>
+                <input type="text" formControlName="projects" class="form-control"
+                    placeholder="Enter your projects details">
+            </div><br>
+
+            <div class="form-group">
+                <label for="achievements">Achievements</label>
+                <input type="text" formControlName="achievements" class="form-control"
+                    placeholder="Enter your achievements">
+            </div><br>
+
+            <div class="form-group">
+                <label for="references">References</label>
+                <input type="text" formControlName="references" class="form-control"
+                    placeholder="Enter your references">
+            </div><br>
+
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-dark btn-sm mt-4">UPDATE</button>
+        </div>
+    </form>
+</div><br><br><br><br>

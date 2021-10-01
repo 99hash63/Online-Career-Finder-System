@@ -1,0 +1,134 @@
+<div class="container mt-5">
+    <h2>Create Your Resume</h2><br><br>
+    <form (ngSubmit)="insertData()" [formGroup]="form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" formControlName="name" [ngClass]="{ 'is-invalid':submitted && f.name.errors }"
+                class="form-control" placeholder="Enter your name">
+
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required!</div>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" formControlName="email" [ngClass]="{ 'is-invalid':submitted && f.email.errors }"
+                class="form-control" placeholder="Enter your email address">
+
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email address is required!</div>
+                <div *ngIf="f.email.errors.email">Please enter a valid email address!</div>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label for="contact">Contact Number</label>
+            <input type="text" formControlName="contact" [ngClass]="{ 'is-invalid':submitted && f.contact.errors }"
+                class="form-control" placeholder="Enter your contact number">
+
+            <div *ngIf="submitted && f.contact.errors" class="invalid-feedback">
+                <div *ngIf="f.contact.errors.required">Contact number is required!</div>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label for="birth">Date of Birth</label>
+            <input type="text" formControlName="birth" [ngClass]="{ 'is-invalid':submitted && f.birth.errors }"
+                class="form-control" placeholder="Enter your date of birth">
+
+            <div *ngIf="submitted && f.birth.errors" class="invalid-feedback">
+                <div *ngIf="f.birth.errors.required">Date of birth is required!</div>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <input type="text" formControlName="gender" [ngClass]="{ 'is-invalid':submitted && f.gender.errors }"
+                class="form-control" placeholder="Enter your gender">
+
+            <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                <div *ngIf="f.gender.errors.required">Gender is required!</div>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label for="background">Background</label>
+            <input type="text" formControlName="background"
+                [ngClass]="{ 'is-invalid':submitted && f.background.errors }" class="form-control"
+                placeholder="Enter your background details">
+
+            <div *ngIf="submitted && f.background.errors" class="invalid-feedback">
+                <div *ngIf="f.background.errors.required">Background details are required!</div>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label for="experience">Experience</label>
+            <input type="text" formControlName="experience"
+                [ngClass]="{ 'is-invalid':submitted && f.experience.errors }" class="form-control"
+                placeholder="Enter your experience">
+
+            <div *ngIf="submitted && f.experience.errors" class="invalid-feedback">
+                <div *ngIf="f.experience.errors.required">Experience is required!</div>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label for="technologies">Tools & Technologies</label>
+            <input type="text" formControlName="technologies"
+                [ngClass]="{ 'is-invalid':submitted && f.technologies.errors }" class="form-control"
+                placeholder="Enter your tools and technologies">
+
+            <div *ngIf="submitted && f.technologies.errors" class="invalid-feedback">
+                <div *ngIf="f.technologies.errors.required">Tools & technologies are required!</div>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label for="education">Education</label>
+            <input type="text" formControlName="education" [ngClass]="{ 'is-invalid':submitted && f.education.errors }"
+                class="form-control" placeholder="Enter your educational details">
+
+            <div *ngIf="submitted && f.education.errors" class="invalid-feedback">
+                <div *ngIf="f.education.errors.required">Educational details are required!</div>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label for="projects">Projects</label>
+            <input type="text" formControlName="projects" [ngClass]="{ 'is-invalid':submitted && f.projects.errors }"
+                class="form-control" placeholder="Enter your projects details">
+
+            <div *ngIf="submitted && f.projects.errors" class="invalid-feedback">
+                <div *ngIf="f.projects.errors.required">Projects details are required!</div>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label for="achievements">Achievements</label>
+            <input type="text" formControlName="achievements"
+                [ngClass]="{ 'is-invalid':submitted && f.achievements.errors }" class="form-control"
+                placeholder="Enter your achievements">
+
+            <div *ngIf="submitted && f.achievements.errors" class="invalid-feedback">
+                <div *ngIf="f.achievements.errors.required">Achievements are required!</div>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label for="references">References</label>
+            <input type="text" formControlName="references"
+                [ngClass]="{ 'is-invalid':submitted && f.references.errors }" class="form-control"
+                placeholder="Enter your references">
+
+            <div *ngIf="submitted && f.references.errors" class="invalid-feedback">
+                <div *ngIf="f.references.errors.required">References are required!</div>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <button class="btn btn-dark btn-sm mt-4">SUBMIT</button>
+        </div>
+    </form>
+</div><br><br><br><br>

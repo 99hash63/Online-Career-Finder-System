@@ -61,6 +61,9 @@ import { AllCompanyDetailComponent } from './companies/all-companies/all-company
 import { MyCompanyEditComponent } from './companies/my-companies/my-company-detail/my-company-edit/my-company-edit.component';
 import { CompanyRatingsComponent } from './companies/company-ratings/company-ratings.component';
 import { CompanyRatingsSummaryComponent } from './companies/company-ratings-summary/company-ratings-summary.component';
+import { AddResumeComponent } from './RESUMES/add-resume/add-resume.component';
+import { ResumeComponent } from './RESUMES/resume/resume.component';
+import { EditResumeComponent } from './RESUMES/edit-resume/edit-resume.component';
 
 //create object from routes module
 
@@ -107,6 +110,9 @@ const appRoutes: Routes = [
     MyCompanyEditComponent,
     CompanyRatingsComponent,
     CompanyRatingsSummaryComponent,
+    AddResumeComponent,
+    ResumeComponent,
+    EditResumeComponent,
   ],
   imports: [
     BrowserModule,
