@@ -9,6 +9,8 @@ import {
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { CompaniesService } from '../companies.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { result } from 'lodash';
 
 @Component({
   selector: 'app-create-company',
@@ -117,13 +119,20 @@ export class CreateCompanyComponent implements OnInit {
       // console.log(formData);
       this.companiesService.postCompany(formData).subscribe(
         (res) => {
-          alert('success!');
-          this.route.navigateByUrl('myCompanies');
+          Swal.fire('Done!', 'Your post has been created.', 'success').then(
+            (result) => {
+              if (result.value) {
+                this.route.navigateByUrl('myCompanies');
+              }
+            }
+          );
         },
         (err) => {
           this.serverErrorMessages = err.error.join('<br/>');
 
-          alert(this.serverErrorMessages);
+          Swal.fire('Error!', this.serverErrorMessages, 'error');
+
+          // alert(this.serverErrorMessages);
           console.log(this.serverErrorMessages);
         }
       );

@@ -9,6 +9,7 @@ import {
 import { CompaniesService } from '../../companies.service';
 import { CompanyRatingsService } from '../../company-ratings.service';
 import { MyCompanyDetail } from '../../myCompanyDetail';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-all-company-detail',
@@ -67,14 +68,23 @@ export class AllCompanyDetailComponent implements OnInit {
     this.companyRatingsService.postRating(form.value).subscribe(
       (res) => {
         this.showSuccessMessage = true;
-        setTimeout(() => {
-          this.showSuccessMessage = false;
-          document.getElementById('test').click();
-        }, 2500);
         this.resetForm(form);
+        Swal.fire('Done!', 'Your review has been published.', 'success').then(
+          (result) => {
+            if (result.value) {
+              window.location.reload();
+              this.router.navigateByUrl('allCompanies');
+            }
+          }
+        );
+        // setTimeout(() => {
+        //   this.showSuccessMessage = false;
+        //   document.getElementById('test').click();
+        // }, 2500);
       },
       (err) => {
         this.serverErrorMessages = err.error.join('</br>');
+        Swal.fire('Error!', this.serverErrorMessages, 'error');
       }
     );
   }

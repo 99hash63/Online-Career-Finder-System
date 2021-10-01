@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CompaniesService } from '../../companies.service';
 import { MyCompanyDetail } from '../../myCompanyDetail';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-my-company-detail',
@@ -54,19 +55,36 @@ export class MyCompanyDetailComponent implements OnInit {
   }
 
   onDelete() {
-    this.companiesService.deleteCompany(this.myCompanyId).subscribe(
-      (res) => {
-        this.showSuccessMessage = true;
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this company post!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('Deleted!', 'Your company post has been deleted.', 'success');
 
-        // navigate and reload myCompanies component after deleting the company
-        this.router.navigate(['/myCompanies']).then(() => {
-          window.location.reload();
-        });
-      },
-      (err) => {
-        this.serverErrorMessages = err.error.join('<br/>');
+        this.companiesService.deleteCompany(this.myCompanyId).subscribe(
+          (res) => {
+            this.showSuccessMessage = true;
+
+            // navigate and reload myCompanies component after deleting the company
+            this.router.navigate(['/myCompanies']).then(() => {
+              window.location.reload();
+            });
+          },
+          (err) => {
+            this.serverErrorMessages = err.error.join('<br/>');
+          }
+        );
+        // For more information about handling dismissals please visit
+        // https://sweetalert2.github.io/#handling-dismissals
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'Your company post is safe :)', 'error');
       }
-    );
+    });
   }
 
   companyEditModeOn() {
