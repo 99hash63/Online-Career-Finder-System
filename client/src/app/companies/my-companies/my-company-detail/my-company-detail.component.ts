@@ -16,6 +16,7 @@ export class MyCompanyDetailComponent implements OnInit {
   public myCompanyDetail: MyCompanyDetail;
   public serverErrorMessages: string;
   public showSuccessMessage: boolean;
+  public stringDate;
   constructor(
     public companiesService: CompaniesService,
     private modalService: NgbModal,
@@ -34,6 +35,7 @@ export class MyCompanyDetailComponent implements OnInit {
     this.companiesService.getSingleCompanyDB(this.myCompanyId).subscribe(
       (res) => {
         this.myCompanyDetail = res['data'];
+        this.stringDate = new Date(res['data'].founded).toDateString();
         console.log(this.myCompanyDetail);
       },
       (err) => {

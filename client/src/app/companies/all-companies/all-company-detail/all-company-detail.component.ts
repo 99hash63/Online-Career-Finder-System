@@ -22,6 +22,8 @@ export class AllCompanyDetailComponent implements OnInit {
   public serverErrorMessages: string;
   public showSuccessMessage: boolean;
   public closePopup: boolean;
+  public stringDate;
+
   @ViewChild('div') public popover: NgbPopover;
 
   constructor(
@@ -43,6 +45,8 @@ export class AllCompanyDetailComponent implements OnInit {
     this.companiesService.getSingleCompanyDB(this.myCompanyId).subscribe(
       (res) => {
         this.myCompanyDetail = res['data'];
+        this.stringDate = new Date(res['data'].founded).toDateString();
+
         console.log(this.myCompanyDetail);
       },
       (err) => {
