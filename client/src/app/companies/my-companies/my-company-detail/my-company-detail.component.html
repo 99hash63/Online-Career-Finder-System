@@ -52,7 +52,7 @@
                   <button class="btn btn-primary" type="button" (click)="companyEditModeOn()">Edit Post</button>
                 </div>
                 <div class="nav-buttons">
-                  <button class="btn btn-danger" type="button" (click)="open(content)">Delete</button>
+                  <button class="btn btn-danger" type="button" (click)="onDelete()">Delete</button>
                 </div>
               </form>
             </nav>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="overview-desc-left-container">
                   <h6>{{myCompanyDetail.website}}</h6>
-                  <h6>{{myCompanyDetail.emp_count}}</h6>
+                  <h6>{{myCompanyDetail.emp_count}} Employees</h6>
                   <h6>{{myCompanyDetail.industry}}</h6>
                 </div>
                 <div class="overview-headings-right-container">
@@ -89,9 +89,9 @@
                   <h6>Founded:</h6>
                 </div>
                 <div class="overview-desc-right-container">
-                  <h6>{{myCompanyDetail.revenue}}</h6>
+                  <h6>{{myCompanyDetail.revenue}} $</h6>
                   <h6>{{myCompanyDetail.city}}, {{myCompanyDetail.country}}</h6>
-                  <h6>{{myCompanyDetail.founded}}</h6>
+                  <h6>{{stringDate}}</h6>
                 </div>
               </form>
               <div class="description-container">
@@ -138,7 +138,7 @@
   </div>
 
   <!--delete -->
-  <ng-template #content let-c="close" let-d="dismiss">
+  <!-- <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header ">
       <h4 class="modal-title" id="modal-basic-title">Confirm Delete</h4>
       <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -152,7 +152,7 @@
       <button type="button" class="btn btn-outline-dark w-25" (click)="c()">No</button>
       <button type="button" class="btn btn-danger w-25" (click)="onDelete()">Yes</button>
     </div>
-  </ng-template>
+  </ng-template> -->
 </div>
 <div *ngIf="companyEditMode==true">
   <div class="card-img-overlay">

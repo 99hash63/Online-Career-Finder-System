@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { CompaniesService } from 'src/app/companies/companies.service';
 import { MyCompanyDetail } from 'src/app/companies/myCompanyDetail';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-my-company-edit',
@@ -9,6 +10,7 @@ import { MyCompanyDetail } from 'src/app/companies/myCompanyDetail';
   styleUrls: ['./my-company-edit.component.css'],
 })
 export class MyCompanyEditComponent implements OnInit {
+  public serverErrorMessages;
   @Input() myCompanyDetail: MyCompanyDetail;
 
   company: MyCompanyDetail = {
@@ -59,11 +61,20 @@ export class MyCompanyEditComponent implements OnInit {
   onSubmit() {
     this.companyService.updateCompany(this.company).subscribe(
       (res) => {
-        alert('success!');
-        window.location.reload();
+        Swal.fire('Done!', 'Your post has been updated!.', 'success').then(
+          (result) => {
+            if (result.value) {
+              window.location.reload();
+            }
+          }
+        );
       },
       (err) => {
-        alert('error!');
+        this.serverErrorMessages = err.error.join('<br/>');
+
+        Swal.fire('Error!', this.serverErrorMessages, 'error');
+
+        console.log(this.serverErrorMessages);
       }
     );
   }

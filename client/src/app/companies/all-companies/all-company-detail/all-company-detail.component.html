@@ -79,7 +79,7 @@
                 </div>
                 <div class="overview-desc-left-container">
                   <h6>{{myCompanyDetail.website}}</h6>
-                  <h6>{{myCompanyDetail.emp_count}}</h6>
+                  <h6>{{myCompanyDetail.emp_count}} Employees</h6>
                   <h6>{{myCompanyDetail.industry}}</h6>
                 </div>
                 <div class="overview-headings-right-container">
@@ -88,9 +88,9 @@
                   <h6>Founded:</h6>
                 </div>
                 <div class="overview-desc-right-container">
-                  <h6>{{myCompanyDetail.revenue}}</h6>
+                  <h6>{{myCompanyDetail.revenue}} $</h6>
                   <h6>{{myCompanyDetail.city}}, {{myCompanyDetail.country}}</h6>
-                  <h6>{{myCompanyDetail.founded}}</h6>
+                  <h6>{{stringDate}}</h6>
                 </div>
               </form>
               <div class="description-container">
@@ -132,7 +132,8 @@
 </div>
 
 <!--add review -->
-<ng-template #content let-c="close" let-d="dismiss">
+<ng-template #content let-c="close" let-d="dismiss" class="cardShadow">
+
 
   <div class="modal-header ">
     <h5 class="modal-title" id="modal-basic-title">Add Review</h5>
@@ -266,12 +267,12 @@
   </div>
 
   <!-- show success message -->
-  <div class="success" *ngIf="showSuccessMessage">
+  <!-- <div class="success" *ngIf="showSuccessMessage">
     Review added successfully!
-  </div>
+  </div> -->
 
   <!-- show error message -->
-  <div class="alert" *ngIf="serverErrorMessages">
+  <!-- <div class="alert" *ngIf="serverErrorMessages">
     {{serverErrorMessages}}
-  </div>
+  </div> -->
 </ng-template>

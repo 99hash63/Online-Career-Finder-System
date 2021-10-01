@@ -34,8 +34,8 @@ const CompanySchema = new mongoose.Schema({
 		// required: [true, 'Please add a website'],
 		trim: true,
 		match: [
-			/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
-			'Please use a valid URL with HTTP or HTTPS',
+			/^(http(s?):\/\/)?(www\.)+[a-zA-Z0-9\.\-\_]+(\.[a-zA-Z]{2,3})+(\/[a-zA-Z0-9\_\-\s\.\/\?\%\#\&\=]*)?$/,
+			'Website url not valid',
 		],
 	},
 

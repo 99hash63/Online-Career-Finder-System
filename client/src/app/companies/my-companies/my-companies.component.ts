@@ -14,6 +14,7 @@ export class MyCompaniesComponent implements OnInit {
   companies: Company[] = [];
   private companiesSub!: Subscription;
   serverErrorMessages: string;
+  companiesAreAvaialable: boolean = false;
   title: string = '';
   industry: string = 'none';
 
@@ -25,9 +26,11 @@ export class MyCompaniesComponent implements OnInit {
     this.companiesService.getMyCompaniesDB().subscribe(
       (res) => {
         this.companies = res['data'] as Company[];
+        this.companiesAreAvaialable = true;
         this.Search();
       },
       (err) => {
+        this.companiesAreAvaialable = false;
         this.serverErrorMessages = err.error.join('<br/>');
       }
     );

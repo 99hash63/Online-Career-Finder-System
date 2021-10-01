@@ -104,7 +104,8 @@
                     <h3 style="margin: 80px 0px 20px 50px;">Fill Out Details</h3>
 
                     <mat-form-field appearance="outline" class="inputBoxes">
-                      <input type="date" matInput placeholder="Founded" formControlName="founded" required>
+                      <input type="text" matInput placeholder="Founded Date" formControlName="founded"
+                        onfocus="(this.type='date')" required>
                     </mat-form-field>
                     <br>
                     <mat-form-field appearance="outline" class="inputBoxes">
@@ -113,7 +114,7 @@
                     </mat-form-field>
                     <br>
                     <mat-form-field appearance="outline" class="inputBoxes">
-                      <input type="number" matInput placeholder="Revenue" formControlName="revenue" required>
+                      <input type="number" matInput placeholder="Revenue In $" formControlName="revenue" required>
                     </mat-form-field>
                     <br>
                     <div class="d-flex justify-content-end">

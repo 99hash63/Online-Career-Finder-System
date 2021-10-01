@@ -28,15 +28,7 @@
           </mat-form-field>
         </div>
 
-        <!-- filter by location -->
-        <!-- <div class="me-3" style="font-size: 12px">
-          <mat-form-field appearance="outline">
-            <mat-label>Location</mat-label>
-            <mat-select>
-              <mat-option></mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div> -->
+
       </div>
 
       <!-- search function -->
@@ -49,8 +41,11 @@
     </div>
     <hr>
     <br>
-    <div class="text-secondary">
-      <h3 class="text-center">Companies You Have Created....</h3>
+
+    <div *ngIf="companiesAreAvaialable">
+      <div class="text-secondary">
+        <h3 class="text-center">Companies You Have Created....</h3>
+      </div>
     </div>
 
     <div class="card-deck">
@@ -88,18 +83,16 @@
         </div>
 
       </div>
-
-
-
-
     </div>
     <!-- error message -->
-    <div class="alert" *ngIf="serverErrorMessages">
-      {{serverErrorMessages}}
+    <div style="text-align: center;" *ngIf="serverErrorMessages">
+      <div class="alert alert-info" role="alert" style="width: 60%;" style="text-align: center;">
+        <h5>Oppsss! You have not created any companies yet...</h5>
+      </div>
     </div>
-
   </div>
 </div>
+
 
 <div *ngIf="companiesService.myCompanyMode==true">
   <app-my-company-detail></app-my-company-detail>
