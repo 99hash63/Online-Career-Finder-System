@@ -85,12 +85,14 @@
       </div>
     </div>
     <!-- error message -->
-    <div class="alert" *ngIf="serverErrorMessages">
-      <h2>No companies</h2>
+    <div style="text-align: center;" *ngIf="serverErrorMessages">
+      <div class="alert alert-info" role="alert" style="width: 60%;" style="text-align: center;">
+        <h5>Oppsss! You have not created any companies yet...</h5>
+      </div>
     </div>
-
   </div>
 </div>
+
 
 <div *ngIf="companiesService.myCompanyMode==true">
   <app-my-company-detail></app-my-company-detail>

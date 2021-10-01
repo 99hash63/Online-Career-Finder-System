@@ -1,6 +1,8 @@
-<!-- show error message -->
-<div *ngIf="noReviews">
-  <h3>Opps there is no reviews yet</h3>
+<!-- error message -->
+<div style="text-align: center;" *ngIf="noReviews">
+  <div class="alert alert-info" role="alert" style="width: 60%;" style="text-align: center;">
+    <h5>Oppsss! there are no reviews yet...</h5>
+  </div>
 </div>
 
 <div *ngFor="let companyRating of companyRatings">
