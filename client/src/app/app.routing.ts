@@ -16,6 +16,10 @@ import { AuthGuard } from './auth/auth.guard';
 import { CreateCompanyComponent } from './companies/create-company/create-company.component';
 import { CompanyRating } from './companies/company-rating.model';
 import { CompanyRatingsComponent } from './companies/company-ratings/company-ratings.component';
+import { ResumeComponent } from './RESUMES/resume/resume.component';
+import { AddResumeComponent } from './RESUMES/add-resume/add-resume.component';
+import { EditResumeComponent } from './RESUMES/edit-resume/edit-resume.component';
+
 export const ROUTES: Routes = [
   {
     path: 'createJob',
@@ -79,6 +83,28 @@ export const ROUTES: Routes = [
   {
     path: 'createCompany',
     component: CreateCompanyComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'resume',
+    component: ResumeComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'resume/add',
+    component: AddResumeComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'resume/add',
+    component: AddResumeComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'resume/edit/:id',
+    component: EditResumeComponent,
     canActivate: [AuthGuard],
   },
 

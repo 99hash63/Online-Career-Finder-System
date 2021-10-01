@@ -1,0 +1,53 @@
+<div class="container mt-5 d-flex justify-content-around">
+
+    <input type="text" class="w-75" name="searchText" placeholder="Search" [(ngModel)]="searchText">
+
+    <button class="btn btn-outline-primary p-3" type="button" routerLink="add">Add New Resume</button>
+
+
+</div>
+
+
+<div class="table mt-4 mx-5">
+    <h2>Your Resumes</h2><br><br>
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Background</th>
+            <th scope="col">Experience</th>
+            <th scope="col">Tools & Technologies</th>
+            <th scope="col">Education</th>
+            <th scope="col">Projects</th>
+            <th scope="col">Achievements</th>
+            <th scope="col">References</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let resu of resumes | filter:searchText let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ resu.name }}</td>
+            <td>{{ resu.email }}</td>
+            <td>{{ resu.contact }}</td>
+            <td>{{ resu.birth }}</td>
+            <td>{{ resu.gender }}</td>
+            <td>{{ resu.background }}</td>
+            <td>{{ resu.experience }}</td>
+            <td>{{ resu.technologies }}</td>
+            <td>{{ resu.education }}</td>
+            <td>{{ resu.projects }}</td>
+            <td>{{ resu.achievements }}</td>
+            <td>{{ resu.references }}</td>
+            <td>
+                <button class="btn btn-primary btn-sm w-100" routerLink="edit/{{ resu._id }}">View</button>
+                <button class="btn btn-danger btn-sm  w-100" (click)="deleteData(resu._id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</div><br><br><br><br><br><br><br><br><br><br>
