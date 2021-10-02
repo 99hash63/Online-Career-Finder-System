@@ -5,16 +5,11 @@
       <mat-stepper #stepper>
 
         <!-- step industry -->
-
-
-        <mat-step [stepControl]="firstFormGroup" errorMessage="Industry is required.">
+        <mat-step [stepControl]="firstFormGroup" errorMessage="required.">
           <div class="container">
             <br>
             <div class="card" style="width:100%;">
-
               <div class="row" style="padding: 0; margin: 0;">
-
-
                 <div class="col-sm" style="padding: 0; margin: 0; position:relative; top: 0;">
                   <img src=" /assets/images/zzz.png" id="icon" alt="User Icon"
                     style="padding: 0; margin: 0; max-height: 566px; max-width: 559px;">
@@ -63,7 +58,7 @@
 
 
         <!-- step emp count -->
-        <mat-step [stepControl]="secondFormGroup" errorMessage="Size is required.">
+        <mat-step [stepControl]="secondFormGroup" errorMessage="required.">
           <div class="container">
             <br>
 
@@ -121,7 +116,7 @@
                 </div>
                 <div class="col-sm d-flex justify-content-center">
                   <form [formGroup]="thirdFormGroup" style="width: 60%" class="d-flex justify-content-center">
-                    <ng-template matStepLabel>Fill out details</ng-template>
+                    <ng-template matStepLabel>Other details</ng-template>
                     <div class="container">
                       <h3 style="margin: 90px 0px 10px 50px;">Fill Out Details</h3>
 
@@ -165,7 +160,7 @@
                 </div>
                 <div class="col-sm d-flex justify-content-center">
                   <form [formGroup]="fourthFormGroup" style="width: 60%" class="d-flex justify-content-center">
-                    <ng-template matStepLabel>Set Address</ng-template>
+                    <ng-template matStepLabel>Address</ng-template>
                     <div class="container">
                       <h3 style="margin: 140px 0px 10px 50px;">Enter Address</h3>
                       <mat-form-field appearance="outline" class="inputBoxes">
@@ -201,7 +196,7 @@
                 </div>
                 <div class="col-sm d-flex justify-content-center">
                   <form [formGroup]="fifthFormGroup" style="width: 70%" class="d-flex justify-content-center">
-                    <ng-template matStepLabel>Add a title</ng-template>
+                    <ng-template matStepLabel>Title</ng-template>
                     <div class="container" style="width: 100%;">
                       <h3 style="margin: 158px 0px 5px 85px;">Create Title</h3>
                       <mat-form-field appearance="outline" style="width: 100%;">
@@ -235,7 +230,7 @@
                 </div>
                 <div class="col-sm d-flex justify-content-center">
                   <form [formGroup]="sixthFormGroup" style="width: 70%" class="d-flex justify-content-center">
-                    <ng-template matStepLabel>Add a description</ng-template>
+                    <ng-template matStepLabel>Description</ng-template>
                     <div class="container" style="width: 100%;">
                       <h3 style="margin: 158px 0px 5px 40px;">Create Description</h3>
                       <mat-form-field appearance="outline" style="width: 100%;">
@@ -269,7 +264,7 @@
                 </div>
                 <div class="col-sm d-flex justify-content-center">
                   <form [formGroup]="seventhFormGroup" style="width: 70%" class="d-flex justify-content-center">
-                    <ng-template matStepLabel>Upload images</ng-template>
+                    <ng-template matStepLabel>Image</ng-template>
                     <div class="container ">
                       <div>
                         <div style="margin-top: 80px; text-align:center;">
