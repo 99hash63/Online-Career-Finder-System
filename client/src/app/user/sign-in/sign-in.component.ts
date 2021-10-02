@@ -28,9 +28,13 @@ export class SignInComponent implements OnInit {
       (res) => {
         this.userService.setToken(res['token']);
         this.showSuccessMessage = true;
-        setTimeout(() => (this.showSuccessMessage = false), 3000);
         this.resetForm(form);
-        this.router.navigateByUrl('/');
+        setTimeout(() => {
+          this.showSuccessMessage = false;
+          this.router.navigateByUrl('/').then(() => {
+            window.location.reload();
+          });
+        }, 1500);
       },
       (err) => {
         this.serverErrorMessages = err.error.join('<br/>');

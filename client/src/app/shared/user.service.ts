@@ -6,6 +6,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class UserService {
+  //variable used in header component
+  isLoggedInVariable: boolean = false;
   selectedUser: User = {
     name: '',
     email: '',
@@ -65,6 +67,7 @@ export class UserService {
   isLoggedIn() {
     var userPayload = this.getUserPayload();
     if (userPayload) {
+      this.isLoggedInVariable = true;
       return userPayload.exp > Date.now() / 1000;
     } else {
       return false;
