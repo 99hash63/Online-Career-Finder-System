@@ -84,8 +84,17 @@
                     </div>
 
                     <div class="col-4 d-flex justify-content-start" style="padding-left: 0;">
-                      <div><input type="text" [(ngModel)]="company.website" [ngModelOptions]="{standalone: true}"
-                          style="width: 100%;">
+                      <div>
+                        <input type="text" #website="ngModel" name="website" [(ngModel)]="company.website"
+                          style="width: 100%;" required
+                          [ngClass]="{'invalid-textbox' :companyEditForm.submitted && !website.valid}"
+                          [pattern]="companyRegex">
+
+                        <div *ngIf="companyEditForm.submitted && website.errors">
+                          <label *ngIf="website.errors.required" class="validation-message">This field is
+                            required.</label>
+                          <label *ngIf="website.errors.pattern" class="validation-message">Invalid company url</label>
+                        </div>
 
                         <input type="text" [(ngModel)]="company.emp_count" [ngModelOptions]="{standalone: true}"
                           style="margin-top: 15px; width: 100%;">
