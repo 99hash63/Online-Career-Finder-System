@@ -13,6 +13,8 @@ export class MyCompanyEditComponent implements OnInit {
   public companyRegex =
     /^(http(s?):\/\/)?(www\.)+[a-zA-Z0-9\.\-\_]+(\.[a-zA-Z]{2,3})+(\/[a-zA-Z0-9\_\-\s\.\/\?\%\#\&\=]*)?$/;
   public serverErrorMessages;
+  public stringDate;
+
   @Input() myCompanyDetail: MyCompanyDetail;
 
   company: MyCompanyDetail = {
@@ -43,6 +45,7 @@ export class MyCompanyEditComponent implements OnInit {
     this.company.industry = this.myCompanyDetail.industry;
     this.company.emp_count = this.myCompanyDetail.emp_count;
     this.company.founded = this.myCompanyDetail.founded;
+    this.stringDate = new Date(this.myCompanyDetail.founded).toDateString();
     this.company.website = this.myCompanyDetail.website;
     this.company.revenue = this.myCompanyDetail.revenue;
     this.company.address = this.myCompanyDetail.address;
