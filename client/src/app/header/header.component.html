@@ -50,10 +50,19 @@
             <div class="dropdown-menu" role="menu">
               <!-- <a class="dropdown-item" role="presentation" routerLink="profile">Profile</a> -->
               <a class="dropdown-item" role="presentation" routerLink="resume">Resumes</a>
-              <a class="dropdown-item" role="presentation" routerLink="signIn">Log In</a>
-              <a class="dropdown-item" role="presentation" routerLink="signUp">Sign Up</a>
-              <button class="dropdown-item" role="presentation" (click)="logout()">Log out</button>
 
+              <!-- show login and signup buttons only if user is not logged in -->
+              <div *ngIf="userService.isLoggedInVariable==false">
+                <a class="dropdown-item" role="presentation" routerLink="signIn">Log In</a>
+                <a class="dropdown-item" role="presentation" routerLink="signUp">Sign Up</a>
+              </div>
+
+
+
+              <!-- show logout button only if user is logged in -->
+              <div *ngIf="userService.isLoggedInVariable==true">
+                <button class="dropdown-item" role="presentation" (click)="logout()">Log out</button>
+              </div>
             </div>
           </li>
         </div>

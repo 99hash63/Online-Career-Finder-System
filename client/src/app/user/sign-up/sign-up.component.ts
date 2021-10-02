@@ -21,9 +21,11 @@ export class SignUpComponent implements OnInit {
       (res) => {
         this.showSuccessMessage = true;
         this.userService.setToken(res['token']);
-        setTimeout(() => (this.showSuccessMessage = false), 3000);
         this.resetForm(form);
-        this.router.navigateByUrl('/');
+        setTimeout(() => {
+          this.showSuccessMessage = false;
+          this.router.navigateByUrl('/');
+        }, 1500);
       },
       (err) => {
         if (err.status === 422) {
