@@ -72,5 +72,17 @@ const sendTokenResponse = (user, statusCode, res) => {
 };
 
 //@desc Get current logged in user
-//@route POST /api/v1/auth/me
+//@route POST /api/v1/auth/profile
 //@access private
+exports.profile = asyncHandler(async (req, res, next) => {
+	try {
+		userId = req.user.id;
+		//get user user
+		const user = await User.findOne({ _id: userId });
+		console.log(user);
+		return res.status(200).json(user);
+	} catch (error) {
+		console.log(error);
+		return res.status(400).json(error);
+	}
+});
