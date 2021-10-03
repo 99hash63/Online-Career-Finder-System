@@ -24,13 +24,18 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(form: NgForm) {
+    //calling login method to login user
     this.userService.login(form.value).subscribe(
       (res) => {
         this.userService.setToken(res['token']);
         this.showSuccessMessage = true;
-        setTimeout(() => (this.showSuccessMessage = false), 3000);
         this.resetForm(form);
-        this.router.navigateByUrl('/');
+        setTimeout(() => {
+          this.showSuccessMessage = false;
+          this.router.navigateByUrl('/').then(() => {
+            window.location.reload();
+          });
+        }, 1500);
       },
       (err) => {
         this.serverErrorMessages = err.error.join('<br/>');
@@ -38,6 +43,7 @@ export class SignInComponent implements OnInit {
     );
   }
 
+  //function to reset form
   resetForm(form: NgForm) {
     this.model = {
       email: '',

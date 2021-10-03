@@ -63,61 +63,90 @@
 
       <div class="row" style="margin-top: 25px;">
         <div class="col-8">
-
           <div style="width: 100%;">
             <div class="card cardShadow">
               <div class="card-header">
                 <h5>Company Overview</h5>
               </div>
               <div class="card-body">
-
                 <div class="container">
                   <div class="row">
-
                     <div class="col-2 d-flex justify-content-start">
                       <div> <label for="exampleInputEmail1">Website</label><br>
                         <label for="exampleInputEmail1" style="margin-top: 15px;">Size</label><br>
                         <label for="exampleInputEmail1" style="margin-top: 15px;">Industry</label>
                       </div>
-
-
                     </div>
-
                     <div class="col-4 d-flex justify-content-start" style="padding-left: 0;">
-                      <div><input type="text" [(ngModel)]="company.website" [ngModelOptions]="{standalone: true}"
-                          style="width: 100%;">
-
-                        <input type="text" [(ngModel)]="company.emp_count" [ngModelOptions]="{standalone: true}"
-                          style="margin-top: 15px; width: 100%;">
-                        <input type="text" [(ngModel)]="company.industry" [ngModelOptions]="{standalone: true}"
-                          style="margin-top: 15px; width: 100%;">
+                      <div>
+                        <!-- input tag for website -->
+                        <input type="text" #website="ngModel" name="website" [(ngModel)]="company.website"
+                          style="width: 100%;" required
+                          [ngClass]="{'invalid-textbox' :companyEditForm.submitted && !website.valid}"
+                          [pattern]="companyRegex">
+                        <!-- validation errors for website -->
+                        <div *ngIf="companyEditForm.submitted && website.errors">
+                          <label *ngIf="website.errors.required" class="validation-message">This field is
+                            required.</label>
+                          <label *ngIf="website.errors.pattern" class="validation-message">Invalid company url</label>
+                        </div>
+                        <!-- drop down for emp_count -->
+                        <select #emp_count="ngModel" name="emp_count" [(ngModel)]="company.emp_count"
+                          style="margin-top: 19px; width: 100%;">
+                          <option value="0-10">0-10</option>
+                          <option value="10-50">10-50</option>
+                          <option value="50-200">50-200</option>
+                          <option value="200-1000">200-1000</option>
+                          <option value="Above 1000">Above 1000</option>
+                        </select>
+                        <!-- drop down for emp_count -->
+                        <select #industry="ngModel" name="industry" [(ngModel)]="company.industry"
+                          style="margin-top: 24px; width: 100%;">
+                          <option value="IT/Software">IT/Software</option>
+                          <option value="Technology">Technology</option>
+                          <option value="Real Estate">Real Estate</option>
+                          <option value="Consumer Goods">Consumer Goods</option>
+                          <option value="Other">Other</option>
+                        </select>
                       </div>
-
                     </div>
-
                     <div class="col-2 d-flex justify-content-start">
                       <div><label for="exampleInputEmail1">Revenue</label><br>
                         <label for="exampleInputEmail1" style="margin-top: 15px;">Founded</label>
                         <label for="exampleInputEmail1" style="margin-top: 15px;">Headquarters</label>
                       </div>
-
                     </div>
-
                     <div class="col-4 d-flex justify-content-start">
-                      <div> <input type="text" [(ngModel)]="company.revenue" [ngModelOptions]="{standalone: true}"
-                          style="width: 100%;">
-                        <input type="text" [(ngModel)]="company.founded" [ngModelOptions]="{standalone: true}"
-                          style="margin-top: 15px; width: 100%;">
-                        <input type="text" [(ngModel)]="company.city" [ngModelOptions]="{standalone: true}"
-                          style="margin-top: 15px; width: 100%;"><br>
-                        <input type="text" [(ngModel)]="company.country" [ngModelOptions]="{standalone: true}"
-                          style="margin-top: 8px;" style="width: 100%;">
+                      <div>
+                        <!-- input tag for revenue -->
+                        <input type="number" #revenue="ngModel" name="revenue" [(ngModel)]="company.revenue"
+                          style="width: 100%;"
+                          [ngClass]="{'invalid-textbox' :companyEditForm.submitted && !revenue.valid}" required>
+                        <div *ngIf="companyEditForm.submitted && !revenue.valid">
+                          <label class="validation-message">This field is required.</label>
+                        </div>
+
+                        <!-- input tag for founded -->
+                        <input type="text" #founded="ngModel" name="founded" [(ngModel)]="stringDate"
+                          style="margin-top: 15px; width: 100%;" onfocus="(this.type='date')">
+
+                        <!-- input tag for city -->
+                        <input type="text" #city="ngModel" name="city" [(ngModel)]="company.city"
+                          style="margin-top: 15px; width: 100%;"
+                          [ngClass]="{'invalid-textbox' :companyEditForm.submitted && !city.valid}" required><br>
+                        <div *ngIf="companyEditForm.submitted && !city.valid">
+                          <label class="validation-message">This field is required.</label>
+                        </div>
+
+                        <!-- input tag for country -->
+                        <input type="text" #country="ngModel" name="country" [(ngModel)]="company.country"
+                          style="margin-top: 8px;" style="width: 100%;"
+                          [ngClass]="{'invalid-textbox' :companyEditForm.submitted && !country.valid}" required>
+                        <div *ngIf="companyEditForm.submitted && !country.valid">
+                          <label class="validation-message">This field is required.</label>
+                        </div>
                       </div>
-
-
-
                     </div>
-
                   </div>
                 </div>
 
@@ -173,11 +202,20 @@
                 </div>
               </div> -->
 
+                <!-- text area for decription -->
                 <div class="description-container" style="margin-top: 20px;">
                   <!-- <input type="text" [(ngModel)]="company.description" [ngModelOptions]="{standalone: true}" size="50"> -->
 
-                  <textarea cols="100" rows="5" [(ngModel)]="company.description" [ngModelOptions]="{standalone: true}"
-                    required minlength="50" maxlength="250" rows="5" style="width: 100%;"></textarea>
+                  <textarea #description="ngModel" name="description" cols="100" rows="5"
+                    [(ngModel)]="company.description" required minlength="50" maxlength="250" rows="5"
+                    style="width: 100%;"></textarea>
+                  <div *ngIf="companyEditForm.submitted && description.errors">
+                    <label *ngIf="description.errors.required" class="validation-message">This field is
+                      required.</label>
+                    <label *ngIf="description.errors.minlength" class="validation-message">Descriptn too short.</label>
+                    <label *ngIf="description.errors.maxlength" class="validation-message">Descriptn too long.</label>
+
+                  </div>
                 </div>
 
               </div>

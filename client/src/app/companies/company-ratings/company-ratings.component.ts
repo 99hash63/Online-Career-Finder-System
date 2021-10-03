@@ -8,7 +8,6 @@ import { CompaniesService } from '../companies.service';
   templateUrl: './company-ratings.component.html',
   styleUrls: ['./company-ratings.component.css'],
 })
-
 export class CompanyRatingsComponent implements OnInit {
   companyRatings: CompanyRating[] = [];
   noReviews: boolean = false;
@@ -23,10 +22,12 @@ export class CompanyRatingsComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    //getting current company id
     this.model.companyId = this.companiesService.getMyCompanyId();
     this.getRatings();
   }
 
+  //getting ratings of the current company from the db
   getRatings() {
     this.companyRatingsService.getRatings(this.model.companyId).subscribe(
       (res) => {

@@ -540,7 +540,7 @@ export const companyPdfTemplate = (
                                   <td align="left" style="padding:0;Margin:0;padding-bottom:10px;padding-top:20px">
                                     <h1
                                       style="Margin:0;line-height:30px;mso-line-height-rule:exactly;font-family:roboto, 'helvetica neue', helvetica, arial, sans-serif;font-size:30px;font-style:normal;font-weight:bold;color:#302e2e">
-                                      Review Summary</h1>
+                                      Review &nbsp;Summary</h1>
                                   </td>
                                 </tr>
                               </table>

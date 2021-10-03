@@ -5,16 +5,11 @@
       <mat-stepper #stepper>
 
         <!-- step industry -->
-
-
-        <mat-step [stepControl]="firstFormGroup" errorMessage="Industry is required.">
+        <mat-step [stepControl]="firstFormGroup" errorMessage="Required.">
           <div class="container">
             <br>
             <div class="card" style="width:100%;">
-
               <div class="row" style="padding: 0; margin: 0;">
-
-
                 <div class="col-sm" style="padding: 0; margin: 0; position:relative; top: 0;">
                   <img src=" /assets/images/zzz.png" id="icon" alt="User Icon"
                     style="padding: 0; margin: 0; max-height: 566px; max-width: 559px;">
@@ -63,7 +58,7 @@
 
 
         <!-- step emp count -->
-        <mat-step [stepControl]="secondFormGroup" errorMessage="Size is required.">
+        <mat-step [stepControl]="secondFormGroup" errorMessage="Required.">
           <div class="container">
             <br>
 
@@ -109,7 +104,7 @@
         </mat-step>
 
         <!-- third form -->
-        <mat-step [stepControl]="thirdFormGroup" errorMessage="required.">
+        <mat-step [stepControl]="thirdFormGroup" errorMessage="Invalid.">
           <div class="container">
             <br>
             <div class="card" style="width:100%;">
@@ -121,7 +116,7 @@
                 </div>
                 <div class="col-sm d-flex justify-content-center">
                   <form [formGroup]="thirdFormGroup" style="width: 60%" class="d-flex justify-content-center">
-                    <ng-template matStepLabel>Fill out details</ng-template>
+                    <ng-template matStepLabel>Other details</ng-template>
                     <div class="container">
                       <h3 style="margin: 90px 0px 10px 50px;">Fill Out Details</h3>
 
@@ -153,7 +148,7 @@
         </mat-step>
 
         <!-- step 4 -->
-        <mat-step [stepControl]="fourthFormGroup" errorMessage="required.">
+        <mat-step [stepControl]="fourthFormGroup" errorMessage="Required.">
           <div class="container">
             <br>
             <div class="card" style="width:100%;">
@@ -165,7 +160,7 @@
                 </div>
                 <div class="col-sm d-flex justify-content-center">
                   <form [formGroup]="fourthFormGroup" style="width: 60%" class="d-flex justify-content-center">
-                    <ng-template matStepLabel>Set Address</ng-template>
+                    <ng-template matStepLabel>Address</ng-template>
                     <div class="container">
                       <h3 style="margin: 140px 0px 10px 50px;">Enter Address</h3>
                       <mat-form-field appearance="outline" class="inputBoxes">
@@ -189,7 +184,7 @@
         </mat-step>
 
         <!-- step 5 -->
-        <mat-step [stepControl]="fifthFormGroup" errorMessage="required.">
+        <mat-step [stepControl]="fifthFormGroup" errorMessage="Invalid.">
           <div class="container">
             <br>
             <div class="card" style="width:100%;">
@@ -201,7 +196,7 @@
                 </div>
                 <div class="col-sm d-flex justify-content-center">
                   <form [formGroup]="fifthFormGroup" style="width: 70%" class="d-flex justify-content-center">
-                    <ng-template matStepLabel>Add a title</ng-template>
+                    <ng-template matStepLabel>Title</ng-template>
                     <div class="container" style="width: 100%;">
                       <h3 style="margin: 158px 0px 5px 85px;">Create Title</h3>
                       <mat-form-field appearance="outline" style="width: 100%;">
@@ -223,7 +218,7 @@
         </mat-step>
 
         <!-- step 6 -->
-        <mat-step [stepControl]="sixthFormGroup" errorMessage="required.">
+        <mat-step [stepControl]="sixthFormGroup" errorMessage="Invalid.">
           <div class="container">
             <br>
             <div class="card" style="width:100%;">
@@ -235,7 +230,7 @@
                 </div>
                 <div class="col-sm d-flex justify-content-center">
                   <form [formGroup]="sixthFormGroup" style="width: 70%" class="d-flex justify-content-center">
-                    <ng-template matStepLabel>Add a description</ng-template>
+                    <ng-template matStepLabel>Description</ng-template>
                     <div class="container" style="width: 100%;">
                       <h3 style="margin: 158px 0px 5px 40px;">Create Description</h3>
                       <mat-form-field appearance="outline" style="width: 100%;">
@@ -257,7 +252,7 @@
         </mat-step>
 
         <!-- step 7 -->
-        <mat-step [stepControl]="seventhFormGroup" errorMessage="required.">
+        <mat-step [stepControl]="seventhFormGroup" errorMessage="Required.">
           <div class="container">
             <br>
             <div class="card" style="width:100%;">
@@ -269,7 +264,7 @@
                 </div>
                 <div class="col-sm d-flex justify-content-center">
                   <form [formGroup]="seventhFormGroup" style="width: 70%" class="d-flex justify-content-center">
-                    <ng-template matStepLabel>Upload images</ng-template>
+                    <ng-template matStepLabel>Image</ng-template>
                     <div class="container ">
                       <div>
                         <div style="margin-top: 80px; text-align:center;">
@@ -307,50 +302,47 @@
           <div class="d-flex justify-content-center" style="margin: 20px 0px 20px 0px;">
             <h5>This his how others will see your company post</h5>
           </div>
-          <div class="container d-flex justify-content-center">
-            <div class="row ">
-              <div class="col-sm">
-                <div class="card" style="width: 620px; height: 280px;">
 
-                  <div class="card-body">
-                    <h4 class="card-title">{{this.fifthFormGroup.get('title').value}}</h4>
-                    <form class="form-inline">
-                      <div class="overview-headings-left-container">
-                        <h6>Website:</h6>
-                        <h6>Size:</h6>
-                        <h6>Industry:</h6>
-                      </div>
-                      <div class="overview-desc-left-container">
-                        <h6>{{this.thirdFormGroup.get('website').value}}</h6>
-                        <h6>{{this.secondFormGroup.get('emp_count').value}}</h6>
-                        <h6>{{this.firstFormGroup.get('industry').value}}</h6>
-                      </div>
-                      <div class="overview-headings-right-container">
-                        <h6>Revenue:</h6>
-                        <h6>Headquarters:</h6>
-                        <h6>Founded:</h6>
-                      </div>
-                      <div class="overview-desc-right-container">
-                        <h6>{{this.thirdFormGroup.get('revenue').value}}</h6>
-                        <h6>{{this.fourthFormGroup.get('country').value}}, {{this.fourthFormGroup.get('city').value}}
-                        </h6>
-                        <h6>{{this.thirdFormGroup.get('founded').value}}</h6>
-                      </div>
-                    </form>
-                    <div class="description-container">
-                      <h6>{{this.sixthFormGroup.get('description').value}}</h6>
-                    </div>
-                  </div>
-                </div>
+          <div style=" display: flex;
+          justify-content: center;
+          align-items: center;">
+            <div class="card" style="max-width: 60%; min-height: 280px;">
+              <img [src]="noImgUrl" id="icon" alt="User Icon" style="padding: 0; margin: 0;  width: 100%;" alt="Image">
+
+              <div class="card-header">
+                <h4>{{this.fifthFormGroup.get('title').value}}</h4>
               </div>
-              <div class="col-sm d-flex justify-content-start"
-                style="width: 475px; height: 280px; border: 1px solid rgb(220, 220, 220); padding: 0; margin: 0;">
-                <img [src]="uploadImgUrl" id="icon" alt="User Icon"
-                  style="padding: 0; margin: 0; max-height: 280px; max-width: 475px;" alt="Image">
+              <div class="card-body">
+                <form class="form-inline">
+                  <div class="overview-headings-left-container">
+                    <h6>Website:</h6>
+                    <h6>Size:</h6>
+                    <h6>Industry:</h6>
+                  </div>
+                  <div class="overview-desc-left-container">
+                    <h6>{{this.thirdFormGroup.get('website').value}}</h6>
+                    <h6>{{this.secondFormGroup.get('emp_count').value}}</h6>
+                    <h6>{{this.firstFormGroup.get('industry').value}}</h6>
+                  </div>
+                  <div class="overview-headings-right-container">
+                    <h6>Revenue:</h6>
+                    <h6>Headquarters:</h6>
+                    <h6>Founded:</h6>
+                  </div>
+                  <div class="overview-desc-right-container">
+                    <h6>{{this.thirdFormGroup.get('revenue').value}}</h6>
+                    <h6>{{this.fourthFormGroup.get('country').value}}, {{this.fourthFormGroup.get('city').value}}
+                    </h6>
+                    <h6>{{this.thirdFormGroup.get('founded').value}}</h6>
+                  </div>
+                </form>
+                <div class="description-container">
+                  <h6>{{this.sixthFormGroup.get('description').value}}</h6>
+                </div>
               </div>
             </div>
           </div>
-          <div class="d-flex justify-content-end" style="margin-top: 25px; margin-right: 53px;">
+          <div class="d-flex justify-content-end" style="margin-top: 25px; margin-right: 243px;">
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button (click)="stepper.reset(); resetImg();">Reset</button>
             <button mat-button (click)="onSubmit()">Submit</button>

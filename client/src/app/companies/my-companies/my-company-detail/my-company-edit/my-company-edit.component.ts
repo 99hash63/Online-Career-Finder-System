@@ -10,7 +10,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./my-company-edit.component.css'],
 })
 export class MyCompanyEditComponent implements OnInit {
+  public companyRegex =
+    /^(http(s?):\/\/)?(www\.)+[a-zA-Z0-9\.\-\_]+(\.[a-zA-Z]{2,3})+(\/[a-zA-Z0-9\_\-\s\.\/\?\%\#\&\=]*)?$/;
   public serverErrorMessages;
+  public stringDate;
+
+  //getting all company data from parent(company detail) component using input decorator
   @Input() myCompanyDetail: MyCompanyDetail;
 
   company: MyCompanyDetail = {
@@ -36,11 +41,13 @@ export class MyCompanyEditComponent implements OnInit {
   };
   constructor(private companyService: CompaniesService) {}
 
+  //getting all company data from parent(company detail) component using input decorator
   ngOnInit(): void {
     this.company._id = this.myCompanyDetail._id;
     this.company.industry = this.myCompanyDetail.industry;
     this.company.emp_count = this.myCompanyDetail.emp_count;
     this.company.founded = this.myCompanyDetail.founded;
+    this.stringDate = new Date(this.myCompanyDetail.founded).toDateString();
     this.company.website = this.myCompanyDetail.website;
     this.company.revenue = this.myCompanyDetail.revenue;
     this.company.address = this.myCompanyDetail.address;
@@ -59,6 +66,7 @@ export class MyCompanyEditComponent implements OnInit {
   }
 
   onSubmit() {
+    //calling function to update company
     this.companyService.updateCompany(this.company).subscribe(
       (res) => {
         Swal.fire('Done!', 'Your post has been updated!.', 'success').then(

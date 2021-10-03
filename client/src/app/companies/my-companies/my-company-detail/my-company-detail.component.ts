@@ -31,7 +31,10 @@ export class MyCompanyDetailComponent implements OnInit {
   ngOnInit(): void {
     window.scroll(0, 0);
 
+    //getting company id of clicked card
     this.myCompanyId = this.companiesService.getMyCompanyId();
+
+    // calling function to get company from the db
     this.companiesService.getSingleCompanyDB(this.myCompanyId).subscribe(
       (res) => {
         this.myCompanyDetail = res['data'];
@@ -56,6 +59,7 @@ export class MyCompanyDetailComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
+  //delete company
   onDelete() {
     Swal.fire({
       title: 'Are you sure?',
@@ -89,9 +93,11 @@ export class MyCompanyDetailComponent implements OnInit {
     });
   }
 
+  //navigate to edit page
   companyEditModeOn() {
     this.companyEditMode = true;
   }
+  //come back to detail page
   companyEditModeOff() {
     this.companyEditMode = false;
   }

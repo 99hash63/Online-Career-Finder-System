@@ -39,9 +39,13 @@ export class AllCompanyDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //scrolling to top of the window on init
     window.scroll(0, 0);
 
+    //getting company id of the clicked card
     this.myCompanyId = this.companiesService.getMyCompanyId();
+
+    //calling function to get company data from db
     this.companiesService.getSingleCompanyDB(this.myCompanyId).subscribe(
       (res) => {
         this.myCompanyDetail = res['data'];
@@ -66,9 +70,11 @@ export class AllCompanyDetailComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
+  //function to add new reviews
   addReview(form: NgForm) {
     console.log(form.value);
 
+    //calling postRating function to save review in the db
     this.companyRatingsService.postRating(form.value).subscribe(
       (res) => {
         this.showSuccessMessage = true;
@@ -81,10 +87,6 @@ export class AllCompanyDetailComponent implements OnInit {
             }
           }
         );
-        // setTimeout(() => {
-        //   this.showSuccessMessage = false;
-        //   document.getElementById('test').click();
-        // }, 2500);
       },
       (err) => {
         this.serverErrorMessages = err.error.join('</br>');
@@ -93,6 +95,7 @@ export class AllCompanyDetailComponent implements OnInit {
     );
   }
 
+  //function to reset the form after creating
   resetForm(form: NgForm) {
     this.companyRatingsService.selectedRating = {
       emp_state: '',

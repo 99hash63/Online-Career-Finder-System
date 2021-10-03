@@ -17,13 +17,18 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {}
   onSubmit(form: NgForm) {
+    //calling post user function to create new user
     this.userService.postUser(form.value).subscribe(
       (res) => {
         this.showSuccessMessage = true;
         this.userService.setToken(res['token']);
-        setTimeout(() => (this.showSuccessMessage = false), 3000);
         this.resetForm(form);
-        this.router.navigateByUrl('/');
+        setTimeout(() => {
+          this.showSuccessMessage = false;
+          this.router.navigateByUrl('/').then(() => {
+            window.location.reload();
+          });
+        }, 1500);
       },
       (err) => {
         if (err.status === 422) {
@@ -32,7 +37,7 @@ export class SignUpComponent implements OnInit {
       }
     );
   }
-
+  //function to reset form
   resetForm(form: NgForm) {
     this.userService.selectedUser = {
       name: '',
