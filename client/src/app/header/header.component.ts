@@ -9,10 +9,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  userEmail: string = '';
   constructor(private router: Router, public userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.isLoggedIn();
+    this.getProfile();
   }
 
   hasRoute(route: String) {
@@ -20,6 +22,20 @@ export class HeaderComponent implements OnInit {
   }
 
   changeHeader() {}
+
+  //function to get user profile
+  getProfile() {
+    this.userService.getProfile().subscribe(
+      (res) => {
+        console.log(res['email']);
+        this.userEmail = res['email'];
+      },
+      (err) => {
+        console.error(err);
+        this.userEmail = '';
+      }
+    );
+  }
 
   //function to logout user
   logout() {

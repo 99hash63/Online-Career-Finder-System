@@ -73,4 +73,9 @@ export class UserService {
       return false;
     }
   }
+
+  //get user profile
+  getProfile() {
+    return this.http.get(environment.apiBaseUrl + '/auth/profile');
+  }
 }
