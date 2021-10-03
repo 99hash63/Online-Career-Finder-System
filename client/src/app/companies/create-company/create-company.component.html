@@ -5,7 +5,7 @@
       <mat-stepper #stepper>
 
         <!-- step industry -->
-        <mat-step [stepControl]="firstFormGroup" errorMessage="required.">
+        <mat-step [stepControl]="firstFormGroup" errorMessage="Required.">
           <div class="container">
             <br>
             <div class="card" style="width:100%;">
@@ -58,7 +58,7 @@
 
 
         <!-- step emp count -->
-        <mat-step [stepControl]="secondFormGroup" errorMessage="required.">
+        <mat-step [stepControl]="secondFormGroup" errorMessage="Required.">
           <div class="container">
             <br>
 
@@ -104,7 +104,7 @@
         </mat-step>
 
         <!-- third form -->
-        <mat-step [stepControl]="thirdFormGroup" errorMessage="required.">
+        <mat-step [stepControl]="thirdFormGroup" errorMessage="Invalid.">
           <div class="container">
             <br>
             <div class="card" style="width:100%;">
@@ -148,7 +148,7 @@
         </mat-step>
 
         <!-- step 4 -->
-        <mat-step [stepControl]="fourthFormGroup" errorMessage="required.">
+        <mat-step [stepControl]="fourthFormGroup" errorMessage="Required.">
           <div class="container">
             <br>
             <div class="card" style="width:100%;">
@@ -184,7 +184,7 @@
         </mat-step>
 
         <!-- step 5 -->
-        <mat-step [stepControl]="fifthFormGroup" errorMessage="required.">
+        <mat-step [stepControl]="fifthFormGroup" errorMessage="Invalid.">
           <div class="container">
             <br>
             <div class="card" style="width:100%;">
@@ -218,7 +218,7 @@
         </mat-step>
 
         <!-- step 6 -->
-        <mat-step [stepControl]="sixthFormGroup" errorMessage="required.">
+        <mat-step [stepControl]="sixthFormGroup" errorMessage="Invalid.">
           <div class="container">
             <br>
             <div class="card" style="width:100%;">
@@ -252,7 +252,7 @@
         </mat-step>
 
         <!-- step 7 -->
-        <mat-step [stepControl]="seventhFormGroup" errorMessage="required.">
+        <mat-step [stepControl]="seventhFormGroup" errorMessage="Required.">
           <div class="container">
             <br>
             <div class="card" style="width:100%;">
@@ -342,7 +342,7 @@
               </div>
             </div>
           </div>
-          <div class="d-flex justify-content-end" style="margin-top: 25px; margin-right: 53px;">
+          <div class="d-flex justify-content-end" style="margin-top: 25px; margin-right: 243px;">
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button (click)="stepper.reset(); resetImg();">Reset</button>
             <button mat-button (click)="onSubmit()">Submit</button>
