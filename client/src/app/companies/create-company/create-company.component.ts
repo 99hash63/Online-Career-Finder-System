@@ -28,6 +28,7 @@ export class CreateCompanyComponent implements OnInit {
   companyRegex =
     /^(http(s?):\/\/)?(www\.)+[a-zA-Z0-9\.\-\_]+(\.[a-zA-Z]{2,3})+(\/[a-zA-Z0-9\_\-\s\.\/\?\%\#\&\=]*)?$/;
   uploadImgUrl = '/assets/images/No_Preview_image.jpg';
+  noImgUrl = '/assets/images/no-img.png';
   serverErrorMessages: string;
 
   firstFormGroup: FormGroup;
@@ -79,6 +80,7 @@ export class CreateCompanyComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (e: any) => {
         this.uploadImgUrl = e.target.result;
+        this.noImgUrl = e.target.result;
       };
     }
 
@@ -142,5 +144,6 @@ export class CreateCompanyComponent implements OnInit {
   //reset image when reset button is clicked
   resetImg() {
     this.uploadImgUrl = '/assets/images/No_Preview_image.jpg';
+    this.noImgUrl = '/assets/images/no-img.png';
   }
 }

@@ -302,46 +302,43 @@
           <div class="d-flex justify-content-center" style="margin: 20px 0px 20px 0px;">
             <h5>This his how others will see your company post</h5>
           </div>
-          <div class="container d-flex justify-content-center">
-            <div class="row ">
-              <div class="col-sm">
-                <div class="card" style="width: 620px; height: 280px;">
 
-                  <div class="card-body">
-                    <h4 class="card-title">{{this.fifthFormGroup.get('title').value}}</h4>
-                    <form class="form-inline">
-                      <div class="overview-headings-left-container">
-                        <h6>Website:</h6>
-                        <h6>Size:</h6>
-                        <h6>Industry:</h6>
-                      </div>
-                      <div class="overview-desc-left-container">
-                        <h6>{{this.thirdFormGroup.get('website').value}}</h6>
-                        <h6>{{this.secondFormGroup.get('emp_count').value}}</h6>
-                        <h6>{{this.firstFormGroup.get('industry').value}}</h6>
-                      </div>
-                      <div class="overview-headings-right-container">
-                        <h6>Revenue:</h6>
-                        <h6>Headquarters:</h6>
-                        <h6>Founded:</h6>
-                      </div>
-                      <div class="overview-desc-right-container">
-                        <h6>{{this.thirdFormGroup.get('revenue').value}}</h6>
-                        <h6>{{this.fourthFormGroup.get('country').value}}, {{this.fourthFormGroup.get('city').value}}
-                        </h6>
-                        <h6>{{this.thirdFormGroup.get('founded').value}}</h6>
-                      </div>
-                    </form>
-                    <div class="description-container">
-                      <h6>{{this.sixthFormGroup.get('description').value}}</h6>
-                    </div>
-                  </div>
-                </div>
+          <div style=" display: flex;
+          justify-content: center;
+          align-items: center;">
+            <div class="card" style="max-width: 60%; min-height: 280px;">
+              <img [src]="noImgUrl" id="icon" alt="User Icon" style="padding: 0; margin: 0;  width: 100%;" alt="Image">
+
+              <div class="card-header">
+                <h4>{{this.fifthFormGroup.get('title').value}}</h4>
               </div>
-              <div class="col-sm d-flex justify-content-start"
-                style="width: 475px; height: 280px; border: 1px solid rgb(220, 220, 220); padding: 0; margin: 0;">
-                <img [src]="uploadImgUrl" id="icon" alt="User Icon"
-                  style="padding: 0; margin: 0; max-height: 280px; max-width: 475px;" alt="Image">
+              <div class="card-body">
+                <form class="form-inline">
+                  <div class="overview-headings-left-container">
+                    <h6>Website:</h6>
+                    <h6>Size:</h6>
+                    <h6>Industry:</h6>
+                  </div>
+                  <div class="overview-desc-left-container">
+                    <h6>{{this.thirdFormGroup.get('website').value}}</h6>
+                    <h6>{{this.secondFormGroup.get('emp_count').value}}</h6>
+                    <h6>{{this.firstFormGroup.get('industry').value}}</h6>
+                  </div>
+                  <div class="overview-headings-right-container">
+                    <h6>Revenue:</h6>
+                    <h6>Headquarters:</h6>
+                    <h6>Founded:</h6>
+                  </div>
+                  <div class="overview-desc-right-container">
+                    <h6>{{this.thirdFormGroup.get('revenue').value}}</h6>
+                    <h6>{{this.fourthFormGroup.get('country').value}}, {{this.fourthFormGroup.get('city').value}}
+                    </h6>
+                    <h6>{{this.thirdFormGroup.get('founded').value}}</h6>
+                  </div>
+                </form>
+                <div class="description-container">
+                  <h6>{{this.sixthFormGroup.get('description').value}}</h6>
+                </div>
               </div>
             </div>
           </div>
