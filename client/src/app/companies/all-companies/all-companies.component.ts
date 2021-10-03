@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./all-companies.component.css'],
 })
 export class AllCompaniesComponent implements OnInit {
+  //intializing variables
   companies: Company[] = [];
   title: string = '';
   industry: string = 'none';

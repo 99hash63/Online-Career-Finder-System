@@ -15,6 +15,7 @@ export class MyCompanyEditComponent implements OnInit {
   public serverErrorMessages;
   public stringDate;
 
+  //getting all company data from parent(company detail) component using input decorator
   @Input() myCompanyDetail: MyCompanyDetail;
 
   company: MyCompanyDetail = {
@@ -40,6 +41,7 @@ export class MyCompanyEditComponent implements OnInit {
   };
   constructor(private companyService: CompaniesService) {}
 
+  //getting all company data from parent(company detail) component using input decorator
   ngOnInit(): void {
     this.company._id = this.myCompanyDetail._id;
     this.company.industry = this.myCompanyDetail.industry;
@@ -64,6 +66,7 @@ export class MyCompanyEditComponent implements OnInit {
   }
 
   onSubmit() {
+    //calling function to update company
     this.companyService.updateCompany(this.company).subscribe(
       (res) => {
         Swal.fire('Done!', 'Your post has been updated!.', 'success').then(

@@ -24,6 +24,7 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(form: NgForm) {
+    //calling login method to login user
     this.userService.login(form.value).subscribe(
       (res) => {
         this.userService.setToken(res['token']);
@@ -42,6 +43,7 @@ export class SignInComponent implements OnInit {
     );
   }
 
+  //function to reset form
   resetForm(form: NgForm) {
     this.model = {
       email: '',

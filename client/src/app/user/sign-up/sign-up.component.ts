@@ -17,6 +17,7 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {}
   onSubmit(form: NgForm) {
+    //calling post user function to create new user
     this.userService.postUser(form.value).subscribe(
       (res) => {
         this.showSuccessMessage = true;
@@ -36,7 +37,7 @@ export class SignUpComponent implements OnInit {
       }
     );
   }
-
+  //function to reset form
   resetForm(form: NgForm) {
     this.userService.selectedUser = {
       name: '',

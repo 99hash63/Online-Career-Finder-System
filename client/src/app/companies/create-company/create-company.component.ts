@@ -46,6 +46,7 @@ export class CreateCompanyComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    //binding all form groups to ts properties
     this.firstFormGroup = this._formBuilder.group({
       industry: ['', Validators.required],
     });
@@ -72,6 +73,7 @@ export class CreateCompanyComponent implements OnInit {
     });
   }
 
+  //uploading image
   uploadFile(event) {
     console.log('file selected');
 
@@ -91,6 +93,7 @@ export class CreateCompanyComponent implements OnInit {
     this.seventhFormGroup.get('testFile').updateValueAndValidity();
   }
 
+  //on form submit
   onSubmit() {
     if (
       this.firstFormGroup.valid &&
@@ -103,6 +106,7 @@ export class CreateCompanyComponent implements OnInit {
     ) {
       const formData: any = new FormData();
 
+      //getting all form data
       formData.append('industry', this.firstFormGroup.get('industry').value);
       formData.append('emp_count', this.secondFormGroup.get('emp_count').value);
       formData.append('founded', this.thirdFormGroup.get('founded').value);
@@ -117,8 +121,7 @@ export class CreateCompanyComponent implements OnInit {
       );
       formData.append('testFile', this.seventhFormGroup.get('testFile').value);
 
-      // console.log('hey' + this.seventhFormGroup.get('testFile').value);
-      // console.log(formData);
+      //creating function to add company to the db
       this.companiesService.postCompany(formData).subscribe(
         (res) => {
           Swal.fire('Done!', 'Your post has been created.', 'success').then(
@@ -134,7 +137,6 @@ export class CreateCompanyComponent implements OnInit {
 
           Swal.fire('Error!', this.serverErrorMessages, 'error');
 
-          // alert(this.serverErrorMessages);
           console.log(this.serverErrorMessages);
         }
       );

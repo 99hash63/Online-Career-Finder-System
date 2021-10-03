@@ -16,7 +16,7 @@ export class CompanyRatingsSummaryComponent implements OnInit {
 
   companyRatings: CompanyRating[] = [];
   chart: any = [];
-  
+
   //properties for display summary
   public companyName: string;
   public totalReviews: number;
@@ -35,8 +35,10 @@ export class CompanyRatingsSummaryComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    //getting current company id
     this.model.companyId = this.companiesService.getMyCompanyId();
     this.getRatings();
+    //setting company title
     this.companyName = this.companiesService.getMyCompanyTitle();
   }
 
@@ -76,7 +78,7 @@ export class CompanyRatingsSummaryComponent implements OnInit {
     this.displayChart();
   }
 
-  //function to display pie chart
+  //function to display donut chart
   displayChart() {
     var myChart = new Chart('canvas', {
       type: 'doughnut',
@@ -121,11 +123,13 @@ export class CompanyRatingsSummaryComponent implements OnInit {
     //pdf filename for saving
     const filename = this.companyName + '_ratings' + '_' + CurrentDate + '.pdf';
 
+    //initalize js pdf object
     const doc = new jsPDF({
       orientation: 'p',
       unit: 'px',
       format: [1000, 700],
     });
+    //passing calculated data to pdf template
     doc.html(
       companyPdfTemplate(
         this.companyName,
